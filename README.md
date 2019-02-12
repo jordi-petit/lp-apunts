@@ -1,6 +1,6 @@
 # Apunts d'LP
 
-Apunts i transparències per les classes de Llenguatges de Programació.
+Presentacions de les classes de Llenguatges de Programació.
 
 
 # Pàgines
