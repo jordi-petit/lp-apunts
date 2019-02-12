@@ -1,0 +1,7 @@
+### remark-boilerplate ###
+build/
+.publish
+
+# Dependency directories
+node_modules/
+

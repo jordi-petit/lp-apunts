@@ -1,0 +1,818 @@
+
+class: center, middle
+
+# Introducció
+
+<img src='img/programming-languages-cloud.png' height='200em'>
+
+---
+
+# Introducció
+
+Un **llenguatge de programació** (LP) és un llenguatge formal utilitzat per
+controlar el comportament d'un computador tot implementant un algorisme.
+
+Cada llenguatge té una sèrie de regles estrictes:
+
+- **Regles sintàctiques**: descriuen l'estructura dels programes vàlids.
+
+- **Regles semàntiques**: descriuen el seu significat.
+
+Cada llenguatge té / hauria de tenir una especificació:
+
+- un document estàndard (Ansi C) o
+- una implementació de referència (CPython).
+
+---
+
+# Història
+
+[O'Reilly History of Programming Languages](https://www.cs.toronto.edu/~gpenn/csc324/PLhistory.pdf)
+
+.center[![](img/programming-history.png)]
+
+.center.xs[Font: O'Reilly]
+
+
+
+
+---
+
+class: split-6040
+
+# Història: Orígens
+
+## Tauletes babilòniques (2000ac)
+
+.cols6040[
+.col1[
+A [rectangular] cistern.
+
+The height is 3, 20, and a volume of 27, 46, 40 has been excavated.
+The length exceeds the width by 50.
+You should take the reciprocal of the height, 3, 20, obtaining 18.
+Multiply this by the volume, 27, 46, 40, obtaining 8, 20.
+Take half of 50 and square it, obtaining 10, 25.
+Add 8, 20, and you get 8, 30, 25
+The square root is 2, 55.
+Make two copies of this, adding [25] to the one and subtracting from the other.
+You find that 3, 20 [i.e., 3 1/3] is the length and 2, 30 [i.e., 2 1/2] is the width.
+
+This is the procedure.
+]
+.col2[
+![:height 18em](img/babilonic-tablet.png)
+]
+]
+*[Ancient Babylonian Algorithms](http://steiner.math.nthu.edu.tw/disk5/js/computer/1.pdf)*. D.E. Knuth, Communications ACM 1972.
+
+
+
+---
+
+# Història: Orígens
+
+## Teler de Jacquard (1804)
+
+![:height 15em](img/jacquard1.png)
+.sepimg[]
+![:height 15em](img/jacquard2.png)
+
+.xxs[Fotos: http://www.revolutionfabrics.com/blog/2018/9/26/the-jacquard-loom-and-the-binary-code]
+
+
+
+---
+
+# Història: Orígens
+
+## Màquina analítica de Charles Babbage (1842)
+
+Es considera que Ada Lovelace és la primera programadora.
+
+![:height 10em](img/differential-engine.png)
+.sepimg[]
+![:height 10em](img/charles-babbage.png)
+.sepimg[]
+![:height 10em](img/ada-lovelace.png)
+
+.xxs[Fotos: Domini públic]
+
+
+---
+
+# Història: Ensabladors
+
+Es considera que Kathleen Booth va escriure el
+primer llenguatge ensamblador per un ordinador ARC al 1947.
+
+![:height 10em](img/kathleen-booth.png)
+.sepimg[]
+![:height 10em](img/assembly-code.png)
+
+.xxs[Fotos: Domini públic]
+
+
+---
+
+# Història: Plankalkül
+
+Primer LP d'alt nivell dissenyat per Konrad Zuse (1942-1945) pel seu
+ordinador a relés Z4. Implementat al 1990.
+
+![:height 10em](img/plankalkul.png)
+.sepimg[]
+![:height 10em](img/computer-z4.png)
+
+.xxs[Fotos: Domini públic]
+
+---
+
+# Història: Fortran
+
+**FORmula TRANslator (1954-1957)**.
+Desenvolupat per John Bakus a IBM per a computació científica.
+
+Es volia generar codi comparable al programat en ensamblador.
+
+Idees principals:
+
+- Variables amb noms (6 caràcters)
+- Bucles i condicionals aritmètics
+- E/S amb format
+- Subrutines
+- Taules
+
+![:height 8em](img/john-backus.jpg)
+.sepimg[]
+![:height 8em](img/punch-card.png)
+
+.xxs[Fotos: Domini públic i Wikipedia]
+
+---
+
+# Història: Fortran
+
+```fortran
+C AREA OF A TRIANGLE WITH A STANDARD SQUARE ROOT FUNCTION
+      READ INPUT TAPE 5, 501, IA, IB, IC
+  501 FORMAT (3I5)
+C IA, IB, AND IC MAY NOT BE NEGATIVE OR ZERO
+C FURTHERMORE, THE SUM OF TWO SIDES OF A TRIANGLE
+C MUST BE GREATER THAN THE THIRD SIDE, SO WE CHECK FOR THAT, TOO
+      IF (IA) 777, 777, 701
+  701 IF (IB) 777, 777, 702
+  702 IF (IC) 777, 777, 703
+  703 IF (IA+IB-IC) 777, 777, 704
+  704 IF (IA+IC-IB) 777, 777, 705
+  705 IF (IB+IC-IA) 777, 777, 799
+  777 STOP 1
+C USING HERON'S FORMULA WE CALCULATE THE
+C AREA OF THE TRIANGLE
+  799 S = FLOATF (IA + IB + IC) / 2.0
+      AREA = SQRTF( S * (S - FLOATF(IA)) * (S - FLOATF(IB)) *
+     +     (S - FLOATF(IC)))
+      WRITE OUTPUT TAPE 6, 601, IA, IB, IC, AREA
+  601 FORMAT (4H A= ,I5,5H  B= ,I5,5H  C= ,I5,8H  AREA= ,F10.2,
+     +        13H SQUARE UNITS)
+      STOP
+      END
+```
+
+---
+
+# Història: COBOL
+
+**COmmon Business Oriented Language  (1959).** Desenvolupat per Grace Hopper
+pel DoD i fabricants per a aplicacions de gestió.
+
+Idees principals:
+
+- Vol semblar idioma anglès, sense símbols
+- Macros
+- Registres
+- Fitxers
+- Identificadors llargs (30 caràcters)
+
+![:height 8em](img/grace-hopper.jpg)
+.sepimg[]
+![:height 8em](img/cobol-sheet.jpg)
+
+.xxs[Foto: Domini públic]
+
+---
+
+# Història: COBOL
+
+```cobol
+IDENTIFICATION DIVISION.
+PROGRAM-ID.  Multiplier.
+AUTHOR.  Michael Coughlan.
+* Example program using ACCEPT, DISPLAY and MULTIPLY to
+* get two single digit numbers from the user and multiply them together
+
+DATA DIVISION.
+
+WORKING-STORAGE SECTION.
+01  Num1                                PIC 9  VALUE ZEROS.
+01  Num2                                PIC 9  VALUE ZEROS.
+01  Result                              PIC 99 VALUE ZEROS.
+
+PROCEDURE DIVISION.
+    DISPLAY "Enter first number  (1 digit) : " WITH NO ADVANCING.
+    ACCEPT Num1.
+    DISPLAY "Enter second number (1 digit) : " WITH NO ADVANCING.
+    ACCEPT Num2.
+    MULTIPLY Num1 BY Num2 GIVING Result.
+    DISPLAY "Result is = ", Result.
+    STOP RUN.
+```
+
+---
+
+# Història: LISP
+
+**LISt Processing (1958)**.
+Desenvolupat per John McCarthy al MIT per a recerca en IA.
+
+Idees principals:
+
+- Sintàxi uniforme
+- Funcions (composició i recursivitat)
+- Llistes
+- Expressions simbòliques
+- Recol·lector de brossa
+
+![:height 8em](img/john-mccarthy.jpg)
+
+.xxs[Foto: Wikipedia]
+
+---
+
+# Història: LISP
+
+```lisp
+(defun factorial (N)
+    "Compute the factorial of N."
+    (if (= N 1)
+        1
+        (* N (factorial (- N 1)))))
+```
+
+
+```lisp
+(defun first-name (name)
+    "Select the first name from a name represented as a list."
+    (first name))
+
+(setf names '((John Q Public) (Malcolm X)
+              (Admiral Grace Murray Hopper) (Spot)
+              (Aristotle) (A A Milne) (Z Z Top)
+              (Sir Larry Olivier) (Miss Scarlet)))
+```
+
+
+---
+
+# Història: Algol
+
+**ALGOrithmic Language (1958)**.
+Dissenyat com un llenguatge universal per computació científica.
+No gaire popular, però dóna lloc a LPs com Pascal, C, C++, and Java.
+
+Idees principals:
+
+- Blocs amb àmbits de variables
+- Pas per valor i pas per nom (≠ pas per referència)
+- Recursivitat
+- Gramàtica formal (Backus-Naur Form or BNF)
+
+
+
+```algol
+procedure Absmax(a) Size:(n, m) Result:(y) Subscripts:(i, k);
+    value n, m; array a; integer n, m, i, k; real y;
+begin
+    integer p, q;
+    y := 0; i := k := 1;
+    for p := 1 step 1 until n do
+        for q := 1 step 1 until m do
+            if abs(a[p, q]) > y then
+                begin y := abs(a[p, q]);
+                    i := p; k := q
+                end
+end Absmax
+```
+
+---
+
+# Història: etc, etc, etc
+
+---
+
+# Ús dels LPs
+
+Com mesurar la popularitat dels LPs?
+
+- TIOBE Programming Community Index
+
+  ![:height 15em](img/tiobe.png)
+
+  .xxs[Font: https://www.tiobe.com/tiobe-index/]
+
+
+---
+
+# Ús dels LPs
+
+Com mesurar la popularitat dels LPs?
+
+- Estadístiques de GitHub
+
+  ![:height 15em](img/github.png)
+
+  .xxs[Font: https://github.com]
+
+
+
+
+---
+
+# Paradigmes de LPs
+
+Els **paradigmes de programació** classifiquen els LPs segons les
+seves característiques.
+
+
+Paradigmes comuns:
+
+- **Imperatiu**: Les instruccions precisen els canvis d'estat.
+
+  ```c++
+  f = 1;
+  while (--n) f *= n;
+  ```
+
+- **Declaratiu**: Es caracteritza el resultat, però no com calcular-lo.
+
+  ```sql
+  select full_name, order_date, order_amount
+  from customers inner join orders
+  on customers.customer_id = orders.customer_id
+  ```
+
+- **Funcional**: El resultat és el valor d'una sèrie d'aplicacions de funcions.
+
+  ```haskell
+  cincMesGrans :: [a] -> [a]
+  cincMesGrans = take 5 . reverse . sort
+  ```
+
+
+
+---
+
+# Paradigma imperatiu
+
+Caràcteristiques:
+
+- Noció d'estat
+
+- Instruccions per canviar l'estat
+
+- Efectes laterals
+
+Exemples:
+
+- C/C++, Python, Java, Ensamblador, ...
+
+Útils quan, per exemple, l'eficiència és clau.
+
+
+---
+
+# Paradigma imperatiu
+
+Subclassificacions:
+
+- **Procedural**: Les instruccions s'agrupen en procediments.
+
+  ```pascal
+  PROCEDURE swap (VAR a, b: INTEGER)
+  VAR c: INTEGER;
+  BEGIN
+        c := a;  b:=a;  a=c;
+  END;
+  ```
+
+- **Orientat a objectes**: Les instruccions s'agrupen amb l'estat dels objectes
+  sobre les quals operen.
+
+  ```smalltalk
+  Point»dist: aPoint
+        dx := aPoint x - x.
+        dy :=  aPoint y - y.
+        ↑ ((dx * dx) + (dy * dy)) sqrt
+  ```
+
+
+
+---
+
+# Paradigma declaratiu
+
+Caràcteristiques:
+
+- Llenguatges descriptius.
+
+- El programa diu que s'ha de fer, però no necessariament com.
+
+
+Utilitat:
+
+- Prototipat d'aplicacions amb forta component simbòlica, problemes
+combinatoris, etc.
+
+- Consultes en bases de dades relacionals o lògiques.
+
+- Per especificació i raonament automàtic.
+
+Exemples:
+
+- SQL (consultes relacionals) / GraphQL (consultes en grafs, amb tipus)
+ / Prolog (lògica de primer ordre) / Matemàtiques
+
+
+
+---
+
+# Paradigma declaratiu
+
+Subclasificacions:
+
+
+- **Matemàtic**: El resultat es declara com a la solució d'un problema d'optimització.
+
+  ```bash
+  Maximize
+      x1 + 2 x2 + 3 x3 + x4
+  Subject To
+      - x1 + x2 + x3 + 10 x4 ≤ 20
+      x1 - 3 x2 + x3 ≤ 30
+      x2 - 3.5 x4 = 0
+  ```
+
+- **Consultes**: Resposta a consultes a una base de dades.
+
+  ```sql
+  select full_name, order_date, order_amount
+  from customers inner join orders
+  on customers.customer_id = orders.customer_id
+  ```
+
+- **Lògic**: Resposta a una pregunta amb fets i regles.
+
+  ```prolog
+  human(socrates).
+  mortal(X) :- human(X).
+  ?- mortal(socrates).
+  ```
+
+
+---
+
+# Paradigma funcional
+
+Caràcteristiques:
+
+- Procedural
+
+- Sense noció d'estat i sense efectes laterals
+
+- Més fàcil de raonar (sobre correctesa o sobre transformacions)
+
+Utilitat:
+
+- Útils per al prototipat, fases inicials de desenvolupament
+(especificacions executables i transformables).
+
+- Tractament simbòlic.
+
+- Sistemes de tipus potents (incloent polimorfisme paramètric i
+  inferència de tipus)
+
+Exemples: Haskell, ML (Caml, OCaml), Erlang, XSLT (tractament XML),...
+
+---
+
+# Paradigma funcional
+
+Conceptes clau:
+
+- **Recursivitat:**
+
+  ```scheme
+  (define (fib n)
+      (cond
+        ((= n 0) 0)
+        ((= n 1) 1)
+        (else
+          (+ (fib (- n 1))
+             (fib (- n 2))))))
+  ```
+
+- **Funcions d'ordre superior**: funcions que reben o retornen funcions.
+
+  ```python
+  map(lambda x: 2*x, [1,2,3,4])
+  ```
+
+- **Aplicació parcial (currying)**:
+
+  ```haskell
+  doble = (*2)
+  ```
+
+
+---
+
+# Paradigma funcional
+
+Conceptes clau:
+
+- **Funcions pures**: Amb els mateixos arguments, les funcions sempre retornen
+  el mateix resultat. No hi ha efectes laterals.
+
+- **Mecanismes d'avaluació**: Avaluació estricta *vs* avaluació mandrosa.
+
+- Sistemes de tipus
+
+
+---
+
+# Paradigma OO
+
+Caràcteristiques:
+
+- Es basa en *objectes* (atributs + mètodes) i potser *classes*.
+
+- Inclou principalment *polimorfisme (subtipat)* i *herència*.
+
+- Poden tenir sistemes de tipus complexos.
+
+
+Exemples: Smalltalk, Simula, C++, Java...
+
+
+
+
+
+
+---
+
+# Llenguatges multiparadigma
+
+Molts LPs combinen diferents paradigmes. Per exemple:
+
+- Python, Perl: **imperatiu** + orientat a objectes + funcional
+
+- OCaml: **funcional** + imperatiu + orientat a objectes
+
+
+Alguns LPs incorporen caràcteristiques d'altres paradigmes:
+
+- Prolog: **lògic** (+ imperatiu + funcional)
+
+
+Altres combinacions:
+
+- Erlang: **funcional** + concurrent + distribuït
+
+
+---
+
+# Llenguatges esotèrics
+
+- **Brainfuck:** Basat en màquines de Turing, només té 8 instruccions. Exemple:
+
+  ```bash
+  ,>++++++[<-------->-],[<+>-],<.>.
+  ```
+
+- **Whitespace**: Només té espais en blanc i tabuladors. Exemple:
+
+  ```bash
+
+  ```
+
+  (indenteu-lo bé quan el copieu 😛)
+
+
+- **Shakespeare**: Amaga un programa dins d'una obra de teatre.
+
+---
+
+class: split-5050
+
+# Turing completesa
+
+
+Un LP és **Turing complet** si pot implementar qualsevol càlcul
+que un computador digital pugui realitzar.
+
+.cols5050[
+.col1[
+**Màquina de Turing**: Model de càlcul imperatiu molt simple.<br/> (Allan Turing, 1936)
+
+![:height 8em](img/alan-turing.jpg)
+.sepimg[]
+![:height 8em](img/turing-machine.png)
+]
+.col2[
+**λ-càlcul**: Model de càlcul funcional molt simple. <br/> (Alonzo Church, 1936).
+
+![:height 8em](img/lambda2.png)
+![:height 8em](img/alonzo-church.jpg)
+]
+]
+
+
+**Tesi de Church-Turing**: "Tot algorisme és
+computable amb una Màquina de Turing o amb una funció en λ-càlcul".
+
+
+.xxs[Fotos: Wikipedia, Fair Use, [Lambda Calculus for Absolute Dummies](http://palmstroem.blogspot.com/2012/05/lambda-calculus-for-absolute-dummies.html)]
+
+---
+
+# Turing completesa
+
+
+Alguns autors consideren només com a LPs els
+llenguatges Turing complets.
+
+
+- LPs Turing complets:
+
+    - LPs de programació de propòsit general (C/C++, Python, Haskell...)
+    - automàts cel·lulars (Joc de la vida, ...)
+    - jocs (Minecraft, Buscamines...)
+
+  Per ser Turing complet només cal tenir salts condicionals (bàsicament,
+  `if` i `goto`) i memòria arbitràriament gran.
+
+- LPs no Turing complets:
+
+    - expressions regulars (a Perl o a AWK)
+    - ANSI SQL
+
+
+
+
+---
+
+# Sistemes d'execució
+
+- **Compilat**: el codi és transforma en codi objecte i després es monta en
+  un executable. Sol ser eficient.
+
+  Exemples: C, C++, Ada, Haskell, ...
+
+- **Interpretat**: el codi s'executa directament o el codi es transforma en
+  codi d'una màquina virtual, que l'executa.
+
+  Aumenten la portabilitat i l'expressabilitat (es poden fer més coses
+  en temps d'execució) però disminueix l'eficiència.
+
+  Exemples: Python, JavaScript, Prolog (WAM), Java (JVM), ...
+
+
+Sistemes mixtes:
+
+- **Just in Time compilation**: Es compila (parcialment) en temps d'execució.
+
+- Alguns interpretats, poden ser també compilats (per exemple, Prolog).
+- i al revés (Haskell).
+
+
+---
+
+# Sistemes de tipus
+
+Un **sistema de tipus** és un conjunt de regles que assignen *tipus*  als
+elements d'un programa (com ara variables, expressions, funcions...) per
+evitar errors.
+
+La comprovació de tipus verifica que les diferents parts d'un programa
+es comuniquin adequadament en funció dels seus tipus.
+
+Per exemple, amb
+
+```c++
+class Persona;
+class Forma;
+class Rectangle : Forma;
+class Triangle : Forma;
+
+int area (const Forma& r);
+```
+
+- cridar a `area` amb un `Rectangle` o un `Triangle` és correcte,
+- cridar a `area` amb una `Persona` o un enter és un error de tipus.
+
+
+
+---
+
+# Sistemes de tipus: *type safety*
+
+Un llenguatge és **type safe** si cap programa pot donar errors de
+tipus en temps d'execució.
+
+<!--
+A type-safe language is one where the only operations that one can execute on data are the ones that are condoned by the data's type. That is, if your data is of type X and X doesn't support operation y, then the language will not allow you to to execute y(X).
+https://stackoverflow.com/questions/260626/what-is-type-safe
+-->
+
+Alguns errors típics en execució:
+
+- Type Cast: usar un valor d'un tipus en un altre tipus.
+
+  Exemple: En C, un enter pot ser usat com a funció (com a adreça), però pot
+  saltar on no hi ha una funció  i pot provocant un error.
+
+- Aritmètica de punters.
+
+  Exemple: En C, si tenim `A* p;` llavors `*(p+i)` té tipus `A`, però el que
+  hi ha a `p+i` pot ser qualsevol altra cosa i pot provocar un error de tipus.
+
+
+- Alliberament explícit de memòria (deallocate/delete).
+
+  Exemple: En Pascal usar un apuntador alliberat pot donar errors de
+  tipus.
+
+- En llenguatges OO (antics), no existència d'un mètode (degut a
+  l'herència).
+
+
+---
+
+# Sistemes de tipus: *type safety*
+
+Exemples de llenguatges:
+
+- *Type safe*: Haskell, Java, ...
+
+- *Type unsafe*: C, C++, Pascal, ...
+
+
+
+---
+
+# Sistemes de tipus: Tipat fort/feble
+
+Els llenguatges amb **tipat fort** imposen restriccions que
+eviten barrejar valors de diferents tipus (per exemple, amb conversions implícites).
+
+
+Per exemple, amb un tipat feble podem tenir:
+
+```javascript
+a = 2
+b = "2"
+
+a + b      # JavaScript retorna "22"
+a + b      # Visual Basic retorna 4
+```
+
+<br/>
+Exemples de llenguatges:
+
+- Tipat fort: C++, Java, Python, Haskell, ...
+
+- Tipat feble: Basic, JavaScript, Perl, ...
+
+
+---
+
+# Sistemes de tipus: Comprovació
+
+La comprovació de tipus pot ser:
+
+- **Estàtica**: en temps de compilació.
+
+- **Dinàmica**: en temps d'execució.
+
+
+
+<br/>
+Exemples de llenguatges:
+
+- Comprovació estàtica: Haskell, C++, Java, ...
+
+- Comprovació dinàmica: Python, Ruby, ...
+
+
+
+
