@@ -98,7 +98,7 @@ Nota: Els repetidors podeu reusar la nota del llenguatge del curs passat.
 |   |   |
 |---|---|
 | Examen compiladors | dilluns 25 de març |
-| Examen Haskell | dilluns 6 o 13 de maig |
+| Examen Haskell | dilluns 6 de maig |
 | Presentacions | darrera setmana de maig |
 | Examen final | divendres 7 de juny 8:00 |
 
