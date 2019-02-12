@@ -3,3 +3,14 @@ script
   include ../../js/vendor/remark-fallback.js
 script(src="js/vendor/remark-language.js")
 script(src="js/main.js")
+
+// jpetit: mathjax
+script(src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured', type='text/javascript')
+script(type='text/javascript').
+    MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']],
+        }
+    });
+    MathJax.Hub.Configured();
