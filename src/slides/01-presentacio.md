@@ -93,13 +93,13 @@ Nota: Els repetidors podeu reusar la nota del llenguatge del curs passat.
 
 ---
 
-# Calendari exàmens
+# Calendari exàmens (confirmeu-ho al Racó)
 
 |   |   |
 |---|---|
 | Examen compiladors | dilluns 25 de març |
 | Examen Haskell | dilluns 6 de maig |
-| Presentacions | darrera setmana de maig |
+| Presentacions | 23 i 27 de maig |
 | Examen final | divendres 7 de juny 8:00 |
 
 ---
@@ -108,7 +108,8 @@ Nota: Els repetidors podeu reusar la nota del llenguatge del curs passat.
 
 - *Compiler design*. Wilhelm, R.; Maurer, D, Addison-Wesley, 1995.
 
-- *Compilers: principles, techniques, and tools*. Aho, A.V.; Sethi, R.; Ullman, J.D, Addison-Wesley, 2007.
+- *Compilers: principles, techniques, and tools*. Aho, A.V.; Sethi, R.;
+Ullman, J.D, Addison-Wesley, 2007.
 
 - *Concepts in programming languages*. Mitchell, J.C, Cambridge University Press, 2003.
 
@@ -116,7 +117,8 @@ Nota: Els repetidors podeu reusar la nota del llenguatge del curs passat.
 
 - *Haskell: the craft of functional programming*. Thompson, S, Addison-Wesley, 2011.
 
-- *Razonando con Haskell: un curso sobre programación funcional*. Ruiz Jiménez, B.C, Thomson-Paraninfo, 2004.
+- *Razonando con Haskell: un curso sobre programación funcional*. Ruiz Jiménez, B.C,
+Thomson-Paraninfo, 2004.
 
 
 ---
