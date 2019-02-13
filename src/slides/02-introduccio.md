@@ -711,10 +711,10 @@ Per exemple, amb
 ```c++
 class Persona;
 class Forma;
-class Rectangle : Forma;
+class Rectangle: Forma;
 class Triangle : Forma;
 
-int area (const Forma& r);
+doube area (const Forma&);
 ```
 
 - cridar a `area` amb un `Rectangle` o un `Triangle` és correcte,
@@ -743,8 +743,8 @@ Alguns errors típics en execució:
 
 - Aritmètica de punters.
 
-  Exemple: En C, si tenim `A* p;` llavors `*(p+i)` té tipus `A`, però el que
-  hi ha a `p+i` pot ser qualsevol altra cosa i pot provocar un error de tipus.
+  Exemple: En C, si tenim `A* p;` llavors `*(p + i)` té tipus `A`, però el que
+  hi ha a `p + i` pot ser qualsevol altra cosa i pot provocar un error de tipus.
 
 
 - Alliberament explícit de memòria (deallocate/delete).
