@@ -8,7 +8,7 @@ module.exports = {
     styl: './src/styl/**/*.styl',
     img: './src/img/**/*',
     files: {
-      jade: './src/templates/index.jade',
+      jade: './src/templates/*.jade',   // he canviat aquesta línia per tenir múltiples presentacions al mateix directori
       styl: './src/styl/main.styl'
     }
   },

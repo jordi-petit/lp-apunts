@@ -1,9 +1,20 @@
 
 class: center, middle
 
+
+# Llenguatges de Programació
+
 # Presentació
 
-<img src='img/hello-world.png' height='200em'>
+Albert Rubio, Jordi Petit
+
+<br/>
+
+![:height 10em](img/hello-world.png)
+
+<br/>
+
+Universitat Politècnica de Catalunya, 2019
 
 
 ---

@@ -1,9 +1,20 @@
 
 class: center, middle
 
+
+# Llenguatges de Programació
+
 # Introducció
 
-<img src='img/programming-languages-cloud.png' height='200em'>
+Albert Rubio, Jordi Petit
+
+<br/>
+
+![:height 10em](img/programming-languages-cloud.png)
+
+<br/>
+
+Universitat Politècnica de Catalunya, 2019
 
 ---
 
