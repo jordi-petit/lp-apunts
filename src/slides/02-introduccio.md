@@ -628,25 +628,28 @@ class: split-5050
 # Turing completesa
 
 
-Un LP és **Turing complet** si pot implementar qualsevol càlcul
-que un computador digital pugui realitzar.
-
 .cols5050[
 .col1[
-**Màquina de Turing**: Model de càlcul imperatiu molt simple.<br/> (Allan Turing, 1936)
+**Màquina de Turing**: Model matemàtic de càlcul imperatiu molt simple.<br/> (Allan Turing, 1936)
 
 ![:height 8em](img/alan-turing.jpg)
 .sepimg[]
 ![:height 8em](img/turing-machine.png)
+
+- Cinta infinita amb un capçal mòvil per llegir/escriure símbols
+- Conjunt finit d'estats
+- Funció de transició (estat, símbol ⟶ estat, símbol, moviment)
 ]
 .col2[
-**λ-càlcul**: Model de càlcul funcional molt simple. <br/> (Alonzo Church, 1936).
+**λ-càlcul**: Model matemàtic de càlcul funcional molt simple. <br/> (Alonzo Church, 1936).
 
 ![:height 8em](img/lambda2.png)
 ![:height 8em](img/alonzo-church.jpg)
-]
-]
 
+- Sistema de reescriptura
+- basat en abstracció i aplicació de funcions.
+]
+]
 
 **Tesi de Church-Turing**: "Tot algorisme és
 computable amb una Màquina de Turing o amb una funció en λ-càlcul".
@@ -657,6 +660,12 @@ computable amb una Màquina de Turing o amb una funció en λ-càlcul".
 ---
 
 # Turing completesa
+
+Un LP és **Turing complet** si pot implementar qualsevol càlcul
+que un computador digital pugui realitzar.
+
+
+
 
 
 Alguns autors consideren només com a LPs els
