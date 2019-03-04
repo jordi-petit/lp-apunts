@@ -12,3 +12,5 @@ Albert Rubio, Jordi Petit
 [Presentació](01-presentacio.html)
 
 [Introducció](02-introduccio.html)
+
+[Fonaments: λ-càlcul](03-lambda-calcul.html)
