@@ -650,8 +650,8 @@ create def = \key -> def
 
 search dict key = dict key
 
-insert dict key val = \x ->
-    if key == x then val
+insert dict key value = \x ->
+    if key == x then value
     else search dict x
 ```
 ]
