@@ -2,7 +2,7 @@
 class: center, middle
 
 
-# Llenguatges de Programació
+Llenguatges de Programació
 
 # Introducció
 

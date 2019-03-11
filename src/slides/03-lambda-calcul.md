@@ -2,7 +2,7 @@
 class: center, middle
 
 
-# Llenguatges de Programació
+Llenguatges de Programació
 
 # Fonaments: λ-càlcul
 
@@ -184,9 +184,9 @@ $$
 
 Existeixen moltes calculadores de λ-càlcul *online*:
 
-- posar enllaços
-- posar enllaços
-- posar enllaços
+- https://www.cl.cam.ac.uk/~rmk35/lambda_calculus/lambda_calculus.html
+- https://jacksongl.github.io/files/demo/lambda/index.htm
+- http://www-cs-students.stanford.edu/~blynn/lambda/ (amb notació Haskell)
 
 
 ---
