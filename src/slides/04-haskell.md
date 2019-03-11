@@ -20,39 +20,33 @@ Universitat Politècnica de Catalunya, 2019
 
 # Introducció
 
-- Llenguatge funcional pur.
+Haskell és llenguatge de programació funcional pur.
 
-- No hi ha:
+.cols5050[
+.col1[
+No hi ha:
 
   - assignacions,
+
   - bucles,
-  - gestió memòria explícita.
 
-- Hi ha:
+  - efectes laterals,
 
-  - *Lazy evaluation*: tractar estructures molt grans o infinites.
+  - gestió explícita de la memòria.
+]
+.col1[
+Hi ha:
 
-  - Sistemes de tipus potents.
+  - *Lazy evaluation*: permet tractar estructures molt grans o infinites.
 
-    - tipus algebraics,
-    - tipus polimòrfics,
-    - inferència de tipus automàtica.
+  - Funcions d'ordre superior. Funcions com a paràmetres o resultats.
 
-  - Funcions d'ordre superior. Funcions com a paràmetres.
+  - Sistema de tipus potent:
 
-
----
-
-# Història
-
-
-- Al 1987 degut a la proliferació de FPLs és decideix definir un
-  Standard: Haskell.
-
-- Al 1998 es crea una versió estable: Haskell98.
-
-- El nom és en homenatge a Haskell B. Curry, pel seu treball en lògica
-  matemàtica, base dels FPLs.
+      - tipus algebraics,
+      - tipus polimòrfics,
+      - inferència de tipus automàtica.
+]]
 
 ---
 
@@ -127,6 +121,36 @@ main = do
     print hiHaFoo
 ```
 
+
+---
+
+# Punts forts
+
+
+- Fàcil de llegir, elegant
+
+- Concís
+
+- Compilat
+
+- Tipatge fort
+
+- Abstraccions potents
+
+- Promou reús de codi
+
+---
+
+# Història
+
+
+- Al 1987 degut a la proliferació de FPLs és decideix definir un
+  Standard: Haskell.
+
+- Al 1998 es crea una versió estable: Haskell98.
+
+- El nom és en homenatge a Haskell B. Curry, pel seu treball en lògica
+  matemàtica, base dels FPLs.
 
 
 
@@ -247,6 +271,8 @@ Funcions de conversió: (cal un `import Data.Char`)
 - `ord :: Char -> Int`
 - `chr :: Int -> Char`
 
+Operadors relacionals: `<`, `>`, `<=`, `>=`, `==`, `/=` (⚠️ no `!=`)
+
 
 ---
 
@@ -261,7 +287,7 @@ Funcions de conversió: (cal un `import Data.Char`)
 - Valor absolut: `abs`
 - Conversió enter a real: `fromIntegral`
 - Conversió real a enter: `round`, `floor`, `ceiling`
-- Relacionals: `<`, `>`, `<=`, `>=`, `==`, `/=`
+- Relacionals: `<`, `>`, `<=`, `>=`, `==`, `/=` (⚠️ no `!=`)
 
 ## Notació prefixa/infixa
 
@@ -284,7 +310,7 @@ div 9 4
 # Definició de funcions
 
 Els identificadors de funcions comencen amb minúscula.
-i les funcions poden tenir associada una declaració de tipus.
+<br>Les funcions poden tenir associada una declaració de tipus.
 
 ```haskell
 factorial :: Integer -> Integer
@@ -321,7 +347,7 @@ branca satisfactible. <br>⇒ Es pot assumir que les anteriors han fallat.
 Fibonacci
 
 ```haskell
-fibonacci :: Integer -> Integer
+fibonacci :: Integer -> Integer     -- retorna el número de Fibonacci corresponent
 
 fibonacci 0 = 0
 fibonacci 1 = 1
@@ -332,7 +358,7 @@ fibonacci n = fibonacci (n - 1) + fibonacci (n - 2)
 Valor absolut
 
 ```haskell
-valAbs :: Int -> Int
+valAbs :: Int -> Int                -- retorna el valor absolut d'un enter
 
 valAbs n
     | n >= 0    = n
@@ -342,7 +368,7 @@ valAbs n
 Exponenciació
 
 ```haskell
-elevat :: Int -> Int -> Int
+elevat :: Int -> Int -> Int         -- a `elevat` b retorna a^b
 
 x `elevat` 0 = 1
 x `elevat` n = x * (x `elevat` (n - 1))
@@ -357,7 +383,7 @@ x `elevat` n = x * (x `elevat` (n - 1))
 La construcció `if-then-else` no és una instrucció sinó una funció de tres paràmetres:
 
 - un booleà i dues expressions del mateix tipus,
-- i retorna el resultat d'una de les dues expressions.
+- que retorna el resultat d'una de les dues expressions.
 
     ```haskell
     prod n m =
@@ -425,29 +451,27 @@ Primer apliquem 3 i el resultat és un funció que espera un altre enter.
 Per definir noms locals s'utilitza el `let-in`:
 
 ```haskell
-prod n m =
-    if n == 0 then 0
-    else
-        let x = div n 2
-            y = mod n 2
-            p = prod x m
+fastExp x 0 = 1
+fastExp x n =
+        let y  = fastExp x m
+            m  = div n 2
+            m2 = m * m
         in
-            if y == 0 then p + p
-            else m + prod (n - 1) m
+            if even n then m2
+            else m2 * x
 ```
 
 O el `where`:
 
 ```haskell
-prod n m =
-    if n == 0 then 0
-    else
-        if y == 0 then p + p
-        else m + prod (n - 1) m
+fastExp x n
+    | n == 0    = 1
+    | even n    = m2
+    | otherwise = m2 * x
     where
-        x = div n 2
-        y = mod n 2
-        p = prod x m
+        y  = fastExp x m
+        m  = div n 2
+        m2 = m * m
 ```
 
 El `where` no és una expressió i el seu àmbit es defineix per la indentació.
@@ -458,12 +482,13 @@ El `where` no és una expressió i el seu àmbit es defineix per la indentació.
 # Tuples
 
 Una tupla és un tipus estructurat que genera un producte cartesià d'altres
-tipus. Els camps són de tipus heterogenis.
+tipus.
+<br>Els camps són de tipus heterogenis.
 
 ```Haskell
 (3, "Girona", False) :: (Int, String, Bool)
 
-descomposicioHoraria :: Int -> (Int, Int, Int)    -- hores, minuts i segons
+descomposicioHoraria :: Int -> (Int, Int, Int)    -- hores, minuts, segons
 descomposicioHoraria segons = (h, m, s)
     where
         h = div segons 3600
@@ -505,13 +530,14 @@ tercer (_, _, z) = z
 # Llistes
 
 Una tupla és un tipus estructurat que conté una seqüència
-d'elements, tots del mateix tipus.
+d'elements, <br>
+tots del mateix tipus.
 
 ```haskell
 []
 [3, 9, 27] :: [Int]
+[(1, "un"), (2, "dos"), (3, "tres")] :: [(Int, String)]
 [[7], [3, 9, 27], [1, 5], []] :: [[Int]]
-["Barcelona", "Brusel·les"] :: [[Char]]
 [1 .. 10]
 [1, 3 .. 10]
 ```
@@ -523,6 +549,8 @@ Les llistes tenen dos **constructors**:
 
 La notació `[16, 12, 21]` és una drecera per `16 : 12 : 21 : []`
 que vol dir `16 : (12 : (21 : []))`.
+
+L'operador `++` retorna la concatenació de dues llistes.
 
 En Haskell poden haver-hi llistes infinites (ja ho veurem).
 
@@ -585,6 +613,323 @@ divImod n m
 
 ---
 
-# Funcions predefinides sobre llistes
+# Funcions habituals sobre llistes
 
-Vegeu [Funcions sobre llistes habituals en Haskell](https://xn--llions-yua.jutge.org/haskell/funcions-sobre-llistes.html).
+## head, last
+
+- Signatura:
+
+    ```Haskell
+    head :: [a] -> a
+    last :: [a] -> a
+    ```
+
+- Descripció:
+
+    - `head xs` és el primer element de la llista `xs`.
+    - `last xs` és el darrer element de la llista `xs`.
+
+    Error si `xs` és buida.
+
+- Exemples:
+
+    ```Haskell
+    λ> head [1 .. 4]
+    👉 1
+    λ> last [1 .. 4]
+    👉 4
+    ```
+
+---
+
+# Funcions habituals sobre llistes
+
+## tail, init
+
+- Signatura:
+
+    ```Haskell
+    tail :: [a] -> [a]
+    init :: [a] -> [a]
+    ```
+
+- Descripció:
+
+    - `tail xs` és la llista `xs` sense el seu primer element.
+    - `init xs` és la llista `xs` sense el seu darrer element.
+
+    Error si `xs` és buida.
+
+- Exemples:
+
+    ```Haskell
+    λ> tail [1..4]
+    👉 [2, 3, 4]
+    λ> init [1..4]
+    👉 [1, 2, 3]
+    ```
+
+
+---
+
+# Funcions habituals sobre llistes
+
+## reverse
+
+- Signatura:
+
+    ```Haskell
+    reverse :: [a] -> [a]
+    ```
+
+- Descripció:
+
+    `reverse xs` és la llista `xs` del revés.
+
+- Exemples:
+
+    ```Haskell
+    λ> reverse [1..4]
+    👉 [4, 3, 2, 1]
+    ```
+
+
+---
+
+# Funcions habituals sobre llistes
+
+## length
+
+- Signatura:
+
+    ```Haskell
+    length :: [a] -> Int
+    ```
+
+- Descripció:
+
+    `length xs` és el nombre d'elements a la llista `xs`.
+
+
+---
+
+# Funcions habituals sobre llistes
+
+## null
+
+- Signatura:
+
+    ```Haskell
+    null :: [a] -> Bool
+    ```
+
+- Descripció:
+
+    `null xs` indica si la llista `xs` és buida.
+
+
+---
+
+# Funcions habituals sobre llistes
+
+## elem
+
+- Signatura:
+
+    ```Haskell
+    elem :: (Eq a) => a -> [a] -> Bool
+    ```
+
+- Descripció:
+
+    `elem x xs` indica si `x` és a la llista `xs`.
+
+
+---
+
+# Funcions habituals sobre llistes
+
+## `(!!)`
+
+- Signatura:
+
+    ```Haskell
+    (!!) :: [a] -> Int -> a
+    ```
+
+- Descripció:
+
+    `xs !! i` és l'`i`-èsim element de la llista `xs` (començant per zero).
+
+
+---
+
+# Funcions habituals sobre llistes
+
+## maximum, minimum
+
+- Signatura:
+
+    ```Haskell
+    maximum :: (Ord a) => [a] -> a
+    minimum :: (Ord a) => [a] -> a
+    ```
+
+- Descripció:
+
+    - `maximum xs` és l'element més gran de la llista (no buida!) `xs`.
+    - `minimum xs` és l'element més petit de la llista (no buida!) `xs`.
+
+
+---
+
+# Funcions habituals sobre llistes
+
+## and, or
+
+- Signatura:
+
+    ```Haskell
+    and :: [Bool] -> Bool
+    or  :: [Bool] -> Bool
+    ```
+
+- Descripció:
+
+    - `and bs` és la conjunció de la llista de booleans `bs`.
+    - `or bs` és la disjunció de la llista de booleans `bs`.
+
+
+---
+
+# Funcions habituals sobre llistes
+
+## sum, product
+
+- Signatura:
+
+    ```Haskell
+    sum     :: [Int] -> Int
+    product :: [Int] -> Int
+    ```
+
+- Descripció:
+
+    - `sum xs` és la suma de la llista d'enters `xs`.
+    - `prod xs` és el producte de la llista d'enters `xs`.
+
+- Exemples:
+
+    ```Haskell
+    fact n = prod [1 .. n]
+
+    λ> fact 5
+    👉 120
+    ```
+
+---
+
+# Funcions habituals sobre llistes
+
+## take, drop
+
+- Signatura:
+
+    ```Haskell
+    take :: Int -> [a] -> [a]
+    drop :: Int -> [a] -> [a]
+    ```
+
+- Descripció:
+
+    - `take n xs` és el prefixe de llargada `n` de la llista `xs.
+    - `drop n xs` és el sufixe de la llista `xs` quan se li treuen els
+      `n` primers elements.
+
+
+- Exemples:
+
+    ```Haskell
+    λ> take 3 [1 .. 7]
+    👉 [1, 2, 3]
+    λ> drop 3 [1 .. 7]
+    👉 [4, 5, 6, 7]
+    ```
+
+
+
+---
+
+# Funcions habituals sobre llistes
+
+## zip
+
+- Signatura:
+
+    ```Haskell
+    zip :: [a] -> [b] -> [(a, b)]
+    ```
+
+- Descripció:
+
+    `zip xs ys` és la llista que combina, en ordre, cada parell d'elements de `xs` i `ys`. Si en falten,
+    es perden.
+
+- Exemples:
+
+    ```Haskell
+    λ> zip [1, 2, 3] ['a', 'b', 'c']
+    👉 [(1, 'a'), (2, 'b'), (3, 'c')]
+    λ> zip [1 .. 10] [1 .. 3]
+    👉 [(1, 1), (2, 2), (3, 3)]
+    ```
+
+---
+
+# Funcions habituals sobre llistes
+
+## repeat
+
+- Signatura:
+
+    ```Haskell
+    repeat :: a -> [a]
+    ```
+
+- Descripció:
+
+    `repeat x` és la llista infinita on tots els elements són `x`.
+
+- Exemples:
+
+    ```Haskell
+    λ> repeat 3
+    👉 [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, ...]
+    λ> take 4 (repeat 3)
+    👉 [3, 3, 3, 3]
+    ```
+
+---
+
+# Funcions habituals sobre llistes
+
+## concat
+
+- Signatura:
+
+    ```Haskell
+    concat :: [[a]] -> [a]
+    ```
+
+- Descripció:
+
+    `concat xs` és la llista que concatena totes les llistes de `xs`.
+
+- Exemples:
+
+    ```Haskell
+    λ> concat [[1, 2, 3], [], [3], [1, 2]]
+    👉 [1, 2, 3, 3, 1, 2]
+    ```
+
+
