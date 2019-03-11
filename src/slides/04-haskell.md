@@ -4,7 +4,7 @@ class: center, middle
 
 Llenguatges de Programació
 
-# Haskell
+# Haskell - Part 1
 
 Albert Rubio, Jordi Petit
 
@@ -954,4 +954,21 @@ divImod n m
     👉 [1, 2, 3, 3, 1, 2]
     ```
 
+
+---
+
+# Exercicis
+
+- Proveu de cercar documentació de funcions a [Hoogλe](https://www.haskell.org/hoogle/).
+
+- Implementeu les funcions habituals sobre llistes anteriors.
+
+    - Useu `myLength` enlloc de `length` per evitar xocs de noms.
+    - Useu recursivitat quan calgui.
+
+- Feu aquests problemes de Jutge.org:
+
+    - [P77907](https://jutge.org/problems/P77907) Functions with numbers
+    - [P25054](https://jutge.org/problems/P25054) Functions with lists
+    - [P29040](https://jutge.org/problems/P29040) Sorting
 

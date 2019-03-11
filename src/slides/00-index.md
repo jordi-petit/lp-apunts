@@ -15,4 +15,4 @@ Albert Rubio, Jordi Petit
 
 [Fonaments: λ-càlcul](03-lambda-calcul.html)
 
-[Haskell](04-haskell.html)
+[Haskell 1](04-haskell.html) / [Haskell 2](05-haskell.html)
