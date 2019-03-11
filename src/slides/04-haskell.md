@@ -39,7 +39,7 @@ Hi ha:
 
   - *Lazy evaluation*: permet tractar estructures molt grans o infinites.
 
-  - Funcions d'ordre superior. Funcions com a paràmetres o resultats.
+  - Funcions d'ordre superior: Funcions com a paràmetres o resultats.
 
   - Sistema de tipus potent:
 
@@ -113,12 +113,12 @@ preordre (Node x fe fd) = [x] ++ preordre fe ++ preordre fd
 ## Entrada/sortida
 
 ```haskell
-comptaLiniesAmbFoo = not . null . filter (== "Foo") . lines
+hiHaFoos = not . null . filter (== "Foo") . lines
 
 main = do
     entr <- getContents
-    let hiHaFoo = comptaLiniesAmbFoo entr
-    print hiHaFoo
+    let b = hiHaFoos entr
+    print b
 ```
 
 
@@ -168,6 +168,12 @@ Funciona amb dos modes:
 
 Inicialment usarem l'intèrpret, després el compilador.
 
+<br>
+
+.my-center[
+[![:height 3em](img/haskell-platform.png)](https://www.haskell.org/platform/)
+]
+
 
 .cols5050[
 .col1[
@@ -177,10 +183,13 @@ Instal·lació Linux
 ```
 ]
 .col2[
-Instal·lació Mac
+Instal·lació MacOS
 ```bash
 🍎> brew install ghc
 ```
+.xxs[
+    [Brew](https://brew.sh/index_ca):
+    El gestor de paquets per macOS que faltava]
 ]
 ]
 
@@ -291,16 +300,21 @@ Operadors relacionals: `<`, `>`, `<=`, `>=`, `==`, `/=` (⚠️ no `!=`)
 
 ## Notació prefixa/infixa
 
+.cols5050[
+.col1[
 ```haskell
-2 + 3
-(+) 2 3
-
-div 9 4
-9 `div` 4
+2 + 3       👉 5
+(+) 2 3     👉 5
 ```
-
-- Els operadors són infixos ⇒ posar-los entre parèntesi per fer-los prefixos
-- les funcions són prefixes ⇒ posar-les entre *backtits* per fer-les infixes
+Els operadors són infixos ⇒ posar-los entre parèntesis per fer-los prefixos
+]
+.col2[
+```haskell
+div 9 4     👉 2
+9 `div` 4   👉 2
+```
+Les funcions són prefixes ⇒ posar-les entre *backtits* per fer-les infixes
+]]
 
 
 
@@ -453,12 +467,11 @@ Per definir noms locals s'utilitza el `let-in`:
 ```haskell
 fastExp x 0 = 1
 fastExp x n =
-        let y  = fastExp x m
-            m  = div n 2
-            m2 = m * m
+        let y  = fastExp x n2
+            n2  = div n 2
         in
-            if even n then m2
-            else m2 * x
+            if even n then y * y
+            else y * y * x
 ```
 
 O el `where`:
@@ -466,12 +479,11 @@ O el `where`:
 ```haskell
 fastExp x n
     | n == 0    = 1
-    | even n    = m2
-    | otherwise = m2 * x
+    | even n    = y * y
+    | otherwise = y * y * x
     where
-        y  = fastExp x m
-        m  = div n 2
-        m2 = m * m
+        y  = fastExp x n2
+        n2 = div n 2
 ```
 
 El `where` no és una expressió i el seu àmbit es defineix per la indentació.
@@ -486,8 +498,6 @@ tipus.
 <br>Els camps són de tipus heterogenis.
 
 ```Haskell
-(3, "Girona", False) :: (Int, String, Bool)
-
 descomposicioHoraria :: Int -> (Int, Int, Int)    -- hores, minuts, segons
 descomposicioHoraria segons = (h, m, s)
     where
@@ -498,12 +508,15 @@ descomposicioHoraria segons = (h, m, s)
 
 Per a tuples de dos elements, es pot accedir amb `fst` i `snd`:
 
-  - `fst ('a', 12)` és `'a'`
-  - `snd ('a', 12)` és `12`
+```Haskell
+λ> fst (3, "tres")
+👉 3
+λ> snd (3, "tres")
+👉 "tres"
+```
 
 Per a tuples generals, no hi ha definides funcions d'accés
 <br>⇒ Es poden crear o, millor, usar discriminació per patrons:
-
 .cols5050[
 .col1[
 ```haskell
@@ -529,7 +542,7 @@ tercer (_, _, z) = z
 
 # Llistes
 
-Una tupla és un tipus estructurat que conté una seqüència
+Una llista és un tipus estructurat que conté una seqüència
 d'elements, <br>
 tots del mateix tipus.
 
@@ -547,12 +560,21 @@ Les llistes tenen dos **constructors**:
   - La llista buida: `[]`
   - Afegir per davant: `:` (amb `(:) :: a -> [a] -> [a]`)
 
-La notació `[16, 12, 21]` és una drecera per `16 : 12 : 21 : []`
-que vol dir `16 : (12 : (21 : []))`.
+La notació `[16, 12, 21]`
+<br>és una drecera per `16 : 12 : 21 : []`
+<br>que vol dir `16 : (12 : (21 : []))`.
 
-L'operador `++` retorna la concatenació de dues llistes.
 
-En Haskell poden haver-hi llistes infinites (ja ho veurem).
+---
+
+# Llistes
+
+- Els contructors `[]` i `:` funcionen en temps costant (*DS sharing*).
+
+- L'operador `++` retorna la concatenació de dues llistes
+(temps proporcional a la llarga de la primera llista).
+
+- En Haskell poden haver-hi llistes infinites (ja ho veurem).
 
 ---
 
@@ -842,7 +864,7 @@ divImod n m
 
 - Descripció:
 
-    - `take n xs` és el prefixe de llargada `n` de la llista `xs.
+    - `take n xs` és el prefixe de llargada `n` de la llista `xs`.
     - `drop n xs` és el sufixe de la llista `xs` quan se li treuen els
       `n` primers elements.
 
