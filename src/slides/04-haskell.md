@@ -971,4 +971,10 @@ divImod n m
     - [P77907](https://jutge.org/problems/P77907) Functions with numbers
     - [P25054](https://jutge.org/problems/P25054) Functions with lists
     - [P29040](https://jutge.org/problems/P29040) Sorting
+    - Novetats:
+
+        - Problemes amb puntuacions parcials 💯. No cal que feu totes les
+          funcions demanades.
+        - Inspector de Haskell: comprova condicions de l'enunciat en el
+          codi de la solució. Veredicte NC 🚩 *Non compliant*.
 

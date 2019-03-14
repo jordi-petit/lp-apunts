@@ -54,11 +54,11 @@ Punt clau: les funcions són objectes de primera classe.
 
 # Currificació
 
-- Les funcions "standard" tenen un nombre fix de paràmetres
-  i un resultat d’un tipus fixat.
+- Les funcions "estàndard" tenen un nombre fix de paràmetres
+  i un resultat d'un tipus fixat.
 
 - Les funcions "currificades" tenen un nombre de paràmetres variable
-  i un resultat d’un tipus que varia segons el nombre de paràmetres aplicats.
+  i un resultat d'un tipus que varia segons el nombre de paràmetres aplicats.
 
 Les funcions en Haskell són, per defecte, currificades.
 
@@ -210,6 +210,81 @@ Exemples:
     👉 "i"
     ```
 
+---
+
+# Funcions habituals d'ordre superior
+
+## const
+
+- Signatura:
+
+    ```Haskell
+    const :: a -> b -> a
+    ```
+
+- Descripció:
+
+    `const x` és una funció que sempre retorna `x`, independentment de què se li apliqui.
+
+- Exemples:
+
+    ```Haskell
+    λ> map (const 42) [1 .. 5]
+    👉 [42, 42, 42, 42, 42]
+    ```
+
+---
+
+# Funcions habituals d'ordre superior
+
+## id
+
+- Signatura:
+
+    ```Haskell
+    id :: a -> a
+    ```
+
+- Descripció:
+
+    `id` és la funció identitat. També sembla inútil, pero va bé en algun moment.
+
+- Exemples:
+
+    ```Haskell
+    λ> map id [1 .. 5]
+    👉 [1, 2, 3, 4, 5]
+    ```
+
+---
+
+# Funcions habituals d'ordre superior
+
+## flip
+
+- Signatura:
+
+    ```Haskell
+    flip :: (a -> b -> c) -> (b -> a -> c)
+    ```
+
+- Descripció:
+
+    `flip f` retorna la funció `f` però amb els seus dos paràmetres invertits.
+    Es defineix per
+
+    ```Haskell
+    flip f x y = f y x
+    ```
+
+- Exemples:
+
+    ```Haskell
+    λ> meitat = flip div 2
+
+    λ> meitat 10
+    👉 5
+    ```
 
 ---
 
@@ -268,37 +343,6 @@ Exemples:
 
 # Funcions habituals d'ordre superior
 
-## flip
-
-- Signatura:
-
-    ```Haskell
-    flip :: (a -> b -> c) -> (b -> a -> c)
-    ```
-
-- Descripció:
-
-    `flip f` retorna la funció `f` però amb els seus dos paràmetres invertits.
-    Es defineix per
-
-    ```Haskell
-    flip f x y = f y x
-    ```
-
-- Exemples:
-
-    ```Haskell
-    λ> meitat = flip div 2
-
-    λ> meitat 10
-    👉 5
-    ```
-
-
----
-
-# Funcions habituals d'ordre superior
-
 ## zipWith
 
 - Signatura:
@@ -347,8 +391,6 @@ Exemples:
     👉 True
     ```
 
-
-
 ---
 
 # Funcions habituals d'ordre superior
@@ -374,8 +416,6 @@ Exemples:
     λ> all odd [2, 4, 6]
     👉 False
     ```
-
-
 
 
 ---
@@ -556,52 +596,111 @@ Exemples:
     👉 [4, 1, -1, 0]
     ```
 
+---
+
+# Reconeixement de patrons
+
+TBD
 
 ---
 
-# Funcions habituals d'ordre superior
+# Aplicació: Dividir i vèncer amb *hof*
 
-## const
+Funció d'ordre superior genèrica `dIv` per
+l'esquema de dividir i vèncer.
 
-- Signatura:
+## Interfície
 
-    ```Haskell
-    const :: a -> b -> a
-    ```
+```haskell
+dIv :: (a -> Bool) -> (a -> b) -> (a -> (a, a)) -> (a -> (a, a) -> (b, b) -> b) -> a -> b
+ ```
 
-- Descripció:
+on `a` és el tipus del problema, `b` és el tipus de la solució, i
+<br>`dIv trivial directe divideix venç x` utilitza:
 
-    `const x` és una funció que sempre retorna `x`, independentment de què se li apliqui.
 
-- Exemples:
+- `trivial :: (a -> Bool)` per saber si un problema és trivial.
 
-    ```Haskell
-    λ> map (const 42) [1 .. 5]
-    👉 [42, 42, 42, 42, 42]
-    ```
+- `directe :: (a -> b)` per solucionar un problema trivial.
+
+- `divideix :: (a -> (a, a))` per dividir un problema no trivial en un parell de subproblemes més petits.
+
+- `venç :: (a -> (a, a) -> (b, b) -> b)` per, donat un problema no trivial, els seus subproblemes i les seves respectives subsolucions, obtenir la solució al problema original.
+
+- `x :: a` denota el problema a solucionar.
+
 
 ---
 
-# Funcions habituals d'ordre superior
+# Aplicació: Dividir i vèncer amb *hof*
 
-## id
+## Solució
 
-- Signatura:
+```haskell
+dIv :: (a -> Bool) -> (a -> b) -> (a -> (a, a)) -> (a -> (a, a) -> (b, b) -> b) -> a -> b
 
-    ```Haskell
-    id :: a -> a
-    ```
+dIv trivial directe divideix venç x = dIv x
+    | trivial x     = directe x
+    | otherwise     = venç x (x1, x2) (y1, y2)
+                          where
+                              (x1, x2) = divideix x
+                              y1 = dIv trivial directe divideix venç x1
+                              y2 = dIv trivial directe divideix venç x2
 
-- Descripció:
+```
 
-    `id` és la funció identitat. També sembla inútil, pero va bé en algun moment.
+---
 
-- Exemples:
+# Aplicació: Dividir i vèncer amb *hof*
 
-    ```Haskell
-    λ> map id [1 .. 5]
-    👉 [1, 2, 3, 4, 5]
-    ```
+## Solució capturant el context
+
+
+```haskell
+dIv :: (a -> Bool) -> (a -> b) -> (a -> (a, a)) -> (a -> (a, a) -> (b, b) -> b) -> a -> b
+
+dIv trivial directe divideix venç = dc'
+    where dc' x =
+        | trivial x = directe x
+        | otherwise = venç x (x1, x2) (y1, y2)
+                          where
+                              (x1, x2) = divideix x
+                              y1 = dc' x1
+                              y2 = dc' x2
+```
+
+
+
+---
+
+# Aplicació: Dividir i vèncer amb *hof*
+
+## Quicksort amb Dividir i vèncer
+
+
+```haskell
+qs :: Ord a => [a] -> [a]
+qs = dIv trivial directe divideix venç
+    where
+        trivial []   = True
+        trivial [_]  = True
+        trivial _    = False
+
+        directe = id
+
+        divideix (x:xs) = (lts, gts)
+            where lts = filter (<= x) xs
+                  gts = filter (>  x) xs
+
+        divideix' (x:xs) = partition (<=x) xs       -- equivalent
+
+        venç (x:_) _ (ys1, ys2) = ys1 ++ [x] ++ ys2
+```
+--
+## Exercicis:
+
+- Escriure ordenació per fusió amb `dc`.
+- Escriure variant de dividir i vèncer amb nombre variable de subproblemes.
 
 ---
 
@@ -611,7 +710,7 @@ Volem definir un TAD Diccionari de Strings a Ints amb
 valors per defecte
 usant funcions d'ordre superior.
 
-Interfície:
+## Interfície
 
 ```haskell
 type Dict = (String -> Int)     -- Defineix un tipus sinònim a la typedef
@@ -629,7 +728,7 @@ Volem definir un TAD Diccionari de Strings a Ints amb
 valors per defecte
 usant funcions d'ordre superior.
 
-Interfície:
+## Interfície
 
 ```haskell
 type Dict = (String -> Int)     -- Defineix un tipus sinònim a la typedef
@@ -641,7 +740,7 @@ insert :: Dict -> String -> Int -> Dict
 
 .cols5050[
 .col1[
-Primera versió:
+## Primera versió
 
 ```haskell
 type Dict = (String -> Int)
@@ -667,7 +766,7 @@ Volem definir un TAD Diccionari de Strings a Ints amb
 valors per defecte
 usant funcions d'ordre superior.
 
-Interfície:
+## Interfície
 
 ```haskell
 type Dict = (String -> Int)     -- Defineix un tipus sinònim a la typedef
@@ -679,7 +778,7 @@ insert :: Dict -> String -> Int -> Dict
 
 .cols5050[
 .col1[
-Primera versió:
+## Primera versió
 
 ```haskell
 type Dict = (String -> Int)
@@ -694,7 +793,7 @@ insert dict key value = \x ->
 ```
 ]
 .col2[
-Segona versió:
+## Segona versió
 
 ```haskell
 type Dict = (String -> Int)
@@ -715,6 +814,11 @@ insert dict key value x
 
 # Exercicis
 
+- Re-implementeu les funcions habituals sobre llistes.
+
+    - Useu `myLength` enlloc de `length` per evitar xocs de noms.
+    - No useu recursivitat, useu funcions d'ordre superior.
+
 
 - Feu aquests problemes de Jutge.org:
 
@@ -722,3 +826,11 @@ insert dict key value x
     - [P31745](https://jutge.org/problems/P31745) Usage of higher order functions (2)
     - [P90677](https://jutge.org/problems/P90677) Definition of higher-order functions (1)
     - [P71775](https://jutge.org/problems/P71775) Definition of higher-order functions (2)
+
+
+- Busqueu a [Hoogλe](https://www.haskell.org/hoogle/) informació sobre aquestes funcions:
+
+    - `foldl1`, `foldr1`, `scanl1`, `scanr1`
+    - `partition`
+    - `concatMap`
+    - `zipWith3`
