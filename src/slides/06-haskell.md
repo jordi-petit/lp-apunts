@@ -183,8 +183,8 @@ SQL
 SELECT *
 FROM xs
 JOIN ys
-WHERE xs.f == ys.g
-AND xs % 2 == 0
+WHERE xs.f = ys.g
+AND xs % 2 = 0
 ```
 
 ---
