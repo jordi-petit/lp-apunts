@@ -3,15 +3,22 @@
 element = "cy_mapa"
 
 
-node = (id, label, type, x, y) ->
+node = (id, label, type, x, y, parent=null) ->
   data:
     id: id
     label: label
     type: type
+    parent: parent
   position:
     x: x * 20 * 1.25
     y: y * 20
-  size: 1
+
+
+list = (id, label, type, x, y) ->
+  data:
+    id: id
+    label: label
+    type: type
 
 
 arc = (src, dst, type='') ->
@@ -25,18 +32,21 @@ arc = (src, dst, type='') ->
 window.mycytoscape
   container: document.getElementById element
   elements: [
-    node "x1", "x1", "input", 1, 1
-    node "x2", "x2", "input", 2, 1
-    node "x3", "x3", "input", 3, 1
-    node "x4", "x4", "input", 4, 1
+    list "xs", "", "list", 2.5, 1
+    list "ys", "", "list", 2.5, 3
+
+    node "x1", "x1", "input", 1, 1, "xs"
+    node "x2", "x2", "input", 2, 1, "xs"
+    node "x3", "x3", "input", 3, 1, "xs"
+    node "x4", "x4", "input", 4, 1, "xs"
     node "f1", "f", "box", 1, 2
     node "f2", "f", "box", 2, 2
     node "f3", "f", "box", 3, 2
     node "f4", "f", "box", 4, 2
-    node "y1",  "y1", "output", 1, 3
-    node "y2",  "y2", "output", 2, 3
-    node "y3",  "y3", "output", 3, 3
-    node "y4",  "y4", "output", 4, 3
+    node "y1",  "y1", "output", 1, 3, "ys"
+    node "y2",  "y2", "output", 2, 3, "ys"
+    node "y3",  "y3", "output", 3, 3, "ys"
+    node "y4",  "y4", "output", 4, 3, "ys"
 
     arc "x1", "f1"
     arc "x2", "f2"
@@ -47,6 +57,7 @@ window.mycytoscape
     arc "f2", "y2"
     arc "f3", "y3"
     arc "f4", "y4"
+
   ]
   style: [
     {
@@ -62,6 +73,13 @@ window.mycytoscape
         'shape': 'ellipse'
         'border-width': '0.035em'
         'font-family': 'Ubuntu Mono'
+    }
+    {
+      selector: 'node[type="list"]'
+      style:
+        'border-color': 'IndianRed'
+        'background-color': 'LightGray'
+        padding: 1.5
     }
     {
       selector: 'node[type="input"]'
@@ -80,7 +98,7 @@ window.mycytoscape
       style:
         'border-color': 'IndianRed'
         'background-color': 'PeachPuff'
-        'shape': 'rectangle'
+        'shape': 'round-rectangle'
     }
     {
       selector: 'edge'
@@ -89,7 +107,7 @@ window.mycytoscape
         'line-color': 'SeaGreen'
         'target-arrow-color': 'SeaGreen'
         'target-arrow-shape': 'triangle'
-        'arrow-scale': 0.4
+        'arrow-scale': 0.5
         "curve-style": "bezier"
     }
   ]

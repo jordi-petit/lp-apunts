@@ -2,15 +2,23 @@
 element = "cy_foldr"
 
 
-node = (id, label, type, x, y) ->
+
+node = (id, label, type, x, y, parent=null) ->
   data:
     id: id
     label: label
     type: type
+    parent: parent
   position:
     x: x * 20
     y: y * 20
-  size: 1
+
+
+list = (id, label, type, x, y) ->
+  data:
+    id: id
+    label: label
+    type: type
 
 
 arc = (src, dst) ->
@@ -23,10 +31,11 @@ arc = (src, dst) ->
 window.mycytoscape
   container: document.getElementById element
   elements: [
-    node "x1", "x1", "input", 1, 1
-    node "x2", "x2", "input", 2, 1
-    node "x3", "x3", "input", 3, 1
-    node "x4", "x4", "input", 4, 1
+    list "xs", "", "list", 2.5, 1
+    node "x1", "x1", "input", 1, 1, "xs"
+    node "x2", "x2", "input", 2, 1, "xs"
+    node "x3", "x3", "input", 3, 1, "xs"
+    node "x4", "x4", "input", 4, 1, "xs"
     node "x0",  "x0", "input", 5, 2
     node "f1", "f", "box", 1, 2
     node "f2", "f", "box", 2, 2
@@ -75,7 +84,14 @@ window.mycytoscape
       style:
         'border-color': 'IndianRed'
         'background-color': 'PeachPuff'
-        'shape': 'rectangle'
+        'shape': 'round-rectangle'
+    }
+    {
+      selector: 'node[type="list"]'
+      style:
+        'border-color': 'IndianRed'
+        'background-color': 'LightGray'
+        padding: 1.5
     }
     {
       selector: 'edge'

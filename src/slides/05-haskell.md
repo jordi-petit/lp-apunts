@@ -88,7 +88,7 @@ uncurry f (p, s) = f p s
 
 ---
 
-# Funcions anònimes
+# Funcions anònimes (λ funcions)
 
 Haskell permet definir funcions anònimes amb sintàxi semblant al λ-càlcul.
 
@@ -111,10 +111,10 @@ Usos:
 doble = \x -> 2 * x
 mes = \x y -> x + y     -- ⇔ \x -> \y -> x + y
 
-λ> doble 3
-👉 6
-λ> 2 `mes` 3
-👉 5
+λ> doble 3                          👉 6
+λ> 2 `mes` 3                        👉 5
+
+λ> map (\x -> 2 * x) [1, 2, 3]      👉 [2, 4, 6]
 ```
 
 ---
@@ -193,6 +193,9 @@ Exemples:
 
     ```Haskell
     λ> majors3 = take 3 . reverse . sort
+
+    λ> :t majors3
+    majors3 :: Ord a => [a] -> [a]
 
     λ> majors3 [3, 1, 2, 6, 7]
     👉 [7, 6, 3]
@@ -610,11 +613,119 @@ Exemples:
     👉 [4, 1, -1, 0]
     ```
 
+---
+
+
+
+# Aplicació: Diccionaris amb *hof*s
+
+Volem definir un TAD Diccionari de Strings a Ints amb
+valors per defecte
+usant funcions d'ordre superior.
+
+## Interfície
+
+```haskell
+type Dict = (String -> Int)     -- Defineix un tipus sinònim a la typedef
+
+create :: Int -> Dict
+search :: Dict -> String -> Int
+insert :: Dict -> String -> Int -> Dict
+```
+
+---
+
+# Aplicació: Diccionaris amb *hof*s
+
+Volem definir un TAD Diccionari de Strings a Ints amb
+valors per defecte
+usant funcions d'ordre superior.
+
+## Interfície
+
+```haskell
+type Dict = (String -> Int)     -- Defineix un tipus sinònim a la typedef
+
+create :: Int -> Dict
+search :: Dict -> String -> Int
+insert :: Dict -> String -> Int -> Dict
+```
+
+.cols5050[
+.col1[
+## Primera versió
+
+```haskell
+type Dict = (String -> Int)
+
+create def = \key -> def
+
+search dict key = dict key
+
+insert dict key value = \x ->
+    if key == x then value
+    else search dict x
+```
+]
+.col2[
+]
+]
+
+---
+
+# Aplicació: Diccionaris amb *hof*s
+
+Volem definir un TAD Diccionari de Strings a Ints amb
+valors per defecte
+usant funcions d'ordre superior.
+
+## Interfície
+
+```haskell
+type Dict = (String -> Int)     -- Defineix un tipus sinònim a la typedef
+
+create :: Int -> Dict
+search :: Dict -> String -> Int
+insert :: Dict -> String -> Int -> Dict
+```
+
+.cols5050[
+.col1[
+## Primera versió
+
+```haskell
+type Dict = (String -> Int)
+
+create def = \key -> def
+
+search dict key = dict key
+
+insert dict key value = \x ->
+    if key == x then value
+    else search dict x
+```
+]
+.col2[
+## Segona versió
+
+```haskell
+type Dict = (String -> Int)
+
+create = const
+
+search = ($)
+
+insert dict key value x
+    | key == x      = value
+    | otherwise     = dict x
+
+```
+]]
 
 
 ---
 
-# Aplicació: Dividir i vèncer amb *hof*
+# Aplicació: *Hof* per a dividir i vèncer
 
 Funció d'ordre superior genèrica `dIv` per
 l'esquema de dividir i vèncer.
@@ -642,7 +753,7 @@ on `a` és el tipus del problema, `b` és el tipus de la solució, i
 
 ---
 
-# Aplicació: Dividir i vèncer amb *hof*
+# Aplicació: *Hof* per a dividir i vèncer
 
 ## Solució
 
@@ -661,7 +772,7 @@ dIv trivial directe divideix venç x = dIv x
 
 ---
 
-# Aplicació: Dividir i vèncer amb *hof*
+# Aplicació: *Hof* per a dividir i vèncer
 
 ## Solució capturant el context
 
@@ -683,7 +794,7 @@ dIv trivial directe divideix venç = dc'
 
 ---
 
-# Aplicació: Dividir i vèncer amb *hof*
+# Aplicació: *Hof* per a dividir i vèncer
 
 ## Quicksort amb Dividir i vèncer
 

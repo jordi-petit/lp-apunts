@@ -92,7 +92,7 @@ window.mycytoscape
       style:
         'border-color': 'IndianRed'
         'background-color': 'PeachPuff'
-        'shape': 'rectangle'
+        'shape': 'round-rectangle'
     }
     {
       selector: 'edge'
