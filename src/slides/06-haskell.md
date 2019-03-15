@@ -167,6 +167,28 @@ ternes n = [(x, y, z) | x <- [1..n],
 
 ---
 
+# Llistes per comprensió
+
+## Perspectiva
+
+Haskell
+
+```haskell
+[(x, y) | x <- xs, y <- ys, f x == g y, even x]
+```
+
+SQL
+
+```sql
+SELECT *
+FROM xs
+JOIN ys
+WHERE xs.f == ys.g
+AND xs % 2 == 0
+```
+
+---
+
 # Exercicis
 
 

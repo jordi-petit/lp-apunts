@@ -27,12 +27,12 @@ var slideShow = remark.create({
     // Enable or disable navigating using scroll
     // Default: true
     // Alternatives: false
-    scroll: true,
+    scroll: false,
 
     // Enable or disable navigation using touch
     // Default: true
     // Alternatives: false
-    touch: true,
+    touch: false,
 
     // Enable or disable navigation using click
     // Default: false
@@ -57,3 +57,5 @@ var slideShow = remark.create({
   highlightLines: true,
   highlightSpans: false
 });
+
+var window.slideShow = slideShow;

@@ -1,6 +1,7 @@
-script(src="https://gnab.github.io/remark/downloads/remark-latest.min.js")
+//script(src="https://gnab.github.io/remark/downloads/remark-latest.min.js")
+script(src="js/vendor/remark.min.js")
 script
-  include ../../js/vendor/remark-fallback.js
+    include ../../js/vendor/remark-fallback.js
 script(src="js/vendor/remark-language.js")
 script(src="js/main.js")
 
@@ -14,3 +15,20 @@ script(type='text/javascript').
         }
     });
     MathJax.Hub.Configured();
+
+// jpetit: cytoscape
+script(src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.5.0/cytoscape.min.js")
+
+// my cytoscapes
+script(type="text/javascript", src="js/vendor/coffee-script.min.js")
+
+script(type="text/coffeescript", src="coffee/cy/mycys.coffee")
+script(type="text/coffeescript", src="coffee/cy/foldl.coffee")
+script(type="text/coffeescript", src="coffee/cy/foldr.coffee")
+script(type="text/coffeescript", src="coffee/cy/scanl.coffee")
+script(type="text/coffeescript", src="coffee/cy/scanr.coffee")
+script(type="text/coffeescript", src="coffee/cy/mapa.coffee")
+script(type="text/coffeescript", src="coffee/cy/iterate.coffee")
+script(type="text/coffeescript", src="coffee/cy/zipWith.coffee")
+
+

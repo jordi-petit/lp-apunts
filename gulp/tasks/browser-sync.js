@@ -10,6 +10,7 @@ module.exports = gulp.task('browser-sync', function() {
   var files = [
     paths.browserSync.html,
     paths.browserSync.js,
+    paths.browserSync.coffee,
     paths.browserSync.css,
     paths.browserSync.img,
   ];

@@ -160,7 +160,23 @@ Exemples:
 
 # Funcions habituals d'ordre superior
 
-## composició `(.)`
+- `(.)`
+- `($)`
+- `const`
+- `id`
+- `flip`
+- `map`
+- `filter`
+- `zipWith`
+- `all`, `any`
+- `dropWhile`, `takeWhile`
+- `iterate`,
+- `foldl`, `foldr`
+- `scanl`, `scanr`
+
+---
+
+# composició `(.)`
 
 
 - Signatura:
@@ -185,9 +201,7 @@ Exemples:
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## aplicació `($)`
+# aplicació `($)`
 
 
 - Signatura:
@@ -212,9 +226,7 @@ Exemples:
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## const
+# const
 
 - Signatura:
 
@@ -235,9 +247,7 @@ Exemples:
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## id
+# id
 
 - Signatura:
 
@@ -258,9 +268,7 @@ Exemples:
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## flip
+# flip
 
 - Signatura:
 
@@ -288,9 +296,7 @@ Exemples:
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## map
+# map
 
 - Signatura:
 
@@ -304,22 +310,23 @@ Exemples:
     a cada element de la llista `xs`, de forma que
     `map f [x1, x2, ..., xn]` és `[f x1, f x2, ..., f xn]`.
 
+    <div id='cy_mapa' style='width:15em; height: 8em; '></div>
+
+    `[y1, y2, y3, y4] = map f [x1, x2, x3, x4]`
+
+
+
 - Exemples:
 
     ```Haskell
-    λ> map even [2, 4, 6, 7]
-    👉 [True, True, True, False]
-
-    λ> map (*2) [2, 4, 6, 7]
-    👉 [4, 8, 12, 14]
+    λ> map even [2, 4, 6, 7]  👉 [True, True, True, False]
+    λ> map (*2) [2, 4, 6, 7]  👉 [4, 8, 12, 14]
     ```
 
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## filter
+# filter
 
 - Signatura:
 
@@ -341,9 +348,7 @@ Exemples:
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## zipWith
+# zipWith
 
 - Signatura:
 
@@ -356,6 +361,10 @@ Exemples:
     `zipWith op xs ys` és la llista obtinguda operant cada element de `xs`
     amb cada element de `ys` via la funció `op`, d'esquerra a dreta, mentre n'hi hagi.
 
+    <div id='cy_zipWith' style='width: 20em; height: 6em;'></div>
+
+    `[z1, z2, z3, z4] = zipWith f [x1, x2, x3, x4, x5] [y1, y2, y3, y4]`
+
 - Exemples:
 
     ```Haskell
@@ -367,9 +376,7 @@ Exemples:
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## all
+# all
 
 - Signatura:
 
@@ -393,9 +400,7 @@ Exemples:
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## any
+# any
 
 - Signatura:
 
@@ -420,9 +425,7 @@ Exemples:
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## dropWhile
+# dropWhile
 
 - Signatura:
 
@@ -447,9 +450,7 @@ Exemples:
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## takeWhile
+# takeWhile
 
 - Signatura:
 
@@ -475,9 +476,7 @@ Exemples:
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## iterate
+# iterate
 
 - Signatura:
 
@@ -488,6 +487,10 @@ Exemples:
 - Descripció:
 
     `iterate f x` retorna la llista infinita `[x, f x, f (f x), f (f (f x)), ...]`.
+
+    <div id='cy_iterate' style='width: 20em; height: 6em;'></div>
+
+    `ys = iterate f x`
 
 
 - Exemples:
@@ -501,9 +504,7 @@ Exemples:
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## foldl
+# foldl
 
 - Signatura:
 
@@ -516,6 +517,10 @@ Exemples:
     `foldl ⊕ x0 xs` desplega un operador ⊕ per l'esquerra, de forma que
     `foldl ⊕ x0 [x1, x2, ..., xn]` és `(((x0 ⊕ x1) ⊕ x2) ⊕ ...) ⊕ xn`.
 
+    <div id='cy_foldl' style='width: 20em; height: 6em;'></div>
+
+    `y = foldl f x0 [x1, x2, x3, x4]`
+
 - Exemples:
 
     ```Haskell
@@ -524,11 +529,10 @@ Exemples:
     ```
 
 
+
 ---
 
-# Funcions habituals d'ordre superior
-
-## foldr
+# foldr
 
 - Signatura:
 
@@ -541,6 +545,11 @@ Exemples:
     `foldr ⊕ x0 xs` desplega un operador per la dreta, de forma que
     `foldr ⊕ x0 [x1, x2, ..., xn]` és `x1 ⊕ (x2 ... ⊕ (xn ⊕ x0)))`.
 
+    <div id='cy_foldr' style='width:20em; height: 6em;'></div>
+
+    `y = foldr f x0 [x1, x2, x3, x4]`
+
+
 - Exemples:
 
     ```Haskell
@@ -551,9 +560,7 @@ Exemples:
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## scanl
+# scanl
 
 - Signatura:
 
@@ -563,7 +570,11 @@ Exemples:
 
 - Descripció:
 
-    `scanl f z xs` és com `foldl f z xs` però enlloc de retornar el valor final, retorna la llista amb tots els resultats intermigs.
+    `scanl f x0 xs` és com `foldl f x0 xs` però enlloc de retornar el valor final, retorna la llista amb tots els resultats intermigs.
+
+    <div id='cy_scanl' style='width: 20em; height: 8em;'></div>
+
+    `[y0, y1, y2, y3, y4] = scanl f x0 [x1, x2, x3, x4]`
 
 - Exemples:
 
@@ -575,9 +586,7 @@ Exemples:
 
 ---
 
-# Funcions habituals d'ordre superior
-
-## scanr
+# scanr
 
 - Signatura:
 
@@ -587,7 +596,12 @@ Exemples:
 
 - Descripció:
 
-    `scanr f z xs` és com `foldr f z xs` però enlloc de retornar el valor final, retorna la llista amb tots els resultats intermigs.
+    `scanr f x0 xs` és com `foldr f x0 xs` però enlloc de retornar el valor final, retorna la llista amb tots els resultats intermigs.
+
+    <div id='cy_scanr' style='width:20em; height: 8em;'></div>
+
+    `[y0, y1, y2, y3, y4] = scanr f x0 [x1, x2, x3, x4]`
+
 
 - Exemples:
 
@@ -596,11 +610,7 @@ Exemples:
     👉 [4, 1, -1, 0]
     ```
 
----
 
-# Reconeixement de patrons
-
-TBD
 
 ---
 
@@ -704,114 +714,6 @@ qs = dIv trivial directe divideix venç
 
 ---
 
-# Aplicació: Diccionaris amb *hof*s
-
-Volem definir un TAD Diccionari de Strings a Ints amb
-valors per defecte
-usant funcions d'ordre superior.
-
-## Interfície
-
-```haskell
-type Dict = (String -> Int)     -- Defineix un tipus sinònim a la typedef
-
-create :: Int -> Dict
-search :: Dict -> String -> Int
-insert :: Dict -> String -> Int -> Dict
-```
-
----
-
-# Aplicació: Diccionaris amb *hof*s
-
-Volem definir un TAD Diccionari de Strings a Ints amb
-valors per defecte
-usant funcions d'ordre superior.
-
-## Interfície
-
-```haskell
-type Dict = (String -> Int)     -- Defineix un tipus sinònim a la typedef
-
-create :: Int -> Dict
-search :: Dict -> String -> Int
-insert :: Dict -> String -> Int -> Dict
-```
-
-.cols5050[
-.col1[
-## Primera versió
-
-```haskell
-type Dict = (String -> Int)
-
-create def = \key -> def
-
-search dict key = dict key
-
-insert dict key value = \x ->
-    if key == x then value
-    else search dict x
-```
-]
-.col2[
-]
-]
-
----
-
-# Aplicació: Diccionaris amb *hof*s
-
-Volem definir un TAD Diccionari de Strings a Ints amb
-valors per defecte
-usant funcions d'ordre superior.
-
-## Interfície
-
-```haskell
-type Dict = (String -> Int)     -- Defineix un tipus sinònim a la typedef
-
-create :: Int -> Dict
-search :: Dict -> String -> Int
-insert :: Dict -> String -> Int -> Dict
-```
-
-.cols5050[
-.col1[
-## Primera versió
-
-```haskell
-type Dict = (String -> Int)
-
-create def = \key -> def
-
-search dict key = dict key
-
-insert dict key value = \x ->
-    if key == x then value
-    else search dict x
-```
-]
-.col2[
-## Segona versió
-
-```haskell
-type Dict = (String -> Int)
-
-create = const
-
-search = ($)
-
-insert dict key value x
-    | key == x      = value
-    | otherwise     = dict x
-
-```
-]]
-
-
----
-
 # Exercicis
 
 - Re-implementeu les funcions habituals sobre llistes.
@@ -834,3 +736,4 @@ insert dict key value x
     - `partition`
     - `concatMap`
     - `zipWith3`
+    - `mapAccumL`, `mapAccumR`

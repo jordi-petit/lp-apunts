@@ -5,6 +5,7 @@ module.exports = {
     templates: './src/templates/**/*.jade',
     slides: './src/slides/*.md',
     js: './src/js/**/*.js',
+    coffee: './src/coffee/**/*.coffee',
     styl: './src/styl/**/*.styl',
     img: './src/img/**/*',
     files: {
@@ -17,6 +18,7 @@ module.exports = {
     html: './build/**/*.html',
     css: './build/css/**/*.css',
     js: './build/js/**/*.js',
+    coffee: './build/coffee/**/*.coffee',
     img: './build/img/**/*'
   },
 
@@ -24,6 +26,7 @@ module.exports = {
     html: './build/',
     css: './build/css',
     js: './build/js',
+    coffee: './build/coffee',
     img: './build/img',
   },
 

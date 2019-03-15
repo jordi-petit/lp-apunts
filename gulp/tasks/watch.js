@@ -8,6 +8,7 @@ var paths = require('../paths');
 module.exports = gulp.task('watch', function() {
   gulp.watch([paths.source.slides, paths.source.templates], ['jade']);
   gulp.watch(paths.source.js, ['js']);
+  gulp.watch(paths.source.coffee, ['coffee']);
   gulp.watch(paths.source.styl, ['stylus']);
   gulp.watch(paths.source.img, ['imagemin']);
 });
