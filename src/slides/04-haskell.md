@@ -287,12 +287,12 @@ Operadors relacionals: `<`, `>`, `<=`, `>=`, `==`, `/=` (⚠️ no `!=`)
 
 # Operacions bàsiques
 
-## Operadors aritmàtics (`Int`, `Integer`, `Float`)
+## Operadors aritmètics (`Int`, `Integer`, `Float`)
 
 - Suma: `+`
 - Resta: `-`
 - Multiplicació: `*`
-- Divisió: `/`, `div`, `rem`, `mod`
+- Divisió: `/`, `div`, `rem`, `mod` (`rem (-10) 3 👉 -1` *vs* `mod (-10) 3 👉 2`)
 - Valor absolut: `abs`
 - Conversió enter a real: `fromIntegral`
 - Conversió real a enter: `round`, `floor`, `ceiling`
@@ -318,6 +318,30 @@ Les funcions són prefixes ⇒ posar-les entre *backtits* per fer-les infixes
 
 
 
+---
+
+# Precedència dels operadors
+
+| Precedència |   Associatius per l'esquerra   |    No associatius   | Associatius per la dreta |
+|:-------|:---------------------|:----------------------|:------------------|
+| 9      | `!!`                   |                       | `.`                 |
+| 8      |                      |                       | `^`, `^^`, `**`         |
+| 7      | `*`  `/`  `div`          |                       |                   |
+|        | `mod`  `rem`  `quot` |                       |                   |
+| 6      | `+`  `-`                 |                       |                   |
+| 5      |                      |                       | `:`  `++`             |
+| 4      |                      | `==`  `/=`  `<`  `<=`  `>`  `>=`  |                   |
+|        |                      | `elem`  `notElem`     |                   |
+| 3      |                      |                       | `&&`                |
+| 2      |                      |                       | `⎮⎮`                |
+| 1      | `>>`  `>>=`          |                       |                   |
+| 0      |                      |                       | `$`  `$!`  `seq`      |
+
+<br>
+
+.xxs[
+    Font: [Haskell report](https://www.haskell.org/onlinereport/decls.html#fixity)
+]
 
 ---
 
@@ -375,7 +399,7 @@ Valor absolut
 valAbs :: Int -> Int                -- retorna el valor absolut d'un enter
 
 valAbs n
-    | n >= 0    = n
+    | n >= 0    =  n
     | otherwise = -n
 ```
 
@@ -583,9 +607,7 @@ La notació `[16, 12, 21]`
 La discriminació per patrons permet **desconstruir** les llistes:
 
 ```haskell
-suma :: [Float] -> Float
-
-suma [] = 0.0
+suma [] = 0
 suma (x:xs) = x + suma xs
 ```
 
@@ -961,11 +983,6 @@ divImod n m
 
 - Proveu de cercar documentació de funcions a [Hoogλe](https://www.haskell.org/hoogle/).
 
-- Implementeu les funcions habituals sobre llistes anteriors.
-
-    - Useu `myLength` enlloc de `length` per evitar xocs de noms.
-    - Useu recursivitat quan calgui.
-
 - Feu aquests problemes de Jutge.org:
 
     - [P77907](https://jutge.org/problems/P77907) Functions with numbers
@@ -976,5 +993,9 @@ divImod n m
         - Problemes amb puntuacions parcials 💯. No cal que feu totes les
           funcions demanades.
         - Inspector de Haskell: comprova condicions de l'enunciat en el
-          codi de la solució. Veredicte NC 🚩 *Non compliant*.
+          codi de la solució. Veredicte NC 🚩 *Non compliant*. [TFG d'en Jan Mas]
 
+- Implementeu les funcions habituals sobre llistes anteriors.
+
+    - Useu `myLength` enlloc de `length` per evitar xocs de noms.
+    - Useu recursivitat quan calgui.

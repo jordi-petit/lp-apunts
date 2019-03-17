@@ -20,7 +20,7 @@ Universitat Politècnica de Catalunya, 2019
 
 # Funcions d'ordre superior
 
-Una **funció d'ordre superior** és una funció que rep o retorna
+Una **funció d'ordre superior** (FOS) és una funció que rep o retorna
 funcions.
 
 
@@ -41,9 +41,9 @@ apli2 sqrt 16.0 👉 2.0
 map :: (a -> b) -> [a] -> [b]
 
 map f [] = []
-map f (x:xs) = (f x) : map f xs
+map f (x:xs) = f x : map f xs
 
-map odd [1..5] 👉 [True, False, True, False, True]
+map odd [1..5]  👉 [True, False, True, False, True]
 ```
 
 
@@ -339,7 +339,10 @@ Exemples:
 
 - Descripció:
 
-    `filter p xs` és la subllista dels elements de `xs`que compleixen el            predicat `p`.
+    `filter p xs` és la subllista dels elements de `xs` que compleixen el
+    predicat `p`.
+
+    (Un **predicat** és una funció que retorna un Booleà.)
 
 
 - Exemples:
@@ -438,7 +441,8 @@ Exemples:
 
 - Descripció:
 
-    `dropWhile p xs` és la subllista de `xs` que elimina els primers elements de `xs` que compleixen el predicat `p` (fins al final o al primer qua no la compleix).
+    `dropWhile p xs` és la subllista de `xs` que elimina els primers elements de `xs`
+    que compleixen el predicat `p` (fins al final o al primer que no la compleix).
 
 
 - Exemples:
@@ -617,7 +621,7 @@ Exemples:
 
 
 
-# Aplicació: Diccionaris amb *hof*s
+# Aplicació: Diccionaris amb FOSs
 
 Volem definir un TAD Diccionari de Strings a Ints amb
 valors per defecte
@@ -635,7 +639,7 @@ insert :: Dict -> String -> Int -> Dict
 
 ---
 
-# Aplicació: Diccionaris amb *hof*s
+# Aplicació: Diccionaris amb FOSs
 
 Volem definir un TAD Diccionari de Strings a Ints amb
 valors per defecte
@@ -673,7 +677,7 @@ insert dict key value = \x ->
 
 ---
 
-# Aplicació: Diccionaris amb *hof*s
+# Aplicació: Diccionaris amb FOSs
 
 Volem definir un TAD Diccionari de Strings a Ints amb
 valors per defecte
@@ -725,7 +729,7 @@ insert dict key value x
 
 ---
 
-# Aplicació: *Hof* per a dividir i vèncer
+# Aplicació: FOS per a dividir i vèncer
 
 Funció d'ordre superior genèrica `dIv` per
 l'esquema de dividir i vèncer.
@@ -737,42 +741,42 @@ dIv :: (a -> Bool) -> (a -> b) -> (a -> (a, a)) -> (a -> (a, a) -> (b, b) -> b) 
  ```
 
 on `a` és el tipus del problema, `b` és el tipus de la solució, i
-<br>`dIv trivial directe divideix venç x` utilitza:
+<br>`dIv trivial directe dividir vènçer x` utilitza:
 
 
-- `trivial :: (a -> Bool)` per saber si un problema és trivial.
+- `trivial :: a -> Bool` per saber si un problema és trivial.
 
-- `directe :: (a -> b)` per solucionar un problema trivial.
+- `directe :: a -> b` per solucionar directament un problema trivial.
 
-- `divideix :: (a -> (a, a))` per dividir un problema no trivial en un parell de subproblemes més petits.
+- `dividir :: a -> (a, a)` per dividir un problema no trivial en un parell de subproblemes més petits.
 
-- `venç :: (a -> (a, a) -> (b, b) -> b)` per, donat un problema no trivial, els seus subproblemes i les seves respectives subsolucions, obtenir la solució al problema original.
+- `vènçer :: a -> (a, a) -> (b, b) -> b` per, donat un problema no trivial, els seus subproblemes i les seves respectives subsolucions, obtenir la solució al problema original.
 
 - `x :: a` denota el problema a solucionar.
 
 
 ---
 
-# Aplicació: *Hof* per a dividir i vèncer
+# Aplicació: FOS per a dividir i vèncer
 
 ## Solució
 
 ```haskell
 dIv :: (a -> Bool) -> (a -> b) -> (a -> (a, a)) -> (a -> (a, a) -> (b, b) -> b) -> a -> b
 
-dIv trivial directe divideix venç x = dIv x
+dIv trivial directe dividir vènçer x
     | trivial x     = directe x
-    | otherwise     = venç x (x1, x2) (y1, y2)
+    | otherwise     = vènçer x (x1, x2) (y1, y2)
                           where
-                              (x1, x2) = divideix x
-                              y1 = dIv trivial directe divideix venç x1
-                              y2 = dIv trivial directe divideix venç x2
+                              (x1, x2) = dividir x
+                              y1 = dIv trivial directe dividir vènçer x1
+                              y2 = dIv trivial directe dividir vènçer x2
 
 ```
 
 ---
 
-# Aplicació: *Hof* per a dividir i vèncer
+# Aplicació: FOS per a dividir i vèncer
 
 ## Solució capturant el context
 
@@ -780,28 +784,30 @@ dIv trivial directe divideix venç x = dIv x
 ```haskell
 dIv :: (a -> Bool) -> (a -> b) -> (a -> (a, a)) -> (a -> (a, a) -> (b, b) -> b) -> a -> b
 
-dIv trivial directe divideix venç = dc'
-    where dc' x =
-        | trivial x = directe x
-        | otherwise = venç x (x1, x2) (y1, y2)
-                          where
-                              (x1, x2) = divideix x
-                              y1 = dc' x1
-                              y2 = dc' x2
+dIv trivial directe dividir vènçer = dIv'
+    where
+        dIv' x
+            | trivial x = directe x
+            | otherwise = vènçer x (x1, x2) (y1, y2)
+                              where
+                                  (x1, x2) = dividir x
+                                  y1 = dIv' x1
+                                  y2 = dIv' x2
 ```
 
 
 
 ---
 
-# Aplicació: *Hof* per a dividir i vèncer
+# Aplicació: FOS per a dividir i vèncer
 
 ## Quicksort amb Dividir i vèncer
 
 
 ```haskell
 qs :: Ord a => [a] -> [a]
-qs = dIv trivial directe divideix venç
+
+qs = dIv trivial directe dividir vèncer
     where
         trivial []   = True
         trivial [_]  = True
@@ -809,19 +815,20 @@ qs = dIv trivial directe divideix venç
 
         directe = id
 
-        divideix (x:xs) = (lts, gts)
+        dividir (x:xs) = (lts, gts)
             where lts = filter (<= x) xs
                   gts = filter (>  x) xs
 
-        divideix' (x:xs) = partition (<=x) xs       -- equivalent
+        dividir' (x:xs) = partition (<= x) xs       -- equivalent
 
-        venç (x:_) _ (ys1, ys2) = ys1 ++ [x] ++ ys2
+        vèncer (x:_) _ (ys1, ys2) = ys1 ++ [x] ++ ys2
 ```
 --
 ## Exercicis:
 
-- Escriure ordenació per fusió amb `dc`.
-- Escriure variant de dividir i vèncer amb nombre variable de subproblemes.
+- Escriviu ordenació per fusió amb `dIv`.
+- Afegiu una FOS com a criteri de comparació per l'ordenació.
+- Escriviu variant de dividir i vèncer amb nombre variable de subproblemes.
 
 ---
 

@@ -58,4 +58,4 @@ var slideShow = remark.create({
   highlightSpans: false
 });
 
-var window.slideShow = slideShow;
+window.slideShow = slideShow;
