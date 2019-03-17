@@ -20,14 +20,14 @@ Universitat Politècnica de Catalunya, 2019
 
 # Llistes
 
-Les llistes en Haskell s'implementen con a llistes encadenades.
+Les llistes en Haskell s'implementen amb llistes encadenades.
 
-La immutablitat de les dades permet compartir segments de les llistes.
+La immutabilitat de les dades permet compartir segments de les llistes.
 
 |Operació | Cost     |
 |:--------|:---------|
 | `[]` |  $\Theta(1)$ |
-| `$x$:$\textit{xs}$` |  $\Theta(1)$ |
+| `$\textit{x }$:$\textit{ xs}$` |  $\Theta(1)$ |
 | `$\textit{xs}$ ++ $\textit{ys}$` |  $\Theta(\vert \textit{xs}\vert)$ |
 | `head $\textit{xs}$` |  $\Theta(1)$ |
 | `tail $\textit{xs}$` |  $\Theta(1)$ |
@@ -63,7 +63,7 @@ Rangs amb salt
 👉 [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 
 λ> [1, 2, 4, 8, 16 .. 256]
-💣
+❌ -- no fa miracles
 ```
 
 Rangs sense final
@@ -147,8 +147,8 @@ Introducció de noms
 Compte amb l'ordre
 
 ```haskell
-[(x, y) | x <- [1..3], y <- [1..2], even x]
-[(x, y) | x <- [1..3], even x, y <- [1..2]]
+[(x, y) | x <- [1..n], y <- [1..m], even x]
+[(x, y) | x <- [1..n], even x, y <- [1..m]]
 ```
 
 Ternes pitagòriques
@@ -175,6 +175,12 @@ Haskell
 
 ```haskell
 [(x, y) | x <- xs, y <- ys, f x == g y, even x]
+```
+
+Python
+
+```Python
+[(x, y) for x in xs for y in ys if x.f == y.g and x%2 == 0]
 ```
 
 SQL
@@ -231,12 +237,15 @@ zeros :: [Int]
 -- amb repeat
 zeros = repeat 0
 
+-- amb cycle
+zeros = cycle [0]
+
 -- amb recursivitat infinita
 zeros = 0 : zeros
 
 -- prova
-λ> take 5 zeros
-👉 [0, 0, 0, 0, 0]
+λ> take 6 zeros
+👉 [0, 0, 0, 0, 0, 0]
 ```
 
 
@@ -259,8 +268,24 @@ naturals = iterate (+1) 0
 naturals = 0 : map (+1) naturals
 
 -- prova
-λ> take 5 naturals
-👉 [0, 1, 2, 3, 4]
+λ> take 6 naturals
+👉 [0, 1, 2, 3, 4, 5]
+```
+
+---
+
+# Llistes infinites
+
+Generació de la llista infinita de factorials
+
+
+```haskell
+factorials :: [Integer]
+
+factorials = scanl (*) 1 [1..]
+
+λ> take 6 $ scanl (*) 1 [1..]
+👉 [1, 1, 2, 6, 24, 120]
 ```
 
 
@@ -270,7 +295,6 @@ naturals = 0 : map (+1) naturals
 
 Generació de la llista infinita de nombres de Fibonacci
 
-*Figura!!!*
 
 --
 
@@ -296,7 +320,6 @@ fibs = fibs' 0 1
 Generació dels nombres primers amb el Garbell d'Eratòstenes
 
 
-*Figura!!!*
 
 --
 
@@ -307,9 +330,27 @@ primers = garbell [2..]
 
     where
 
-        garbell (p : xs) = p : garbell [x | x <- xs, x `mod` p > 0]
+        garbell (p : xs) = p : garbell [x | x <- xs, x `mod` p /= 0]
 ```
 
+--
+
+## Perspectiva: C++
+
+```c++
+// retorna la llista de tots els nombres primers ≤ n.
+vector<int> primers (int n) {
+    vector<int> ps;
+    vector<bool> p(n+1, true);
+    for (int i = 2; i <= n; ++i) {
+        if (p[i]) {
+            ps.push_back(i);
+            for (int j = 2*i; j <= n; j += i) {
+                p[j] = false;
+    }   }   }
+    return ps;
+}
+```
 
 ---
 
