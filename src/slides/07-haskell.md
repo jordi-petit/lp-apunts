@@ -20,12 +20,12 @@ Universitat Politècnica de Catalunya, 2019
 
 # Tipus predefinits
 
-Com ja hem vist existeixen una sèrie de tipus predefinits:
+Ja hem vist que existeixen una sèrie de tipus predefinits:
 
 - Tipus simples:
-    - Int, Integer, Float, Double
-    - Bool
-    - Char
+    - `Int`, `Integer`, `Float`, `Double`
+    - `Bool`
+    - `Char`
 
 - Tipus estructurats:
     - Llistes
@@ -111,7 +111,9 @@ inserir :: Diccionari -> String -> Int -> Diccionari
 esborrar :: Diccionari -> String -> Diccionari
 ```
 
-Els tipus sinònims aporten claredat.
+Els tipus sinònims aporten claredat (però no més seguretat).
+
+💡 Per a més seguretat, mireu `newtype` (no el considerem).
 
 ---
 
@@ -138,6 +140,7 @@ Els tipus enumerats es poden desconstruir amb patrons:
 
 ```haskell
 guanya :: Jugada -> Jugada -> Bool
+    -- diu si la primera jugada guanya a la segona
 
 guanya Paper Pedra = True
 guanya Pedra Tisores = True
@@ -196,7 +199,7 @@ Els tipus algebraics es poden desconstruir amb patrons:
 area :: Forma -> Float
 
 area (Rectangle amplada alçada) = amplada * alçada
-area (Quadrat mida) = mida^2
+area (Quadrat mida) = area (Rectangle mida mida)
 area (Cercle radi) = pi * radi^2
 area Punt = 0
 ```
@@ -363,14 +366,16 @@ eval (Or  e1 e2) d = eval e1 d || eval e2 d
 
 
 ```haskell
-eval (And (Or (Val False) 'x') (Not (And 'y' 'z'))) (`elem` "xz")
+e = (And (Or (Val False) 'x') (Not (And 'y' 'z')))
+d = (`elem` "xz")
+eval e d
     -- evalua (F ∨ x) ∧ (¬ (y ∧ z)) amb x = z = T i y = F
 ```
 
 
 ---
 
-# Llistes genèriques:
+# Llistes genèriques
 
 ```haskell
 data Llista a = Buida | a `Davant` (List a)
@@ -395,7 +400,6 @@ Les llistes de Haskell són exactament això!
 
 ```haskell
 data [a] = [] | a : (List a)
-    deriving (Show)
 ```
 
 ```haskell
@@ -432,7 +436,10 @@ Exemples: (busqueu doc a [Hoogλe](https://www.haskell.org/hoogle/))
 
 ```haskell
 find :: (a -> Bool) -> [a] -> Maybe a
+    -- cerca en una llista amb un predicat
+
 lookup :: Eq a => a -> [(a,b)] -> Maybe b
+    -- cerca en una llista associativa
 ```
 
 
@@ -473,6 +480,85 @@ secDiv x y = Right (x / y)
 
 ---
 
+# Perspectiva
+
+
+```haskell
+data Expr a
+    = Val a
+    | Var String
+    | Neg (Expr a)
+    | Sum (Expr a) (Expr a)
+    | Res (Expr a) (Expr a)
+    | Mul (Expr a) (Expr a)
+    | Div (Expr a) (Expr a)
+```
+
+Com seria en C++?
+
+
+---
+
+# Perspectiva
+
+.cols5050[
+.col1[
+```c++
+template <typename a> class Expr {
+
+    struct ValData {
+        a x;
+    };
+
+    struct VarData {
+        string v;
+    };
+
+    struct NegData {
+        Node* e;
+    };
+
+    struct OpData {
+        Node* e1;
+        Node* e2;
+    };
+
+    enum Constructor {Val, Var, Neg,
+            Sum, Res, Mul, Div};
+```
+]
+.col2[
+```c++
+    struct Node {
+        Constructor c;
+        union {
+            ValData val;
+            VarData var;
+            NegData neg;
+            OpData  op;
+        };
+    };
+
+    Node* p; // punter al node amb l'expressió
+
+public:
+
+    Expr ExprVal (const a& x);
+    Expr ExprVar (const string& v);
+    Expr ExprNeg (const Expr& e);
+    Expr ExprSum (const Expr& e1,
+                  const Expr& e2);
+    ...
+};
+```
+]
+]
+
+
+I encara falten les operacions i la gestió de la memòria! 😰
+
+---
+
 # Exercicis
 
 - Feu aquests problemes de Jutge.org:
@@ -480,6 +566,398 @@ secDiv x y = Right (x / y)
     - [P97301](https://jutge.org/problems/P97301) FizzBuzz
     - [P37072](https://jutge.org/problems/P37072) Arbre binari
     - [P87706](https://jutge.org/problems/P87706) Arbres binaris de cerca
-    - [P80618](https://jutge.org/problems/P80618) Cua (només el primer apartat)
+    - [P80618](https://jutge.org/problems/P80618) Cua 1 (només el primer apartat)
     - [P79515](https://jutge.org/problems/P79515) Arbres AVL (🏅)
     - [P92181](https://jutge.org/problems/P92181) Nombres pseudoperfectes (🏅)
+
+
+---
+
+# Classes de tipus
+
+Una **classe de tipus** (*type class*) és una interfície que defineix un comportament.
+
+Els tipus poden **instanciar** (implementar seguint la interfície)
+una o més classes de tipus.
+
+La instanciació es pot fer
+
+- automàticament pel compilador per a certes classes predefinides, o
+- a mà.
+
+Les classes de tipus
+
+- són la forma de tenir sobrecàrrega en Haskell, i
+- propocionen una altra forma de polimorfisme.
+
+<br>
+<br>
+⚠️ Les classes de tipus de Haskell no són classes de OOP com a C++ o Java
+(més aviat són com els `interface`s de Java).
+
+
+
+
+---
+
+# La classe `Eq`
+
+La funció `elem` necessita comparar elements per igualtat:
+
+```haskell
+elem :: (Eq a) => a -> [a] -> Bool
+
+elem x [] = False
+elem x (y:ys) = x == y || elem x ys
+```
+
+La declaració `(Eq a) =>` indica que els tipus `a`
+sobre els quals es pot aplicar la funció `elem`
+han de ser instàncies de la classe `Eq`.
+
+La classe predefinida `Eq`
+dóna operacions d'igualtat i desigualtat:
+
+```haskell
+class Eq a where
+    (==) :: a -> a -> Bool
+    (/=) :: a -> a -> Bool
+```
+
+I fins i tot ja proporciona definicions per defecte (circulars, què hi farem!):
+
+```haskell
+class Eq a where
+    (==) :: a -> a -> Bool
+    (/=) :: a -> a -> Bool
+
+    x == y  = not (x == y)
+    x /= y  = not (x /= y)
+```
+
+
+
+---
+
+# La classe `Eq`
+
+El nostre tipus `Jugada` (encara) no dóna suport a la classe `Eq`:
+
+```haskell
+data Jugada = Pedra | Paper | Tisora
+
+λ> Paper /= Paper
+💣 error: "No instance for (Eq Jugada) arising from a use of ‘/=’"
+
+λ> elem Pedra [Paper, Pedra, Paper]
+💣 error: "No instance for (Eq Jugada) arising from a use of ‘elem’"
+```
+
+Amb `deriving (Eq)` demanem al compilador que
+instancïi automàticament la classe `Eq` (usant igualtat estructural):
+
+
+```haskell
+data Jugada = Pedra | Paper | Tisora
+    deriving (Eq)
+
+λ> Paper /= Paper
+👉 False
+
+λ> elem Pedra [Paper, Pedra, Paper]
+👉 True
+```
+
+
+---
+
+# La classe `Eq`
+
+Per alguns tipus, la igualtat estructural no és suficient:
+
+```haskell
+data Racional = Racional Int Int        -- numerador, denominador
+    deriving (Eq)
+
+λ> Racional 3 2 == Racional 6 4
+👎 False
+```
+
+En aquests casos cal instanciar la classe a mà:
+
+```haskell
+instance Eq Racional where
+    (Racional n1 d1) == (Racional n2 d2) = n1 * d2 == n2 * d1
+
+λ> Racional 3 2 == Racional 6 4
+👍 True
+
+λ> Racional 3 2 /= Racional 6 4
+👍 False
+```
+
+Només cal definir `==` perquè la definició per defecte de `/=` ja ens convé.
+
+---
+
+# La classe `Eq`
+
+Per alguns tipus, instanciar una classe també requereix alguna altra classe:
+
+```haskell
+data Arbin a = Buit | Node a (Arbin a) (Arbin a)
+
+instance Eq a => Eq (Arbin a) where
+
+    Buit == Buit = True
+    (Node x1 fe1 fd1) == (Node x2 fe2 fd2) = x1 == x2 && fe1 == fe2 && fd1 == fd2
+    _ == _ = False
+```
+
+
+---
+
+# Informació sobre instàncies
+
+Amb la comanda `:info T` (o `:i T`) de l'intèrpret es pot veure de quines
+classes és instància un tipus `T`:
+
+```haskell
+λ> :i Racional
+data Racional = Racional Int Int
+instance [safe] Eq Racional
+
+λ> :i Int
+data Int = GHC.Types.I# GHC.Prim.Int#
+instance Eq Int
+instance Ord Int
+instance Show Int
+instance Read Int
+instance Enum Int
+instance Num Int
+instance Real Int
+instance Bounded Int
+instance Integral Int
+```
+
+
+---
+
+# La classe `Ord`
+
+La classe predefinida `Ord` (que requereix la classe `Eq`)
+dóna operacions d'ordre:
+
+```haskell
+data Ordering = LT | EQ | GT        -- possibles resultats d'una comparació d'ordre
+
+class (Eq a) => Ord a where
+    compare               :: a -> a -> Ordering
+    (<), (<=), (>=), (>)  :: a -> a -> Bool
+    max, min              :: a -> a -> a
+
+    compare x y
+        | x == y    = EQ
+        | x <= y    = LT
+        | otherwise = GT
+    x <  y = compare x y == LT
+    x >  y = compare x y == GT
+    x <= y = compare x y /= GT
+    x >= y = compare x y /= LT
+```
+
+El mínim que cal per fer la instanciació és definir el `<=` o el `compare`.
+
+Tot i que no es verifica, s'espera que les instàncies d'`Ord` compleixin
+aquestes lleis:
+
+- Transitivitat: si `x <= y && y <= z` llavors `x <= z`.
+- Reflexivitat: `x <= x`.
+- Antisimetria: si `x <= y && y <= x` llavors `x == y`.
+
+
+
+---
+
+# La classe `Show`
+
+La classe predefinida `Show` dóna suport per convertir valors en textos:
+
+```haskell
+class Show a where
+    show :: a -> String
+```
+
+Amb `deriving (Show)`, el compilador la ofereix automàticament (usant
+sintàxi Haskell):
+
+```haskell
+data Racional = Racional Int Int        -- numerador, denominador
+    deriving (Eq, Show)
+
+λ> show $ Racional 3 2  👉 "Racional 3 2"
+λ> show $ Racional 6 4  👉 "Racional 3 2"
+```
+
+Alternativament, per fer la instanciació a mà només cal definir el `show`:
+
+
+```haskell
+instance Show Racional where
+    show (Racional n d) = (show $ div n m) ++ " / " ++ (show $ div d m)
+        where m = gcd n d
+
+λ> show $ Racional 3 2  👉 "3 / 2"
+λ> show $ Racional 6 4  👉 "3 / 2"
+```
+
+---
+
+# La classe `Read`
+
+La classe predefinida `Read` dóna suport per convertir textos en valors:
+
+```haskell
+class Read a where
+    read :: String -> a
+```
+
+Amb `deriving (Read)`, el compilador la ofereix automàticament (usant
+sintàxi Haskell).
+
+Alternativament, per fer la instanciació a mà només cal definir el `read`.
+
+**Compte:** Al usar `read`, sovint cal especificar el tipus de retorn, perquè
+el compilador sàpiga a quin de tots els `read`s sobrecarregats ens referim:
+
+```haskell
+λ> read "38"                    💣 "Exception: Prelude.read: no parse"
+λ> (read "38") :: Int           👉 38
+λ> (read "38") :: Integer       👉 38
+λ> (read "38") :: Float         👉 38.0
+```
+
+
+---
+
+# La classe `Num`
+
+La classe predefinida `Num` dóna suport a operadors aritmètics bàsics:
+
+```haskell
+class (Eq a, Show a) => Num a where
+    (+), (-), (*)       :: a -> a -> a
+    negate, abs, signum :: a -> a
+    fromInteger         :: Integer -> a
+
+    x - y    = x + negate y
+    negate x = 0 -x
+```
+
+Per fer la instanciació cal definir totes les operacions
+menys `negate` o `-`.
+
+Els tipus `Int`, `Integer`, `Float` i `Double` són instàncies de la classe `Num`.
+
+
+---
+
+# Altres classes predefinides
+
+.center[
+![:height 24em](img/haskell_standard_classes.png)
+
+.xxs[Imatge: http://continuation.passing.style/2015/12/21/not-gentle-intro-to-haskell/]
+]
+
+
+---
+
+# Ús de classes en declaracions de tipus
+
+```haskell
+suma [] = 0
+suma (x:xs) = x + suma xs
+```
+
+Quin és el tipus de `suma`?
+
+--
+
+```haskell
+suma :: [Int] -> Int
+```
+
+--
+
+.center[❌ més general!]
+
+--
+
+```haskell
+suma :: [a] -> a
+```
+
+--
+
+.center[❌ el tipus `a` no pot ser qualsevol: ha de tenir l'operació `+`!]
+
+--
+
+```haskell
+suma :: Num a => [a] -> a
+```
+
+--
+
+.center[✅ el tipus `a` ha de ser instància de `Num`!]
+
+--
+
+Les condicions sobre les variables de tipus
+es posen davant de `=>` a la signatura.
+
+El sistema de tipus de Haskell és capaç d'inferir tipus i condicions automàticament.
+<br>⟹ més endavant veurem com.
+
+
+---
+
+# Definició de classes pròpies
+
+Només cal utilitzar la mateixa sintàxi que ja hem vist.
+
+**Exemple:** Classe per a predicats.
+
+```haskell
+class Pred a where
+    sat   :: a -> Bool
+    unsat :: a -> Bool
+
+    unsat = not . sat
+```
+
+Instanciació pels enters:
+
+```haskell
+instance Pred Int where
+    sat 0 = True
+    sat _ = False
+```
+
+Instanciació pels arbres binaris:
+
+```haskell
+instance Pred a => Pred (Arbin a) where
+    sat Buit = True
+    sat (Node x fe fd) = sat x && sat fe && sat fd
+```
+
+---
+
+# Exercicis
+
+- Feu aquests problemes de Jutge.org:
+
+    - [P80618](https://jutge.org/problems/P80618) Cua 1 (tot)
+
