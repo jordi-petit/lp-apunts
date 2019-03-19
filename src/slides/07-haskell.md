@@ -554,8 +554,11 @@ public:
 ]
 ]
 
+--
 
-I encara falten les operacions i la gestió de la memòria! 😰
+I encara falten les operacions i la gestió de la memòria!
+
+.xxl[😰🧟]
 
 ---
 
