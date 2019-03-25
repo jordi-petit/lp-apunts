@@ -18,4 +18,5 @@ Albert Rubio, Jordi Petit
 [Haskell 1](04-haskell.html) /
 [Haskell 2](05-haskell.html) /
 [Haskell 3](06-haskell.html) /
-[Haskell 4](07-haskell.html)
+[Haskell 4](07-haskell.html) /
+[Haskell 5](08-haskell.html)
