@@ -22,7 +22,7 @@ Universitat Politècnica de Catalunya, 2019
 
 .cols5050[
 .col1[
-Ja sabem fer això:
+Ja sabem aplicar funcions:
 
 ```haskell
 λ> (+3) 2                   👉  5
@@ -51,7 +51,7 @@ I també funciona amb `Either`:
 λ> fmap (+3) (Left "err")   👉  (Left "err")
 ```
 
-I també funciona amb llistes:
+I també funciona amb llistes, com un `map`:
 
 ```haskell
 λ> fmap (+3) [1, 2, 3]      👉  [4, 5, 6]
@@ -73,8 +73,8 @@ On
 
 ```haskell
 λ> :info Functor
-class Functor (f :: * -> *) where
-  fmap :: (a -> b) -> f a -> f b
+class Functor f where
+    fmap :: (a -> b) -> f a -> f b
 ```
 
 ---
@@ -102,12 +102,17 @@ instance Functor Maybe where
     fmap f (Just x) = Just (f x)
 ```
 
-<br>
-
-Hi ha definicions semblants per a `Either` i `[]`.
+Igualment:
 
 
-**Exercici:** Escriure-les.
+```haskell
+instance Functor (Either a) where
+    fmap f (Left  x) = Left x
+    fmap f (Right x) = Right (f x)
+
+instance Functor [] where
+    fmap = map
+```
 
 
 ---
@@ -188,6 +193,15 @@ aplicar una funció per canviar el seu contingut (però no el contenidor).
 ]]]
 
 
+
+
+.right[.xxs[Dibuixos: [adit.io](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)]]
+
+
+---
+
+# Functors
+
 **Lleis** dels functors:
 
 1. Identitat: `fmap id ≡ id`
@@ -195,9 +209,11 @@ aplicar una funció per canviar el seu contingut (però no el contenidor).
 2. Composició: `fmap (f . g) ≡ fmap f . fmap g`
 
 
+<br>
 
-.xxs[Dibuixos: [adit.io](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)]
-
+<br>
+**Exercici:** Comproveu que `Maybe`, `Either a` i `[]` compleixen
+les lleis dels functors.
 
 
 ---
@@ -259,7 +275,7 @@ Però llavors no li podem ficar valors empaquetats!
 
 <br>
 
-.xxs[Dibuixos: [adit.io](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)]
+.right[.xxs[Dibuixos: [adit.io](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)]]
 
 
 
@@ -270,9 +286,7 @@ Però llavors no li podem ficar valors empaquetats!
 Ens cal una funció que
 desempaqueti,
 apliqui `meitat` i
-torni a empaquetar!
-
-Aquesta funció es diu `>>=` (*bind*):
+torni a empaquetar: `>>=` (*bind*)
 
 ```haskell
 λ> Just 31 >>= meitat   👉 Nothing
@@ -290,12 +304,12 @@ class Monad m where
     (>>=) :: m a -> (a -> m b) -> m b
 ```
 
-El tipus `Maybe` és una instància de `Monad`:
+El tipus `Maybe` és instància de `Monad`:
 
 ```haskell
 instance Monad Maybe where
     Nothing >>= f   =   Nothing
-    Just x  >>= f   =   f x
+    Just x  >>= f   =   Just (f x)
 ```
 
 
@@ -315,9 +329,26 @@ class Monad m where
     r >> k   =   r >>= (\_ -> k)
 ```
 
-- Explicar return.
+- `return` empaqueta.
 
-- No parlarem gaire del `>>` perquè és purament estètica.
+- `>>` és purament estètica.
+
+
+
+Els tipus `Maybe`, `Either a` i [] són instàncies de `Monad`:
+
+```haskell
+instance Monad Maybe where
+    Nothing >>= f   =   Nothing
+    Just x  >>= f   =   Just (f x)
+
+instance Monad (Either a) where
+    Left x  >>= f   =   Left x
+    Right x >>= f   =   Right (f x)
+
+instance Monad [] where
+    xs >>= f        =   concatMap f xs
+```
 
 
 ---
@@ -497,25 +528,81 @@ Exemple:
 
 ```haskell
 main = do
+    putStrLn "Com et dius?"
+    nom <- getLine
+    putStrLn $ "Hola " ++ nom + "!"
+```
+
+Compilació i execució:
+
+```bash
+> ghc p.hs
+[1 of 1] Compiling Main             ( p.hs, p.o )
+Linking p ...
+
+> ./p
+Com et dius?
+Jordi
+Hola Jordi!
+```
+
+---
+
+#  Entrada/Sortida
+
+Exemple:
+
+```haskell
+main = do
     x <- getLine
     let y = reverse x
     putStrLn x
     putStrLn y
 ```
 
-Els tipus dels elements d'aquest programa són:
+Compilació i execució:
 
-```haskell
-getLine :: IO String
-putStrLn :: String -> IO ()
-main :: IO ()
+```bash
+> ghc p.hs
+[1 of 1] Compiling Main             ( p.hs, p.o )
+Linking p ...
+
+> ./p
+GAT
+GAT
+TAG
 ```
 
-El podem transformar de notació-`do` a funcional així:
+
+---
+
+#  Entrada/Sortida
+
+Exemple: Llegir seqüència de línies acabades en `*`
+i escriure cadascuna del revés:
 
 ```haskell
-main = getLine >>=
-            \x -> let y = reverse x
-                  in putStrLn x
-                      >> putStrLn y
+main = do
+    line <- getLine
+    if line /= "*" then do
+        putStrLn $ reverse line
+        main
+    else
+        return ()
 ```
+
+<br>
+
+Exemple: Llegir seqüència de línies
+i escriure cadascuna del revés:
+
+```haskell
+main = do
+    contents <- getContents
+    mapM (putStrLn . reverse) (lines contents)
+```
+
+L'E/S també és *lazy*, no cal preocupar-se perquè l'entrada
+sigui massa llarga.
+
+
