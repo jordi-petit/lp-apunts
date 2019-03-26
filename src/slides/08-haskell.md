@@ -36,7 +36,6 @@ Però...
 ```
 ]
 ]
-
 En aquest cas, podem fer servir `fmap`!
 
 ```haskell
@@ -44,17 +43,17 @@ En aquest cas, podem fer servir `fmap`!
 λ> fmap (+3) Nothing        👉  Nothing
 ```
 
-I també funciona amb `Either`:
+I també funciona amb `Either`, llistes, tuples i funcions:
 
 ```haskell
 λ> fmap (+3) (Right 2)      👉  (Right 5)
 λ> fmap (+3) (Left "err")   👉  (Left "err")
-```
 
-I també funciona amb llistes, com un `map`:
+λ> fmap (+3) [1, 2, 3]      👉  [4, 5, 6]        -- igual que map
 
-```haskell
-λ> fmap (+3) [1, 2, 3]      👉  [4, 5, 6]
+λ> fmap (+3) (1, 2)         👉  (1, 5)           -- perquè (,) és un tipus
+
+λ> (fmap (*2) (+1)) 3       👉  8                -- igual que (.)
 ```
 
 
@@ -62,11 +61,15 @@ I també funciona amb llistes, com un `map`:
 
 # Functors
 
+
+`fmap` aplica una funció als elements dins d'un contenidor
+genèric  `f a`.
+
 `fmap` és una funció de les instàncies de la classe `Functor`:
 
 ```haskell
 λ> :type fmap
-fmap :: Functor f => (a -> b) -> f a -> f b
+fmap :: Functor f => (a -> b) -> (f a -> f b)
 ```
 
 On
@@ -74,7 +77,7 @@ On
 ```haskell
 λ> :info Functor
 class Functor f where
-    fmap :: (a -> b) -> f a -> f b
+    fmap :: (a -> b) -> (f a -> f b)
 ```
 
 ---
@@ -177,8 +180,9 @@ Exemple:
 
 # Functors
 
-La classe `Functor` captura la idea de tipus contenidor al qual se li pot
-aplicar una funció per canviar el seu contingut (però no el contenidor).
+La classe `Functor` captura la idea de tipus contenidor  genèric al qual es
+pot aplicar una funció als seus elements per canviar el seu contingut (però no
+el contenidor).
 
 .cols5050[
 .col1[
@@ -206,21 +210,29 @@ aplicar una funció per canviar el seu contingut (però no el contenidor).
 
 1. Identitat: `fmap id ≡ id`
 
-2. Composició: `fmap (f . g) ≡ fmap f . fmap g`
+2. Composició: `fmap (g1 . g2) ≡ fmap g1 . fmap g2`
 
+<!--
+De fet, es pot demostrar que només existeix una única possible
+instància de `Functor` que compleixi aquestes lleis.
+-->
 
 <br>
+**Nota:**
+Haskell no verifica aquestes propietats (però les pot utilitzar), és
+responsabilitat del programador fer-ho.
 
 <br>
-**Exercici:** Comproveu que `Maybe`, `Either a` i `[]` compleixen
-les lleis dels functors.
+**Exercici:**
+Comproveu que `Maybe`, `Either a`, `[]`, `(,)`
+i `(->)` compleixen les lleis dels functors.
 
 
 ---
 
 # Functors
 
-Functors per arbres binaris:
+Instànciació pròpia dels functors pels arbres binaris:
 
 ```haskell
 data Arbin a = Buit | Node a (Arbin a) (Arbin a)
@@ -239,6 +251,120 @@ a = Node 3 Buit (Node 2 (Node 1 Buit Buit) (Node 1 Buit Buit))
 λ> fmap (*2) a
 👉 Node 6 Buit (Node 4 (Node 2 Buit Buit) (Node 2 Buit Buit))
 ```
+
+
+---
+
+# Aplicatius
+
+.cols5050[
+.col1[
+Ja sabem aplicar funcions:
+
+```haskell
+λ> (+3) 2                   👉  5
+```
+]
+.col2[
+I ho sabem fer sobre contenidors:
+
+```haskell
+λ> fmap (+3) (Just 2)       👉  Just 5
+```
+]
+]
+Però...
+
+```haskell
+λ> (Just (+3)) (Just 2)     ❌
+```
+
+En aquest cas, podem fer servir `<*>`! .xs[(es llegeix *app*)]
+
+```haskell
+λ> Just (+3) <*> Just 2             👉   Just 5
+λ> Just (+3) <*> Nothing            👉   Nothing
+λ> Nothing <*> Just (+3)            👉   Nothing
+λ> Nothing <*> Nothing              👉   Nothing
+
+λ> Right (+3) <*> Right 2           👉   Right 5
+λ> Right (+3) <*> Left "err"        👉   Left "err"
+λ> Left "err" <*> Right 2           👉   Left "err"
+λ> Left "err1" <*> Left "err2"      👉   Left "err1 "
+
+λ> [(*2), (+2)] <*> [1, 2, 3]       👉   [2, 4, 6, 3, 4, 5]
+```
+
+---
+
+# Aplicatius
+
+L'operador `<*>` és una operació de la classe `Applicative` (que també ha de ser functor):
+
+```haskell
+class Functor f => Applicative f where
+  (<*>) :: f (a -> b) -> (f a -> f b)
+  pure  :: a -> f a
+```
+
+- `<*>` aplica una funció dins d'un contenidor a uns valors
+dins d'un contenidor. Els contenidors són genèrics i del mateix tipus.
+
+.center[
+![:height 10em](img/applicative_just.png)
+]
+
+- `pure` construeix un contenidor amb un valor.
+
+
+.right[.xxs[Dibuixos: [adit.io](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)]]
+
+
+
+
+---
+
+# Aplicatius
+
+Lleis dels aplicatius:
+
+1. Identitat: `pure id <*> v ≡ v`.
+
+2. Homomorfisme: `pure f <*> pure x ≡ pure (f x)`.
+
+3. Intercanvi: `u <*> pure y ≡ pure ($ y) <*> u`.
+
+4. Composició: `u <*> (v <*> w) ≡ pure (.) <*> u <*> v <*> w`.
+
+5. Relació amb el functor: `fmap g x ≡ pure g <*> x`.
+
+
+---
+
+# Aplicatius
+
+Instanciació de `Maybe`:
+
+```haskell
+instance Applicative Maybe where
+    pure = Just
+    Nothing <*> _ = Nothing
+    Just f <*> x = fmap f x
+```
+
+Instanciació de `Either`:
+
+```haskell
+instance Applicative (Either a) where
+    pure = Right
+    Left x <*> _ = Left x
+    Right f <*> x = fmap f x
+```
+
+<br>
+**Exercici:** Instancieu les llistes com a aplicatius. Hi ha dues
+formes de fer-ho.
+
 
 
 ---
@@ -286,7 +412,9 @@ Però llavors no li podem ficar valors empaquetats!
 Ens cal una funció que
 desempaqueti,
 apliqui `meitat` i
-torni a empaquetar: `>>=` (*bind*)
+torni a empaquetar: `>>=`
+
+.xs[(es llegeix *bind*)]
 
 ```haskell
 λ> Just 31 >>= meitat   👉 Nothing
@@ -297,11 +425,12 @@ torni a empaquetar: `>>=` (*bind*)
 λ> Just 20 >>= meitat >>= meitat >>= meitat  👉 Nothing
 ```
 
-L'operador `>>=` és una operació de la class `Monad`:
+L'operador `>>=` és una operació de la classe `Monad`:
 
 ```haskell
-class Monad m where
+class Applicative m => Monad m where
     (>>=) :: m a -> (a -> m b) -> m b
+    -- i més coses
 ```
 
 El tipus `Maybe` és instància de `Monad`:
@@ -330,12 +459,12 @@ class Monad m where
 ```
 
 - `return` empaqueta.
-
+- `>>=` desempaqueta, aplica i empaqueta.
 - `>>` és purament estètica.
 
 
 
-Els tipus `Maybe`, `Either a` i [] són instàncies de `Monad`:
+Els tipus `Maybe`, `Either a` i `[]` són instàncies de `Monad`:
 
 ```haskell
 instance Monad Maybe where
@@ -355,7 +484,7 @@ instance Monad [] where
 
 # Mònades
 
-Les mònades han de seguir tres lleis:
+Lleis de les mònades:
 
 1. Identitat per l'esquerra: `return x >> f ≡ f x`.
 
@@ -367,7 +496,7 @@ El compilador no comprova aquestes propietats (però les pot usar).
 <br>⇒ És responsabilitat del programador assegurar-les.
 
 <br>
-**Exercici:** Comproveu que `Maybe`, `Either` i `[]` compleixen
+**Exercici:** Comproveu que `Maybe`, `Either a` i `[]` compleixen
 les lleis de mònades
 
 ---
@@ -397,6 +526,10 @@ do
 ```haskell
 e1 >> e2
 ```
+.center[≡]
+```haskell
+e1 >>= \_ -> e2
+```
 ]
 .col2[
 
@@ -424,16 +557,13 @@ e1 >>= \x -> e2
 
 # Notació `do`
 
-Petita BD de joguina: Tenim informació sobre propietaris de cotxes,
-les seves matrícules, els seus models i la seva etiqueta d'emissions:
-
+Tenim llistes associatives amb informació sobre propietaris de cotxes, les
+seves matrícules, els seus models i la seva etiqueta d'emissions:
 
 ```haskell
-data Model = FordMustang | TeslaS3 | NissanLeaf | ToyotaHybrid
-    deriving (Eq, Show)
+data Model = FordMustang | TeslaS3 | NissanLeaf | ToyotaHybrid deriving (Eq, Show)
 
-data Etiqueta = Eco | B | C | Cap
-    deriving (Eq, Show)
+data Etiqueta = Eco | B | C | Cap deriving (Eq, Show)
 
 matricules = [("Joan", 6524), ("Pere", 6332), ("Anna", 5313), ("Laia", 9999)]
 
@@ -441,6 +571,7 @@ models = [(6524, NissanLeaf), (6332, FordMustang), (5313, TeslaS3), (7572, Toyot
 
 etiquetes = [(FordMustang, Cap), (TeslaS3, Eco), (NissanLeaf, Eco), (ToyotaHybrid, B)]
 ```
+
 
 Donat un nom de propietari, volem saber quina és la seva etiqueta
 d'emissions:
@@ -451,6 +582,12 @@ etiqueta :: String -> Maybe Etiqueta
 
 És `Maybe` perquè, potser el propietari no existeix, o no tenim
 la seva matrícula, o no tenim el seu model, o no tenim la seva etiqueta...
+
+
+Ens anirà bé usar aquesta funció de cerca:
+```haskell
+lookup :: Eq a => a -> [(a, b)] -> Maybe b
+```
 
 ---
 
@@ -477,16 +614,67 @@ etiqueta nom = do
 
 ```
 
---
 
-Transformació de notació `do` a funcional: 😜
+---
+
+# Notació `do`
+
+Amb notació `do`:
 ```Haskell
-etiqueta nom =
-    lookup nom matricules >>=
-        \mat -> lookup mat models >>=
-            \mod -> lookup mod etiquetes
+etiqueta nom = do
+    mat <- lookup nom matricules
+    mod <- lookup mat models
+    lookup mod etiquetes
+
 ```
 
+--
+
+Transformació de notació `do` a funcional:
+```Haskell
+etiqueta nom =
+    lookup nom matricules >>= \mat -> lookup mat models >>= \mod -> lookup mod etiquetes
+```
+--
+
+Amb un format diferent: 😜
+```Haskell
+etiqueta nom =
+    lookup nom matricules >>= \mat ->
+    lookup mat models >>= \mod ->
+    lookup mod etiquetes
+```
+
+
+---
+
+# Mònades
+
+Moltes funcions predefinides tenen una versió per la classe `Monad`:
+
+-   `mapM`, `filterM`, `foldM`, `zipWithM`, ...
+
+També disposem d’operacions per extendre (*lift*) operacions
+per treballar amb elements de la classe Monad. S'han d'importar:
+
+```haskell
+import Control.Monad
+liftM  :: Monad m => (a -> b) -> m a -> m b
+liftM2 :: Monad m => (a -> b -> c) -> m a -> m b -> m c
+```
+
+Per exemple, podem crear una funció per suma `Maybe`s:
+
+```haskell
+sumaMaybes :: Num a => Maybe a -> Maybe a -> Maybe a
+sumaMaybes = liftM2 (+)
+```
+
+O fer-ho directament:
+
+```haskell
+λ> liftM2 (+) (Just 3) (Just 4)  👉 Just 7
+```
 
 ---
 
@@ -606,3 +794,25 @@ L'E/S també és *lazy*, no cal preocupar-se perquè l'entrada
 sigui massa llarga.
 
 
+
+
+
+
+---
+
+#  Recapitulació
+
+- Hem vist tres classes predefinides molt importants en Haskell:
+    Functors, Aplicatius, Mònades.
+
+.center[
+![:height 8em](img/monads_recap.png)
+]
+
+- Molts tipus predefinits són instàncies d'aquestes classes:
+    `Maybe`, `Either`, llistes, tuples, funcions, `IO`, ...
+
+- La notació `do` simplifica l'ús de les monades.
+
+- La classe `IO` permet disposar d'entrada/sortida en un llenguatge
+funcional pur.
