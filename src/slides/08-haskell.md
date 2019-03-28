@@ -39,15 +39,15 @@ Però...
 En aquest cas, podem fer servir `fmap`!
 
 ```haskell
-λ> fmap (+3) (Just 2)       👉  (Just 5)
+λ> fmap (+3) (Just 2)       👉  Just 5
 λ> fmap (+3) Nothing        👉  Nothing
 ```
 
 I també funciona amb `Either`, llistes, tuples i funcions:
 
 ```haskell
-λ> fmap (+3) (Right 2)      👉  (Right 5)
-λ> fmap (+3) (Left "err")   👉  (Left "err")
+λ> fmap (+3) (Right 2)      👉  Right 5
+λ> fmap (+3) (Left "err")   👉  Left "err"
 
 λ> fmap (+3) [1, 2, 3]      👉  [4, 5, 6]        -- igual que map
 
@@ -62,8 +62,8 @@ I també funciona amb `Either`, llistes, tuples i funcions:
 # Functors
 
 
-`fmap` aplica una funció als elements dins d'un contenidor
-genèric  `f a`.
+`fmap` aplica una funció als elements d'un contenidor
+genèric  `f a` retornant un contenidor del mateix tipus.
 
 `fmap` és una funció de les instàncies de la classe `Functor`:
 
@@ -114,7 +114,7 @@ instance Functor (Either a) where
     fmap f (Right x) = Right (f x)
 
 instance Functor [] where
-    fmap = map
+    fmap = map                  -- potser és al revés, poc importa
 ```
 
 
@@ -128,10 +128,10 @@ Exemple d'ús real: consulta a una BD:
 
     ```python
     post = Posts.find(1234)
-    if post:
-        return post.title
-    else:
+    if post is None:
         return None
+    else:
+        return post.title
     ```
 
 - En Haskell:
@@ -147,6 +147,7 @@ Exemple d'ús real: consulta a una BD:
     ```
 
     o millor (`<$>` és l'operador infix per a `fmap`):
+    .xs[(es llegeix *(f)map*)]
 
     ```haskell
     getPostTitle <$> findPost 1234
@@ -208,9 +209,9 @@ el contenidor).
 
 **Lleis** dels functors:
 
-1. Identitat: `fmap id ≡ id`
+1. Identitat: `fmap id ≡ id`.
 
-2. Composició: `fmap (g1 . g2) ≡ fmap g1 . fmap g2`
+2. Composició: `fmap (g1 . g2) ≡ fmap g1 . fmap g2`.
 
 <!--
 De fet, es pot demostrar que només existeix una única possible
@@ -255,6 +256,17 @@ a = Node 3 Buit (Node 2 (Node 1 Buit Buit) (Node 1 Buit Buit))
 
 ---
 
+
+# Exercicis
+
+- Feu aquests problemes de Jutge.org:
+
+    - [P80618](https://jutge.org/problems/P80618) Cua 2 (apartats 1 i 2)
+
+
+
+---
+
 # Aplicatius
 
 .cols5050[
@@ -273,7 +285,7 @@ I ho sabem fer sobre contenidors:
 ```
 ]
 ]
-Però...
+Però què passa si la funció és en un contenidor?
 
 ```haskell
 λ> (Just (+3)) (Just 2)     ❌
@@ -409,16 +421,15 @@ Però llavors no li podem ficar valors empaquetats!
 
 # Mònades
 
-Ens cal una funció que
+Cal una funció que
 desempaqueti,
 apliqui `meitat` i
 torni a empaquetar: `>>=`
-
 .xs[(es llegeix *bind*)]
 
 ```haskell
-λ> Just 31 >>= meitat   👉 Nothing
 λ> Just 40 >>= meitat   👉 Just 20
+λ> Just 31 >>= meitat   👉 Nothing
 λ> Nothing >>= meitat   👉 Nothing
 
 λ> Just 20 >>= meitat >>= meitat             👉 Just 5
@@ -497,7 +508,7 @@ El compilador no comprova aquestes propietats (però les pot usar).
 
 <br>
 **Exercici:** Comproveu que `Maybe`, `Either a` i `[]` compleixen
-les lleis de mònades
+les lleis de les mònades.
 
 ---
 
@@ -505,7 +516,8 @@ les lleis de mònades
 
 La **notació `do`** és sucre sintàctic
 per facilitar l'ús de les mònades.
-<br>⇒ Amb `do`, codi funcional sembla codi imperatiu.
+<br>⇒ Amb `do`, codi funcional sembla codi imperatiu
+amb assignacions.
 
 
 .cols5050[
@@ -523,11 +535,11 @@ do
     e2
 ```
 .center[≡]
-```haskell
+```python
 e1 >> e2
 ```
 .center[≡]
-```haskell
+```python
 e1 >>= \_ -> e2
 ```
 ]
@@ -545,7 +557,7 @@ do
     e2
 ```
 .center[≡]
-```haskell
+```python
 e1 >>= \x -> e2
 ```
 ]]
@@ -555,21 +567,21 @@ e1 >>= \x -> e2
 
 ---
 
-# Notació `do`
+# Notació `do`: Exemple
 
 Tenim llistes associatives amb informació sobre propietaris de cotxes, les
-seves matrícules, els seus models i la seva etiqueta d'emissions:
+seves matrícules, els seus models i les seves etiquetes d'emissions:
 
 ```haskell
-data Model = FordMustang | TeslaS3 | NissanLeaf | ToyotaHybrid deriving (Eq, Show)
+data Model = Seat127 | TeslaS3 | NissanLeaf | ToyotaHybrid deriving (Eq, Show)
 
 data Etiqueta = Eco | B | C | Cap deriving (Eq, Show)
 
 matricules = [("Joan", 6524), ("Pere", 6332), ("Anna", 5313), ("Laia", 9999)]
 
-models = [(6524, NissanLeaf), (6332, FordMustang), (5313, TeslaS3), (7572, ToyotaHybrid)]
+models = [(6524, NissanLeaf), (6332, Seat127), (5313, TeslaS3), (7572, ToyotaHybrid)]
 
-etiquetes = [(FordMustang, Cap), (TeslaS3, Eco), (NissanLeaf, Eco), (ToyotaHybrid, B)]
+etiquetes = [(Seat127, Cap), (TeslaS3, Eco), (NissanLeaf, Eco), (ToyotaHybrid, B)]
 ```
 
 
@@ -584,14 +596,14 @@ etiqueta :: String -> Maybe Etiqueta
 la seva matrícula, o no tenim el seu model, o no tenim la seva etiqueta...
 
 
-Ens anirà bé usar aquesta funció de cerca:
+Ens anirà bé usar aquesta funció predefinida de cerca:
 ```haskell
 lookup :: Eq a => a -> [(a, b)] -> Maybe b
 ```
 
 ---
 
-# Notació `do`
+# Notació `do`: Exemple
 
 Solució amb `case`: 💩
 ```Haskell
@@ -617,7 +629,7 @@ etiqueta nom = do
 
 ---
 
-# Notació `do`
+# Notació `do`: Exemple
 
 Amb notació `do`:
 ```Haskell
@@ -637,7 +649,7 @@ etiqueta nom =
 ```
 --
 
-Amb un format diferent: 😜
+Amb un format diferent que clara l'equivalència: 😜
 ```Haskell
 etiqueta nom =
     lookup nom matricules >>= \mat ->
@@ -668,6 +680,8 @@ Per exemple, podem crear una funció per suma `Maybe`s:
 ```haskell
 sumaMaybes :: Num a => Maybe a -> Maybe a -> Maybe a
 sumaMaybes = liftM2 (+)
+
+λ> sumaMaybes (Just 3) (Just 4)  👉 Just 7
 ```
 
 O fer-ho directament:
@@ -675,6 +689,21 @@ O fer-ho directament:
 ```haskell
 λ> liftM2 (+) (Just 3) (Just 4)  👉 Just 7
 ```
+
+
+
+
+---
+
+# Exercicis
+
+- Feu aquests problemes de Jutge.org:
+
+    - [P50086](https://jutge.org/problems/P50086) Cua (2)
+    - [P70540](https://jutge.org/problems/P87082) Expressions
+
+
+
 
 ---
 
@@ -694,14 +723,14 @@ L'entrada/sortida en Haskell es basa en una mònada:
 Algunes operacions bàsiques:
 
 ```haskell
-getChar     :: IO Char
-getLine     :: IO String
-getContents :: IO String
+getChar     :: IO Char              -- obté següent caràcter
+getLine     :: IO String            -- obté següent línia
+getContents :: IO String            -- obté tota l'entrada
 
-putChar     :: Char -> IO ()
-putStr      :: String -> IO ()
-putStrLn    :: String -> IO ()
-print       :: Show a => a -> IO ()
+putChar     :: Char -> IO ()        -- escriu un caràcter
+putStr      :: String -> IO ()      -- escriu un text
+putStrLn    :: String -> IO ()      -- escriu un text i un salt de línia
+print       :: Show a => a -> IO () -- escriu qualsevol showable
 ```
 
 `()` s'anomena el tipus *unit* i representa *res* (⇔ `void` de C i cia).
@@ -724,13 +753,13 @@ main = do
 Compilació i execució:
 
 ```bash
-> ghc p.hs
-[1 of 1] Compiling Main             ( p.hs, p.o )
-Linking p ...
+*> ghc programa.hs
+[1 of 1] Compiling Main             ( programa.hs, programa.o )
+Linking programa ...
 
-> ./p
+*> ./programa
 Com et dius?
-Jordi
+*Jordi
 Hola Jordi!
 ```
 
@@ -751,12 +780,12 @@ main = do
 Compilació i execució:
 
 ```bash
-> ghc p.hs
-[1 of 1] Compiling Main             ( p.hs, p.o )
-Linking p ...
+*> ghc programa.hs
+[1 of 1] Compiling Main             ( programa.hs, programa.o )
+Linking programa ...
 
-> ./p
-GAT
+*> ./programa
+*GAT
 GAT
 TAG
 ```
@@ -794,7 +823,215 @@ L'E/S també és *lazy*, no cal preocupar-se perquè l'entrada
 sigui massa llarga.
 
 
+---
 
+# `let` i `where` en  notació `do`
+
+Degut a la definició del `>>=`, el `where` pot donar problemes:
+
+```haskell
+main = do
+    x <- getLine
+    print f
+        where f = factorial (read x)
+
+    ❌ error: Variable not in scope: x :: String
+```
+
+Si ho escrivim amb `>>=`, tenim
+
+```haskell
+main = getLine >>= \x -> print f
+    where f = factorial (read x)
+```
+
+que no pot ser, ja que a les definicions del `where` no podem usar la
+variable abstreta `x`.
+
+.cols5050[
+.col1[
+Amb el `do` cal usar el `let` (sense `in`):
+
+```haskell
+main = do
+    x <- getLine
+    let f = factorial (read x)
+    print f
+```
+]
+.col2[
+
+Alternativament (més lleig):
+
+```haskell
+main = do
+    x <- getLine
+    f <- return $ factorial (read x)
+    print f
+```
+]]
+
+
+
+---
+
+# Intuició sobre la mònada `IO`
+
+Podem veure l'entrada/sortida com funcions
+que modifiquen el món: `món1 ⟿ món2`.
+
+Les operacions d'entrada/sortida reben un món i retornen un món.
+
+Cadascuna s'encadena amb l'anterior, com un relleu.
+![:height 1em](img/baton-relay.png)
+
+**Exemple:** Llegir i escriure dos caràcters.
+
+
+.cols5050[
+.col1[
+```haskell
+data World = ... -- descripció del món
+
+myGetChar :: World -> (World, Char)
+
+myPutChar :: Char -> World -> (World, ())
+
+myMain :: World -> (World, ())
+
+myMain w0 = let (w1, c1) = myGetChar w0
+                (w2, c2) = myGetChar w1
+                (w3, ()) = myPutChar c1 w2
+                (w4, ()) = myPutChar c1 w3
+            in  (w4, ())
+```
+(1) Passant el relleu.
+]
+.col2[
+]
+]
+
+
+---
+
+# Intuició sobre la mònada `IO`
+
+Podem veure l'entrada/sortida com funcions
+que modifiquen el món: `món1 ⟿ món2`.
+
+Les operacions d'entrada/sortida reben un món i retornen un món.
+
+Cadascuna s'encadena amb l'anterior, com un relleu.
+![:height 1em](img/baton-relay.png)
+
+**Exemple:** Llegir i escriure dos caràcters.
+
+
+.cols5050[
+.col1[
+```haskell
+data World = ... -- descripció del món
+
+myGetChar :: World -> (World, Char)
+
+myPutChar :: Char -> World -> (World, ())
+
+myMain :: World -> (World, ())
+
+myMain w0 = let (w1, c1) = myGetChar w0
+                (w2, c2) = myGetChar w1
+                (w3, ()) = myPutChar c1 w2
+                (w4, ()) = myPutChar c1 w3
+            in  (w4, ())
+```
+(1) Passant el relleu.
+]
+.col2[
+```haskell
+data IO a = World -> (World -> a)
+
+getChar :: IO Char
+
+putChar :: Char -> IO ()
+
+main :: IO ()
+
+main =
+    getChar >>= c1 ->
+    getChar >>= c2 ->
+    putChar c1 >>
+    putChar c2
+```
+(2) Fent que `IO` sigui instància de `Monad`.
+]
+]
+
+
+---
+
+# Intuició sobre la mònada `IO`
+
+
+Podem veure l'entrada/sortida com funcions
+que modifiquen el món: `món1 ⟿ món2`.
+
+Les operacions d'entrada/sortida reben un món i retornen un món.
+
+Cadascuna s'encadena amb l'anterior, com un relleu.
+![:height 1em](img/baton-relay.png)
+
+**Exemple:** Llegir i escriure dos caràcters.
+
+
+.cols5050[
+.col1[
+```haskell
+data IO a = World -> (World -> a)
+
+getChar :: IO Char
+
+putChar :: Char -> IO ()
+
+main :: IO ()
+
+main =
+    getChar >>= c1 ->
+    getChar >>= c2 ->
+    putChar c1 >>
+    putChar c2
+```
+(2) Fent que `IO` sigui instància de `Monad`.
+]
+.col2[
+```haskell
+
+
+
+
+
+
+
+
+main = do
+    let c1 <- getChar
+    let c2 <- getChar
+    putChar c1
+    putChar c2
+```
+(3) Usant notació `do`.
+]
+]
+
+
+
+---
+
+# Exercicis
+
+- Feu aquests problemes de Jutge.org:
+
+    - [P87974](https://jutge.org/problems/P87974) Hola / Adéu
+    - [P87082](https://jutge.org/problems/P87082) Índex massa corporal
 
 
 
