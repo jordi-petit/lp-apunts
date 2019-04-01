@@ -261,7 +261,7 @@ a = Node 3 Buit (Node 2 (Node 1 Buit Buit) (Node 1 Buit Buit))
 
 - Feu aquests problemes de Jutge.org:
 
-    - [P80618](https://jutge.org/problems/P80618) Cua 2 (apartats 1 i 2)
+    - [P50086](https://jutge.org/problems/P50086) Cua 2 (apartats 1 i 2)
 
 
 
@@ -700,7 +700,7 @@ O fer-ho directament:
 - Feu aquests problemes de Jutge.org:
 
     - [P50086](https://jutge.org/problems/P50086) Cua (2)
-    - [P70540](https://jutge.org/problems/P87082) Expressions
+    - [P70540](https://jutge.org/problems/P70540) Expressions
 
 
 
