@@ -343,9 +343,9 @@ preordre (Argal x fills) = x : concatMap preordre fills
 # Expressions booleanes amb variables
 
 ```haskell
-data Expr
+data ExprBool
     = Val Bool
-    | Var String
+    | Var Char
     | Not Expr
     | And Expr Expr
     | Or  Expr Expr
@@ -366,7 +366,7 @@ eval (Or  e1 e2) d = eval e1 d || eval e2 d
 
 
 ```haskell
-e = (And (Or (Val False) 'x') (Not (And 'y' 'z')))
+e = (And (Or (Val False) (Var 'x')) (Not (And (Var 'y') (Var 'z'))))
 d = (`elem` "xz")
 eval e d
     -- evalua (F ∨ x) ∧ (¬ (y ∧ z)) amb x = z = T i y = F
@@ -378,28 +378,32 @@ eval e d
 # Llistes genèriques
 
 ```haskell
-data Llista a = Buida | a `Davant` (List a)
-    deriving (Show)
+data Llista a = Buida | a `DavantDe` (Llista a)
 ```
 
 ```haskell
-l1 = 3 `Davant` 2 `Davant` 4 `Davant` Buida
+l1 = 3 `DavantDe` 2 `DavantDe` 4 `DavantDe` Buida
 ```
 
 ```haskell
 llargada :: Llista a -> Int
 
 llargada Buida = 0
-llargada (cap `Davant` cua) = 1 + llargada cua
+llargada (cap `DavantDe` cua) = 1 + llargada cua
 ```
 
 --
 
 Les llistes de Haskell són exactament això!
+(amb una mica de sucre sintàctic 🍬)
 
 
 ```haskell
-data [a] = [] | a : (List a)
+data [a] = [] | a : [a]
+```
+
+```haskell
+l1 = 3:2:4:[]    -- l1 = [3, 2, 4]
 ```
 
 ```haskell
@@ -634,8 +638,8 @@ class Eq a where
     (==) :: a -> a -> Bool
     (/=) :: a -> a -> Bool
 
-    x == y  = not (x == y)
-    x /= y  = not (x /= y)
+    x == y  = not (x /= y)
+    x /= y  = not (x == y)
 ```
 
 
@@ -652,7 +656,7 @@ data Jugada = Pedra | Paper | Tisora
 λ> Paper /= Paper
 💣 error: "No instance for (Eq Jugada) arising from a use of ‘/=’"
 
-λ> elem Pedra [Paper, Pedra, Paper]
+λ> Pedra `elem` [Paper, Pedra, Paper]
 💣 error: "No instance for (Eq Jugada) arising from a use of ‘elem’"
 ```
 
@@ -667,7 +671,7 @@ data Jugada = Pedra | Paper | Tisora
 λ> Paper /= Paper
 👉 False
 
-λ> elem Pedra [Paper, Pedra, Paper]
+λ> Pedra `elem` [Paper, Pedra, Paper]
 👉 True
 ```
 
@@ -728,11 +732,11 @@ classes és instància un tipus `T`:
 ```haskell
 λ> :i Racional
 data Racional = Racional Int Int
-instance [safe] Eq Racional
+*instance Eq Racional
 
 λ> :i Int
 data Int = GHC.Types.I# GHC.Prim.Int#
-instance Eq Int
+*instance Eq Int
 instance Ord Int
 instance Show Int
 instance Read Int
@@ -799,7 +803,7 @@ data Racional = Racional Int Int        -- numerador, denominador
     deriving (Eq, Show)
 
 λ> show $ Racional 3 2  👉 "Racional 3 2"
-λ> show $ Racional 6 4  👉 "Racional 3 2"
+λ> show $ Racional 6 4  👉 "Racional 6 4"    💔
 ```
 
 Alternativament, per fer la instanciació a mà només cal definir el `show`:
@@ -807,11 +811,11 @@ Alternativament, per fer la instanciació a mà només cal definir el `show`:
 
 ```haskell
 instance Show Racional where
-    show (Racional n d) = (show $ div n m) ++ " / " ++ (show $ div d m)
+    show (Racional n d) = (show $ div n m) ++ "/" ++ (show $ div d m)
         where m = gcd n d
 
-λ> show $ Racional 3 2  👉 "3 / 2"
-λ> show $ Racional 6 4  👉 "3 / 2"
+λ> show $ Racional 3 2  👉 "3/2"
+λ> show $ Racional 6 4  👉 "3/2"             💖
 ```
 
 ---

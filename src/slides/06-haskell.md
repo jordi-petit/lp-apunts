@@ -221,9 +221,71 @@ AND xs % 2 = 0
 
 ---
 
+# Avaluació mandrosa: C++ vs Haskell
 
-...
+.cols5050[
+.col1[
+```c++
+int f (int x, int y) { return x; }
 
+int main() {
+    int a, b;
+    cin >> a >> b;
+    cout << f(a, a / b);
+}
+```
+
+💣: Divisió per zero quan `b` és zero.
+
+```c++
+int f (int x, int y) { return x; }
+int h (int x)        { for (;;); }
+
+int main() {
+    int a, b;
+    cin >> a >> b;
+    cout << f(a, h(b));
+}
+```
+
+💣: Es penja.
+
+```c++
+if (x != 0 ? 1 / x : 0) { ... }
+if (p != nullptr and p->elem == x) { ... }
+```
+
+👍 `?:`, `and` i `or` sí són mandroses.
+
+]
+.col2[
+
+```haskell
+
+
+λ> f x y = x
+λ> a = 2
+λ> b = 0
+λ> f a (div a b)
+👉 2
+```
+
+👍 `(div a b)` no és avaluat.
+
+```haskell
+
+
+
+
+λ> f x y = x
+λ> h x = h x
+λ> f 3 (h 0)
+👉 3
+```
+
+👍 `h` mai és avaluada.
+]
+]
 
 ---
 
@@ -239,6 +301,9 @@ zeros = repeat 0
 
 -- amb cycle
 zeros = cycle [0]
+
+-- amb iterate
+zeros = iterate id 0
 
 -- amb recursivitat infinita
 zeros = 0 : zeros

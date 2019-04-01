@@ -147,7 +147,7 @@ Exemple d'ús real: consulta a una BD:
     ```
 
     o millor (`<$>` és l'operador infix per a `fmap`):
-    .xs[(es llegeix *(f)map*)]
+.xs[(es llegeix *fmap*)]
 
     ```haskell
     getPostTitle <$> findPost 1234
