@@ -424,7 +424,7 @@ Però llavors no li podem ficar valors empaquetats!
 Cal una funció que
 desempaqueti,
 apliqui `meitat` i
-torni a empaquetar: `>>=`
+deixi empaquetat: `>>=`
 .xs[(es llegeix *bind*)]
 
 ```haskell
@@ -499,7 +499,7 @@ Lleis de les mònades:
 
 1. Identitat per l'esquerra: `return x >> f ≡ f x`.
 
-2. Identitat per la dreta: `m >>= return >> m`.
+2. Identitat per la dreta: `m >>= return ≡ m`.
 
 3. Associativitat: `(m >>= f) >>= g ≡ \x -> f x >>= g`.
 
@@ -516,7 +516,7 @@ les lleis de les mònades.
 
 La **notació `do`** és sucre sintàctic
 per facilitar l'ús de les mònades.
-<br>⇒ Amb `do`, codi funcional sembla codi imperatiu
+<br>⇒ Amb `do`, codi funcional *sembla* codi imperatiu
 amb assignacions.
 
 
@@ -1013,8 +1013,8 @@ main =
 
 
 main = do
-    let c1 <- getChar
-    let c2 <- getChar
+    c1 <- getChar
+    c2 <- getChar
     putChar c1
     putChar c2
 ```
