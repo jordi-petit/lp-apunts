@@ -39,7 +39,7 @@ int cmp(const void *a, const void *b) {
 }
 
 int v[] = {4, 6, 2, 3, 8, 4, 7, 1, 9};
-qsort(numbers, 9, sizeof(int), &cmp);
+qsort(v, 9, sizeof(int), &cmp);
 ```
 
 ```c++
