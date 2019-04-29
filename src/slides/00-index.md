@@ -20,3 +20,5 @@ Albert Rubio, Jordi Petit
 [Haskell 3](06-haskell.html) /
 [Haskell 4](07-haskell.html) /
 [Haskell 5](08-haskell.html)
+
+[Elements de FP en C++](09-fp-c++.html)
