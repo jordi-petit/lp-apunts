@@ -22,3 +22,7 @@ Albert Rubio, Jordi Petit
 [Haskell 5](08-haskell.html)
 
 [Elements de FP en C++](09-fp-c++.html)
+
+[Competències Transversals](10-treball-lps.html)
+
+[Inferència de Tipus](11-inferencia-tipus.html)
