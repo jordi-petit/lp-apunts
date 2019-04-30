@@ -20,24 +20,24 @@ Universitat Politècnica de Catalunya, 2019
 
 # Inferència de tipus
 
-**Problema:** Donat un programa en un llenguatge de programació,
+**Problema:** Donat un programa,
 trobar el tipus més general pel programa (i totes les seves expressions)
 dins del sistema de tipus del llenguatge.
 
-**Solució:** Algorisme de Milner
+**Solució presentada:** Algorisme de Milner
 
 - Curry i Hindley havien desenvolupat idees similars
 independentment en el context del λ-càlcul.
 
-- Algorisme és similar a la "unificació".
+- L'algorisme és similar a la "unificació".
 
 - Sempre present als llenguatges funcionals.
 
 - S'ha estès a altres llenguatges: Visual Basic, C#, C++, ...
 
-
-![:height 8em](img/robin-milner.png)
-
+<br>
+<br>
+![:height 6em](img/robin-milner.png)
 .xxs[Foto: Domini públic]
 
 
@@ -68,7 +68,7 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
 
 # Inferència de tipus a Haskell
 
-- En la majoria de casos no cal definir res.
+- En la majoria de casos no cal definir els tipus.
 
 - Es poden demanar els tipus inferits (que inclouen classes, si cal).
 
@@ -84,7 +84,7 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
 
     - *Monomorphism restriction*:
     Sovint no es pot sobrecarregar una funció si no es dona una declaració
-    explicita de tipus.
+    explícita de tipus.
 
 ---
 
@@ -92,21 +92,17 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
 
 ## Noms aternatius
 
-- Hindley–Milner
-
-- Damas–Milner
-
-- Damas–Hindley–Milner
+- Hindley–Milner, Damas–Milner, Damas–Hindley–Milner
 
 
 ## Propietats
 
-- Complet
+- Complet.
 
-- Computa el tipus més general possible sense necessitat d'anotacions
+- Computa el tipus més general possible sense necessitat d'anotacions.
 
-- Eficient: gairebé lineal (inversa de la funció d'Ackermann)
-
+- Eficient: gairebé lineal (inversa de la funció d'Ackermann).
+    <br>
     L'eficiència depèn de l'algorisme d'unificació que s'apliqui.
 
 ---
@@ -117,18 +113,20 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
 
     - Si el tipus és conegut, se li assigna aquest tipus.
 
-    - Sinó, se li assigna una variable de tipus.
+    - Altrament, se li assigna una variable de tipus.
 
     Recordeu que les funcions són expressions.
 
 2. Es genera un conjunt de restriccions (d'igualtat principalment) a
-   partir l'arbre de l'expressió.
+   partir de l'arbre de l'expressió i les operacions que hi intervenen:
 
     - Aplicació,
 
     - Abstracció,
 
-    - `let`,
+    - `let`, `where`,
+
+    - `case`, guardes, patrons,
 
     - ...
 
@@ -143,7 +141,7 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
 
 - Lliguem les variables lliures amb lambdes: `\x -> (+ 2 x)`
 
-- Creem el graf de tipus:
+- Creem l'arbre de l'expressió: .xs[(els bucles estalvien feina)]
 
 ![:height 20em](img/inferencia/infer1.pdf.png)
 
@@ -218,7 +216,7 @@ $b = c → a$
 ]]
 .col23[
 .my-center[
-IfThenElse
+If-Then-Else
 
 ![:height 7em](img/inferencia/rule1.pdf.png)
 
@@ -234,7 +232,7 @@ $a = b$
 
 # Algorisme de Milner
 
-Considerem ara una definció de funció:
+Considerem ara una defini ció de funció:
 
 ```haskell
 map f l = if null l then [] else f (head l) : map f (tail l)
@@ -323,14 +321,14 @@ $$
 
 # Algorisme de Milner
 
-Considerem ara una definció de funció amb patron:
+Considerem ara una definició de funció amb patrons:
 
 ```haskell
 map f (x : xs) = f x : map f xs
 ```
 
-En aquest cas la introducció de lambdas és una mica diferent, ja que
-tractem els patrons com si fossin viriables lliures:
+En aquest cas la introducció de lambdes és una mica diferent, ja que
+tractem els patrons com si fossin variables lliures:
 
 ```haskell
 \f -> \(x : xs) -> f x : map f xs
@@ -413,13 +411,14 @@ Inferència per altres construccions:
     Per exemple
 
     ```haskell
-    let x = L in E
+    let x = y
+    in z
     ```
 
     es tracta com
 
     ```haskell
-    \x -> E L
+    \x -> z y
     ```
 
 -   Les guardes es tracten com un `if-then-else`.
