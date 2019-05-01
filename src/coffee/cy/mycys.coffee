@@ -1,3 +1,4 @@
+console.log "mysys"
 
 # list of cytoscape instances
 window.mycys = []

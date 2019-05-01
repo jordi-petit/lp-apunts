@@ -16,6 +16,7 @@ Jordi Petit i Albert Rubio
 
 Universitat Politècnica de Catalunya, 2019
 
+
 ---
 
 # Inferència de tipus
@@ -137,102 +138,109 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
 
 # Algorisme de Milner
 
-- Considerem aquesta expressió: `(+ 2 x)`
+- Considerem l'expressió:
 
-- Lliguem les variables lliures amb lambdes: `\x -> (+ 2 x)`
+    ```haskell
+    + 2 x
+    ```
 
-- Creem l'arbre de l'expressió: .xs[(els bucles estalvien feina)]
+- Lliguem les variables lliures amb lambdes:
 
-![:height 20em](img/inferencia/infer1.pdf.png)
+    ```haskell
+    \x -> + 2 x
+    ```
+
+- Creem l'arbre de l'expressió currificada:
+
+
+<div id='cy_infer1' style='width: 50%; height: 14em; border: solid black 0px;'></div>
 
 
 ---
 
 # Algorisme de Milner
 
-.cols5050[
-.col1[
-➀ Assignem tipus a totes les expressions:
+- Etiquetem els nodes:
 
-![:height 20em](img/inferencia/infer2.pdf.png)
-]
-.col2[
-➁ Obtenim les equacions:
+    - Si el tipus és conegut, se'ls assigna el seu tipus.
+    - Altrament, se'ls assigna una variable de tipus.
 
-$$
-\begin{array}{rcl}
-a &=& d → b \\\\
-c &=& d → b \\\\
-int → int → int &=& int → c \\\\
-\end{array}
-$$
-
-<br>
-➂ Solucionem:
-
-$$
-\begin{array}{rcl}
-a &=& int → int \\\\
-b &=& int  \\\\
-c &=& int → int \\\\
-d &=& int  \\\\
-\end{array}
-$$
-
-<br>
-➃ El tipus de l'expressió és doncs
-$$
-\begin{array}{rcl}
-a &=& int → int \\\\
-\end{array}
-$$
-]
-]
+<div id='cy_infer2' style='width: 80%; height: 20em; border: solid black 0px;'></div>
 
 ---
 
+# Algorisme de Milner
+
+
+- Obtenim les equacions:
+
+    `a = d → b` <br>
+    `c = d → b` <br>
+    `Int → Int → Int = Int → c`
+
+--
+
+- Solucionem les equacions:
+
+    `a = Int → Int`<br>
+    `b = Int` <br>
+    `c = Int → Int`<br>
+    `d = Int`
+
+--
+
+- El tipus de l'expressió és el de l'arrel (`a`):
+
+    `+ 2 x :: Int → Int`
+
+
+---
 
 # Algorisme de Milner
 
 ## Regles per generar les equacions
 
-<br>
-.cols303030[
-.col13[
-.my-center[
-Abstracció
+- Abstracció:
 
-![:height 7em](img/inferencia/rule1.pdf.png)
+    <div id='cy_rules1' style='width: 10em; height: 10em; border: solid black 0px;'></div>
 
-$a = b → c$
-]]
-.col23[
-.my-center[
-Aplicació
-
-![:height 7em](img/inferencia/rule2.pdf.png)
-
-$b = c → a$
-]]
-.col23[
-.my-center[
-If-Then-Else
-
-![:height 7em](img/inferencia/rule1.pdf.png)
-
-$a = c$<br>
-$a = b$
-
-]]
-
-]
+- Equació: `a = b → c`
 
 
 ---
 
 # Algorisme de Milner
 
-Considerem ara una defini ció de funció:
+## Regles per generar les equacions
+
+- Aplicació:
+
+    <div id='cy_rules2' style='width: 10em; height: 10em; border: solid black 0px;'></div>
+
+- Equació: `b = c → a`
+
+
+---
+
+# Algorisme de Milner
+
+## Regles per generar les equacions
+
+- Condicional:
+
+    <div id='cy_rules3' style='width: 10em; height: 10em; border: solid black 0px;'></div>
+
+- Equacions:
+
+    - `b = Bool`
+    - `a = c`
+    - `a = d`
+
+---
+
+# Algorisme de Milner
+
+Considerem ara una definició de funció:
 
 ```haskell
 map f l = if null l then [] else f (head l) : map f (tail l)
@@ -246,7 +254,7 @@ torna la part dreta de la definició:
 ```
 
 A més, podem entendre que el tipus del `if-then-else` és
-$\textit{Bool} → a → a → a$.
+`Bool → a → a → a`.
 
 
 ---
@@ -450,7 +458,7 @@ Per tant, les solucions també
 
 # Algorisme de Milner (Classes)
 
-Reconsiderem l'exemple inicial:  `(+ 2 x)`
+Reconsiderem l'exemple inicial:  `+ 2 x`
 
 ![:height 20em](img/inferencia/infer1.pdf.png)
 
@@ -458,7 +466,7 @@ Reconsiderem l'exemple inicial:  `(+ 2 x)`
 
 # Algorisme de Milner (Classes)
 
-Reconsiderem l'exemple inicial:  `(+ 2 x)`
+Reconsiderem l'exemple inicial:  `+ 2 x`
 
 ![:height 20em](img/inferencia/infer8.pdf.png)
 
@@ -600,10 +608,10 @@ Però `Char` no és instància de `Num`!
 -   Inferiu el tipus de:
 
     ```haskell
-        delete x (y:ys) =
-            if x == y
-            then ys
-            else y : delete x ys
+    delete x (y:ys) =
+        if x == y
+        then ys
+        else y : delete x ys
     ```
     amb `(==) :: Eq a => a -> a -> Bool`.
 
