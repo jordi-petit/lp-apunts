@@ -50,7 +50,7 @@ llacunes.
 
 -   Comunicació oral:
 
-    -  Presentació de 5 minuts (exactament)
+    -  Presentació de 5 minuts (exactament).
 
     -  Transparències molt simples amb Google Slides.
 
@@ -59,32 +59,35 @@ llacunes.
 
 -  Comunicació escrita:
 
-    -  Lliurament d'un document curt en LaTeX i BibTeX.
-
-    -  Longitut aproximada de 5 a 10 planes.
+    -  Lliurament d'un document curt en Markdown
+        (5 a 10 planes aprox).
 
     -  Primera part: acompanyament més detallat de la presentació.
+
+    -  Segona part: estudi bibliogràfic.
 
 ---
 
 # Comunicació eficaç oral i escrita
 
-Cal tractar com a mínim qüestions descrites a la sessió d'Introducció als
-Llenguatges de Programació i a la sessió de Sistemes de Tipus com ara:
+-  Primera part del document:
 
--  Paradigma o paradigmes de programació que admet el llenguatge.
+    Cal tractar com a mínim qüestions descrites a la sessió d'Introducció als
+    Llenguatges de Programació i a la sessió de Sistemes de Tipus com ara:
 
--  Compilat o interpretat.
+    -  Paradigma o paradigmes de programació que admet el llenguatge.
 
--  Sistema de tipus.
+    -  Compilat o interpretat.
 
--  Principals aplicacions.
+    -  Sistema de tipus.
 
--  Llenguatges similars.
+    -  Principals aplicacions.
 
--  Algun exemple de codi.
+    -  Llenguatges similars.
 
--  Altres característiques particulars.
+    -  Algun exemple de codi.
+
+    -  Altres característiques particulars.
 
 ---
 
@@ -92,17 +95,18 @@ Llenguatges de Programació i a la sessió de Sistemes de Tipus com ara:
 
 -  Segona part del document:
 
-    -  Descripció de les fonts d'informació emprades
+    -  Descripció de les fonts d'informació emprades.
 
     -  Useu vàries fonts.
 
     -  Busqueu codi.
 
+    -  Avalueu la qualitat de la informació trobada.
+
+    -  Incloeu referències bibliogràfiques.
+
     -  Millor si no totes són a internet.
 
-    -  Avaluació de la qualitat de la informació trobada.
-
-    -  Referències bibliogràfiques.
 
 ---
 
@@ -137,11 +141,11 @@ Tingueu en comptes aquestes pautes:
 
 - Comunicació escrita:
 
-    - El document escrit s'ha de fer amb **[LaTeX i BibTeX](http://bioinfo.uib.es/~joemiro/latex/transp.pdf)**.
+    - El document escrit s'ha de redactar en format
+    **[Markdown](https://github.github.com/gfm/)** i convertir a **PDF**.
 
     - El document escrit s'ha de lliurar a través del Racó abans del **dilluns 10
-    juny a les 9:00 CEST** en un fitxer *ZIP* que contingui els fitxers
-    `document.pdf`, `document.tex` i `document.bib` (i, si cal, tots els altres
-    fitxers necessaris per compilar-los).
+    juny a les 9:00 CEST** en un fitxer ZIP que contingui els fitxers
+    `document.md` i `document.pdf`. Res més.
 
 
