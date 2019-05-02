@@ -11,10 +11,12 @@ var paths    = require('../paths');
 module.exports = gulp.task('imagemin', function() {
   return gulp.src(paths.source.img)
     .pipe(plumber())
+    /*
     .pipe(cache(imagemin({
       optimizationLevel: 3,
       progressive: true,
       interlaced: true
     })))
+    */
     .pipe(gulp.dest(paths.build.img));
 });

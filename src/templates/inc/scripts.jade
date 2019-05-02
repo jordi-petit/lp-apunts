@@ -6,7 +6,7 @@ script(src="js/vendor/remark-language.js")
 script(src="js/main.js")
 
 // jpetit: mathjax
-script(src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured', type='text/javascript')
+script(src='js/bower_components/MathJax/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured', type='text/javascript')
 script(type='text/javascript').
     MathJax.Hub.Config({
         tex2jax: {
@@ -17,10 +17,12 @@ script(type='text/javascript').
     MathJax.Hub.Configured();
 
 // jpetit: cytoscape
-script(src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.5.0/cytoscape.min.js")
+script(src="js/bower_components/cytoscape/dist/cytoscape.min.js")
 
-// my cytoscapes
+// jpetit: coffeescript
 script(type="text/javascript", src="js/vendor/coffee-script.min.js")
+
+// jpetit: my cytoscapes
 
 script(type="text/coffeescript", src="coffee/cy/mycys.coffee")
 script(type="text/coffeescript", src="coffee/cy/foldl.coffee")
@@ -33,6 +35,10 @@ script(type="text/coffeescript", src="coffee/cy/zipWith.coffee")
 
 script(type="text/coffeescript", src="coffee/cy/infer1.coffee")
 script(type="text/coffeescript", src="coffee/cy/infer2.coffee")
+script(type="text/coffeescript", src="coffee/cy/infer3.coffee")
+script(type="text/coffeescript", src="coffee/cy/infer4.coffee")
+script(type="text/coffeescript", src="coffee/cy/infer5.coffee")
+script(type="text/coffeescript", src="coffee/cy/infer6.coffee")
 script(type="text/coffeescript", src="coffee/cy/rules1.coffee")
 script(type="text/coffeescript", src="coffee/cy/rules2.coffee")
 script(type="text/coffeescript", src="coffee/cy/rules3.coffee")

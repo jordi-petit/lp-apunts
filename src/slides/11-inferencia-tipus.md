@@ -226,7 +226,7 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
 
 ## Regles per generar les equacions
 
-- Condicional:
+- Condicional `if-then-else`: $\sqrt x$.
 
     <div id='cy_rules3' style='width: 10em; height: 10em; border: solid black 0px;'></div>
 
@@ -235,6 +235,9 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
     - `b = Bool`
     - `a = c`
     - `a = d`
+
+- El tipus del `if-then-else` és `Bool → a → a → a`.
+
 
 ---
 
@@ -253,8 +256,6 @@ torna la part dreta de la definició:
 \f -> \l -> if null l then [] else f (head l) : map f (tail l)
 ```
 
-A més, podem entendre que el tipus del `if-then-else` és
-`Bool → a → a → a`.
 
 
 ---
@@ -265,37 +266,41 @@ A més, podem entendre que el tipus del `if-then-else` és
 \f -> \l -> if null l then [] else f (head l) : map f (tail l)
 ```
 
-.my-center[
-![:height 24em](img/inferencia/infer3.pdf.png)
-]
+<div id='cy_infer3' style='width: 100%; height: 25em; border: solid black 0px;'></div>
 
 ---
 
 # Algorisme de Milner
 
-.my-center[
-![:height 24em](img/inferencia/infer4.pdf.png)
-]
+```haskell
+\f -> \l -> if null l then [] else f (head l) : map f (tail l)
+```
+
+<div id='cy_infer4' style='width: 100%; height: 25em; border: solid black 0px;'></div>
 
 ---
 
 # Algorisme de Milner
 
-$$
-\begin{array}{l}
-s &=& c \to t\\\\
-t &=& u_1 \to v_1\\\\
-u_2 &=& b \to u_1\\\\
-a_1\to [a_1]\to [a_1] &=& a \to u_2\\\\
-v_2 &=& v_3 \to v_1\\\\
-a_2\to [a_2]\to [a_2] &=& v_4 \to v_2\\\\
-c &=& a \to v_4\\\\
-v_5 &=& b \to v_3\\\\
-d &=& c \to v_5\\\\
-\\\\
-s &=& d\\\\
-\end{array}
-$$
+```haskell
+\f -> \l -> if null l then [] else f (head l) : map f (tail l)
+```
+
+Equacions:
+
+- `s = c → t`
+- `t = a → u`
+- `u = [a5]`
+- `u = b`
+- `a1 → Bool = a → Bool`
+- `v1 = v2 → b`
+- `a3 → [a3] → [a3] = v3 → v1`
+- `c = v4 → v3`
+- `[a4] → a4 = a → [v4]`
+- `v5 = v6 → v2`
+- `d = c → v5`
+- `[a2] → [a2] = a → v6`<br><br>
+- `s = d`
 
 
 
@@ -303,26 +308,29 @@ $$
 
 # Algorisme de Milner
 
-$$
-\begin{array}{rl}
-a    & =  & [a_1] \\\\
-a_2  & =  & a_1 \\\\
-a_4  & =  & a_1 \\\\
-a_5  & =  & a_3 \\\\
-b    & =  & [a_3] \\\\
-c    & =  & a_1\to a_3 \\\\
-d    & =  & (a_1\to a_3)\to [a_1]\to [a_3] \\\\
-s    & =  & (a_1\to a_3)\to [a_1]\to [a_3] \\\\
-t    & =  & [a_1]\to [a_3] \\\\
-u    & =  & [a_3] \\\\
-v_1  & =  & [a_3]\to [a_3] \\\\
-v_2  & =  & [a_3] \\\\
-v_3  & =  & a_3 \\\\
-v_4  & =  & a_1 \\\\
-v_5  & =  & [a_1]\to [a_3] \\\\
-v_6  & =  & [a_1] \\\\
-\end{array}
-$$
+
+```haskell
+\f -> \l -> if null l then [] else f (head l) : map f (tail l)
+```
+
+Solució:
+
+- `a    =  [a1] `
+- `a2  =  a1 `
+- `a4  =  a1 `
+- `a5  =  a3 `
+- `b    =  [a3] `
+- `c    =  a1 →  a3 `
+- `t    =  [a1] →  [a3] `
+- `u    =  [a3] `
+- `v1  =  [a3] →  [a3] `
+- `v2  =  [a3] `
+- `v3  =  a3 `
+- `v4  =  a1 `
+- `v5  =  [a1] →  [a3] `
+- `v6  =  [a1] `
+- `d    =  (a1 →  a3) →  [a1] →  [a3] `
+- `s    =  (a1 →  a3) →  [a1] →  [a3] ` *(arrel)*
 
 
 ---
@@ -356,9 +364,17 @@ Totes les variables del patró queden lligades per la lambda.
 \f -> \(x : xs) -> f x : map f xs
 ```
 
-.my-center[
-![:height 24em](img/inferencia/infer5.pdf.png)
-]
+<div id='cy_infer5' style='width: 100%; height: 25em; border: solid black 0px;'></div>
+
+---
+
+# Algorisme de Milner
+
+```haskell
+\f -> \(x : xs) -> f x : map f xs
+```
+
+<div id='cy_infer6' style='width: 100%; height: 25em; border: solid black 0px;'></div>
 
 
 ---
@@ -367,15 +383,15 @@ Totes les variables del patró queden lligades per la lambda.
 
 $$
 \begin{array}{l}
-s = c \to t\\\\
-t = u_1 \to v_1\\\\
-u_2 = b \to u_1\\\\
-a_1\to [a_1]\to [a_1] = a \to u_2\\\\
-v_2 = v_3 \to v_1\\\\
-a_2\to [a_2]\to [a_2] = v_4 \to v_2\\\\
-c = a \to v_4\\\\
-v_5 = b \to v_3\\\\
-d = c \to v_5\\\\
+s = c  →  t\\\\
+t = u_1  →  v_1\\\\
+u_2 = b  →  u_1\\\\
+a_1 →  [a_1] →  [a_1] = a  →  u_2\\\\
+v_2 = v_3  →  v_1\\\\
+a_2 →  [a_2] →  [a_2] = v_4  →  v_2\\\\
+c = a  →  v_4\\\\
+v_5 = b  →  v_3\\\\
+d = c  →  v_5\\\\
 \\\\
 s = d\\\\
 \end{array}
@@ -391,21 +407,21 @@ $$
 \begin{array}{lcl}
 a_1 &=& a\\\\
 b  &=& [a]\\\\
-c  &=& a\to a_2\\\\
-d  &=& (a\to a_2)\to [a]\to [a_2]\\\\
-s  &=& (a\to a_2)\to [a]\to [a_2]\\\\
-t  &=& [a]\to [a_2]\\\\
+c  &=& a →  a_2\\\\
+d  &=& (a →  a_2) →  [a] →  [a_2]\\\\
+s  &=& (a →  a_2) →  [a] →  [a_2]\\\\
+t  &=& [a] →  [a_2]\\\\
 u_1 &=& [a]\\\\
-u_2 &=& [a]\to [a]\\\\
+u_2 &=& [a] →  [a]\\\\
 v_1 &=& [a_2]\\\\
-v_2 &=& [a_2]\to [a_2]\\\\
+v_2 &=& [a_2] →  [a_2]\\\\
 v_3 &=& [a_2]\\\\
 v_4 &=& a_2\\\\
-v_5 &=& [a]\to [a_2]\\\\
+v_5 &=& [a] →  [a_2]\\\\
 \end{array}
 $$
 
-Per tant, el tipus era $(a\to a_2)\to [a]\to [a_2]$.
+Per tant, el tipus era $(a →  a_2) →  [a] →  [a_2]$.
 
 
 ---
@@ -478,9 +494,9 @@ Equacions:
 
 $$
 \begin{array}{lcl}
-s &=& d \to b\\\\
-c &=& d \to b\\\\
-e\to e\to e &=& a \to c\\\\
+s &=& d  →  b\\\\
+c &=& d  →  b\\\\
+e →  e →  e &=& a  →  c\\\\
 \end{array}
 $$
 
@@ -494,9 +510,9 @@ Solució:
 
 $$
 \begin{array}{lcl}
-s  &=& a \to a\\\\
+s  &=& a  →  a\\\\
 b  &=& a\\\\
-c  &=& a\to a\\\\
+c  &=& a →  a\\\\
 d  &=& a\\\\
 e  &=& a\\\\
 \textit{Num} \; a \\\\
@@ -532,9 +548,9 @@ Equacions:
 
 $$
 \begin{array}{lcl}
-s &=& d \to b\\\\
-c &=& d \to b\\\\
-e\to e\to e &=& a \to c\\\\
+s &=& d  →  b\\\\
+c &=& d  →  b\\\\
+e →  e →  e &=& a  →  c\\\\
 \end{array}
 $$
 
@@ -548,9 +564,9 @@ Intent de solució:
 
 $$
 \begin{array}{lcl}
-s  &=& \textit{Char}  \to \textit{Char} \\\\
+s  &=& \textit{Char}   →  \textit{Char} \\\\
 b  &=& \textit{Char} \\\\
-c  &=& \textit{Char} \to \textit{Char} \\\\
+c  &=& \textit{Char}  →  \textit{Char} \\\\
 d  &=& \textit{Char} \\\\
 e  &=& \textit{Char} \\\\
 \textit{Num} \; \textit{Char} && ❌ \\\\
