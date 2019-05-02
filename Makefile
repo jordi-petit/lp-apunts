@@ -1,4 +1,5 @@
 all:
+	(cd src/js ; bower install)
 	gulp
 
 install:

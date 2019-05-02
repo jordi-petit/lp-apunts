@@ -1,0 +1,19 @@
+{
+  "name": "llicons.jutge.org",
+  "homepage": "https://lliçons.jutge.org",
+  "description": "Recull de lliçons d’algorísmia i programació de Jutge.org",
+  "main": "",
+  "license": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "cytoscape": "^3.2.12",
+    "MathJax": "^2.7.4"
+  }
+}

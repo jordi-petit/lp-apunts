@@ -25,21 +25,8 @@ Universitat Politècnica de Catalunya, 2019
 trobar el tipus més general pel programa (i totes les seves expressions)
 dins del sistema de tipus del llenguatge.
 
-**Solució presentada:** Algorisme de Milner
+**Solució presentada:** Algorisme de Milner.
 
-- Curry i Hindley havien desenvolupat idees similars
-independentment en el context del λ-càlcul.
-
-- L'algorisme és similar a la "unificació".
-
-- Sempre present als llenguatges funcionals.
-
-- S'ha estès a altres llenguatges: Visual Basic, C#, C++, ...
-
-<br>
-<br>
-![:height 6em](img/robin-milner.png)
-.xxs[Foto: Domini públic]
 
 
 ---
@@ -89,12 +76,24 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
 
 ---
 
-# Algorisme de Milner
+# Inferència de tipus
 
-## Noms aternatius
+.cols6040[
+.col1[
 
-- Hindley–Milner, Damas–Milner, Damas–Hindley–Milner
+## Algorisme de Milner
 
+- Curry i Hindley havien desenvolupat idees similars
+independentment en el context del λ-càlcul.
+
+- L'algorisme és similar a la "unificació".
+
+- Sempre present als llenguatges funcionals.
+
+- S'ha estès a altres llenguatges: Visual Basic, C#, C++, ...
+
+]
+.col2[
 
 ## Propietats
 
@@ -106,32 +105,35 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
     <br>
     L'eficiència depèn de l'algorisme d'unificació que s'apliqui.
 
+
+]]
+
+![:height 6em](img/robin-milner.png)
+.xxs[Foto: Domini públic]
+
 ---
 
 # Algorisme de Milner
 
-1. S'assigna un tipus a l'expressió i a cada subexpressió.
+## Descripció general
 
-    - Si el tipus és conegut, se li assigna aquest tipus.
+1. Es genera l'arbre de sintàxi de l'expressió (currificant totes les aplicacions).
 
-    - Altrament, se li assigna una variable de tipus.
+2. S'etiqueta cada node de l'arbre amb un tipus:
 
-    Recordeu que les funcions són expressions.
+    - Si el tipus és conegut, s'etiqueta amb aquest tipus.
+    - Altrament, s'etiqueta amb una nova variable de tipus.
 
-2. Es genera un conjunt de restriccions (d'igualtat principalment) a
+3. Es genera un conjunt de restriccions (d'igualtat principalment) a
    partir de l'arbre de l'expressió i les operacions que hi intervenen:
 
     - Aplicació,
-
     - Abstracció,
-
     - `let`, `where`,
-
     - `case`, guardes, patrons,
-
     - ...
 
-3. Es resolen les restriccions mitjançant unificació.
+4. Es resolen les restriccions mitjançant unificació.
 
 
 ---
@@ -141,13 +143,7 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
 - Considerem l'expressió:
 
     ```haskell
-    + 2 x
-    ```
-
-- Lliguem les variables lliures amb lambdes:
-
-    ```haskell
-    \x -> + 2 x
+    \x -> (+) 2 x
     ```
 
 - Creem l'arbre de l'expressió currificada:
@@ -162,8 +158,10 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
 
 - Etiquetem els nodes:
 
-    - Si el tipus és conegut, se'ls assigna el seu tipus.
-    - Altrament, se'ls assigna una variable de tipus.
+    - Si el tipus és conegut, se'ls etiqueta amb el seu tipus.
+    - Altrament, se'ls etiqueta amb una nova variable de tipus.
+    - Nodes iguals han de tenir iguals etiquetes.
+
 
 <div id='cy_infer2' style='width: 80%; height: 20em; border: solid black 0px;'></div>
 
@@ -191,7 +189,7 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
 
 - El tipus de l'expressió és el de l'arrel (`a`):
 
-    `+ 2 x :: Int → Int`
+    `\x -> (+) 2 x :: Int → Int`
 
 
 ---
@@ -226,7 +224,7 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
 
 ## Regles per generar les equacions
 
-- Condicional `if-then-else`: $\sqrt x$.
+- Condicional `if-then-else`:
 
     <div id='cy_rules3' style='width: 10em; height: 10em; border: solid black 0px;'></div>
 
@@ -236,7 +234,11 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
     - `a = c`
     - `a = d`
 
-- El tipus del `if-then-else` és `Bool → a → a → a`.
+
+Aquesta regla no és estrictament necessària,
+ja que `if-then-else` només és una funció
+genèrica normal de tipus `Bool → a → a → a`, però
+estalvia espai.
 
 
 ---
@@ -266,6 +268,8 @@ torna la part dreta de la definició:
 \f -> \l -> if null l then [] else f (head l) : map f (tail l)
 ```
 
+Arbre de l'expressió:
+
 <div id='cy_infer3' style='width: 100%; height: 25em; border: solid black 0px;'></div>
 
 ---
@@ -275,6 +279,8 @@ torna la part dreta de la definició:
 ```haskell
 \f -> \l -> if null l then [] else f (head l) : map f (tail l)
 ```
+
+Arbre etiquetat amb tipus:
 
 <div id='cy_infer4' style='width: 100%; height: 25em; border: solid black 0px;'></div>
 
@@ -304,10 +310,10 @@ Equacions:
 
 
 
+
 ---
 
 # Algorisme de Milner
-
 
 ```haskell
 \f -> \l -> if null l then [] else f (head l) : map f (tail l)
@@ -321,8 +327,6 @@ Solució:
 - `a5  =  a3 `
 - `b    =  [a3] `
 - `c    =  a1 →  a3 `
-- `t    =  [a1] →  [a3] `
-- `u    =  [a3] `
 - `v1  =  [a3] →  [a3] `
 - `v2  =  [a3] `
 - `v3  =  a3 `
@@ -364,6 +368,8 @@ Totes les variables del patró queden lligades per la lambda.
 \f -> \(x : xs) -> f x : map f xs
 ```
 
+Arbre de l'expressió:
+
 <div id='cy_infer5' style='width: 100%; height: 25em; border: solid black 0px;'></div>
 
 ---
@@ -374,6 +380,8 @@ Totes les variables del patró queden lligades per la lambda.
 \f -> \(x : xs) -> f x : map f xs
 ```
 
+Arbre etiquetat amb tipus:
+
 <div id='cy_infer6' style='width: 100%; height: 25em; border: solid black 0px;'></div>
 
 
@@ -381,47 +389,51 @@ Totes les variables del patró queden lligades per la lambda.
 
 # Algorisme de Milner
 
-$$
-\begin{array}{l}
-s = c  →  t\\\\
-t = u_1  →  v_1\\\\
-u_2 = b  →  u_1\\\\
-a_1 →  [a_1] →  [a_1] = a  →  u_2\\\\
-v_2 = v_3  →  v_1\\\\
-a_2 →  [a_2] →  [a_2] = v_4  →  v_2\\\\
-c = a  →  v_4\\\\
-v_5 = b  →  v_3\\\\
-d = c  →  v_5\\\\
-\\\\
-s = d\\\\
-\end{array}
-$$
+```haskell
+\f -> \(x : xs) -> f x : map f xs
+```
+
+Equacions:
+
+- `s = c  →  t`<br>
+- `t = u1  →  v1`<br>
+- `u2 = b  →  u1`<br>
+- `a1 →  [a1] →  [a1] = a  →  u2`<br>
+- `v2 = v3  →  v1`<br>
+- `a2 →  [a2] →  [a2] = v4  →  v2`<br>
+- `c = a  →  v4`<br>
+- `v5 = b  →  v3`<br>
+- `d = c  →  v5`<br><br>
+- `s = d`<br>
 
 
 ---
 
 
+
 # Algorisme de Milner
 
-$$
-\begin{array}{lcl}
-a_1 &=& a\\\\
-b  &=& [a]\\\\
-c  &=& a →  a_2\\\\
-d  &=& (a →  a_2) →  [a] →  [a_2]\\\\
-s  &=& (a →  a_2) →  [a] →  [a_2]\\\\
-t  &=& [a] →  [a_2]\\\\
-u_1 &=& [a]\\\\
-u_2 &=& [a] →  [a]\\\\
-v_1 &=& [a_2]\\\\
-v_2 &=& [a_2] →  [a_2]\\\\
-v_3 &=& [a_2]\\\\
-v_4 &=& a_2\\\\
-v_5 &=& [a] →  [a_2]\\\\
-\end{array}
-$$
+```haskell
+\f -> \(x : xs) -> f x : map f xs
+```
 
-Per tant, el tipus era $(a →  a_2) →  [a] →  [a_2]$.
+Solució:
+
+- `a1 = a`
+- `b  = [a]`
+- `c  = a →  a2`
+- `d  = (a →  a2) →  [a] →  [a2]`
+- `s  = (a →  a2) →  [a] →  [a2]`
+- `t  = [a] →  [a2]`
+- `u1 = [a]`
+- `u2 = [a] →  [a]`
+- `v1 = [a2]`
+- `v2 = [a2] →  [a2]`
+- `v3 = [a2]`
+- `v4 = a2`
+- `v5 = [a] →  [a2]`
+
+Per tant, el tipus de l'arrel és `s = (a →  a2) →  [a] → [a2]`.
 
 
 ---
@@ -442,7 +454,7 @@ Inferència per altres construccions:
     es tracta com
 
     ```haskell
-    \x -> z y
+    (\x -> z) y
     ```
 
 -   Les guardes es tracten com un `if-then-else`.
@@ -453,38 +465,44 @@ Inferència per altres construccions:
 
 # Algorisme de Milner (Classes)
 
-Considerem ara que tenim classes de tipus.
+Considerem ara l'extensió de l'algorisme de Milner a classes de tipus.
 
-És a dir, que tenim definicions com ara
+<br>
+La presència de definicions com ara
 
 ```haskell
 (+) :: Num a => a -> a -> a
 (>) :: Ord a => a -> a -> Bool
 ```
 
-Això introdueix un nou tipus de restricció *de context*.
+introdueix unes noves *restriccions de context*.
 
-Per tant, les solucions també
-
-- han de satisfer les condicions de classe.
-- contindran condicions de classe.
+<br>
+Per tant, les solucions també han de contindre i satisfer les condicions de classe.
 
 
----
-
-# Algorisme de Milner (Classes)
-
-Reconsiderem l'exemple inicial:  `+ 2 x`
-
-![:height 20em](img/inferencia/infer1.pdf.png)
 
 ---
 
 # Algorisme de Milner (Classes)
 
-Reconsiderem l'exemple inicial:  `+ 2 x`
+Considerem aquest exemple amb classes:
 
-![:height 20em](img/inferencia/infer8.pdf.png)
+```haskell
+f x = 2 + x
+```
+
+Arbre d'expressió:
+
+<div id='cy_infer7' style='width: 100%; height: 14em; border: solid black 0px;'></div>
+
+---
+
+# Algorisme de Milner (Classes)
+
+Arbre etiquetat amb tipus:
+
+<div id='cy_infer8' style='width: 100%; height: 14em; border: solid black 0px;'></div>
 
 ---
 
@@ -492,52 +510,47 @@ Reconsiderem l'exemple inicial:  `+ 2 x`
 
 Equacions:
 
-$$
-\begin{array}{lcl}
-s &=& d  →  b\\\\
-c &=& d  →  b\\\\
-e →  e →  e &=& a  →  c\\\\
-\end{array}
-$$
+- `s = d  →  b`
+- `c = d  →  b`
+- `e →  e →  e = a  →  c`
 
 Restriccions:
 
-$$
-\textit{Num} \;  e, \; \textit{Num} \;  a
-$$
+- `Num a`
+- `Num e`
 
 Solució:
 
-$$
-\begin{array}{lcl}
-s  &=& a  →  a\\\\
-b  &=& a\\\\
-c  &=& a →  a\\\\
-d  &=& a\\\\
-e  &=& a\\\\
-\textit{Num} \; a \\\\
-\end{array}
-$$
+- `s  = a  →  a`
+- `b  = a`
+- `c  = a →  a`
+- `d  = a`
+- `e  = a`
 
-El tipus és doncs $\textit{Num} \; a ⇒ a → a$.
+El tipus de l'arrel (de `f`) és doncs `Num a ⇒ a → a`.
 
 
 ---
 
 # Algorisme de Milner (Errors)
 
-Considerem ara un error: `(+ '2' x)`
+Considerem ara un error:
 
-![:height 20em](img/inferencia/infer9.pdf.png)
+```haskell
+f x = '2' + x
+```
 
+Arbre d'expressió:
+
+<div id='cy_infer9' style='width: 100%; height: 14em; border: solid black 0px;'></div>
 
 ---
 
 # Algorisme de Milner (Errors)
 
-Considerem ara un error: `(+ '2' x)`
+Arbre etiquetat amb tipus:
 
-![:height 20em](img/inferencia/infer10.pdf.png)
+<div id='cy_infer10' style='width: 100%; height: 14em; border: solid black 0px;'></div>
 
 
 ---
@@ -546,40 +559,36 @@ Considerem ara un error: `(+ '2' x)`
 
 Equacions:
 
-$$
-\begin{array}{lcl}
-s &=& d  →  b\\\\
-c &=& d  →  b\\\\
-e →  e →  e &=& a  →  c\\\\
-\end{array}
-$$
+- `s = d  →  b`
+- `c = d  →  b`
+- `e →  e →  e = a  →  c`
 
 Restriccions:
 
-$$
-\textit{Num} \;  e
-$$
+- `Num e`
 
 Intent de solució:
 
-$$
-\begin{array}{lcl}
-s  &=& \textit{Char}   →  \textit{Char} \\\\
-b  &=& \textit{Char} \\\\
-c  &=& \textit{Char}  →  \textit{Char} \\\\
-d  &=& \textit{Char} \\\\
-e  &=& \textit{Char} \\\\
-\textit{Num} \; \textit{Char} && ❌ \\\\
-\end{array}
-$$
+- `s  = Char   →  Char `
+- `b  = Char `
+- `c  = Char  →  Char `
+- `d  = Char `
+- `e  = Char `
+- `Num Char` ❌
 
-Però `Char` no és instància de `Num`!
+Perquè `Char` no és instància de `Num`!
 
 
 
 ---
 
 # Exercicis
+
+-   Inferiu el tipus de:
+
+    ```haskell
+    ones = 1 : ones
+    ```
 
 -   Inferiu el tipus de:
 
@@ -630,5 +639,4 @@ Però `Char` no és instància de `Num`!
         else y : delete x ys
     ```
     amb `(==) :: Eq a => a -> a -> Bool`.
-
 
