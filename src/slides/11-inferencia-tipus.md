@@ -160,7 +160,7 @@ independentment en el context del λ-càlcul.
 
     - Si el tipus és conegut, se'ls etiqueta amb el seu tipus.
     - Altrament, se'ls etiqueta amb una nova variable de tipus.
-    - Nodes iguals han de tenir iguals etiquetes.
+    - Nodes iguals han de tenir etiquetes iguals.
 
 
 <div id='cy_infer2' style='width: 80%; height: 20em; border: solid black 0px;'></div>
