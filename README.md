@@ -39,7 +39,7 @@ Aquest projecte utilitza:
 Les contribucions via *pull requests* són benvingudes.
 
 
-## Llicència
+## Autors
 
 Albert Rubio i Jordi Petit, UPC
 
