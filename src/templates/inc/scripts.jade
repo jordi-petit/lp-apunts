@@ -1,12 +1,12 @@
-//script(src="https://gnab.github.io/remark/downloads/remark-latest.min.js")
-script(src="js/vendor/remark.min.js")
+//script(src="/https://gnab.github.io/remark/downloads/remark-latest.min.js")
+script(type="text/javascript", src="/js/vendor/remark.min.js")
 script
     include ../../js/vendor/remark-fallback.js
-script(src="js/vendor/remark-language.js")
-script(src="js/main.js")
+script(type="text/javascript", src="/js/vendor/remark-language.js")
+script(type="text/javascript", src="/js/main.js")
 
 // jpetit: mathjax
-script(src='js/bower_components/MathJax/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured', type='text/javascript')
+script(type="text/javascript", src='/js/node_modules/mathjax/unpacked/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured')
 script(type='text/javascript').
     MathJax.Hub.Config({
         tex2jax: {
@@ -17,34 +17,10 @@ script(type='text/javascript').
     MathJax.Hub.Configured();
 
 // jpetit: cytoscape
-script(src="js/bower_components/cytoscape/dist/cytoscape.min.js")
+script(type="text/javascript", src="/js/node_modules/cytoscape/dist/cytoscape.min.js")
 
 // jpetit: coffeescript
-script(type="text/javascript", src="js/vendor/coffee-script.min.js")
+script(type="text/javascript", src="/js/node_modules/coffeescript/lib/coffeescript-browser-compiler-legacy/coffeescript.js")
 
-// jpetit: my cytoscapes
-
-script(type="text/coffeescript", src="coffee/cy/mycys.coffee")
-script(type="text/coffeescript", src="coffee/cy/foldl.coffee")
-script(type="text/coffeescript", src="coffee/cy/foldr.coffee")
-script(type="text/coffeescript", src="coffee/cy/scanl.coffee")
-script(type="text/coffeescript", src="coffee/cy/scanr.coffee")
-script(type="text/coffeescript", src="coffee/cy/mapa.coffee")
-script(type="text/coffeescript", src="coffee/cy/iterate.coffee")
-script(type="text/coffeescript", src="coffee/cy/zipWith.coffee")
-
-script(type="text/coffeescript", src="coffee/cy/infer1.coffee")
-script(type="text/coffeescript", src="coffee/cy/infer2.coffee")
-script(type="text/coffeescript", src="coffee/cy/infer3.coffee")
-script(type="text/coffeescript", src="coffee/cy/infer4.coffee")
-script(type="text/coffeescript", src="coffee/cy/infer5.coffee")
-script(type="text/coffeescript", src="coffee/cy/infer6.coffee")
-script(type="text/coffeescript", src="coffee/cy/infer7.coffee")
-script(type="text/coffeescript", src="coffee/cy/infer8.coffee")
-script(type="text/coffeescript", src="coffee/cy/infer9.coffee")
-script(type="text/coffeescript", src="coffee/cy/infer10.coffee")
-script(type="text/coffeescript", src="coffee/cy/rules1.coffee")
-script(type="text/coffeescript", src="coffee/cy/rules2.coffee")
-script(type="text/coffeescript", src="coffee/cy/rules3.coffee")
-
-
+// jpetit: my cytoscape handler
+script(type="text/coffeescript", src="/coffee/mycys.coffee")

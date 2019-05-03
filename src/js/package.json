@@ -13,7 +13,8 @@
     "tests"
   ],
   "dependencies": {
-    "cytoscape": "^3.2.12",
-    "MathJax": "^2.7.4"
+    "coffeescript": "",
+    "cytoscape": "",
+    "mathjax": ""
   }
 }

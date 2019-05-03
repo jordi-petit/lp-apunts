@@ -2,8 +2,8 @@
 build/
 .publish
 
-# Dependency directories
+# node modules and their locks
 node_modules/
-
-# bower
-src/js/bower_components
+src/js/node_modules/
+package-lock.json
+src/js/package-lock.json
