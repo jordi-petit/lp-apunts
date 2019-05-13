@@ -22,9 +22,11 @@ Universitat Politècnica de Catalunya, 2019
 # Llenguatges de scripting
 
 Un llenguatge de *scripting* (de guions) és un llenguatge de programació
-per integrar-se i comunicar-se amb altres programes.
+destinat a escriure programes que s'integrin i es comuniquin amb altres
+programes.
 
-Continguts:
+
+## Continguts
 
 1. Història
 
@@ -42,15 +44,18 @@ Continguts:
 
 # Motivació
 
-L'any 1986, van demanar a Donald Knuth d'escriure una contribució
+L'any 1986, Donald Knuth escriu una contribució
 per la columna *Programming Pearls* de la revista *Communications of the ACM*.
 
 Tasca: Escriure un programa per llegir un fitxer de text, determinar les
 *n* paraules més freqüents, i escriure una llista d'aquestes paraules en ordre
-alfabètic juntament amb la seva freqüencia.
+alfabètic juntament amb la seva freqüencia. .right[👉 Feu-ho en Haskell i Python!]
 
-Knuth va presentar una solució en Pascal de 10 pàgines
-(ben dissenyada, perfectament comentada i usant una nova estrutura de dades).
+Knuth va presentar una [solució](https://homepages.cwi.nl/~storm/teaching/reader/BentleyEtAl86.pdf)
+en Pascal de 10 pàgines
+(ben dissenyada, perfectament comentada usant
+*programació literària*
+i introduint una nova estrutura de dades).
 
 --
 
@@ -380,7 +385,7 @@ Hello, world!
 
     - Exemple awk:
 
-        `awk '{print 💲1 " " 💲2 " " (💲1 + 💲2)/2} <notes.txt'`
+        `awk '{print 💲1 " " 💲2 " " (💲1 + 💲2)/2} < notes.txt'`
 
     - Exemple awk:
 
@@ -391,7 +396,7 @@ Hello, world!
         }
 
         {
-            print $1 "  \t  " $6
+            print $1 "\t" $6
         }
 
         END {
@@ -482,7 +487,7 @@ Hello, world!
 
 # Dominis d'aplicació
 
--  Llenguatges d'extensió. Exemple: Cridant LUA des de C.
+-  Exemple: Cridant LUA des de C.
 
 .cols5050[
 .col1[
