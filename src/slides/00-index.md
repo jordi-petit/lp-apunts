@@ -5,8 +5,6 @@
 
 Albert Rubio, Jordi Petit
 
-<br/>
-
 ## Índex
 
 [Presentació](01-presentacio.html)
@@ -24,5 +22,7 @@ Albert Rubio, Jordi Petit
 [Elements de FP en C++](09-fp-c++.html)
 
 [Competències Transversals](10-treball-lps.html)
+
+[Llenguatges de Scripting](12-scripting.html)
 
 [Inferència de Tipus](11-inferencia-tipus.html)
