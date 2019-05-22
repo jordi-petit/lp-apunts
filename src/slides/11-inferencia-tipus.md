@@ -627,7 +627,8 @@ Perquè `Char` no és instància de `Num`!
 -   Inferiu el tipus de:
 
     ```haskell
-    foldr f z (x : xs) = f x : (foldr f z xs)
+    foldr f z (x : xs) = f x (foldr f z xs)
+    foldr f z [] = z
     ```
 
 -   Inferiu el tipus de:
