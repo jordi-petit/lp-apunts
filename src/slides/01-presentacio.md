@@ -6,7 +6,10 @@ Llenguatges de Programació
 
 # Presentació
 
+
 Albert Rubio, Jordi Petit
+
+2019-2020 Q1
 
 <br/>
 
@@ -22,13 +25,50 @@ Universitat Politècnica de Catalunya, 2019
 # Professorat
 
 
-- Josep Carmona
+.col303030[
+.col13[
 
-- Gerard Escudero
+Josep Carmona
+<br>
+.xs[jcarmona@cs.upc]
 
-- Jordi Petit
+![:height 6em](img/profes/jcarmona.png)
 
-- Albert Rubio
+Edelmira Pasarella
+<br>
+.xs[edelmira@cs.upc]
+
+![:height 6em](img/profes/edelmira.png)
+
+]
+.col23[
+
+Gerard Escudero
+<br>
+.xs[gerard.escudero@upc]
+
+![:height 6em](img/profes/gescudero.png)
+
+
+Jordi Petit
+<br>
+.xs[jpetit@cs.upc]
+
+![:height 6em](img/profes/jpetit.png)
+
+]
+.col33[
+
+Fernando Orejas
+<br>
+.xs[forejas@cs.upc]
+
+
+![:height 6em](img/profes/forejas.png)
+
+]
+]
+
 
 
 
@@ -57,10 +97,9 @@ Universitat Politècnica de Catalunya, 2019
 
 # Continguts
 
+- Fonaments de Llenguatges de Programació
 
-- Introducció a la compilació.
-
-- Llenguatges funcionals: Haskell. Amb Jutge.org per practicar.
+- Llenguatges funcionals: Haskell. Amb Jutge.org per practicar
 
   - Pattern matching
 
@@ -70,50 +109,67 @@ Universitat Politècnica de Catalunya, 2019
 
   - Mònades
 
-- Llenguatges de scripting: Python. Amb Jutge.org per practicar.
+- Llenguatges de scripting: Python. Amb Jutge.org per practicar
 
-- Sistemes de tipus.
+- Introducció a la compilació
 
+- Sistemes de tipus
 
----
-
-# Calendari aproximat
-
-
-- Introducció a la compilació 3T/4L
-
-- Llenguatges Funcionals 5T/6L
-
-- Python Laboratori (4)
-
-- Sistemes de tipus Teoria (2)
-
-- Llenguatges de scripting Teoria (1)
-
-- Competències Transversals 1T/1L
 
 
 ---
 
 # Mètode d'avaluació
 
-Vegeu la [guia docent](https://www.fib.upc.edu/ca/estudis/graus/grau-en-enginyeria-informatica/pla-destudis/assignatures/LP).
+La [Guia docent](https://www.fib.upc.edu/ca/estudis/graus/grau-en-enginyeria-informatica/pla-destudis/assignatures/LP)
+estableix aquesta avaluació: N = 0.35·F + 0.30·P + 0.25·L + 0.10·D,
+on:
 
-Nota: Els repetidors podeu reusar la nota del llenguatge del curs passat.
+- F = nota de l'examen final
+- P = nota de l'examen parcial
+- L = nota del projecte
+- D = nota del treball dirigit
+
+L'examen final serà un examen escrit que avaluarà sobre tots els continguts del curs.
+
+L'examen parcial serà un examen d'ordinador consistent a resoldre problemes de programació utilitzant Haskell.
+
+El projecte consisteix en utilitzar eines per generar compiladors i Python per a resoldre un cas pràctic.
+
+El treball dirigit consisteix en preparar un vídeo i un document escrit sobre les propietats d'un llenguatge de programació. La seva avaluació es farà per evaluació entre companys (co-avaluació).
+
+Les qualificacions de les competències transversals s'obtenen del treball dirigit.
+
+**Nota:** En aquest curs no es poden reusar notes del curs passat.
+
+
 
 
 ---
 
-# Calendari exàmens (confirmeu-ho al Racó)
+# Calendari
 
-|   |   |
-|---|---|
-| Examen compiladors | dilluns 25 de març |
-| Examen Haskell | dilluns 6 de maig |
-| Presentacions | 23 i 27 de maig |
-| Examen final | divendres 7 de juny 8:00 |
+- Curs:
 
+    - Inici curs: 9 de setembre
+
+    - Final curs: 20 de desembre
+
+- Exàmens:
+
+    - Examen parcial: dl 4 de nov (12-14) <br>
+    (la setmana del 4 de nov no hi ha classes d'LP)
+
+    - Examen final: dm 14 de gen (11:30-14:30)
+
+- Treballs:
+
+    - Lliurament pràctica: dj 9  de gen
+
+    - Lliurament competència: dl 23 de des
+    - Correcció competència: dj 9 de gen
 ---
+
 
 # Bibliografia
 
@@ -136,12 +192,15 @@ Thomson-Paraninfo, 2004.
 
 # Material
 
-- Transperències d'Albert Rubio, amb lleugers canvis de Jordi Petit
+Tot el material s'anirà penjant al [Racó](https://raco.fib.upc.edu/home/assignatura?espai=270025):
+
+- Transperències d'Albert Rubio i Jordi Petit
 
 - Material de compiladors
 
 - Col·lecció de problemes de Haskell al Jutge
 
 - Col·lecció de problemes de Python al Jutge
+
 
 ---
