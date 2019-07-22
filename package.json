@@ -33,19 +33,19 @@
     "clean": "rm -r node_modules/; rm -r build/"
   },
   "devDependencies": {
-    "autoprefixer": "^6.7.7",
-    "browser-sync": "^2.18.8",
-    "gulp": "^3.9.1",
-    "gulp-cache": "^0.4.6",
-    "gulp-concat": "^2.6.1",
-    "gulp-csscomb": "^3.0.8",
-    "gulp-gh-pages": "^0.5.4",
-    "gulp-imagemin": "^3.2.0",
-    "gulp-jade": "^1.1.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-stylus": "^2.6.0",
-    "gulp-uglify": "^2.1.2",
-    "gulp-util": "^3.0.8",
-    "poststylus": "^0.2.3"
+    "autoprefixer": "",
+    "browser-sync": "",
+    "gulp": "",
+    "gulp-cache": "",
+    "gulp-concat": "",
+    "gulp-csscomb": "",
+    "gulp-gh-pages": "",
+    "gulp-imagemin": "",
+    "gulp-jade": "",
+    "gulp-plumber": "",
+    "gulp-stylus": "",
+    "gulp-uglify": "",
+    "gulp-util": "",
+    "poststylus": ""
   }
 }
