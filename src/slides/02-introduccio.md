@@ -29,7 +29,7 @@ Cada llenguatge té una sèrie de regles estrictes:
 
 - **Regles semàntiques**: descriuen el seu significat.
 
-Cada llenguatge té / hauria de tenir una especificació:
+Cada llenguatge té (hauria de tenir) una especificació:
 
 - un document estàndard (Ansi C) o
 - una implementació de referència (CPython).
@@ -57,6 +57,7 @@ class: split-6040
 
 .cols6040[
 .col1[
+.xs[
 A [rectangular] cistern.
 
 The height is 3, 20, and a volume of 27, 46, 40 has been excavated.
@@ -70,11 +71,20 @@ Make two copies of this, adding [25] to the one and subtracting from the other.
 You find that 3, 20 [i.e., 3 1/3] is the length and 2, 30 [i.e., 2 1/2] is the width.
 
 This is the procedure.
-]
+
+<br>
+
+[![:height 2em](img/icones/youtube.png)](https://www.youtube.com/watch?v=Rx-5dCXx1SI)
+
+.xxs[Vídeo: Math whizzes of ancient Babylon figured out forerunner of calculus]
+
+]]
 .col2[
-![:height 18em](img/babilonic-tablet.png)
+![:height 20em](img/babilonic-tablet.png)
 ]
 ]
+
+
 *[Ancient Babylonian Algorithms](http://steiner.math.nthu.edu.tw/disk5/js/computer/1.pdf)*. D.E. Knuth, Communications ACM 1972.
 
 
@@ -85,11 +95,17 @@ This is the procedure.
 
 ## Teler de Jacquard (1804)
 
+
 ![:height 15em](img/jacquard1.png)
 .sepimg[]
 ![:height 15em](img/jacquard2.png)
 
 .xxs[Fotos: http://www.revolutionfabrics.com/blog/2018/9/26/the-jacquard-loom-and-the-binary-code]
+
+[![:height 2em](img/icones/youtube.png)](https://www.youtube.com/watch?v=MQzpLLhN0fY)
+
+.xxs[Vídeo: How an 1803 Jacquard Loom Lead to Computer Technology]
+
 
 
 
@@ -108,6 +124,12 @@ Es considera que Ada Lovelace és la primera programadora.
 ![:height 10em](img/ada-lovelace.png)
 
 .xxs[Fotos: Domini públic]
+
+<br>
+
+[![:height 2em](img/icones/youtube.png)](https://www.youtube.com/watch?v=lLOAuYv87uU)
+
+.xxs[Vídeo:  Ada Lovelace, The World’s First Computer Nerd?]
 
 
 ---
@@ -620,6 +642,98 @@ Altres combinacions:
 
 
 - **Shakespeare**: Amaga un programa dins d'una obra de teatre.
+
+<pre style='margin-left: 3em; padding: 10px; height: 16em; overflow-y: auto; background-color: #272822; border-radius: 5px; color: white; font-size: 12px;'>
+The Infamous Hello World Program.
+
+Romeo, a young man with a remarkable patience.
+Juliet, a likewise young woman of remarkable grace.
+Ophelia, a remarkable woman much in dispute with Hamlet.
+Hamlet, the flatterer of Andersen Insulting A/S.
+
+
+                    Act I: Hamlet's insults and flattery.
+
+                    Scene I: The insulting of Romeo.
+
+[Enter Hamlet and Romeo]
+
+Hamlet:
+ You lying stupid fatherless big smelly half-witted coward!
+ You are as stupid as the difference between a handsome rich brave
+ hero and thyself! Speak your mind!
+
+ You are as brave as the sum of your fat little stuffed misused dusty
+ old rotten codpiece and a beautiful fair warm peaceful sunny summer's
+ day. You are as healthy as the difference between the sum of the
+ sweetest reddest rose and my father and yourself! Speak your mind!
+
+ You are as cowardly as the sum of yourself and the difference
+ between a big mighty proud kingdom and a horse. Speak your mind.
+
+ Speak your mind!
+
+[Exit Romeo]
+
+                    Scene II: The praising of Juliet.
+
+[Enter Juliet]
+
+Hamlet:
+ Thou art as sweet as the sum of the sum of Romeo and his horse and his
+ black cat! Speak thy mind!
+
+[Exit Juliet]
+
+                    Scene III: The praising of Ophelia.
+
+[Enter Ophelia]
+
+Hamlet:
+ Thou art as lovely as the product of a large rural town and my amazing
+ bottomless embroidered purse. Speak thy mind!
+
+ Thou art as loving as the product of the bluest clearest sweetest sky
+ and the sum of a squirrel and a white horse. Thou art as beautiful as
+ the difference between Juliet and thyself. Speak thy mind!
+
+[Exeunt Ophelia and Hamlet]
+
+
+                    Act II: Behind Hamlet's back.
+
+                    Scene I: Romeo and Juliet's conversation.
+
+[Enter Romeo and Juliet]
+
+Romeo:
+ Speak your mind. You are as worried as the sum of yourself and the
+ difference between my small smooth hamster and my nose. Speak your
+ mind!
+
+Juliet:
+ Speak YOUR mind! You are as bad as Hamlet! You are as small as the
+ difference between the square of the difference between my little pony
+ and your big hairy hound and the cube of your sorry little
+ codpiece. Speak your mind!
+
+[Exit Romeo]
+
+                    Scene II: Juliet and Ophelia's conversation.
+
+[Enter Ophelia]
+
+Juliet:
+ Thou art as good as the quotient between Romeo and the sum of a small
+ furry animal and a leech. Speak your mind!
+
+Ophelia:
+ Thou art as disgusting as the quotient between Romeo and twice the
+ difference between a mistletoe and an oozing infected blister! Speak
+ your mind!
+
+[Exeunt]
+</pre>
 
 ---
 

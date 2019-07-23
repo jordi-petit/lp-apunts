@@ -74,9 +74,9 @@ $$
   a b c d \equiv (((a b) c) d).
 $$
 
-La λ amb el punt introdueixen funcions. Per claretat, es poden agrupar:
+La λ amb el punt introdueix funcions. Per claretat, es poden agrupar λs:
 $$
-    λ x . λ y . a \equiv λ xy.a
+    λ x . λ y . a \equiv λ x . (λ y . a) \equiv λ xy.a
 $$
 
 ---
