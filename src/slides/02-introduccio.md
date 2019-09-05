@@ -444,7 +444,7 @@ Subclassificacions:
   ```smalltalk
   Point»dist: aPoint
         dx := aPoint x - x.
-        dy :=  aPoint y - y.
+        dy := aPoint y - y.
         ↑ ((dx * dx) + (dy * dy)) sqrt
   ```
 
@@ -458,7 +458,7 @@ Caràcteristiques:
 
 - Llenguatges descriptius.
 
-- El programa diu que s'ha de fer, però no necessariament com.
+- El programa diu què s'ha de fer, però no necessariament com.
 
 
 Utilitat:
@@ -790,7 +790,7 @@ llenguatges Turing complets.
 
     - LPs de programació de propòsit general (C/C++, Python, Haskell...)
     - automàts cel·lulars (Joc de la vida, ...)
-    - jocs (Minecraft, Buscamines...)
+    - alguns jocs (Minecraft, Buscamines...)
 
   Per ser Turing complet només cal tenir salts condicionals (bàsicament,
   `if` i `goto`) i memòria arbitràriament gran.
@@ -808,12 +808,12 @@ llenguatges Turing complets.
 # Sistemes d'execució
 
 - **Compilat**: el codi és transforma en codi objecte i després es monta en
-  un executable. Sol ser eficient.
+  un executable. Sol ser eficient. Es distribueix l'executable.
 
   Exemples: C, C++, Ada, Haskell, ...
 
 - **Interpretat**: el codi s'executa directament o el codi es transforma en
-  codi d'una màquina virtual, que l'executa.
+  codi d'una màquina virtual, que l'executa. Es distribueix el codi font.
 
   Aumenten la portabilitat i l'expressabilitat (es poden fer més coses
   en temps d'execució) però disminueix l'eficiència.
@@ -845,10 +845,10 @@ Per exemple, amb
 ```c++
 class Persona;
 class Forma;
-class Rectangle: Forma;
-class Triangle : Forma;
+class Rectangle :Forma;
+class Triangle  :Forma;
 
-doube area (const Forma&);
+double area (const Forma&);
 ```
 
 - cridar a `area` amb un `Rectangle` o un `Triangle` és correcte,

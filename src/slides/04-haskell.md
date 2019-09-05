@@ -126,18 +126,20 @@ main = do
 
 # Punts forts
 
-
 - Fàcil de llegir, elegant
-
 - Concís
-
 - Compilat
-
 - Tipatge fort
-
 - Abstraccions potents
-
 - Promou reús de codi
+
+
+# Punts febles
+
+- Manca d'un model de cost comprehensible
+- Sistema de mòduls
+- Comunitat petita
+- Èmfasi en la recera de LP, molts canvis al llenguatge
 
 ---
 

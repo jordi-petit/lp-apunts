@@ -3,26 +3,23 @@
 
 ## Curs 2018-2019 Q2
 
-Albert Rubio, Jordi Petit
+Índex:
 
-## Índex
+- [Presentació del curs actual](01-presentacio.html)
 
-[Presentació](01-presentacio.html)
+- [Introducció als llenguatges de programació](02-introduccio.html)
 
-[Introducció](02-introduccio.html)
+- [Fonaments: λ-càlcul](03-lambda-calcul.html)
 
-[Fonaments: λ-càlcul](03-lambda-calcul.html)
+- Porgramació funcional en Haskell: [1](04-haskell.html) / [2](05-haskell.html) / [3](06-haskell.html) / [4](07-haskell.html) / [5](08-haskell.html)
 
-[Haskell 1](04-haskell.html) /
-[Haskell 2](05-haskell.html) /
-[Haskell 3](06-haskell.html) /
-[Haskell 4](07-haskell.html) /
-[Haskell 5](08-haskell.html)
+- [Elements de programació funcional en C++](09-fp-c++.html)
 
-[Elements de FP en C++](09-fp-c++.html)
+- [Llenguatges de scripting](12-scripting.html)
 
-[Competències Transversals](10-treball-lps.html)
+- [Python](https://gebakx.github.io/Python3)
 
-[Llenguatges de Scripting](12-scripting.html)
+- [Inferència de tipus](11-inferencia-tipus.html)
 
-[Inferència de Tipus](11-inferencia-tipus.html)
+- [Treball dirigit](10-treball-lps.html)
+

@@ -4,9 +4,9 @@ class: center, middle
 
 Llenguatges de Programació
 
-# Competències transversals
+# Treball dirigit
 
-Jordi Petit i Albert Rubio
+Jordi Petit
 
 <br/>
 
@@ -18,7 +18,15 @@ Universitat Politècnica de Catalunya, 2019
 
 ---
 
-# Competències transversals
+
+# Treball dirigit
+
+El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
+les propietats d'un llenguatge de programació.
+
+L'objectiu és satisfer les competències transversals de l'assignatura:
+
+
 
 .cols5050[
 .col1[
@@ -45,47 +53,85 @@ llacunes.
 
 ---
 
-# Comunicació eficaç oral i escrita
+# Treball dirigit
+
+El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
+les propietats d'un llenguatge de programació.
+
+L'avaluació es farà per evaluació entre companys (co-avaluació).
+
+Etapes:
+
+1. Assignació de llenguatges de programació a l'atzar **(dl 25 de novembre)**.
+
+2. Preparació del vídeo i del document **(temps: 4 setmanes)**.
+
+3. Penjar vídeo i document a [Peergrade](https://www.peergrade.io/),
+registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `EWF77Z`
+**(límit: dl 23 de desembre, 14:00)**.
+
+4. Avaluar els vídeos i els documents de 3 altres companys usant una rúbrica
+   preparada pels professors a Peergrade **(límit: dj 9 de gener, 14:00)**.
 
 
--   Comunicació oral:
-
-    -  Presentació de 5 minuts (exactament).
-
-    -  Transparències molt simples amb Google Slides.
-
-    -  Per exemple 15 transparències de 20 segons.
 
 
--  Comunicació escrita:
+---
 
-    -  Lliurament d'un document curt en Markdown
-        (5 a 10 planes aprox).
+# Vídeo
 
-    -  Primera part: acompanyament més detallat de la presentació.
+-  Presentació d'entre 9 i 11 minuts (ni més ni menys).
 
-    -  Segona part: estudi bibliogràfic.
+-  Producció molt simple (no hi perdeu el temps!):
+
+    - Veu en off amb text i material gràfic que doni suport a l'explicació.
+    - No s'ha de veure l'orador.
+
+- Característiques tècniques:
+
+    - Resolució de 848×480 píxels com a mínim.
+    - Límit de 50MB per fitxer.
+    - Important: una imatge clara i un àudio molt nítid.
+
+- El vídeo ha de ser anònim .xs[(malgrat que es pugui reconèixer la veu de l'orador...)]
+
+- Exemple: FALTA POSAR EXEMPLE
+
+---
+
+#  Document
+
+- Lliurament d'un document curt en PDF (6 a 12 planes aproximadament).
+
+- Primera part: acompanyament més detallat de la presentació.
+
+- Segona part: estudi bibliogràfic.
+
+- El document ha de ser anònim.
+
 
 ---
 
 # Comunicació eficaç oral i escrita
 
--  Primera part del document:
+-  Vídeo i primera part del document:
 
     Cal tractar com a mínim qüestions descrites a la sessió d'Introducció als
     Llenguatges de Programació i a la sessió de Sistemes de Tipus com ara:
 
+    -  Propòsit del llenguatge.
+
     -  Paradigma o paradigmes de programació que admet el llenguatge.
 
-    -  Compilat o interpretat.
+    -  Sistema d'execució.
 
     -  Sistema de tipus.
 
     -  Principals aplicacions.
 
-    -  Llenguatges similars.
+    -  Història del LP i relació amb LPs similars.
 
-    -  Algun exemple de codi.
+    -  Exemples de codi il·lustratius.
 
     -  Altres característiques particulars.
 
@@ -105,8 +151,36 @@ llacunes.
 
     -  Incloeu referències bibliogràfiques.
 
-    -  Millor si no totes són a internet.
+    -  Millor si no totes són d'internet.
 
+
+---
+
+
+# Avaluació del Treball Dirigit
+
+L'avaluació dels companys a través de la rúbrica donarà lloc
+a tres qualifacions:
+
+- Nota de la competència G4.3 (A, B, C, D, NA)
+- Nota de la competència G6.3 (A, B, C, D, NA)
+- Nota de la part de treball dirigit de l'assignatura (0 a 10)
+
+Casos excepcionals:
+
+- No enviar el treball complet (vídeo i document) o no avaluar els treballs
+  dels 3 companys dóna lloc a una qualifació de NA, NA, 0.
+
+- Si algun estudiant considera que ha estat mal avaluat pels seus companys,
+podrà demanar que els professors li corregeixin independentment el seu treball.
+Les qualificacions resultants substituiran a les dels companys, ja sigui
+a l'alta o a la baixa.
+
+- Els professors també podran corregir d'ofici treballs arbitraris
+i canviar-ne les qualificacions.
+
+- Els professors penalitzaran als estudiants que avaluin de forma
+manifestament incorrecta als seus companys.
 
 ---
 
@@ -119,33 +193,5 @@ Tingueu en comptes aquestes pautes:
 - [Evitar el plagi](https://bibliotecnica.upc.edu/propietat-intellectual/evitar-plagi)
 
 - [Citar i elaborar la bibliografia](https://bibliotecnica.upc.edu/investigadors/citar-elaborar-bibliografia)
-
-
-
----
-
-# Lliurament i formats
-
-- Comunicació oral:
-
-    - El suport de la presentació oral s'ha de fer amb
-      un document **[Google Slides](https://www.google.com/slides/about/)**.
-
-    - Utilitzeu el tema *Simple Light* i mida de pàgina estàndard (4:3).
-
-    - La primera transparència ha d'incloure el vostre nom complet, títol
-    del LP i data de presentació.
-
-    - El document de Google Slides s'ha de compartir **dues hores abans de la presentació**
-      amb l'usuari `lp@jutge.org`. El nom del document compartit ha de ser el vostre *username* de la FIB.
-
-- Comunicació escrita:
-
-    - El document escrit s'ha de redactar en format
-    **[Markdown](https://github.github.com/gfm/)** i convertir a **PDF**.
-
-    - El document escrit s'ha de lliurar a través del Racó abans del **dilluns 10
-    juny a les 9:00 CEST** en un fitxer ZIP que contingui els fitxers
-    `document.md` i `document.pdf`. Res més.
 
 

@@ -76,7 +76,7 @@ $$
 
 La λ amb el punt introdueix funcions. Per claretat, es poden agrupar λs:
 $$
-    λ x . λ y . a \equiv λ x . (λ y . a) \equiv λ xy.a
+    λ x . λ y . a \equiv λ x . (x) \equiv λ xy.a
 $$
 
 ---

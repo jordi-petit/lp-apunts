@@ -74,43 +74,51 @@ Universitat Politècnica de Catalunya, 2019
 .col303030[
 .col13[
 
+![:height 6em](img/profes/jcarmona.png)
+<br>
 Josep Carmona
 <br>
 .xs[jcarmona@cs.upc]
 
-![:height 6em](img/profes/jcarmona.png)
 
+<br>
+
+![:height 6em](img/profes/edelmira.png)
+<br>
 Edelmira Pasarella
 <br>
 .xs[edelmira@cs.upc]
 
-![:height 6em](img/profes/edelmira.png)
 
 ]
 .col23[
 
+![:height 6em](img/profes/gescudero.png)
+<br>
 Gerard Escudero
 <br>
 .xs[gerard.escudero@upc]
 
-![:height 6em](img/profes/gescudero.png)
 
+<br>
 
+![:height 6em](img/profes/jpetit.png)
+<br>
 Jordi Petit
 <br>
 .xs[jpetit@cs.upc]
 
-![:height 6em](img/profes/jpetit.png)
 
 ]
 .col33[
 
+![:height 6em](img/profes/forejas.png)
+<br>
 Fernando Orejas
 <br>
-.xs[forejas@cs.upc]
+.xs[orejas@cs.upc]
 
 
-![:height 6em](img/profes/forejas.png)
 
 ]
 ]
@@ -204,7 +212,7 @@ Thomson-Paraninfo, 2004.
 
 El material del curs s'anirà penjant als avisos del [Racó](https://raco.fib.upc.edu/home/assignatura?espai=270025):
 
-- Transperències d'Albert Rubio i Jordi Petit
+- Transperèncie escrites per Albert Rubio, Jordi Petit i Gerard Escudero
 
 - Transperències de compiladors de Jordi Cortadella
 
