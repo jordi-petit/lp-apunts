@@ -6,7 +6,7 @@ Llenguatges de Programació
 
 # Introducció
 
-Albert Rubio, Jordi Petit
+Albert Rubio, Jordi Petit, Fernando Orejas
 
 <br/>
 
@@ -33,6 +33,45 @@ Cada llenguatge té (hauria de tenir) una especificació:
 
 - un document estàndard (Ansi C) o
 - una implementació de referència (CPython).
+
+
+---
+
+# Característiques bàsiques d'un LP
+
+- Tipus de dades: amb quins dades i objectes treballem.
+
+- Sistema de tipus.
+
+- Control de seqüència: en quin ordre s'executen les operacions.
+
+- Control de dades. Com s'accedeix a les dades i als objectes.
+
+- Entrada / Sortida.
+
+---
+
+# Qualitats dels llenguatges de programació
+
+- Llegibilitat
+
+- Eficiència
+
+- Fiabilitat
+
+- Expressivitat
+
+- Simplicitat
+
+- Nivell d'abstracció
+
+- Adequació als problemes a tractar
+
+- Facilitat d'ús
+
+- Ortogonalitat
+
+
 
 ---
 
@@ -339,7 +378,23 @@ end Absmax
 
 ---
 
-# Història: etc, etc, etc
+# Història: altres llenguatges
+
+
+
+- Basic (Orientat a l'ensenyament de la programació) - 1964
+
+- Pascal/Algol 68 (els hereus directes d'Algol 60) - 1970/1968
+
+- C (Definit per programar Unix) - 1972
+
+- Prolog (Primer llenguatge de programació lògica) - 1972
+
+- Simula 67/Smalltalk  80 (primers llenguatges OO)
+
+- Ada (LP creat per ser utilitzat pel Departament de Defensa Americà) - 1980
+
+- ML/Miranda (primers llenguatges funcionals moderns) - 1983/1986
 
 ---
 
@@ -434,7 +489,7 @@ Subclassificacions:
   PROCEDURE swap (VAR a, b: INTEGER)
   VAR c: INTEGER;
   BEGIN
-        c := a;  b:=a;  a=c;
+        c := a;  b := a;  a := c;
   END;
   ```
 
@@ -498,9 +553,9 @@ Subclasificacions:
 - **Consultes**: Resposta a consultes a una base de dades.
 
   ```sql
-  select full_name, order_date, order_amount
-  from customers inner join orders
-  on customers.customer_id = orders.customer_id
+  SELECT full_name, order_date, order_amount
+  FROM customers INNER JOIN orders
+  ON customers.customer_id = orders.customer_id
   ```
 
 - **Lògic**: Resposta a una pregunta amb fets i regles.

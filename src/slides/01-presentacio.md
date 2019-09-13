@@ -119,7 +119,6 @@ Fernando Orejas
 .xs[orejas@cs.upc]
 
 
-
 ]
 ]
 
