@@ -6,7 +6,7 @@ Llenguatges de Programació
 
 # Fonaments: λ-càlcul
 
-Albert Rubio, Jordi Petit
+Albert Rubio, Jordi Petit, Fernando Orejas
 
 <br/>
 
@@ -20,7 +20,7 @@ Universitat Politècnica de Catalunya, 2019
 
 # Introducció
 
-El **λ-càlcul** és un model de computació funcional, l'orígen dels llenguatges
+El **λ-càlcul** és un model de computació funcional, l'origen dels llenguatges
 funcionals, i la base de la seva implementació.
 
 .cols5050[
@@ -60,23 +60,34 @@ $$
 $$
 ]
 
+
 Exemples de termes:
 -  $x$
 -  $λ x . x$
 -  $(λ y . x(yz)) (ab)$
 
+<div id='cy_expr1' style='width: 100%; height: 14em; border: solid black 0px;'></div>
+
+
+
+
+---
+
+# Gramàtica
+
+
 Les lletres es diuen *variables* i no tenen cap significat. El seu nom no importa.
 Si dues variables tenen el mateix nom, són la mateixa cosa.
 
-Els parèntesis agrupen termes. Per claretat, s'agrupen per l'esquerra:
+Els parèntesis agrupen termes. Per claredat, s'agrupen per l'esquerra:
 
 $$
   a b c d \equiv (((a b) c) d).
 $$
 
-La λ amb el punt introdueix funcions. Per claretat, es poden agrupar λs:
+La λ amb el punt introdueix funcions. Per claredat, es poden agrupar λs:
 $$
-    λ x . λ y . a \equiv λ x . (x) \equiv λ xy.a
+    λ x . λ y . a \equiv λ x . (λ y . a) \equiv λ xy.a
 $$
 
 ---
@@ -106,38 +117,46 @@ $
 
 - L'**aplicació** captura la idea d'aplicar una funció sobre un paràmetre:
 $$
-    u \ v
+    f \ x
 $$
-on $u$ i $v$ són dos termes.
+on $f$ i $x$ són dos termes.
 
-    *Intuició:*
-$
-    f(6, 3)
-$
-és representat per
-$
-    f \ 6\  3
-$
-és a dir
-$
-    (f\  6) \ 3
-$.
+---
 
+# Funcions al curry
+
+Al λ-càlcul totes les funcions tenen un sol paràmetre.
+
+Les funcions que
+normalment consideraríem que tenen més d'un paràmetre es representen com a
+funcions d'un sol paràmetre utilitzant la tècnica del *currying*:
+
+- Una funció amb dos paràmetres, com ara la suma, +: int x int ⟶ int, es pot considerar equivalent a una funció d'un sol paràmetre que retorna una funció d'un paràmetre, +: int ⟶ (int ⟶ int).
+
+- Això vol dir que $2 + 3$, amb notació prefixa $(+ 2 ~ 3)$, s'interpretaria com $(+2)~3$, on $(+2)$ és la funció que aplicada a qualsevol paràmetre $x$, retorna $x+2$.
 
 ---
 
 # Computació
 
-La **β-reducció** és la única regla (*cut-and-paste*):
+La **β-reducció** (*cut-and-paste*) és la regla essencial de computació del λ-càlcul:
 .my-inverse[
 $$
    (λ x . u \  v) ⟶_β  u[x:=v]
 $$
 ]
 
-on $u[x:=v]$ vol dir reescriure $u$ substituïnt les seves $x$ per $v$.
+on $u[x:=v]$ vol dir reescriure $u$ substituint les seves $x$ per $v$.
 
 Exemple: $(λ y . x(yz))(a b) ⟶_β x ((ab)z) \ ≡ \ x (a b z)$.
+
+<br>
+
+Si una expressió no pot β-reduir-se, aleshores es diu que està en **forma normal**.
+
+Si $t  ⟶  ... ⟶ t'$   i   $t'$ està en forma normal, aleshores es diu que $t'$ és la forma normal de $t$, i es considera que $t'$ es el resultat de l'avaluació de $t$.
+
+Una λ-expressió té, com a màxim, una forma normal.
 
 ---
 
@@ -147,11 +166,104 @@ Dins d'un terme, una variable és **lligada** si apareix al cap d'una funció
 que la conté. Altrament és **lliure**.
 
 Les variables poden ser lliures i lligades alhora en un mateix terme.
+
 Per exemple: $$(λx.xy)(λy.y)$$
 
-En cas de tenir variables lligades, cal *renomenar-les*
-abans d'operar.
-Per exemple: $$(λx.x)x≡(λz.z)x≡x$$
+- $y$ és lliure a la primera subexpressió.
+- $y$ és lligada a la segona subexpressió.
+
+---
+
+# El problema de la captura de noms
+
+Quan s'aplica la β-reducció s'ha de tenir cura amb els noms de les variables i, si cal, renomenar-les.
+
+El problema es pot veure en el següent exemple:
+Sigui $\text{TWICE}$: $$(λf.λx.f(f x))$$
+
+Calculem $(\text{TWICE} ~ \text{TWICE})$:
+
+$$
+\begin{align}
+\text{TWICE} ~ \text{TWICE}
+~=~& (λf.λx.f(f x)) \text{TWICE} \\\\
+~⟶_β~& (λx.\text{TWICE}(\text{TWICE} ~ x)) \\\\
+~=~& (λx.\text{TWICE}(λf.λx.f(f x)) x) \\\\
+\end{align}
+$$
+Aplicant la β-reducció directament tindríem:
+
+$(λx.\text{TWICE}(λf.λx.f(f x)) x) ⟶_β (λx.\text{TWICE}(λx.x(x x)))$ **ERROR**
+
+El que hauríem de fer és renomenar la variable lligada $x$ mes interna:
+
+$(λx.\text{TWICE}((λf.λx.f(f x)) x) = (λx.\text{TWICE}((λf.λy.f(f y)) x) $
+<br>
+$⟶_β (λx.\text{TWICE}((λy.x(x y))$ **OK**
+
+---
+
+#  α-Conversió
+
+A més de la β-reducció, al λ-càlcul tenim la regla de l'α-conversió per renomenar les variables. Per exemple:
+
+$$
+    λ x . λ y . xy ⟶_a λ z . λ y . zy ⟶_a λ z . λ t . zt
+$$
+
+Aleshores l'exemple del $\text{TWICE}$ el podríem escriure:
+
+$$
+\begin{align}
+\text{TWICE} ~ \text{TWICE}
+~=~& (λf.λx.f(f x)) \text{TWICE} \\\\
+~⟶_β~& (λx.\text{TWICE}(\text{TWICE} ~ x)) \\\\
+~=~& (λx.\text{TWICE}(λf.λx.f(f x)) x) \\\\
+~⟶_a~& (λx.\text{TWICE}((λf.λy.f(f y)) x) \\\\
+~⟶_b~& (λx.\text{TWICE}((λy.x(x y))
+\end{align}
+$$
+---
+#  Ordres de reducció
+
+Donada una λ-expressió, pot haver més d'un lloc on es pot aplicar  β-reducció, per exemple:
+
+$$
+(1)   ~~(λ x .x((λ z .zz)x)) t ⟶ t((λ z .zz)t) ⟶ t(tt)
+$$
+
+però també:
+
+$$
+(2)    ~~(λ x .x((λ z .zz)x)) t \longrightarrow (λ x .x(xx)) t ⟶ t(tt)
+$$
+
+Hi ha dues formes estàndard d'avaluar una λ-expressió:
+
+- Avaluació en **ordre normal**: s'aplica l'estratègia **left-most outer-most**: Reduir la λ sintàcticament més a l'esquerra (1).
+
+- Avaluació en  **ordre aplicatiu**: s'aplica l'estratègia **left-most inner-most**: Reduir la λ més a l'esquerra de les que són més endins (2).
+
+---
+
+
+#  Ordres de reducció
+
+En principi, podríem pensar que no importa l'ordre d'avaluació que utilitzem, perquè la  β-reducció és  **confluent**:
+
+Si $t → \dots → t_1$ i $t → \dots → t_2$ llavors<br>
+$t_1 → \dots → t_3$ i $t_2 → \dots → t_3$
+
+Tanmateix, si una expressió té una forma normal, aleshores la reducció en ordre normal la trobarà, però no necessàriament la reducció en ordre aplicatiu.
+
+Per exemple, donada l'expressió $((λx.x) ((λy.yy) (λz.z)))$, en ordre normal tenim:
+
+$$((λx.a) ((λy.yy) (λz.zz))) ⟶ a$$
+
+però en ordre aplicatiu:
+
+$$((λx.a) ((λy.yy) (λz.zz))) ⟶ ((λx.a) ((λz.zz) (λz.zz))) ⟶ ... $$
+
 
 
 ---
@@ -161,7 +273,9 @@ Per exemple: $$(λx.x)x≡(λz.z)x≡x$$
 En el λ-càlcul, les funcions no reben noms.
 
 Per facilitar-ne la escriptura, utilitzarem **macros** que representen
-funcions i les expandirem quan calgui.
+funcions i les expandirem quan calgui, com vam fer a les transparències anteriors amb $\text{TWICE}$.
+
+Les macros també es diuen **combinadors**.
 
 ⇒ És un recurs "meta" que no forma part del llenguatge (preprocessador).
 
@@ -328,14 +442,19 @@ Exercici: Escriviu TRUE i FALSE en Haskell, utilitzant funcions d'ordre superior
 Sembla que sense poder donar noms a les funcions, el λ-càlcul no pugui
 donar suport a la recursivitat... però sí que es pot:
 
-S'utilitza el **combinador Y** que crida una funció $y$ i es regenera ell mateix:
+S'utilitza el **combinador Y**, anomenat *combinador paradoxal* o *combinador de punt fixe*, amb la següent proprietat:
+
+$$
+\text{Y} \text{R} \ ≡\ \text{R}(\text{Y} \text{R})
+$$
+
+Concretament, Y es defineix així:
 
 $$
   \text{Y} \ ≡\ λy (λx.y(xx))(λx.y(xx))
 $$
 
-Exemple: Apliquem Y a una funció R:
-
+Com podem veure:
 
 $$
   \begin{align}
@@ -346,7 +465,29 @@ $$
   \end{align}
 $$
 
-Per tant, hem aplicat R sobre YR, per tant, hem aplicat R recursivament!
+---
+
+# Recursivitat en λ-càlcul
+
+El combinador Y ens permet definir la funció factorial.
+
+Sigui H la funció següent:
+
+$$λ\text{fac}.λn.\text{IF} (n=0) ~ 1 ~  (n * (\text{fac} ~ (n-1)))$$
+
+podem veure com Y H funciona com el factorial:
+
+<br>
+
+Y H 1 ⟶ H(Y H) 1 =  λ\text{fac}.λn.\text{IF} (n=0) 1 (n * (\text{fac}  (n-1))) (Y H) 1 ⟶
+
+λn.\text{IF} (n=0) 1 (n * (Y H (n-1))) 1 ⟶ \text{IF} (1=0) 1 (1 * (Y H (1-1))) ⟶
+
+1 * (Y H (1-1))) ⟶ Y H 0 ⟶ H (Y H) 0  =
+
+λ\text{fac}.λn.\text{IF} (n=0) 1 (n * (\text{fac} (n-1))) (Y H) 0 ⟶
+
+λn.\text{IF} (n=0) 1 (n * (Y H (n-1))) 0 ⟶ \text{IF} (0=0) 1 (0 * (Y H (0-1))) ⟶ 1
 
 ---
 
@@ -367,22 +508,7 @@ representades en λ-càlcul  (⟺ Turing complet).
 
 <br>
 
-A diferència del les màquines de Tuing que són un model matemàtic d'una
+A diferència de les màquines de Turing que són un model matemàtic d'una
 màquina *hardware* imperativa, el λ-càlcul només utilitza reescriptura
 i és un model matemàtic més *software* i funcional.
 
----
-
-# Propietats de la β-reducció
-
-La β-reducció (→) és **confluent**:
-
-Si $t → \dots → t_1$ i $t → \dots → t_2$ llavors<br>
-$t_1 → \dots → t_3$ i $t_2 → \dots → t_3$
-
-<br>
-
-Estratègia **left-most outer-most**: Reduir la λ sintàcticament més a l'esquerra.
-
-Aquesta estratègia és *normalitzant*: Si existeix un terme que no es pot
-reescriure més, aquesta estratègia el troba!
