@@ -32,12 +32,12 @@ var slideShow = remark.create({
     // Enable or disable navigation using touch
     // Default: true
     // Alternatives: false
-    touch: false,
+    touch: true,
 
     // Enable or disable navigation using click
     // Default: false
     // Alternatives: true
-    click: false
+    click: true
   },
 
   // Customize slide number label, either using a format string..
