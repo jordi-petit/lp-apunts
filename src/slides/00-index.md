@@ -1,7 +1,7 @@
 
 # Llenguatges de Programació
 
-## Curs 2018-2019 Q2
+## Curs 2019-2020 Q1
 
 Índex:
 
@@ -11,7 +11,7 @@
 
 - [Fonaments: λ-càlcul](03-lambda-calcul.html)
 
-- Porgramació funcional en Haskell: [1](04-haskell.html) / [2](05-haskell.html) / [3](06-haskell.html) / [4](07-haskell.html) / [5](08-haskell.html)
+- Programació funcional en Haskell: [1](04-haskell.html) / [2](05-haskell.html) / [3](06-haskell.html) / [4](07-haskell.html) / [5](08-haskell.html)
 
 - [Elements de programació funcional en C++](09-fp-c++.html)
 
