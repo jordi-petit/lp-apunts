@@ -179,7 +179,7 @@ Per exemple: $$(λx.xy)(λy.y)$$
 Quan s'aplica la β-reducció s'ha de tenir cura amb els noms de les variables i, si cal, renomenar-les.
 
 El problema es pot veure en el següent exemple:
-Sigui $\text{TWICE}$: $$(λf.λx.f(f x))$$
+Sigui $\text{TWICE}$: $$λf.λx.f(f x)$$
 
 Calculem $(\text{TWICE} ~ \text{TWICE})$:
 
@@ -256,13 +256,13 @@ $t_1 → \dots → t_3$ i $t_2 → \dots → t_3$
 
 Tanmateix, si una expressió té una forma normal, aleshores la reducció en ordre normal la trobarà, però no necessàriament la reducció en ordre aplicatiu.
 
-Per exemple, donada l'expressió $((λx.x) ((λy.yy) (λz.z)))$, en ordre normal tenim:
+Per exemple, en ordre normal tenim:
 
-$$((λx.a) ((λy.yy) (λz.zz))) ⟶ a$$
+$$(λx.a) ((λy.yy) (λz.zz)) ⟶ a$$
 
 però en ordre aplicatiu:
 
-$$((λx.a) ((λy.yy) (λz.zz))) ⟶ ((λx.a) ((λz.zz) (λz.zz))) ⟶ ... $$
+$$(λx.a) ((λy.yy) (λz.zz)) ⟶ (λx.a) ((λz.zz) (λz.zz)) ⟶ ... $$
 
 
 
@@ -473,21 +473,31 @@ El combinador Y ens permet definir la funció factorial.
 
 Sigui H la funció següent:
 
-$$λ\text{fac}.λn.\text{IF} (n=0) ~ 1 ~  (n * (\text{fac} ~ (n-1)))$$
+$$λf.λn.\text{IF} (n=0) ~ 1 ~  (n × (f ~ (n-1)))$$
 
 podem veure com Y H funciona com el factorial:
 
 <br>
 
-Y H 1 ⟶ H(Y H) 1 =  λ\text{fac}.λn.\text{IF} (n=0) 1 (n * (\text{fac}  (n-1))) (Y H) 1 ⟶
+$$
+Y H 1 ⟶ H(Y H) 1 =  λf.λn.\text{IF} (n=0) 1 (n × (f  (n-1))) (Y H) 1 ⟶
+$$
 
-λn.\text{IF} (n=0) 1 (n * (Y H (n-1))) 1 ⟶ \text{IF} (1=0) 1 (1 * (Y H (1-1))) ⟶
+$$
+λn.IF (n=0) 1 (n × (Y H (n-1))) 1 ⟶ IF (1=0) 1 (1 \times (Y H (1-1))) ⟶
+$$
 
-1 * (Y H (1-1))) ⟶ Y H 0 ⟶ H (Y H) 0  =
+$$
+1 × (Y H (1-1))) ⟶ Y H 0 ⟶ H (Y H) 0  =
+$$
 
-λ\text{fac}.λn.\text{IF} (n=0) 1 (n * (\text{fac} (n-1))) (Y H) 0 ⟶
+$$
+λf.λn.\text{IF} (n=0) 1 (n × (f (n-1))) (Y H) 0 ⟶
+$$
 
-λn.\text{IF} (n=0) 1 (n * (Y H (n-1))) 0 ⟶ \text{IF} (0=0) 1 (0 * (Y H (0-1))) ⟶ 1
+$$
+λn.\text{IF} (n=0) 1 (n × (Y H (n-1))) 0 ⟶ \text{IF} (0=0) 1 (0 × (Y H (0-1))) ⟶ 1
+$$
 
 ---
 
