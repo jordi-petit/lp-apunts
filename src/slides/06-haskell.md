@@ -392,9 +392,7 @@ Generació dels nombres primers amb el Garbell d'Eratòstenes
 primers :: [Integer]
 
 primers = garbell [2..]
-
     where
-
         garbell (p : xs) = p : garbell [x | x <- xs, x `mod` p /= 0]
 ```
 

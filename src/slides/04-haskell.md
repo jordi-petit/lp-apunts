@@ -426,7 +426,7 @@ La construcció `if-then-else` no és una instrucció sinó una funció de tres 
 - que retorna el resultat d'una de les dues expressions.
 
     ```haskell
-    prod n m =
+    prod n m =              -- producte de dos naturals
         if n == 0 then
             0
         else
@@ -440,7 +440,7 @@ per patrons:
     amb qualsevol expressió.
 
     ```haskell
-    prod n m =
+    prod n m =              -- producte de dos naturals
         case n of
             0 -> 0
             x -> m + prod (x - 1) m
@@ -491,7 +491,7 @@ Primer apliquem 3 i el resultat és un funció que espera un altre enter.
 Per definir noms locals s'utilitza el `let-in`:
 
 ```haskell
-fastExp x 0 = 1
+fastExp x 0 = 1                             -- exponenciació ràpida
 fastExp x n =
         let y  = fastExp x n2
             n2  = div n 2
@@ -503,7 +503,7 @@ fastExp x n =
 O el `where`:
 
 ```haskell
-fastExp x n
+fastExp x n                                 -- exponenciació ràpida
     | n == 0    = 1
     | even n    = y * y
     | otherwise = y * y * x
