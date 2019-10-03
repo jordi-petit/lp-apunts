@@ -346,9 +346,9 @@ preordre (Argal x fills) = x : concatMap preordre fills
 data ExprBool
     = Val Bool
     | Var Char
-    | Not Expr
-    | And Expr Expr
-    | Or  Expr Expr
+    | Not ExprBool
+    | And ExprBool ExprBool
+    | Or  ExprBool ExprBool
     deriving (Show)
 
 type Dict = Char -> Bool
