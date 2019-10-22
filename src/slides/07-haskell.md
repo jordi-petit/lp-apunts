@@ -948,8 +948,8 @@ Instanciació pels enters:
 
 ```haskell
 instance Pred Int where
-    sat 0 = True
-    sat _ = False
+    sat 0 = False
+    sat _ = True
 ```
 
 Instanciació pels arbres binaris:

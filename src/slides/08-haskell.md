@@ -649,7 +649,7 @@ etiqueta nom =
 ```
 --
 
-Amb un format diferent que clara l'equivalència: 😜
+Amb un format diferent queda clara l'equivalència: 😜
 ```Haskell
 etiqueta nom =
     lookup nom matricules >>= \mat ->
@@ -902,7 +902,7 @@ myMain :: World -> (World, ())
 myMain w0 = let (w1, c1) = myGetChar w0
                 (w2, c2) = myGetChar w1
                 (w3, ()) = myPutChar c1 w2
-                (w4, ()) = myPutChar c1 w3
+                (w4, ()) = myPutChar c2 w3
             in  (w4, ())
 ```
 (1) Passant el relleu.
@@ -941,14 +941,14 @@ myMain :: World -> (World, ())
 myMain w0 = let (w1, c1) = myGetChar w0
                 (w2, c2) = myGetChar w1
                 (w3, ()) = myPutChar c1 w2
-                (w4, ()) = myPutChar c1 w3
+                (w4, ()) = myPutChar c2 w3
             in  (w4, ())
 ```
 (1) Passant el relleu.
 ]
 .col2[
 ```haskell
-data IO a = World -> (World -> a)
+data IO a = World -> (World, a)
 
 getChar :: IO Char
 
