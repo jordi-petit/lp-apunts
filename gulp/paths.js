@@ -8,6 +8,7 @@ module.exports = {
     coffee: './src/coffee/**/*.coffee',
     styl: './src/styl/**/*.styl',
     img: './src/img/**/*',
+    pdf: './src/pdf/**/*',
     files: {
       jade: './src/templates/*.jade',   // he canviat aquesta línia per tenir múltiples presentacions al mateix directori
       styl: './src/styl/main.styl'
@@ -19,7 +20,8 @@ module.exports = {
     css: './build/css/**/*.css',
     js: './build/js/**/*.js',
     coffee: './build/coffee/**/*.coffee',
-    img: './build/img/**/*'
+    img: './build/img/**/*',
+    pdf: './build/pdf/**/*'
   },
 
   build: {
@@ -28,6 +30,7 @@ module.exports = {
     js: './build/js',
     coffee: './build/coffee',
     img: './build/img',
+    pdf: './build/pdf'
   },
 
   deploy: {

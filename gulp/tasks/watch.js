@@ -11,4 +11,5 @@ module.exports = gulp.task('watch', function() {
     gulp.watch(paths.source.coffee, gulp.parallel('coffee'));
     gulp.watch(paths.source.styl, gulp.parallel('stylus'));
     gulp.watch(paths.source.img, gulp.parallel('imagemin'));
+    gulp.watch(paths.source.pdf, gulp.parallel('pdf'));
 });

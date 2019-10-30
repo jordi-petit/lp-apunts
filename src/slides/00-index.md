@@ -17,6 +17,8 @@
 
 - [Llenguatges de scripting](12-scripting.html)
 
+- [Introducció a la compilació](13-compilacio.html)
+
 - [Python](https://gebakx.github.io/Python3)
 
 - [Inferència de tipus](11-inferencia-tipus.html)
