@@ -29,5 +29,5 @@ Universitat Politècnica de Catalunya, 2019
 - [Exercices on Context-free grammars](pdf/compilacio/exercices-syntax.pdf)
 - [Semantic Analysis](pdf/compilacio/semantic.pdf)
 - [Interpreters](pdf/compilacio/interpreters.pdf)
-- [ANTLR en Python3](https://gebakx.github.io/Python3/compiladors.htm)
+- [ANTLR en Python3](https://gebakx.github.io/Python3/compiladors.html)
 
