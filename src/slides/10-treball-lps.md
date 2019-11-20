@@ -93,9 +93,8 @@ registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `EW
     - Límit de 50MB per fitxer.
     - Important: una imatge clara i un àudio molt nítid.
 
-- El vídeo ha de ser anònim .xs[(malgrat que es pugui reconèixer la veu de l'orador...)]
+- El vídeo ha de ser anònim .xs[(malgrat que es pugui reconèixer la veu de l'orador...)] però ha d'incloure el hash del seu autor (DNI mòdul 51233).
 
-- Exemple: FALTA POSAR EXEMPLE
 
 ---
 
@@ -107,7 +106,7 @@ registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `EW
 
 - Segona part: estudi bibliogràfic.
 
-- El document ha de ser anònim.
+- El document ha de ser anònim però ha d'incloure el hash del seu autor (DNI mòdul 51233).
 
 
 ---
@@ -168,7 +167,7 @@ a tres qualifacions:
 
 Casos excepcionals:
 
-- No enviar el treball complet (vídeo i document) o no avaluar els treballs
+- No enviar el treball complet (vídeo i document) o no avaluar tots els treballs
   dels 3 companys dóna lloc a una qualifació de NA, NA, 0.
 
 - Si algun estudiant considera que ha estat mal avaluat pels seus companys,
