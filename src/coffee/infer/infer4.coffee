@@ -114,7 +114,7 @@ tree =
                 right:
                   leaf: label: 'l', under: 'a'
             center:
-              leaf: label: '[]', under: 'a5'
+              leaf: label: '[]', under: '[a5]'
             right:
               node:
                 label: '@', under: 'b'
