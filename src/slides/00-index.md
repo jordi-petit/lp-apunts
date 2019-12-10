@@ -3,8 +3,6 @@
 
 ## Curs 2019-2020 Q1
 
-Índex:
-
 - [Presentació del curs actual](01-presentacio.html)
 
 - [Introducció als llenguatges de programació](02-introduccio.html)
@@ -22,6 +20,8 @@
 - [Python](https://gebakx.github.io/Python3)
 
 - [Inferència de tipus](11-inferencia-tipus.html)
+
+- [Subtipus, herència i programació orientada a objectes](14-subtipus.html)
 
 - [Treball dirigit](10-treball-lps.html)
 
