@@ -475,18 +475,25 @@ class Monad m where
 
 
 
+---
+
+# Mònades
+
 Els tipus `Maybe`, `Either a` i `[]` són instàncies de `Monad`:
 
 ```haskell
 instance Monad Maybe where
+    return          =   Just
     Nothing >>= f   =   Nothing
     Just x  >>= f   =   Just (f x)
 
 instance Monad (Either a) where
+    return          =   Right
     Left x  >>= f   =   Left x
     Right x >>= f   =   Right (f x)
 
 instance Monad [] where
+    return x        =   [x]
     xs >>= f        =   concatMap f xs
 ```
 
@@ -497,11 +504,11 @@ instance Monad [] where
 
 Lleis de les mònades:
 
-1. Identitat per l'esquerra: `return x >> f ≡ f x`.
+1. Identitat per l'esquerra: `return x >>= f ≡ f x`.
 
 2. Identitat per la dreta: `m >>= return ≡ m`.
 
-3. Associativitat: `(m >>= f) >>= g ≡ \x -> f x >>= g`.
+3. Associativitat: `(m >>= f) >>= g ≡ m >>= (\x -> f x >>= g`).
 
 El compilador no comprova aquestes propietats (però les pot usar).
 <br>⇒ És responsabilitat del programador assegurar-les.
