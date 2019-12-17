@@ -485,12 +485,12 @@ Els tipus `Maybe`, `Either a` i `[]` són instàncies de `Monad`:
 instance Monad Maybe where
     return          =   Just
     Nothing >>= f   =   Nothing
-    Just x  >>= f   =   Just (f x)
+    Just x  >>= f   =   f x
 
 instance Monad (Either a) where
     return          =   Right
     Left x  >>= f   =   Left x
-    Right x >>= f   =   Right (f x)
+    Right x >>= f   =   f x
 
 instance Monad [] where
     return x        =   [x]
