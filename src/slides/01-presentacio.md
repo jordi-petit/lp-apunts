@@ -6,7 +6,7 @@ Llenguatges de Programació
 
 # Presentació
 
-2019-2020 Q1
+2019-2020 Q2
 
 <br/>
 
@@ -80,15 +80,13 @@ Josep Carmona
 <br>
 .xs[jcarmona@cs.upc]
 
-
 <br>
 
-![:height 6em](img/profes/edelmira.png)
+![:height 6em](img/profes/jdelgado.png)
 <br>
-Edelmira Pasarella
+Jordi Delgado
 <br>
-.xs[edelmira@cs.upc]
-
+.xs[jdelgado@cs.upc]
 
 ]
 .col23[
@@ -99,7 +97,6 @@ Gerard Escudero
 <br>
 .xs[gerard.escudero@upc]
 
-
 <br>
 
 ![:height 6em](img/profes/jpetit.png)
@@ -107,7 +104,6 @@ Gerard Escudero
 Jordi Petit
 <br>
 .xs[jpetit@cs.upc]
-
 
 ]
 .col33[
@@ -118,6 +114,13 @@ Fernando Orejas
 <br>
 .xs[orejas@cs.upc]
 
+<br>
+
+![:height 6em](img/profes/edelmira.png)
+<br>
+Edelmira Pasarella
+<br>
+.xs[edelmira@cs.upc]
 
 ]
 ]
@@ -129,7 +132,7 @@ Fernando Orejas
 
 # Mètode d'avaluació
 
-La [Guia docent](https://www.fib.upc.edu/ca/estudis/graus/grau-en-enginyeria-informatica/pla-destudis/assignatures/LP)
+La [Guia docent](https://www.fib.upc/ca/estudis/graus/grau-en-enginyeria-informatica/pla-destudis/assignatures/LP)
 estableix aquesta avaluació: N = 0.35·F + 0.30·P + 0.25·L + 0.10·D,
 on:
 
@@ -154,7 +157,8 @@ evaluació entre companys (co-avaluació) amb [Peergrade](https://www.peergrade.
 Les qualificacions de les competències transversals s'obtenen del treball
 dirigit.
 
-**Nota:** En aquest curs no es poden reusar notes del curs passat.
+**Nota:** Els repetidors poden demanar reusar les seves notes
+del TD del curs passat.
 
 
 
@@ -165,24 +169,24 @@ dirigit.
 
 - Curs:
 
-    - Inici: dl 9 set
+    - Inici: dl 10 feb
 
-    - Final: dv 20 des
+    - Final: dv 29 maig
 
 - Exàmens:
 
-    - Examen parcial: dl 4 nov (12:00-14:00) <br>
-    (la setmana del 4 nov no hi ha classes d'LP)
+    - Examen parcial:  dm 31 de marc (14:00-16:00)  <br>
+    (la setmana del 30 de març no hi ha classes d'LP)
 
-    - Examen final: dm 14 gen (11:30-14:30)
+    - Examen final: dj 18 juny (11:30-14:30)
 
 - Treballs:
 
-    - Lliurament treball dirigit: dl 23 des
+    - Lliurament treball dirigit: dj 21 maig
 
-    - Lliurament pràctica: dj 9  gen
+    - Lliurament pràctica: dl 8 juny
 
-    - Correcció treball dirigit: dj 9 gen
+    - Correcció treball dirigit: dl 8 juny
 ---
 
 
@@ -209,14 +213,12 @@ Thomson-Paraninfo, 2004.
 
 # Material
 
-El material del curs s'anirà penjant als avisos del [Racó](https://raco.fib.upc.edu/home/assignatura?espai=270025):
+El material del curs s'anirà penjant als avisos del [Racó](https://raco.fib.upc/home/assignatura?espai=270025):
 
-- Transperèncie escrites per Albert Rubio, Jordi Petit i Gerard Escudero
+- Transperèncie escrites per Albert Rubio, Jordi Petit, Gerard Escudero i Fernando Orejas.
 
 - Transperències de compiladors de Jordi Cortadella
 
 - Col·lecció de problemes de Haskell al Jutge
 
 - Col·lecció de problemes de Python al Jutge
-
-
