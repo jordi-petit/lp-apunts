@@ -38,11 +38,13 @@ Inventat per Alonzo Church, cap al 1930.
 Consisteix en agafar una línia de símbols i aplicar una operació de *cut-and-paste*.
 
 ![:height 10em](img/lambda2.png)
-
 ]
 ]
 
-<br><br>
+[![:height 2em](img/icones/youtube.png)](https://www.youtube.com/watch?v=Rx-5dCXx1SI)
+
+.xxs[Vídeo: Math whizzes of ancient Babylon figured out forerunner of calculus]
+
 .xxs[Fotos: Fair Use, [jstor.org](https://www.ics.uci.edu/~lopes/teaching/inf212W12/readings/church.pdf), [Lambda Calculus for Absolute Dummies](http://palmstroem.blogspot.com/2012/05/lambda-calculus-for-absolute-dummies.html)]
 
 
@@ -451,14 +453,14 @@ $$
 Concretament, Y es defineix així:
 
 $$
-  \text{Y} \ ≡\ λy (λx.y(xx))(λx.y(xx))
+  \text{Y} \ ≡\ λy. (λx.y(xx))(λx.y(xx))
 $$
 
 Com podem veure:
 
 $$
   \begin{align}
-    \text{Y} \ \text{R} &\ ≡ \  λy (λx.y(xx))(λx.y(xx))\text{R} \\\\
+    \text{Y} \ \text{R} &\ ≡ \  (λy . (λx.y(xx))(λx.y(xx)))\text{R} \\\\
     &\ ≡ \  (λx.\text{R}(xx))(λx.\text{R}(xx)) \\\\
     &\ ≡ \  \text{R}((λx.\text{R}(xx))(λx.\text{R}(xx))) \\\\
     &\ ≡ \  \text{R}(\text{Y} \text{R})  &\text{(per la línia anterior)} \\\\
