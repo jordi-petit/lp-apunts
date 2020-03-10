@@ -449,7 +449,7 @@ El tipus `Maybe` és instància de `Monad`:
 ```haskell
 instance Monad Maybe where
     Nothing >>= f   =   Nothing
-    Just x  >>= f   =   Just (f x)
+    Just x  >>= f   =   f x
 ```
 
 
