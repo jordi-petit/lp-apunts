@@ -20,9 +20,35 @@ Universitat Politècnica de Catalunya, 2019
 
 # Inferència de tipus
 
+`auto`: crea una variable del tipus
+de l'expressió que l'inicialitza.
+
 ```c++
 auto i = 3;
 ```
+
+```c++
+for (auto x : C) ...
+```
+
+```c++
+for (auto it = C.begin(); it != C.end(); ++it) ...
+```
+
+<br>
+
+`decltype`: denota el tipus d'una expressió.
+
+```c++
+int  fun1() { return 10; }
+char fun2() { return 'g'; }
+
+decltype(fun1()) x;
+decltype(fun2()) y;
+```
+
+No s'usa gaire, només en programació genèrica, quan és
+impossible expressar tipus que depènen de paràmetres genèrics.
 
 ---
 
@@ -316,4 +342,47 @@ reduce(execution::par, v.begin(), v.end());
 .xxs[Imatges: https://blog.tartanllama.xyz/accumulate-vs-reduce/]
 
 
+---
 
+# Tipus a la Haskell
+
+En C++17, `optional<a>` és el `Maybe a` de Haskell.
+
+```c++
+#include <optional>
+using namespace std;
+
+optional<string> user_name(int user_id) {
+    if (...) return "the name";
+    else return {};             // o també nullopt
+}
+
+int main() {
+    optional<string> name = user_name(1234);
+    if (name) cout << *name << endl;
+}
+```
+
+
+
+---
+
+# Tipus a la Haskell
+
+En C++17, `variant<a,b>` és el `Maybe a b` de Haskell.
+
+Més útil que les `union` de C que no encaixen massa amb el C++.
+
+```c++
+#include <variant>
+using namespace std;
+
+variant<int, float> num1 = 3;
+variant<int, float> num2 = 3.5;
+
+cout << num1.index();           // 0
+cout << num1.get<int>;          // 3
+cout << num1.get<0>;            // 3
+cout << num1.get<float>;        // indefinit
+cout << num1.get<1>;            // indefinit
+```
