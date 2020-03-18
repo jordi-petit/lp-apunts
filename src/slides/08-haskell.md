@@ -722,7 +722,7 @@ L'entrada/sortida en Haskell es basa en una mònada:
 
 - S'usa el constructor de tipus `IO` per gestionar l'entrada/sortida.
 
-- `IO` és instància de les classes `Functor` i `Monad`.
+- `IO` és instància de `Monad`.
 
 - Es sol usar amb notació `do`.
 
@@ -740,7 +740,10 @@ putStrLn    :: String -> IO ()      -- escriu un text i un salt de línia
 print       :: Show a => a -> IO () -- escriu qualsevol showable
 ```
 
-`()` s'anomena el tipus *unit* i representa *res* (⇔ `void` de C i cia).
+`()` és una tupla de zero camps
+i `()` és l'únic valor de tipus `()`.
+<br>
+(⇔ `void` de C).
 
 
 
@@ -955,7 +958,7 @@ myMain w0 = let (w1, c1) = myGetChar w0
 ]
 .col2[
 ```haskell
-data IO a = World -> (World, a)
+type IO a = World -> (World, a)
 
 getChar :: IO Char
 
@@ -993,7 +996,7 @@ Cadascuna s'encadena amb l'anterior, com un relleu.
 .cols5050[
 .col1[
 ```haskell
-data IO a = World -> (World -> a)
+type IO a = World -> (World -> a)
 
 getChar :: IO Char
 
@@ -1056,7 +1059,49 @@ main = do
 - Molts tipus predefinits són instàncies d'aquestes classes:
     `Maybe`, `Either`, llistes, tuples, funcions, `IO`, ...
 
-- La notació `do` simplifica l'ús de les monades.
+- La notació `do` simplifica l'ús de les mònades.
 
 - La classe `IO` permet disposar d'entrada/sortida en un llenguatge
 funcional pur.
+
+
+---
+
+#  Aplicacions de les mònades
+
+- IO
+- Parsers
+- Logging
+- Estat mutable
+- No determinisme
+- Paral·lelisme
+
+.sm[
+Lectura recomanada: [Monads for functional programming](https://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf) de
+P. Wadler.
+]
+
+
+---
+
+# Final
+
+L'**estat d'un programa** descriu tota la informació
+que no és local a una funció en particular. Això inclou:
+
+- variables globals
+- entrada
+- sortida
+
+Pensar sobre un programa amb estat és difícil perquè:
+
+- L'estat perviu d'una crida d'una funció a una altra.
+- L'estat és a l'abast de totes les funcions.
+- L'estat és mutable.
+- L'estat canvia en el temps.
+- Cap funció és responsable de l'estat.
+
+Estat: 💩 Sense estat: 💜
+
+Les mònades no eliminen la noció d'estat en un programa,
+però elimimen la necessitat de mencionar-lo.
