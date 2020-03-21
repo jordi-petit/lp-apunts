@@ -967,8 +967,8 @@ putChar :: Char -> IO ()
 main :: IO ()
 
 main =
-    getChar >>= c1 ->
-    getChar >>= c2 ->
+    getChar >>= \c1 ->
+    getChar >>= \c2 ->
     putChar c1 >>
     putChar c2
 ```
@@ -1005,8 +1005,8 @@ putChar :: Char -> IO ()
 main :: IO ()
 
 main =
-    getChar >>= c1 ->
-    getChar >>= c2 ->
+    getChar >>= \c1 ->
+    getChar >>= \c2 ->
     putChar c1 >>
     putChar c2
 ```
