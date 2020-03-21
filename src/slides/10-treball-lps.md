@@ -93,7 +93,7 @@ registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `JT
     - Límit de 50MB per fitxer.
     - Important: una imatge clara i un àudio molt nítid.
 
-- El vídeo ha de ser anònim .xs[(malgrat que es pugui reconèixer la veu de l'orador...)] però ha d'incloure el hash del seu autor (DNI mòdul 51233).
+- El vídeo ha de ser anònim .xs[(malgrat que es pugui reconèixer la veu de l'orador...)] però ha d'incloure el hash del seu autor (DNI mòdul 9511).
 
 
 ---
