@@ -62,16 +62,16 @@ L'avaluació es farà per evaluació entre companys (co-avaluació).
 
 Etapes:
 
-1. Assignació de llenguatges de programació a l'atzar **(dl 25 de novembre)**.
+1. Assignació de llenguatges de programació a l'atzar **(dv 27 de març)**.
 
-2. Preparació del vídeo i del document **(temps: 4 setmanes)**.
+2. Preparació del vídeo i del document **(temps: 8 setmanes)**.
 
 3. Penjar vídeo i document a [Peergrade](https://www.peergrade.io/),
-registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `EWF77Z`
-**(límit: dl 23 de desembre, 14:00)**.
+registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `JTW86Z`
+**(límit: dj 21 de maig, 08:00)**.
 
 4. Avaluar els vídeos i els documents de 3 altres companys usant una rúbrica
-   preparada pels professors a Peergrade **(límit: dj 9 de gener, 14:00)**.
+   preparada pels professors a Peergrade **(límit: dl 8 de juny, 08:00)**.
 
 
 
@@ -181,6 +181,18 @@ i canviar-ne les qualificacions.
 - Els professors penalitzaran als estudiants que avaluin de forma
 manifestament incorrecta als seus companys.
 
+
+---
+
+# Repetidors
+
+Els repetidors poden reusar les seves notes del TD del curs passat.
+
+Per a fer-ho, només cal que no participin a Peergrade. Si hi participen, vol dir que
+tornen a fer tot el treball dirigit (enviament i correccions) i rebutgen la nota
+anterior.
+
+
 ---
 
 # Documentació Biblioteca UPC
@@ -194,3 +206,22 @@ Tingueu en comptes aquestes pautes:
 - [Citar i elaborar la bibliografia](https://bibliotecnica.upc.edu/investigadors/citar-elaborar-bibliografia)
 
 
+---
+
+# Recordatori
+
+## Web
+
+- https://www.peergrade.io/
+
+- Class code: `JTW86Z`
+
+
+## Registre
+
+- Useu el vostre compte de la FIB (`el-meu-compte@est.fib.upc.edu`)
+
+
+## Deadlines
+
+![:width 40em](img/deadlines.png)
