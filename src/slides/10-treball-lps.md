@@ -106,7 +106,7 @@ registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `JT
 
 - Segona part: estudi bibliogràfic.
 
-- El document ha de ser anònim però ha d'incloure el hash del seu autor (DNI mòdul 51233).
+- El document ha de ser anònim però ha d'incloure el hash del seu autor.
 
 
 ---
