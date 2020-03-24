@@ -68,10 +68,10 @@ Etapes:
 
 3. Penjar vídeo i document a [Peergrade](https://www.peergrade.io/),
 registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `JTW86Z`
-**(límit: dj 21 de maig, 08:00)**.
+**(límit: dj 21 de maig, 13:00)**.
 
 4. Avaluar els vídeos i els documents de 3 altres companys usant una rúbrica
-   preparada pels professors a Peergrade **(límit: dl 8 de juny, 08:00)**.
+   preparada pels professors a Peergrade **(límit: dl 8 de juny, 13:00)**.
 
 
 
