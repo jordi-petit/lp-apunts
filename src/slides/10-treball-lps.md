@@ -66,7 +66,8 @@ Etapes:
 
 2. Preparació del vídeo i del document **(temps: 8 setmanes)**.
 
-3. Penjar vídeo i document a [Peergrade](https://www.peergrade.io/),
+3. Penjar vídeo i document (junt en un fitzer ``.zip`)
+a [Peergrade](https://www.peergrade.io/),
 registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `JTW86Z`
 **(límit: dj 21 de maig, 13:00)**.
 
