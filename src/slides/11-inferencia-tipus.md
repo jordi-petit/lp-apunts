@@ -14,26 +14,39 @@ Jordi Petit i Albert Rubio
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2019
+Universitat Politècnica de Catalunya, 2020
 
 
 ---
 
 # Inferència de tipus
 
-**Problema:** Donat un programa,
-trobar el tipus més general pel programa (i totes les seves expressions)
-dins del sistema de tipus del llenguatge.
+La **inferència de tipus** és la detecció automàtica
+dels tipus de les expressions en un llenguatge de programació.
 
-**Solució presentada:** Algorisme de Milner.
+Permet fer més fàcils moltes tasques de programació,
+sense comprometre la seguretat de la comprovació de tipus.
 
+Té sentit en llenguatges fortament tipats.
 
+És un característica habitual dels llanguatges funcionals.
+
+Alguns LPs amb inferència de tipus:
+
+- C++ >= 11
+- Haskell
+- C#
+- D
+- Go
+- Java >= 10
+- Scala
+- ...
 
 ---
 
 # Inferència de tipus a C++
 
-La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
+La inferència de tipus apareix a la versió 11 de l'estàndard de C++.
 
 -   `auto`: Dedueix el tipus d'una variable a través de
     la seva inicialització:
@@ -74,6 +87,18 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
     Sovint no es pot sobrecarregar una funció si no es dona una declaració
     explícita de tipus.
 
+
+---
+
+# Inferència de tipus
+
+**Problema:** Donat un programa,
+trobar el tipus més general de les seves expressions
+dins del sistema de tipus del LP.
+
+**Solució presentada:** Algorisme de Milner.
+
+
 ---
 
 # Inferència de tipus
@@ -86,11 +111,9 @@ La inferència de tipus apareix a la versió 11 de l'estàndar de C++.
 - Curry i Hindley havien desenvolupat idees similars
 independentment en el context del λ-càlcul.
 
+- Hindley–Milner i Damas–Milner
+
 - L'algorisme és similar a la "unificació".
-
-- Sempre present als llenguatges funcionals.
-
-- S'ha estès a altres llenguatges: Visual Basic, C#, C++, ...
 
 ]
 .col2[
@@ -138,36 +161,39 @@ independentment en el context del λ-càlcul.
 
 ---
 
-# Algorisme de Milner
+# Primer exemple
 
-- Considerem l'expressió:
+```haskell
+\x -> (+) 2 x
+```
 
-    ```haskell
-    \x -> (+) 2 x
-    ```
+--
 
-- Creem l'arbre de l'expressió currificada:
+Arbre de l'expressió currificada:
 
-
-<div id='cy_infer1' style='width: 50%; height: 14em; border: solid black 0px;'></div>
+<div id='cy_infer1' style='width: 100%; height: 15em; border: solid black 0px;'></div>
 
 
 ---
 
-# Algorisme de Milner
+# Primer exemple
 
-- Etiquetem els nodes:
+```haskell
+\x -> (+) 2 x
+```
 
-    - Si el tipus és conegut, se'ls etiqueta amb el seu tipus.
-    - Altrament, se'ls etiqueta amb una nova variable de tipus.
-    - Nodes iguals han de tenir etiquetes iguals.
+Etiquetem els nodes:
 
+- Si el tipus és conegut, se'ls etiqueta amb el seu tipus.
+- Altrament, se'ls etiqueta amb una nova variable de tipus.
+- Nodes iguals han de tenir etiquetes iguals.
 
-<div id='cy_infer2' style='width: 80%; height: 20em; border: solid black 0px;'></div>
+<div id='cy_infer2' style='width: 100%; height: 15em; border: solid black 0px;'></div>
+
 
 ---
 
-# Algorisme de Milner
+# Primer exemple
 
 
 - Obtenim les equacions:
@@ -190,6 +216,12 @@ independentment en el context del λ-càlcul.
 - El tipus de l'expressió és el de l'arrel (`a`):
 
     `\x -> (+) 2 x :: Int → Int`
+
+--
+
+<br>
+- Recordeu: `->` associa per la dreta: `a → b → c = a → (b → c)`
+
 
 
 ---
@@ -231,8 +263,7 @@ independentment en el context del λ-càlcul.
 - Equacions:
 
     - `b = Bool`
-    - `a = c`
-    - `a = d`
+    - `a = c = d`
 
 
 Aquesta regla no és estrictament necessària,
@@ -241,11 +272,153 @@ genèrica normal de tipus `Bool → a → a → a`, però
 estalvia espai.
 
 
+
 ---
 
-# Algorisme de Milner
+# Segon exemple
 
-Considerem ara una definició de funció:
+```haskell
+foldl (\a b -> a && b) True xs
+```
+
+
+
+---
+
+# Segon exemple &mdash; Us toca!
+
+```haskell
+foldl (\a b -> a && b) True xs
+```
+
+Creeu l'arbre de l'expressió currificada...
+
+<h1 style='position: absolute;'>📝</h1>
+
+
+---
+
+# Segon exemple
+
+```haskell
+foldl (\a b -> a && b) True xs
+```
+
+Arbre de l'expressió currificada:
+
+<div id='cy_vosaltres1' style='width: 100%; height: 22em; border: 0px solid black;'>
+</div>
+
+---
+
+# Segon exemple &mdash; Us toca!
+
+```haskell
+foldl (\a b -> a && b) True xs
+```
+
+Etiqueteu els nodes amb els seus tipus...
+
+<h1 style='position: absolute;'>📝</h1>
+
+<div id='cy_vosaltres2' style='width: 100%; height: 22em; border: 0px solid black;'>
+</div>
+
+
+---
+
+# Segon exemple
+
+```haskell
+foldl (\a b -> a && b) True xs
+```
+
+Arbre etiquetat amb tipus: (`B` és `Bool`)
+
+<div id='cy_vosaltres3' style='width: 100%; height: 22em; border: 0px solid black;'>
+</div>
+
+
+---
+
+# Segon exemple &mdash; Us toca!
+
+Genereu les equacions...  
+
+<h1 style='position: absolute;'>📝</h1>
+
+<div id='cy_vosaltres4' style='width: 70%; height: 22em; border: 0px solid black;'>
+</div>
+
+
+---
+
+# Segon exemple
+
+Equacions: (amb algunes simplificacions tribials)
+
+- `t1 = Bool`
+- `t2 = Bool → Bool`
+- `t3 = Bool`
+- `t4 = Bool`
+- `t5 = Bool → Bool`
+- `t6 = Bool → Bool → Bool`
+- `(t7 → t8 → t7) → t7 → [t8] → t7  =  (Bool → Bool → Bool) → t9`
+- `t9 = Bool → t10`
+- `t10 = t11 → t12`
+
+
+---
+
+# Segon exemple &mdash; Us toca!
+
+Equacions:
+
+- `t1 = Bool`
+- `t2 = Bool → Bool`
+- `t3 = Bool`
+- `t4 = Bool`
+- `t5 = Bool → Bool`
+- `t6 = Bool → Bool → Bool`
+- `(t7 → t8 → t7) → t7 → [t8] → t7  =  (Bool → Bool → Bool) → t9`
+- `t9 = Bool → t10`
+- `t10 = t11 → t12`
+
+Solucioneu... (volem `t12`)
+
+<h1 style='position: absolute;'>📝</h1>
+
+
+---
+
+# Segon exemple
+
+Equacions:
+
+- `t1 = Bool`
+- `t2 = Bool → Bool`
+- `t3 = Bool`
+- `t4 = Bool`
+- `t5 = Bool → Bool`
+- `t6 = Bool → Bool → Bool`
+- `(t7 → t8 → t7) → t7 → [t8] → t7  =  (Bool → Bool → Bool) → t9`
+- `t9 = Bool → t10`
+- `t10 = t11 → t12`
+
+Solució:
+
+- `t7 = Bool`
+- `t8 = Bool`
+- `t9 = Bool → [Bool] → Bool`
+- `t10 = [Bool] → Bool`
+- `t11 = [Bool]`
+- `t12 = Bool` (arrel de l'expressió)
+
+
+
+---
+
+# Definició de funció
 
 ```haskell
 map f l = if null l then [] else f (head l) : map f (tail l)
@@ -262,7 +435,7 @@ torna la part dreta de la definició:
 
 ---
 
-# Algorisme de Milner
+# Definició de funció
 
 ```haskell
 \f -> \l -> if null l then [] else f (head l) : map f (tail l)
@@ -274,7 +447,7 @@ Arbre de l'expressió:
 
 ---
 
-# Algorisme de Milner
+# Definició de funció
 
 ```haskell
 \f -> \l -> if null l then [] else f (head l) : map f (tail l)
@@ -286,7 +459,7 @@ Arbre etiquetat amb tipus:
 
 ---
 
-# Algorisme de Milner
+# Definició de funció
 
 ```haskell
 \f -> \l -> if null l then [] else f (head l) : map f (tail l)
@@ -309,11 +482,9 @@ Equacions:
 - `s = d`
 
 
-
-
 ---
 
-# Algorisme de Milner
+# Definició de funció
 
 ```haskell
 \f -> \l -> if null l then [] else f (head l) : map f (tail l)
@@ -339,9 +510,7 @@ Solució:
 
 ---
 
-# Algorisme de Milner
-
-Considerem ara una definició de funció amb patrons:
+# Definició de funció amb patrons
 
 ```haskell
 map f (x : xs) = f x : map f xs
@@ -438,9 +607,7 @@ Per tant, el tipus de l'arrel és `s = (a →  a2) →  [a] → [a2]`.
 
 ---
 
-# Algorisme de Milner
-
-Inferència per altres construccions:
+# Altres construccions
 
 -   Els `let` o `where` es poden expressar amb abstraccions i aplicacions:
 
@@ -463,11 +630,8 @@ Inferència per altres construccions:
 
 ---
 
-# Algorisme de Milner (Classes)
+# Classes
 
-Considerem ara l'extensió de l'algorisme de Milner a classes de tipus.
-
-<br>
 La presència de definicions com ara
 
 ```haskell
@@ -478,35 +642,25 @@ La presència de definicions com ara
 introdueix unes noves *restriccions de context*.
 
 <br>
-Per tant, les solucions també han de contindre i satisfer les condicions de classe.
+Per tant, les solucions també han de contenir i satisfer les condicions de classe.
 
 
 
 ---
 
-# Algorisme de Milner (Classes)
-
-Considerem aquest exemple amb classes:
+# Classes
 
 ```haskell
 f x = 2 + x
 ```
 
-Arbre d'expressió:
-
-<div id='cy_infer7' style='width: 100%; height: 14em; border: solid black 0px;'></div>
-
----
-
-# Algorisme de Milner (Classes)
-
-Arbre etiquetat amb tipus:
+Arbre etiquetat:
 
 <div id='cy_infer8' style='width: 100%; height: 14em; border: solid black 0px;'></div>
 
 ---
 
-# Algorisme de Milner (Classes)
+# Classes
 
 Equacions:
 
@@ -532,30 +686,20 @@ El tipus de l'arrel (de `f`) és doncs `Num a ⇒ a → a`.
 
 ---
 
-# Algorisme de Milner (Errors)
-
-Considerem ara un error:
+# Errors
 
 ```haskell
 f x = '2' + x
 ```
 
-Arbre d'expressió:
-
-<div id='cy_infer9' style='width: 100%; height: 14em; border: solid black 0px;'></div>
-
----
-
-# Algorisme de Milner (Errors)
-
-Arbre etiquetat amb tipus:
+Arbre etiquetat:
 
 <div id='cy_infer10' style='width: 100%; height: 14em; border: solid black 0px;'></div>
 
 
 ---
 
-# Algorisme de Milner (Errors)
+# Errors
 
 Equacions:
 
@@ -596,7 +740,7 @@ Perquè `Char` no és instància de `Num`!
     even x = if rem x 2 == 0 then True else False
     ```
 
-    amb `rem :: int -> int -> int`.
+    amb `rem :: Int → Int → Int`.
 
 -   Inferiu el tipus de:
 
@@ -639,5 +783,4 @@ Perquè `Char` no és instància de `Num`!
         then ys
         else y : delete x ys
     ```
-    amb `(==) :: Eq a => a -> a -> Bool`.
-
+    amb `(==) :: Eq a ⇒ a → a → Bool`.
