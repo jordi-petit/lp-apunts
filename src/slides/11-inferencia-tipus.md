@@ -418,6 +418,78 @@ Solució:
 
 ---
 
+# Exercicis
+
+
+
+-   Utilitzeu l'algorisme de Milner per inferir el tipus de:
+
+    ```haskell
+    2 + 3 + 4
+    ```
+
+-   Utilitzeu l'algorisme de Milner per inferir el tipus de:
+
+    ```haskell
+    2 + 3 <= 2 + 2
+    ```
+
+-   Utilitzeu l'algorisme de Milner per inferir el tipus de:
+
+    ```haskell
+    map (* 2)
+    ```
+
+    (Suposeu `(*) :: Int -> Int -> Int`)
+
+-   Utilitzeu l'algorisme de Milner per inferir el tipus de:
+
+    ```haskell
+    foldl (flip (:)) []
+    ```
+
+
+
+---
+
+# Exercicis
+
+
+
+-   Utilitzeu l'algorisme de Milner per inferir el tipus de:
+
+    ```haskell
+    \f x -> f $ f x
+    ```
+
+
+-   Utilitzeu l'algorisme de Milner per inferir el tipus de:
+
+    ```haskell
+    \f -> f . f
+    ```
+
+
+-   Utilitzeu l'algorisme de Milner per inferir el tipus de:
+
+    ```haskell
+    \x y -> if y /= 0 then Just (x `div` y) else Nothing
+    ```
+    (Suposeu `div :: Int -> Int -> Int`)
+
+
+-   Utilitzeu l'algorisme de Milner per inferir el tipus de:
+
+    ```haskell
+    \xs ys -> zipWith (,) xs ys
+    ```
+
+
+
+
+
+---
+
 # Definició de funció
 
 ```haskell
