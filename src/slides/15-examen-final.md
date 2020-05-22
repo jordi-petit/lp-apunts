@@ -23,7 +23,7 @@ Universitat Politècnica de Catalunya, 2020
 
 <br>
 
-## Divendres 18 de juny
+## Dijous 18 de juny
 
 ## 11:30 a 14:30
 
@@ -86,7 +86,7 @@ Aquesta informació:
 
 - Es publicarà a [la pàgina de l'examen](https://sites.google.com/upc.edu/examen-lp-juny-2020/).
 
-- S'enviarà per correu electrònic (al vostre correu GSuite de la UPC).
+- S'enviarà per correu electrònic (al vostre correu de la FIB).
 
 
 
@@ -127,7 +127,7 @@ Utilitzeu dos mecanismes de lliurament:
 
 2. Envieu el PDF als correus electrònics  `jordi.petit-silvestre`  i
 `fernando.orejas` (arroba `upc.edu`) amb l'assumpte `Solució LP juny 2020` des del
-vostre correu GSuite de la UPC.
+vostre correu de la FIB.
 
 Envieu el mateix PDF amb ambdós mecanismes!
 
@@ -285,7 +285,7 @@ Si us cal un "justificant d'assistència no presencial", demaneu-lo al professor
 - Proveu el hardware i software que usareu per capturar alguna imatge / fer algun diagrama.
 
 - Comproveu que podeu i sabeu accedir a totes les eines del vostre compte GSuite de la UPC
-(Mail, Chat, Meet, Forms).
+(Chat, Meet, Forms).
 
 - Comproveu que el vostre hardware i connexió funciona correctament.
 
