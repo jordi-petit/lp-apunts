@@ -6,15 +6,18 @@ script(type="text/javascript", src="js/vendor/remark-language.js")
 script(type="text/javascript", src="js/main.js")
 
 // jpetit: mathjax
-script(type="text/javascript", src="js/node_modules/mathjax/unpacked/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured")
+<!-- jpetit: mathjax-->
 script(type='text/javascript').
-    MathJax.Hub.Config({
-        tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            inlineMath: [['$','$']],
+    MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+          fontCache: 'global'
         }
-    });
-    MathJax.Hub.Configured();
+    };
+
+script(type="text/javascript", id="MathJax-script", async, src="js/node_modules/mathjax/es5/tex-svg.js")
 
 // jpetit: cytoscape
 script(type="text/javascript", src="js/node_modules/cytoscape/dist/cytoscape.min.js")
