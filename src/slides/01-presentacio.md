@@ -6,7 +6,9 @@ Llenguatges de Programació
 
 # Presentació
 
-2019-2020 Q2
+2020-2021 Q1
+<br>
+(Rebrot edition)
 
 <br/>
 
@@ -14,7 +16,7 @@ Jordi Petit, Albert Rubio
 
 <br/>
 
-![:height 10em](img/hello-world.png)
+![:height 8em](img/hello-world.png)
 
 <br/>
 
@@ -82,11 +84,11 @@ Josep Carmona
 
 <br>
 
-![:height 6em](img/profes/jdelgado.png)
+![:height 6em](img/profes/edelmira.png)
 <br>
-Jordi Delgado
+Edelmira Pasarella
 <br>
-.xs[jdelgado@cs.upc]
+.xs[edelmira@cs.upc]
 
 ]
 .col23[
@@ -108,19 +110,13 @@ Jordi Petit
 ]
 .col33[
 
-![:height 6em](img/profes/forejas.png)
+![:height 6em](img/profes/jlevy.png)
 <br>
-Fernando Orejas
+Jordi Levy
 <br>
-.xs[orejas@cs.upc]
+.xs[levy@iiia.csic.es]
 
 <br>
-
-![:height 6em](img/profes/edelmira.png)
-<br>
-Edelmira Pasarella
-<br>
-.xs[edelmira@cs.upc]
 
 ]
 ]
@@ -132,23 +128,22 @@ Edelmira Pasarella
 
 # Mètode d'avaluació
 
-La [Guia docent](https://www.fib.upc/ca/estudis/graus/grau-en-enginyeria-informatica/pla-destudis/assignatures/LP)
-estableix aquesta avaluació: N = 0.35·F + 0.30·P + 0.25·L + 0.10·D,
+La [Guia docent](https://www.fib.upc.edu/ca/estudis/graus/grau-en-enginyeria-informatica/pla-destudis/assignatures/LP)
+estableix aquesta avaluació: N = 0.40·F + 0.25·P1 + 0.25·P2 + 0.10·D,
 on:
 
 - F = nota de l'examen final
-- P = nota de l'examen parcial
-- L = nota del projecte
+- P1 = nota de la primera pràctica (mitjans de curs)
+- P2 = nota de la segona pràctica (finals de curs)
 - D = nota del treball dirigit
 
 L'examen final serà un examen escrit que avaluarà sobre *tots* els continguts
 del curs.
 
-L'examen parcial serà un examen d'ordinador consistent a resoldre problemes de
-programació utilitzant Haskell al [Jutge](https://jutge.org).
+La primera pràctica consisteix en utilitzar Haskell per a resoldre un cas pràctic.
 
-El projecte consisteix en utilitzar eines per generar compiladors i llibreries
-de Python per a resoldre un cas pràctic.
+La segona pràctica consisteix en utilitzar eines per generar compiladors i
+Python per a resoldre un cas pràctic.
 
 El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
 les propietats d'un llenguatge de programació. S'usarà
@@ -169,24 +164,23 @@ del TD del curs passat.
 
 - Curs:
 
-    - Inici: dl 10 feb
+    - Inici: dv 17 setembre
 
-    - Final: dv 29 maig
+    - Final: dm 22 desembre
 
 - Exàmens:
 
-    - Examen parcial:  dm 31 de marc (14:00-16:00)  <br>
-    (la setmana del 30 de març no hi ha classes d'LP)
-
-    - Examen final: dj 18 juny (11:30-14:30)
+    - Examen final: dl 18 gener (11:30-14:30)
 
 - Treballs:
 
-    - Lliurament treball dirigit: dj 21 maig
+    - Lliurament primera pràctica: mitjans de novembre
 
-    - Lliurament pràctica: dl 8 juny
+    - Lliurament segona pràctica: dl 11 de gener
 
-    - Correcció treball dirigit: dl 8 juny
+    - Lliurament treball dirigit: dl 28 de desembre
+
+    - Correcció treball dirigit: dl 11 de gener
 ---
 
 
@@ -222,3 +216,18 @@ El material del curs s'anirà penjant als avisos del [Racó](https://raco.fib.up
 - Col·lecció de problemes de Haskell al Jutge
 
 - Col·lecció de problemes de Python al Jutge
+
+- Vídeos de Haskell
+
+
+
+---
+
+# COVID
+
+- Enguany els laboratoris són no presencials però síncrons.
+
+- Es proporcionarà material (apunts, transparències i vídeos) per tal d'aportar la informació que els professors no podran donar durant les classes de laboratori no presencials.
+
+- Pla de contingència:
+En cas de suspensió de l'activitat docent presencial, les classes presencials es faran de forma no presencial síncrona utilitzant streaming.

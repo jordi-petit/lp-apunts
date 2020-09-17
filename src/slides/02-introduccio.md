@@ -431,6 +431,21 @@ Com mesurar la popularitat dels LPs?
 Els **paradigmes de programació** classifiquen els LPs segons les
 seves característiques.
 
+<br>
+
+.center[
+![:height 15em](img/paradigms-floyd.png)
+]
+
+*[The paradigms of programming.](https://dl.acm.org/doi/pdf/10.1145/359138.359140)* R. Floyd, Communications ACM 1979.
+
+
+
+
+---
+
+# Paradigmes de LPs
+
 
 Paradigmes comuns:
 
