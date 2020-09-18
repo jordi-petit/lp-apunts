@@ -9,7 +9,7 @@
 
 - [Fonaments: λ-càlcul](03-lambda-calcul.html)
 
-- Programació funcional en Haskell: [1](04-haskell.html) / [2](05-haskell.html) / [3](06-haskell.html) / [4](07-haskell.html) / [5](08-haskell.html)
+- [Programació funcional en Haskell](https://jpetit.jutge.org/haskell/)
 
 - [Elements de programació funcional en C++](09-fp-c++.html)
 
@@ -23,4 +23,4 @@
 
 - [Subtipus, herència i programació orientada a objectes](14-subtipus.html)
 
-- [Treball dirigit](10-treball-lps.html) / [Examen final juny 2020](15-examen-final.html)
+- [Treball dirigit (VELL)](10-treball-lps.html)
