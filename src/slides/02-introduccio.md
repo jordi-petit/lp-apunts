@@ -423,6 +423,12 @@ Com mesurar la popularitat dels LPs?
 
 
 
+---
+
+# Ús dels LPs 1965 - 2019
+
+<iframe width="640" height="360" src="https://www.youtube.com/embed/Og847HVwRSI" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ---
 
@@ -1016,7 +1022,3 @@ Exemples de llenguatges:
 - Comprovació estàtica: Haskell, C++, Java, ...
 
 - Comprovació dinàmica: Python, Ruby, ...
-
-
-
-
