@@ -23,4 +23,4 @@
 
 - [Subtipus, herència i programació orientada a objectes](14-subtipus.html)
 
-- [Treball dirigit (VELL)](10-treball-lps.html)
+- [Treball dirigit](10-treball-lps.html)
