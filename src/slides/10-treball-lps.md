@@ -14,7 +14,7 @@ Jordi Petit
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2019
+Universitat Politècnica de Catalunya, 2020
 
 ---
 
@@ -22,7 +22,7 @@ Universitat Politècnica de Catalunya, 2019
 # Treball dirigit
 
 El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
-les propietats d'un llenguatge de programació.
+les propietats d'un o alguns llenguatges de programació.
 
 L'objectiu és satisfer les competències transversals de l'assignatura:
 
@@ -56,23 +56,23 @@ llacunes.
 # Treball dirigit
 
 El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
-les propietats d'un llenguatge de programació.
+les propietats d'un o alguns llenguatges de programació.
 
 L'avaluació es farà per evaluació entre companys (co-avaluació).
 
 Etapes:
 
-1. Assignació de llenguatges de programació a l'atzar **(dv 27 de març)**.
+1. Assignació de llenguatges de programació a l'atzar **(3 de novembre)**.
 
 2. Preparació del vídeo i del document **(temps: 8 setmanes)**.
 
-3. Penjar vídeo i document (junt en un fitzer ``.zip`)
-a [Peergrade](https://www.peergrade.io/),
-registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `JTW86Z`
-**(límit: dj 21 de maig, 13:00)**.
+3. Penjar vídeo i document PDF a Eduflow
+registrant-se amb l'adreça de correu @estudiantat.upc.edu i utilitzant
+l'enllaç https://app.eduflow.com/join/K4ZFH7
+**(límit: 27 de desembre, 23:59)**.
 
 4. Avaluar els vídeos i els documents de 3 altres companys usant una rúbrica
-   preparada pels professors a Peergrade **(límit: dl 8 de juny, 13:00)**.
+   preparada pels professors a Eduflow **(límit: 11 de gener, 23:59)**.
 
 
 
@@ -94,7 +94,7 @@ registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `JT
     - Límit de 50MB per fitxer.
     - Important: una imatge clara i un àudio molt nítid.
 
-- El vídeo ha de ser anònim .xs[(malgrat que es pugui reconèixer la veu de l'orador...)] però ha d'incloure el hash del seu autor (DNI mòdul 9511).
+- El vídeo ha de ser anònim .xs[(malgrat que es pugui reconèixer la veu de l'orador...)] però ha d'incloure el hash de TD del seu autor.
 
 
 ---
@@ -107,8 +107,7 @@ registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `JT
 
 - Segona part: estudi bibliogràfic.
 
-- El document ha de ser anònim però ha d'incloure el hash del seu autor.
-
+- El document ha de ser anònim però ha d'incloure el hash de TD del seu autor.
 
 ---
 
@@ -116,24 +115,12 @@ registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `JT
 
 -  Vídeo i primera part del document:
 
-    Cal tractar com a mínim qüestions descrites a la sessió d'Introducció als
-    Llenguatges de Programació i a la sessió de Sistemes de Tipus com ara:
+    - Cal tractar el tema que us hagi estat assignat.
 
-    -  Propòsit del llenguatge.
+    - Els elements que se us donen per a cada tema són només una suggerència per començar.
 
-    -  Paradigma o paradigmes de programació que admet el llenguatge.
+    - Complementeu el treball amb una visió personal i crítica del tema tractat.
 
-    -  Sistema d'execució.
-
-    -  Sistema de tipus.
-
-    -  Principals aplicacions.
-
-    -  Història del LP i relació amb LPs similars.
-
-    -  Exemples de codi il·lustratius.
-
-    -  Altres característiques particulars.
 
 ---
 
@@ -154,8 +141,66 @@ registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `JT
     -  Millor si no totes són d'internet.
 
 
+
 ---
 
+# Temes
+
+## T1: Llenguatges de programació de domini específic (*domain-specific languages*, DSLs)
+
+- Definició
+- Motivació
+- Classificació
+- Exemples
+- Aplicacions
+- Avantatges i inconvenients
+- Eines per a DSLs
+- Conclusió
+
+---
+
+# Temes
+
+
+## T2: Eficiència energètica dels llenguatges de programació
+
+- Definicions
+- Àmbits
+- Mesures
+- Resultats
+- Conclusió
+
+---
+
+# Temes
+
+## T3: Programació asíncrona en Python
+
+- Definició
+- Motivació
+- Aplicacions
+- Ús i exemples
+- Avantatges i inconvenients
+- Comparació amb altres LPs
+- Conclusió
+
+---
+
+# Temes
+
+## T4: Recollida de memòria brossa (gargage collection) als llenguatges de programació
+
+- Definició
+- Motivació
+- Aplicacions
+- Exemples
+- Algorismes
+- Alternatives
+- Avantatges i inconvenients
+- Conclusió
+
+
+---
 
 # Avaluació del Treball Dirigit
 
@@ -189,7 +234,7 @@ manifestament incorrecta als seus companys.
 
 Els repetidors poden reusar les seves notes del TD del curs passat.
 
-Per a fer-ho, només cal que no participin a Peergrade. Si hi participen, vol dir que
+Per a fer-ho, només cal que no participin a Eduflow. Si hi participen, vol dir que
 tornen a fer tot el treball dirigit (enviament i correccions) i rebutgen la nota
 anterior.
 
@@ -211,18 +256,17 @@ Tingueu en comptes aquestes pautes:
 
 # Recordatori
 
-## Web
-
-- https://www.peergrade.io/
-
-- Class code: `JTW86Z`
-
 
 ## Registre
 
-- Useu el vostre compte de la FIB (`el-meu-compte@est.fib.upc.edu`)
+- https://app.eduflow.com/join/K4ZFH7
+
+- Useu el vostre compte de la UPC (`el-meu-compte@estudiantat.upc.edu`)
 
 
 ## Deadlines
 
-![:width 40em](img/deadlines.png)
+- Lliurament: 27 de desembre, 23:59
+
+- Avalució als compoanys: 11 de gener, 23:59
+
