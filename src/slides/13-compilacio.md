@@ -32,8 +32,8 @@ Universitat Politècnica de Catalunya, 2021
     3. Generació de l'arbre de sintàxi abstracta,
     4. Interpretació a través del recorregut de l'arbre.
 
-- El curs de Compiladors aprofundeix molts més els continguts
-i el curs de Teoria de la Computació n'ofereix els fonaments teòrics.
+- El curs de Compiladors aprofundeix molts més els continguts.
+- El curs de Teoria de la Computació n'ofereix els fonaments teòrics.
 
 ---
 
@@ -943,7 +943,7 @@ class: center, middle
 
 
 L'objectiu de l'analitzador sintàctic és convertir una seqüència de tokens
-en un arbre de sintàxi abstracta que captura la jerarquia de les construccions.
+en un arbre de sintàxi abstracta que capturi la jerarquia de les construccions.
 
 .center[
 `2 * 3 + 4`
@@ -966,12 +966,15 @@ en un arbre de sintàxi abstracta que captura la jerarquia de les construccions.
 La majoria dels LPs es descriuen a través de **gramàtiques incontextuals**.
 
 ```
+pgma → expr ; pgma
+     | /* res */
+
 expr → expr + expr
      | expr - expr
      | expr * expr
      | expr / expr
-     | digit
      | ( expr )
+     | NUM
 ```
 
 
@@ -991,24 +994,24 @@ La recursivitat permet donar jerarquia i aparellar elements (parèntesis o blocs
 Exemple: Gramàtica de C
 
 <pre style='margin-left: 0em; padding: 10px; height: 32em; overflow-y: auto; background-color: #272822; border-radius: 5px; color: white; font-size: 12px;'>
-⟨translation-unit⟩ ::= {⟨external-declaration⟩}*
+translation-unit     : {external-declaration}*
 
-⟨external-declaration⟩ ::= ⟨function-definition⟩
-                         | ⟨declaration⟩
+external-declaration     : function-definition
+                         | declaration
 
-⟨function-definition⟩ ::= {⟨declaration-specifier⟩}* ⟨declarator⟩ {⟨declaration⟩}* ⟨compound-statement⟩
+function-definition     : {declaration-specifier}* declarator {declaration}* compound-statement
 
-⟨declaration-specifier⟩ ::= ⟨storage-class-specifier⟩
-                          | ⟨type-specifier⟩
-                          | ⟨type-qualifier⟩
+declaration-specifier     : storage-class-specifier
+                          | type-specifier
+                          | type-qualifier
 
-⟨storage-class-specifier⟩ ::= auto
+storage-class-specifier     : auto
                             | register
                             | static
                             | extern
                             | typedef
 
-⟨type-specifier⟩ ::= void
+type-specifier     : void
                    | char
                    | short
                    | int
@@ -1017,120 +1020,120 @@ Exemple: Gramàtica de C
                    | double
                    | signed
                    | unsigned
-                   | ⟨struct-or-union-specifier⟩
-                   | ⟨enum-specifier⟩
-                   | ⟨typedef-name⟩
+                   | struct-or-union-specifier
+                   | enum-specifier
+                   | typedef-name
 
-⟨struct-or-union-specifier⟩ ::= ⟨struct-or-union⟩ ⟨identifier⟩ { {⟨struct-declaration⟩}+ }
-                              | ⟨struct-or-union⟩ { {⟨struct-declaration⟩}+ }
-                              | ⟨struct-or-union⟩ ⟨identifier⟩
+struct-or-union-specifier     : struct-or-union identifier { {struct-declaration}+ }
+                              | struct-or-union { {struct-declaration}+ }
+                              | struct-or-union identifier
 
-⟨struct-or-union⟩ ::= struct
+struct-or-union     : struct
                     | union
 
-⟨struct-declaration⟩ ::= {⟨specifier-qualifier⟩}* ⟨struct-declarator-list⟩
+struct-declaration     : {specifier-qualifier}* struct-declarator-list
 
-⟨specifier-qualifier⟩ ::= ⟨type-specifier⟩
-                        | ⟨type-qualifier⟩
+specifier-qualifier     : type-specifier
+                        | type-qualifier
 
-⟨struct-declarator-list⟩ ::= ⟨struct-declarator⟩
-                           | ⟨struct-declarator-list⟩ , ⟨struct-declarator⟩
+struct-declarator-list     : struct-declarator
+                           | struct-declarator-list , struct-declarator
 
-⟨struct-declarator⟩ ::= ⟨declarator⟩
-                      | ⟨declarator⟩ : ⟨constant-expression⟩
-                      | : ⟨constant-expression⟩
+struct-declarator     : declarator
+                      | declarator : constant-expression
+                      | : constant-expression
 
-⟨declarator⟩ ::= {⟨pointer⟩}? ⟨direct-declarator⟩
+declarator     : {pointer}? direct-declarator
 
-⟨pointer⟩ ::= * {⟨type-qualifier⟩}* {⟨pointer⟩}?
+pointer     : * {type-qualifier}* {pointer}?
 
-⟨type-qualifier⟩ ::= const
+type-qualifier     : const
                    | volatile
 
-⟨direct-declarator⟩ ::= ⟨identifier⟩
-                      | ( ⟨declarator⟩ )
-                      | ⟨direct-declarator⟩ [ {⟨constant-expression⟩}? ]
-                      | ⟨direct-declarator⟩ ( ⟨parameter-type-list⟩ )
-                      | ⟨direct-declarator⟩ ( {⟨identifier⟩}* )
+direct-declarator     : identifier
+                      | ( declarator )
+                      | direct-declarator [ {constant-expression}? ]
+                      | direct-declarator ( parameter-type-list )
+                      | direct-declarator ( {identifier}* )
 
-⟨constant-expression⟩ ::= ⟨conditional-expression⟩
+constant-expression     : conditional-expression
 
-⟨conditional-expression⟩ ::= ⟨logical-or-expression⟩
-                           | ⟨logical-or-expression⟩ ? ⟨expression⟩ : ⟨conditional-expression⟩
+conditional-expression     : logical-or-expression
+                           | logical-or-expression ? expression : conditional-expression
 
-⟨logical-or-expression⟩ ::= ⟨logical-and-expression⟩
-                          | ⟨logical-or-expression⟩ || ⟨logical-and-expression⟩
+logical-or-expression     : logical-and-expression
+                          | logical-or-expression || logical-and-expression
 
-⟨logical-and-expression⟩ ::= ⟨inclusive-or-expression⟩
-                           | ⟨logical-and-expression⟩ && ⟨inclusive-or-expression⟩
+logical-and-expression     : inclusive-or-expression
+                           | logical-and-expression && inclusive-or-expression
 
-⟨inclusive-or-expression⟩ ::= ⟨exclusive-or-expression⟩
-                            | ⟨inclusive-or-expression⟩ | ⟨exclusive-or-expression⟩
+inclusive-or-expression     : exclusive-or-expression
+                            | inclusive-or-expression | exclusive-or-expression
 
-⟨exclusive-or-expression⟩ ::= ⟨and-expression⟩
-                            | ⟨exclusive-or-expression⟩ ^ ⟨and-expression⟩
+exclusive-or-expression     : and-expression
+                            | exclusive-or-expression ^ and-expression
 
-⟨and-expression⟩ ::= ⟨equality-expression⟩
-                   | ⟨and-expression⟩ & ⟨equality-expression⟩
+and-expression     : equality-expression
+                   | and-expression & equality-expression
 
-⟨equality-expression⟩ ::= ⟨relational-expression⟩
-                        | ⟨equality-expression⟩ == ⟨relational-expression⟩
-                        | ⟨equality-expression⟩ != ⟨relational-expression⟩
+equality-expression     : relational-expression
+                        | equality-expression == relational-expression
+                        | equality-expression != relational-expression
 
-⟨relational-expression⟩ ::= ⟨shift-expression⟩
-                          | ⟨relational-expression⟩ < ⟨shift-expression⟩
-                          | ⟨relational-expression⟩ > ⟨shift-expression⟩
-                          | ⟨relational-expression⟩ <= ⟨shift-expression⟩
-                          | ⟨relational-expression⟩ >= ⟨shift-expression⟩
+relational-expression     : shift-expression
+                          | relational-expression < shift-expression
+                          | relational-expression > shift-expression
+                          | relational-expression <= shift-expression
+                          | relational-expression >= shift-expression
 
-⟨shift-expression⟩ ::= ⟨additive-expression⟩
-                     | ⟨shift-expression⟩ << ⟨additive-expression⟩
-                     | ⟨shift-expression⟩ >> ⟨additive-expression⟩
+shift-expression     : additive-expression
+                     | shift-expression << additive-expression
+                     | shift-expression >> additive-expression
 
-⟨additive-expression⟩ ::= ⟨multiplicative-expression⟩
-                        | ⟨additive-expression⟩ + ⟨multiplicative-expression⟩
-                        | ⟨additive-expression⟩ - ⟨multiplicative-expression⟩
+additive-expression     : multiplicative-expression
+                        | additive-expression + multiplicative-expression
+                        | additive-expression - multiplicative-expression
 
-⟨multiplicative-expression⟩ ::= ⟨cast-expression⟩
-                              | ⟨multiplicative-expression⟩ * ⟨cast-expression⟩
-                              | ⟨multiplicative-expression⟩ / ⟨cast-expression⟩
-                              | ⟨multiplicative-expression⟩ % ⟨cast-expression⟩
+multiplicative-expression     : cast-expression
+                              | multiplicative-expression * cast-expression
+                              | multiplicative-expression / cast-expression
+                              | multiplicative-expression % cast-expression
 
-⟨cast-expression⟩ ::= ⟨unary-expression⟩
-                    | ( ⟨type-name⟩ ) ⟨cast-expression⟩
+cast-expression     : unary-expression
+                    | ( type-name ) cast-expression
 
-⟨unary-expression⟩ ::= ⟨postfix-expression⟩
-                     | ++ ⟨unary-expression⟩
-                     | -- ⟨unary-expression⟩
-                     | ⟨unary-operator⟩ ⟨cast-expression⟩
-                     | sizeof ⟨unary-expression⟩
-                     | sizeof ⟨type-name⟩
+unary-expression     : postfix-expression
+                     | ++ unary-expression
+                     | -- unary-expression
+                     | unary-operator cast-expression
+                     | sizeof unary-expression
+                     | sizeof type-name
 
-⟨postfix-expression⟩ ::= ⟨primary-expression⟩
-                       | ⟨postfix-expression⟩ [ ⟨expression⟩ ]
-                       | ⟨postfix-expression⟩ ( {⟨assignment-expression⟩}* )
-                       | ⟨postfix-expression⟩ . ⟨identifier⟩
-                       | ⟨postfix-expression⟩ -⟩ ⟨identifier⟩
-                       | ⟨postfix-expression⟩ ++
-                       | ⟨postfix-expression⟩ --
+postfix-expression     : primary-expression
+                       | postfix-expression [ expression ]
+                       | postfix-expression ( {assignment-expression}* )
+                       | postfix-expression . identifier
+                       | postfix-expression - identifier
+                       | postfix-expression ++
+                       | postfix-expression --
 
-⟨primary-expression⟩ ::= ⟨identifier⟩
-                       | ⟨constant⟩
-                       | ⟨string⟩
-                       | ( ⟨expression⟩ )
+primary-expression     : identifier
+                       | constant
+                       | string
+                       | ( expression )
 
-⟨constant⟩ ::= ⟨integer-constant⟩
-             | ⟨character-constant⟩
-             | ⟨floating-constant⟩
-             | ⟨enumeration-constant⟩
+constant     : integer-constant
+             | character-constant
+             | floating-constant
+             | enumeration-constant
 
-⟨expression⟩ ::= ⟨assignment-expression⟩
-               | ⟨expression⟩ , ⟨assignment-expression⟩
+expression     : assignment-expression
+               | expression , assignment-expression
 
-⟨assignment-expression⟩ ::= ⟨conditional-expression⟩
-                          | ⟨unary-expression⟩ ⟨assignment-operator⟩ ⟨assignment-expression⟩
+assignment-expression     : conditional-expression
+                          | unary-expression assignment-operator assignment-expression
 
-⟨assignment-operator⟩ ::= =
+assignment-operator     : =
                         | *=
                         | /=
                         | %=
@@ -1142,84 +1145,84 @@ Exemple: Gramàtica de C
                         | ^=
                         | |=
 
-⟨unary-operator⟩ ::= &
+unary-operator     : &
                    | *
                    | +
                    | -
                    | ~
                    | !
 
-⟨type-name⟩ ::= {⟨specifier-qualifier⟩}+ {⟨abstract-declarator⟩}?
+type-name     : {specifier-qualifier}+ {abstract-declarator}?
 
-⟨parameter-type-list⟩ ::= ⟨parameter-list⟩
-                        | ⟨parameter-list⟩ , ...
+parameter-type-list     : parameter-list
+                        | parameter-list , ...
 
-⟨parameter-list⟩ ::= ⟨parameter-declaration⟩
-                   | ⟨parameter-list⟩ , ⟨parameter-declaration⟩
+parameter-list     : parameter-declaration
+                   | parameter-list , parameter-declaration
 
-⟨parameter-declaration⟩ ::= {⟨declaration-specifier⟩}+ ⟨declarator⟩
-                          | {⟨declaration-specifier⟩}+ ⟨abstract-declarator⟩
-                          | {⟨declaration-specifier⟩}+
+parameter-declaration     : {declaration-specifier}+ declarator
+                          | {declaration-specifier}+ abstract-declarator
+                          | {declaration-specifier}+
 
-⟨abstract-declarator⟩ ::= ⟨pointer⟩
-                        | ⟨pointer⟩ ⟨direct-abstract-declarator⟩
-                        | ⟨direct-abstract-declarator⟩
+abstract-declarator     : pointer
+                        | pointer direct-abstract-declarator
+                        | direct-abstract-declarator
 
-⟨direct-abstract-declarator⟩ ::=  ( ⟨abstract-declarator⟩ )
-                               | {⟨direct-abstract-declarator⟩}? [ {⟨constant-expression⟩}? ]
-                               | {⟨direct-abstract-declarator⟩}? ( {⟨parameter-type-list⟩}? )
+direct-abstract-declarator     :  ( abstract-declarator )
+                               | {direct-abstract-declarator}? [ {constant-expression}? ]
+                               | {direct-abstract-declarator}? ( {parameter-type-list}? )
 
-⟨enum-specifier⟩ ::= enum ⟨identifier⟩ { ⟨enumerator-list⟩ }
-                   | enum { ⟨enumerator-list⟩ }
-                   | enum ⟨identifier⟩
+enum-specifier     : enum identifier { enumerator-list }
+                   | enum { enumerator-list }
+                   | enum identifier
 
-⟨enumerator-list⟩ ::= ⟨enumerator⟩
-                    | ⟨enumerator-list⟩ , ⟨enumerator⟩
+enumerator-list     : enumerator
+                    | enumerator-list , enumerator
 
-⟨enumerator⟩ ::= ⟨identifier⟩
-               | ⟨identifier⟩ = ⟨constant-expression⟩
+enumerator     : identifier
+               | identifier = constant-expression
 
-⟨typedef-name⟩ ::= ⟨identifier⟩
+typedef-name     : identifier
 
-⟨declaration⟩ ::=  {⟨declaration-specifier⟩}+ {⟨init-declarator⟩}* ;
+declaration     :  {declaration-specifier}+ {init-declarator}* ;
 
-⟨init-declarator⟩ ::= ⟨declarator⟩
-                    | ⟨declarator⟩ = ⟨initializer⟩
+init-declarator     : declarator
+                    | declarator = initializer
 
-⟨initializer⟩ ::= ⟨assignment-expression⟩
-                | { ⟨initializer-list⟩ }
-                | { ⟨initializer-list⟩ , }
+initializer     : assignment-expression
+                | { initializer-list }
+                | { initializer-list , }
 
-⟨initializer-list⟩ ::= ⟨initializer⟩
-                     | ⟨initializer-list⟩ , ⟨initializer⟩
+initializer-list     : initializer
+                     | initializer-list , initializer
 
-⟨compound-statement⟩ ::= { {⟨declaration⟩}* {⟨statement⟩}* }
+compound-statement     : { {declaration}* {statement}* }
 
-⟨statement⟩ ::= ⟨labeled-statement⟩
-              | ⟨expression-statement⟩
-              | ⟨compound-statement⟩
-              | ⟨selection-statement⟩
-              | ⟨iteration-statement⟩
-              | ⟨jump-statement⟩
+statement     : labeled-statement
+              | expression-statement
+              | compound-statement
+              | selection-statement
+              | iteration-statement
+              | jump-statement
 
-⟨labeled-statement⟩ ::= ⟨identifier⟩ : ⟨statement⟩
-                      | case ⟨constant-expression⟩ : ⟨statement⟩
-                      | default : ⟨statement⟩
+labeled-statement     : identifier : statement
+                      | case constant-expression : statement
+                      | default : statement
 
-⟨expression-statement⟩ ::= {⟨expression⟩}? ;
+expression-statement     : {expression}? ;
 
-⟨selection-statement⟩ ::= if ( ⟨expression⟩ ) ⟨statement⟩
-                        | if ( ⟨expression⟩ ) ⟨statement⟩ else ⟨statement⟩
-                        | switch ( ⟨expression⟩ ) ⟨statement⟩
+selection-statement     : if ( expression ) statement
+                        | if ( expression ) statement else statement
+                        | switch ( expression ) statement
 
-⟨iteration-statement⟩ ::= while ( ⟨expression⟩ ) ⟨statement⟩
-                        | do ⟨statement⟩ while ( ⟨expression⟩ ) ;
-                        | for ( {⟨expression⟩}? ; {⟨expression⟩}? ; {⟨expression⟩}? ) ⟨statement⟩
+iteration-statement     : while ( expression ) statement
+                        | do statement while ( expression ) ;
+                        | for ( {expression}? ; {expression}? ; {expression}? ) statement
 
-⟨jump-statement⟩ ::= goto ⟨identifier⟩ ;
+jump-statement     : goto identifier ;
                    | continue ;
                    | break ;
-                   | return {⟨expression⟩}? ;
+                   | return {expression}? ;
 </pre>
 
 .xxs[.right[
@@ -1232,13 +1235,13 @@ Exemple: Gramàtica de C
 
 - Gramàtiques ambigües
 
-- Prioritat  i associativitat dels operadors
+- Prioritat dels operadors
 
-- Recursivitat per la dreta *vs.* recursivitat per l'esquerra
+- Associativitat dels operadors
 
 - Analitzadors top-down *vs.* bottom-up
 
-- Arbre de parsing *vs.* arbre de sintàxi abstracta
+- Recursivitat per la dreta / per l'esquerra
 
 
 
@@ -1246,7 +1249,7 @@ Exemple: Gramàtica de C
 
 # Gramàtiques ambigües
 
-Una gramàtica és **ambigüa** si un mateix text es pot derivar de diferentes maneres.
+Una gramàtica és **ambigüa** si un mateix text es pot derivar de diferents maneres.
 
 Per exemple, amb
 
@@ -1254,7 +1257,7 @@ Per exemple, amb
 expr → expr + expr | expr - expr | expr * expr | NUM
 ```
 
-el text `3 - 4 * 2 + 5` es pot derivar d'aquestes maneres:
+el fragment `3 - 4 * 2 + 5` es pot derivar d'aquestes maneres:
 
 .center[
 ![:width 30em](img/compis-ambigua.png)
@@ -1313,7 +1316,7 @@ expr → expr + expr
      | NUM
 ```
 
-> ➡️ És ambigüa: no hi ha prioritat ni associativitat com en matemàtiques.
+> ➡️ És ambigüa: no hi ha la prioritat ni associativitat habitual en matemàtiques.
 
 
 
@@ -1399,7 +1402,7 @@ gramatical segons la gramàtica.
 
 
 .center[
-![:width 30em](img/compis-parsers.png)
+![:width 35em](img/compis-parsers.png)
 ]
 .right[.xxs[
 Figura: [Wikipedia](https://en.wikipedia.org/wiki/Bottom-up_parsing)
@@ -1411,7 +1414,7 @@ Figura: [Wikipedia](https://en.wikipedia.org/wiki/Bottom-up_parsing)
 
 # Generadors d'analitzadors sintàctics
 
-## Analitzadors descendents LL(*k*):
+## Analitzadors descendents LL(*k*)
 
 - LL: Left-to-right, Left-most derivation<br>
 - *k*: nombre de tokens que mira endavant
@@ -1423,13 +1426,16 @@ decidir quina producció utilitzar.
 
 # Generadors d'analitzadors sintàctics
 
-## Analitzadors descendents LL(1):
+## Analitzadors descendents LL(1)
 
 .cols5050[
 .col1[
 Exemple de gramàtica:
 
 ```antlr
+root    : stmt *
+        ;
+
 stmt    : 'if' expr 'then' stmt
         | 'while' expr 'do' stmt
         | expr ':=' expr
@@ -1445,59 +1451,121 @@ Parser LL(1):
 
 ```python
 def stmt():
-    if next_token() == IF:
-        match(IF)
-        expr()
-        match(THEN)
-        stmt()
-    elif next_token() == WHILE:
-        match(WHILE);
-        expr();
-        match(DO);
-        stmt();
-    elif next_token() in [NUMBER, LPAREN]:
-        expr();
-        match(COLEQ);
-        expr();
+    if current_token() == IF:
+        next_token()
+        cond = expr()
+        next_token()
+        then = stmt()
+        return Node(IF, cond, then)
+    elif current_token() == WHILE:
+        next_token()
+        cond = expr()
+        next_token()
+        loop = stmt()
+        return Node(WHILE, cond, loop)
+    elif current_token() in [NUMBER, LPAREN]:
+        lvalue = expr()
+        assert current_token() == ASSIGN, "Syntax error"
+        next_token()
+        rvalue = expr()
+        return Node(ASSIGN, lvalue, rvalue)
+    else:
+        assert False, "Syntax error"
 ```
 ]
 ]
 
-Exercici: Implementeu `expr`.
+Exercici: Implementeu `expr()`.
 
 
 ---
 
 # Generadors d'analitzadors sintàctics
 
-## Analitzadors descendents LL(1):
+## Analitzadors descendents LL(1)
 
 Inconvenients principals:
 
-- Les regles no poden tenir recursivitat per l'esquerra (es penjaria).
-
-    ```antlr
-    expr : expr '+' term | term ;       # left recursion 💣
-    ```
-
-    Solució: Transpa següent
-
 - Les produccions no poden tenir prefixos comuns (no sabria quina triar).
 
-    ```antlr
-    expr : ID '(' expr ')'              # common prefixes
-         | ID '=' expr                  # common prefixes 💣
+    ```
+    expr → ID ( expr )
+         | ID = expr
     ```
 
-    Solució: usar un *look ahead* (*k*) més gran.
+- Les regles no poden tenir recursivitat per l'esquerra (es penjaria).
+
+    ```
+    expr → expr + term
+         | term
+    ```
 
 
 ---
 
 # Generadors d'analitzadors sintàctics
 
-## ANTLR
+## Analitzadors descendents LL(1)
 
-ANTLR és un analitzadors descendent LL(*k*).
+Comencem amb:
 
-També té floritures.
+```
+expr  → expr '+' term                   💣 prefixos comuns
+      | expr '-' term
+      | term
+```
+
+> ⬇ consolidem de prefixos comuns
+
+```
+expr  → expr ('+' term | '-' term)      💣 recursivitat per l'esquerra
+      | term
+```
+
+> ⬇ instroduim nova regla
+
+```
+expr  → expr2
+expr2 → '+' term expr2
+      | '-' term expr2
+      | /* res */
+```
+
+> ✅
+
+
+---
+
+# Generadors d'analitzadors sintàctics
+
+ANTLR és un analitzador descendent LL(*k*).<br/>
+També permet usar `*` i `+` a les regles gramaticals.
+
+```
+expr  → expr '+' term
+      | expr '-' term
+      | term
+```
+
+> ⬇ s'escriu senzillament
+
+```antlr4
+expr  : term ('+' term | '-' term) * ;
+```
+
+A més, la prioritat dels operadors ve donada per l'ordre d'escriptura:
+
+```antlr4
+expr : expr '*' expr
+     | expr '+' expr
+     | NUM ;
+```
+
+I es pot definir fàcilment l'associativitat:
+
+
+```antlr4
+expr : <assoc=right> expr '^' expr
+     | NUM ;
+```
+
