@@ -22,9 +22,9 @@ Universitat Politècnica de Catalunya, 2021
 # Objectius
 
 
-- Conèixer l'estructural general d'un compilador
+- Conèixer l'estructural general d'un compilador.
 
-- Conèixer l'existència d'eines per ajudar a crear compiladors
+- Conèixer l'existència d'eines per ajudar a crear compiladors (usarem [ANTLR](https://www.antlr.org/)).
 
 - A la pràctica, ens limitem a crear petits processadors de llenguatges:
     1. Definició del vocabulari,
@@ -189,7 +189,7 @@ class Bar {
 
 Hi ha dues bàsicament de dues maneres d'especificar formalment la semàntica:
 
-- **Semàntica operacional**: defineix una màquina virtual i
+- **Semàntica operacional:** defineix una màquina virtual i
 com l'execució del programa canvia l'estat de la màquina.
 
 - **Semàntica denotacional:** mostra com construir una
@@ -487,8 +487,8 @@ int gcd(int a, int b) {
 ```
 
 L'**analitzador sintàtic** construeix un **arbre de sintàxi abstracta** a partir de la seqüència
-de tokens i les regles gramaticals
-Els separadors, parèntesis i blocs s'eliminen.
+de tokens i les regles sintàctiques
+Les paraules clau, els separadors, parèntesis i blocs s'eliminen.
 
 .center[
 ![:width 30em](img/compis-exemple-ast.png)
@@ -662,17 +662,17 @@ converteix una seqüència de caràcters en una seqüència de ***tokens***.
 Per especificar els *tokens* s'utilitzen elements de la teoria de llenguatges:
 
 
-**Alfabet**: un conjunt finit de símbols.
+**Alfabet:** un conjunt finit de símbols.
 
 > Exemples: {0, 1}, {`A`, `B`, ..., `Z`}, ASCII, Unicode, ...
 
 
-**Paraula**: una seqüència finita de símbols de l'alfabet.
+**Paraula:** una seqüència finita de símbols de l'alfabet.
 
 > Exemples: ε (la paraula buida), `foo`, `αβγ`.
 
 
-**Llenguatge**: Un conjunt de paraules sobre un alfabet.
+**Llenguatge:** Un conjunt de paraules sobre un alfabet.
 
 > Exemples: ∅ (el llenguatge buit), { 1, 11, 111, 1111 },
 > tots els mots anglesos, els identificadors (textos que comencen
@@ -686,15 +686,15 @@ Per especificar els *tokens* s'utilitzen elements de la teoria de llenguatges:
 
 > Exemple:  *L* = { ε, wo }, *M* = { man, men }
 
-**Concatenació**: Una paraules d'un llenguatge seguida d'una paraula de l'altre llenguatge.
+**Concatenació:** Una paraules d'un llenguatge seguida d'una paraula de l'altre llenguatge.
 
 > *L M* = { man, men, woman, women }
 
-**Unió**: Totes les paraules de cada llenguatge.
+**Unió:** Totes les paraules de cada llenguatge.
 
 > *L* ∪ *M* = {ε, wo, man, men }
 
-**Clausura de Kleene**: Zero o més concatenacions.
+**Clausura de Kleene:** Zero o més concatenacions.
 
 > *M﹡* = {ε} ∪ *M* ∪ *MM* ∪ *MMM* ∪ ... = {ε, man, men, manman, manmen, menman, menmen,
 > manmanman, manmanmen, manmenman, ...}
@@ -953,7 +953,8 @@ en un arbre de sintàxi abstracta que capturi la jerarquia de les construccions.
 ![:width 6em](img/compis-ast1.png)
 ]
 
-→ Es descarta informació no rellevant com els separadors, els parèntesis i els blocs.
+→ Es descarta informació no rellevant com les paraules clau,
+els separadors, els parèntesis i els blocs.
 
 → Es facilita la feina dels propers estadis.
 
@@ -1398,7 +1399,7 @@ cap a les fulles.
 
 - **Analitzadors ascendents** (bottom-up *parsers*): reconeixen primer sobre les
 unitats més petites de l'entrada analitzada abans de reconèixer l'estructura
-gramatical segons la gramàtica.
+sintàctica segons la gramàtica.
 
 
 .center[
@@ -1536,10 +1537,10 @@ expr2 → '+' term expr2
 
 ---
 
-# Generadors d'analitzadors sintàctics
+# ANTLR
 
 ANTLR és un analitzador descendent LL(*k*).<br/>
-També permet usar `*` i `+` a les regles gramaticals.
+També permet usar `*` i `+` a les regles sintàctiques.
 
 ```
 expr  → expr '+' term
@@ -1569,3 +1570,265 @@ expr : <assoc=right> expr '^' expr
      | NUM ;
 ```
 
+---
+
+# Exercicis
+
+**P1:** Escriviu gramàtiques no ambigües pels llenguatges següents:
+
+1. El conjunt de tots els mots amb `a`s i `b`s que són palíndroms.
+
+1. Mots que tenen el patró `a*b*` amb més  `a`s que `b`s.
+
+1. Textos amb parèntesis i claudàtors ben aniuats.
+<br>Exemple: `( [ [ ] ( ( ) [ ( ) ] [ ] ) ] )`.
+
+1. El conjunt de tots els mots amb `a`s i `b`s tals que a cada `a`
+li segueix immediatament per, almenys, una `b`.
+
+1. El conjunt de tots els mots amb `a`s i `b`s amb el mateix nombre d'`a`s que `b`s.
+
+1. El conjunt de tots els mots amb `a`s i `b`s amb un nombre diferent d'`a`s que `b`s.
+
+1. Blocs d'instruccions separades per `;` a la Pascal. Exemple:
+<br>`BEGIN instrucció ; BEGIN instrucció ; instrucció END ; instrucció END`.
+
+1. Blocs d'instruccions acabades per `;` a la C.
+<br>Exemple: `{ instrucció ; { instrucció ; instrucció ; } ; instrucció ; }`.
+
+
+---
+
+# Exercicis
+
+
+**P2:** Especifiqueu les gramàtiques anteriors amb notació ANTLR, modificant la gramàtica si és necessari.
+
+
+---
+
+# Exercicis
+
+**P3:** Sense utilitzar cap eina ni llibreria (ni `eval`!), escriviu en
+Haskell, Python o C++ un analitzador descendent LL(1)
+que llegeixi una seqüènica d'expressions i escrigui el resultat de cadascuna d'elles.
+[TBD: problema pel Jutge! 😄]
+
+- Entrada:
+
+    ```
+    2
+    2 * 3
+    2 * 3 + 1
+    2 * (3 + 1)
+    10 - 3 - 2
+    13 / 3
+    ```
+
+- Sortida:
+
+    ```
+    2
+    6
+    7
+    8
+    5
+    4
+    ```
+
+
+---
+
+# Exercicis
+
+**P4:** Sense utilitzar cap eina ni llibreria, escriviu en
+Haskell, Python o C++ un analitzador descendent LL(1)
+que llegeixi una seqüènica d'expressions i construeixi i escrigui l'arbre de sintàxi abstracta de cadascuna.
+[TBD: problema pel Jutge! 😄]
+
+- Entrada:
+
+    ```
+    2 * (3 + 1)
+    (10 - 3 - 2) / 4
+    ```
+
+- Sortida:
+
+    ```
+    (MUL 2 (SUM 3 1))
+    (DIV (SUB (SUB 10 3) 2) 4)
+    ```
+
+
+
+
+---
+
+
+class: center, middle
+
+
+# Arbres de sintàxi abstracta
+
+
+---
+
+# Accions
+
+- En un analitzador descendent, es poden executar accions
+durant el reconeixement de les regles.
+
+    Les accions poden aparèixer en qualsevol punt de la regla:
+
+    ```antlr4
+    regla   :   { /* abans */ }
+                regla1
+                { /* durant */ }
+                regla2
+                { /* després */ }
+            ;
+    ```
+
+    → La gramàtica esdevé "imperativa".<br>
+    → Les accions s'entrellacen amb la gramàtica.<br>
+    → És fàcil entendre què passa i quan passa.
+
+
+- En un analitzador ascendent, només es poden executar accions
+després de reconèixer una regla.
+
+
+---
+
+# Arbres de sintàxi
+
+.cols5050[
+.col1[
+Usualment, les accions construeixen una estructura de dades que representa el programa.
+
+→ Separa l'anàlisi de la traducció.<br>
+
+→ Facilita les modificacions tot minimitzant les interaccions.<br>
+
+→ Permet que diferents parts del programa s'analitzin en ordres diferents.
+
+L'estructura de dades resultant sol ser un **arbre de sintàxi:**
+]
+.col2[
+.center[
+![:width 20em](img/compis-ast-wiki.png)
+]
+.right[.xxs[
+Figura: [Wikipedia](https://en.wikipedia.org/wiki/Abstract_syntax_tree)
+]]
+]
+]
+
+---
+
+# Arbres de sintàxi concreta *vs* abstracta
+
+**Arbre de sintàxi concreta:** Reflecteix precisament les regles sintàctiques.
+
+**Arbre de sintàxi abstracta** (abstract syntax tree, AST): Representa el programa fidelment, però elimina
+i simplifica detalls sintàctics irrellevants.
+
+No és difícil passar del primer al segon.
+
+.cols5050[
+.col1[
+**Exemple:** Eliminar regles per desambigüar gramàtica.
+```antrl
+expr    : mexpr ('+' mexpr) * ;
+mexpr   : atom  ('*' atom ) * ;
+atom    : NUM ;
+```
+
+.center[
+`3 + 5 * 4`
+
+![:width 15em](img/compis-ast-conc-abs.png)
+]
+]
+.col2[
+**Exemple:** Aplanar llistes de paràmetres.
+
+```c
+int gcd(int a, int b, int c)
+```
+
+
+.center[
+![:width 8em](img/compis-ast-conc-abs-1.png)
+&nbsp; &nbsp; &nbsp;
+![:width 8em ](img/compis-ast-conc-abs-2.png)
+]
+]
+]
+
+
+---
+
+# Ús dels ASTs
+
+Un cop construït l'AST, les etapes següents el recorren per a dur a terme les seves tasques:
+
+- L'anàlisi semàntica verificarà l'ús correcte dels elements del programa.
+
+- El generador de codi visitarà l'arbre i li aplicarà regles per generar codi intermig.
+
+- L'intèrpret es passejarà per l'arbre per dur a termes les seves instruccions.
+
+
+
+
+---
+
+# ASTs en ANTLR
+
+A partir de la gramàtica, ANTLR pot generar un analitzador descendent
+amb accions que construeixin un AST.
+
+L'AST es pot visitar a través de *visitors* (un patró de disseny).
+
+ANTLR també genera la interfície dels visitadors, tot generant un esquelet
+de mètodes que podem heretar.
+
+Cada mètode s'aplica sobre un tipus de node que correspon a cada regla
+de la gramàtica.
+
+
+
+---
+
+# Exercici
+
+Considereu un LP molt senzill que permet escriure programes com
+aquest (que implementa a l'algorisme
+d'Euclides per calcular el màxim comú divisor de 105 i 252):
+
+```
+a := 105
+b := 252
+while a != b do
+    if a < b then b := b - a
+    else a := a - b
+end
+```
+
+L'únic tipus de dades existent són els enters, amb operacions
+aritmètiques de suma i resta. També hi ha operacions relacionals per a
+diferent-de i menor-que; aquestes retornen 0 per a fals i 1 per a cert.
+ Les instruccions
+són l'assignació, la composició seqüèncial de diverses instruccions, el
+condicional if-then-else i la iteració while.
+
+1. Definiu, en Haskell uns tipus de dades pels ASTs d'aquest LP.
+
+2. Escriviu l'AST corresponent al programa anterior utilitzant els vostres tipus.
+
+3. Usant la interfície dels ABCs del problema
+[P87706](https://jutge.org/problems/P87706), programeu una funció que, donat un
+AST que correspon a un programa,  interpreti el programa i retorni  el valor
+de cadascuna de les seves variables quan acaba l'execució.
