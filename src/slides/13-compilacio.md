@@ -6,7 +6,7 @@ Llenguatges de Programació
 
 # Introducció a la compilació
 
-Jordi Cortadella, Jordi Petit, Gerard Escudero
+Jordi Petit
 
 <br/>
 
@@ -22,7 +22,8 @@ Universitat Politècnica de Catalunya, 2021
 # Objectius
 
 
-- Conèixer l'estructural general d'un compilador.
+- Conèixer l'estructural general d'un compilador, les seves principals
+etapes i la seva organització.
 
 - Conèixer l'existència d'eines per ajudar a crear compiladors (usarem [ANTLR](https://www.antlr.org/)).
 
@@ -43,7 +44,8 @@ Gran part del material d'aquestes diapositives s'ha extret de
 les que va elaborar el professor Stephen A. Edwards (Universitat
 de Columbia) per l'assignatura COMS W4115 (Programming
 Languages and Translators) i que el professor Jordi Cortadella
-(UPC) va adaptar per l'assignatura de Compiladors.
+(UPC) va adaptar per l'assignatura de Compiladors. També s'ha extret material
+de les transparències del professor Fernando Orejas.
 
 
 ---
@@ -53,6 +55,262 @@ class: center, middle
 
 # Visió general
 
+
+
+
+---
+
+# Processadors de llenguatges
+
+## Compiladors
+
+.center[
+![:width 30em](img/compis-compilador.png)
+]
+
+Un **compilador** és un programa que tradueix programes escrits  en un LP d'alt
+nivell a código objeto d'una máquina (o, en general, a codi de baix nivell).
+
+Exemples: GCC, CLANG, go, ghc, ...
+
+---
+
+# Processadors de llenguatges
+
+## Compiladors
+
+Compilació en C
+
+```c
+int func(int a, int b) {
+    a = a + b;
+    return a;
+}
+```
+
+`gcc -S prova.c`
+
+```
+_func:
+    pushq   %rbp
+    movq    %rsp, %rbp
+    movl    %edi, -4(%rbp)
+    movl    %esi, -8(%rbp)
+    movl    -4(%rbp), %eax
+    addl    -8(%rbp), %eax
+    movl    %eax, -4(%rbp)
+    movl    -4(%rbp), %eax
+    popq    %rbp
+    retq
+```
+
+
+---
+
+# Processadors de llenguatges
+
+## Intèrprets
+
+.center[
+![:width 30em](img/compis-interpret.png)
+]
+
+Un **intèrpret** és un programa que executa directament instruccions escrites
+en un LP.
+
+Exemples: PHP, Perl, ghci, BASIC, Logo...
+
+
+---
+
+# Processadors de llenguatges
+
+## Intèrprets
+
+Sessió amb l'intèrpret de Python
+
+```python
+> python3
+
+Python 3.9.1 (default, Dec 29 2020, 09:45:39)
+[Clang 12.0.0 (clang-1200.0.32.28)] on darwin
+>>> x = 2
+>>> y = 4
+>>> x + y
+6
+>>> type(x)
+<class 'int'>
+>>> for i in range(5): print(i)
+...
+0
+1
+2
+3
+4
+```
+
+
+---
+
+# Processadors de llenguatges
+
+## Intèrprets de bytecode
+
+.center[
+![:width 20em](img/compis-byte-code.png)
+]
+
+Variant entre els compiladors i els intèrprets.
+
+- El **bytecode** és un codi intermig més abstracte que el codi màquina.
+- Redueix la dependència respecte del maquinari específic i facilita la interpretació.
+- Una **màquina virtual** interpreta programes en bytecode.
+
+Exemples: Java, Python, ...
+
+
+---
+
+# Processadors de llenguatges
+
+## Intèrprets de bytecode
+
+
+.cols5050[
+.col1[
+Bytecode en Python
+
+```python
+>>> import dis  # desensamblador
+>>> dis.dis("a = a + b")
+  1   0 LOAD_NAME     0 (a)
+      2 LOAD_NAME     1 (b)
+      4 BINARY_ADD
+      6 STORE_NAME    0 (a)
+      8 LOAD_CONST    0 (None)
+    10 RETURN_VALUE
+```
+]
+.col2[
+Bytecode en Java
+
+```java
+public static void func(int a, int b) {
+    a = a + b;
+}
+```
+
+`javap -v prova.class`
+
+```
+public static void func(int, int);
+    descriptor: (II)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: iload_0
+         1: iload_1
+         2: iadd
+         3: istore_0
+         4: return
+```
+]
+]
+
+
+---
+
+# Processadors de llenguatges
+
+## Compiladors *just in time*
+
+.center[
+![:width 20em](img/compis-jit.png)
+]
+
+
+La compilació **just-in-time** (JIT)
+compila fragments del programa durant la seva execució.
+
+Un analitzador inspecciona el codi executar per veure quan val la pena
+compilar-lo.
+
+Exemples: Julia, V8 per Javascript, JVM per Java, ...
+
+
+
+---
+
+# Processadors de llenguatges
+
+## Preprocessadors
+
+Un **preprocessador** prepara el codi font d'un programa abans que el compilador
+el vegi.
+
+- Expansió de macros
+- Inclusió de fitxers
+- Compilació condicional
+- Extensions de llenguatge
+
+Exemples: cpp, m4, ...
+
+
+---
+
+# Processadors de llenguatges
+
+## Preprocessadors
+
+El preprocessador de C
+
+
+```c
+#include <stdio.h>
+#define min(x, y) ((x)<(y))?(x):(y)
+#ifdef DEFINE_BAZ
+int baz();
+#endif
+void foo() {
+    int a = 1;
+    int b = 2;
+    int c;
+    c = min(a,b);
+}
+```
+
+`gcc -E programa.c`
+
+```c
+extern int printf(char*, ...);
+⠇ moltes més línies de stdio.h
+void foo() {
+    int a = 1;
+    int b = 2;
+    int c;
+    c = ((a)<(b))?(a):(b);
+}
+```
+
+
+
+---
+
+# Processadors de llenguatges
+
+## Ecosistema
+
+Els processadors de llenguatges viuen en un ecosistema gran i complex:
+preprocessadors, compiladors, enllaçadors, gestors de llibreries,
+ABIs (application binary interface (ABI),
+formats d'executables, ...
+
+<br>
+
+
+.center[
+![:width 30em](img/compis-ecosistema.png)
+]
 
 
 
@@ -87,6 +345,7 @@ class Foo {
 
 
 
+
 ---
 
 # Sintaxi
@@ -95,16 +354,22 @@ class Foo {
 Sovint s'especifica la sintaxi utilitzant una **gramàtica lliure de context**
 (*context-free grammar*).
 
+Els elements més bàsics ("paraules") s'especifiquen a
+través d'**expressions regulars**.
+
+<br>
 
 Exemple típic per les expressions algebràiques:
 
 ```
-expr → expr + expr
-     | expr - expr
-     | expr * expr
-     | expr / expr
-     | digit
-     | ( expr )
+expr → NUM
+     | '(' expr ')'
+     | expr '+' expr
+     | expr '-' expr
+     | expr '*' expr
+     | expr '/' expr
+
+NUM  → [0-9]+(.[0-9]+)
 ```
 
 
@@ -208,208 +473,21 @@ operacional escrita informalment en llenguatge natural.
 
 ---
 
-# Processadors de llenguatges
+# Flux de compilació
 
-## Intèrpret
+## Etapes
 
-.center[
-![:width 30em](img/compis-interpret.png)
-]
-
-
----
-
-# Processadors de llenguatges
-
-## Compilador
-
-.center[
-![:width 30em](img/compis-compilador.png)
-]
-
----
-
-# Processadors de llenguatges
-
-## Compilador
-
-Compilació en C
-
-```c
-int func(int a, int b) {
-    a = a + b;
-    return a;
-}
-```
-
-`gcc -S prova.c`
-
-```
-_func:
-    pushq   %rbp
-    movq    %rsp, %rbp
-    movl    %edi, -4(%rbp)
-    movl    %esi, -8(%rbp)
-    movl    -4(%rbp), %eax
-    addl    -8(%rbp), %eax
-    movl    %eax, -4(%rbp)
-    movl    -4(%rbp), %eax
-    popq    %rbp
-    retq
-```
-
----
-
-# Processadors de llenguatges
-
-## Intèrpret de bytecode
-
-.center[
-![:width 30em](img/compis-byte-code.png)
-]
-
-- El **bytecode** és un codi intermedi més abstracte que el codi màquina.
-- Redueix la dependència respecte del maquinari específic i facilita la interpretació.
-- Una **màquina virtual** interpreta programes en bytecode.
-
----
-
-# Processadors de llenguatges
-
-## Intèrpret de bytecode
-
-
-.cols5050[
-.col1[
-Bytecode en Python
-
-```python
->>> import dis  # desensamblador
->>> dis.dis("a = a + b")
-  1   0 LOAD_NAME     0 (a)
-      2 LOAD_NAME     1 (b)
-      4 BINARY_ADD
-      6 STORE_NAME    0 (a)
-      8 LOAD_CONST    0 (None)
-    10 RETURN_VALUE
-```
-]
-.col2[
-Bytecode en Java
-
-```java
-public static void func(int a, int b) {
-    a = a + b;
-}
-```
-
-`javap -v prova.class`
-
-```
-public static void func(int, int);
-    descriptor: (II)V
-    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
-    Code:
-      stack=2, locals=2, args_size=2
-         0: iload_0
-         1: iload_1
-         2: iadd
-         3: istore_0
-         4: return
-```
-]
-]
----
-
-# Processadors de llenguatges
-
-## Compilador *just in time*
-
-.center[
-![:width 30em](img/compis-jit.png)
-]
-
-
----
-
-# Processadors de llenguatges
-
-## Ecosistema
-
-Els processadors de llenguatges viuen en un ecosistema gran i complex:
-preprocessadors, compiladors, enllaçadors, gestors de llibreries,
-ABIs (application binary interface (ABI),
-formats d'executables, ...
-
-<br>
-
-
-.center[
-![:width 30em](img/compis-ecosistema.png)
-]
-
-
----
-
-# Processadors de llenguatges
-
-## Comparació velocitats
-
-<br>
-
-.center[
-![:width 30em](img/compis-velocitats.png)
-]
-
-
----
-
-# Preprocessadors
-
-Un **preprocessador** prepara el codi font d'un programa abans que el compilador
-el vegi.
-
-- Expansió de macros
-- Inclusió de fitxers
-- Compilació condicional
-- Extensions de llenguatge
-
----
-
-# Preprocessadors
-
-## El preprocessador de C
-
-
-```c
-#include <stdio.h>
-#define min(x, y) ((x)<(y))?(x):(y)
-#ifdef DEFINE_BAZ
-int baz();
-#endif
-void foo() {
-    int a = 1;
-    int b = 2;
-    int c;
-    c = min(a,b);
-}
-```
-
-`cc -E programa.c`
-
-```c
-extern int printf(char*,...);
-⠇
-⠇ moltes més línies de stdio.h
-⠇
-void foo() {
-    int a = 1;
-    int b = 2;
-    int c;
-    c = ((a)<(b))?(a):(b);
-}
-```
-
+- Front end
+    - preprocessador
+    - analitzador lèxic (escàner)
+    - analitzador sintàctic (parser)
+    - analitzador semàntic
+- Middle end
+    - analitzador de codi intermig
+    - optimitzador de codi intermig
+- Back end
+    - generador de codi específic
+    - optimitzador de codi específic
 
 
 ---
@@ -471,8 +549,6 @@ blancs i comentaris.
 ]
 
 
-
-
 ---
 
 # Flux de compilació
@@ -486,7 +562,8 @@ int gcd(int a, int b) {
 }
 ```
 
-L'**analitzador sintàtic** construeix un **arbre de sintàxi abstracta** a partir de la seqüència
+L'**analitzador sintàtic** construeix un **arbre de sintàxi abstracta**
+(AST) a partir de la seqüència
 de tokens i les regles sintàctiques
 Les paraules clau, els separadors, parèntesis i blocs s'eliminen.
 
@@ -510,12 +587,23 @@ int gcd(int a, int b) {
 }
 ```
 
-L'**analitzador semàntic** resol els símbols i verifica els tipus.
+.cols5050[
+.col1[
+L'**analitzador semàntic**
+recórre l'AST i
 
-.center[
-![:width 30em](img/compis-exemple-ast-resolt.png)
+- crea la **taula de símbols**,
+- assigna memòria a les variables,
+- comprova errors de tipus,
+- resol ambigüetats.
+
+El resultat és la taula de símbols i un AST decorat.
 ]
-
+.col2[
+.center[
+![:width 20em](img/compis-exemple-ast-resolt.png)
+]
+]]
 
 ---
 
@@ -588,30 +676,31 @@ gcd:    pushl %ebp              # Save FP                                    [as
 
 ---
 
-# Flux de compilació
+# Flux de compilació: sumari
 
-## Etapes
-
-- Front end
-    - preprocessador
-    - analitzador lèxic (escàner)
-    - analitzador sintàctic (parser)
-    - analitzador semàntic
-- Middle end
-    - analitzador de codi intermig
-    - optimitzador de codi intermig
-- Back end
-    - generador de codi específic
-    - optimitzador de codi específic
-
----
-
-# Sumari
 
 .center[
 ![:height 14cm](img/compis-flux.png)
 ]
 
+
+---
+
+# Eines
+
+
+
+Per construir un compilador no es parteix de zero.
+
+Hi ha moltes eines que dónen suport.
+
+Exemples:
+
+ - ANTLR, donades les especificacions lèxiques i sintàctiques del
+LP, construeix automàticament l’escàner, l’analitzador i l'AST.
+
+- LLVM ofereix una col·lecció d'eines modulars reutilitzables pels
+backends dels compiladors.
 
 ---
 
@@ -629,11 +718,17 @@ class: center, middle
 
 
 L'**analitzador lèxic** o (**escàner**)
-converteix una seqüència de caràcters en una seqüència de ***tokens***.
+converteix una seqüència de caràcters en una seqüència de ***tokens***:
+
+- identificadors,
+- literals (nombres, textos, caràcters)
+- paraules clau,
+- operadors,
+- puntuació...
 
 
 .center[
-![:width 30em](img/compis-scanner.png)
+![:width 25em](img/compis-scanner.png)
 ]
 
 
@@ -726,9 +821,6 @@ llenguatges a partir de *tokens* sobre un alfabet *Σ*.
 
 Exemple:
 
-.center[
-![:width 30em](img/compis-ers.png)
-]
 
 
 ---
@@ -749,6 +841,10 @@ Les expressions regulars s'usen en:
 
 # Generadors d'escàners
 
+A partir de la definició lèxica,
+l'escàner és un automàt determinista que
+produeix com a sortida els tokens reconeguts.
+
 <br>
 
 .center[
@@ -757,7 +853,7 @@ Les expressions regulars s'usen en:
 
 ⬇
 
-.boxed[Autòmats finits no determinites]
+.boxed[Autòmats finits no deterministes]
 
 ⬇
 
@@ -770,7 +866,7 @@ Les expressions regulars s'usen en:
 
 ---
 
-# ANTLR
+# Analitzador lèxic d'ANTLR
 
 .cols5050[
 .col1[
@@ -825,20 +921,25 @@ WS      : [ \t\n]+ -> skip ;
 
 # grep
 
+.cols3070[
+.col[
 La comanda `grep` (*global regular expression print*)
 permet cercar patrons en texts.
 
 ```bash
-grep 'jpetit'   /etc/passwd
-grep '^jpetit'  /etc/passwd          # ancorar al principi de la línia
-grep 'jpetit$'  /etc/passwd          # ancorar al final de la línia
-grep 'j.etit'   /etc/passwd          # qualsevol caràcter
-grep '[a-zA-Z]([a-zA-Z0-9])*'        # identificadors
+grep 'jpetit' /etc/passwd
 ```
 
-.right[
-.xxs[
-[Referència](https://www.gnu.org/software/grep/manual/grep.html)
+<br><br><br><br>
+.xxs[.right[
+Imatge: Dave Child, cheatography.com
+]]
+]
+.col2[
+.center[
+<a href='https://cheatography.com/davechild/cheat-sheets/regular-expressions/'>![:width 25em](img/grep.png)</a>
+]
+]
 ]
 ]
 
@@ -892,7 +993,7 @@ expressions*". Now they have two problems.
 
 
 .center[
-![:width 25em](img/compis-regex101.png)
+<a href='https://regex101.com'>![:width 25em](img/compis-regex101.png)</a>
 ]
 
 ---
@@ -945,13 +1046,23 @@ class: center, middle
 L'objectiu de l'analitzador sintàctic és convertir una seqüència de tokens
 en un arbre de sintàxi abstracta que capturi la jerarquia de les construccions.
 
-.center[
-`2 * 3 + 4`
 
-⬇
-
-![:width 6em](img/compis-ast1.png)
+.cols5050[
+.col1[
+```c
+int gcd(int a, int b) {
+    while (a != b) {
+        if (a > b) a -= b; else b -= a;
+    }
+    return a;
+}
+```
 ]
+.col2[
+.center[
+![:width 20em](img/compis-exemple-ast.png)
+]
+]]
 
 → Es descarta informació no rellevant com les paraules clau,
 els separadors, els parèntesis i els blocs.
@@ -964,11 +1075,12 @@ els separadors, els parèntesis i els blocs.
 
 # Gramàtiques
 
-La majoria dels LPs es descriuen a través de **gramàtiques incontextuals**.
+La majoria dels LPs es descriuen a través de **gramàtiques incontextuals**,
+usant notació BNF (Backus–Naur form).
 
 ```
 pgma → expr ; pgma
-     | /* res */
+     | ε
 
 expr → expr + expr
      | expr - expr
@@ -1423,6 +1535,22 @@ Figura: [Wikipedia](https://en.wikipedia.org/wiki/Bottom-up_parsing)
 Idea bàsica: mirar el següent token per poder
 decidir quina producció utilitzar.
 
+<br>
+
+Per implementar-ho, associem una funció a cada construcció del LP.
+
+- Si la construcció està definida per una única regla:
+
+    La seva funció associada cridarà a les funcions associades a les
+    construccions que apareixen en aquesta regla i comprovarà que els tokens
+    que apareixen en la definició son els que apareixen en la seqüència
+    donada.
+
+- Si la construcció està definida per diverses regles:
+
+    La decisió sobre quina regla s’ha d’aplicar es basa
+    en mirar els següents *k* tokens.
+
 ---
 
 # Generadors d'analitzadors sintàctics
@@ -1516,14 +1644,14 @@ expr  → expr '+' term                   💣 prefixos comuns
       | term
 ```
 
-> ⬇ consolidem de prefixos comuns
+> ⬇ factoritzem els prefixos comuns
 
 ```
 expr  → expr ('+' term | '-' term)      💣 recursivitat per l'esquerra
       | term
 ```
 
-> ⬇ instroduim nova regla
+> ⬇ substituim recursivitat per l'esquerra per recursivitat per la dreta
 
 ```
 expr  → expr2
@@ -1551,7 +1679,7 @@ expr  → expr '+' term
 > ⬇ s'escriu senzillament
 
 ```antlr4
-expr  : term ('+' term | '-' term) * ;
+expr : term ('+' term | '-' term) * ;
 ```
 
 A més, la prioritat dels operadors ve donada per l'ordre d'escriptura:
@@ -1703,38 +1831,26 @@ després de reconèixer una regla.
 
 # Arbres de sintàxi
 
-.cols5050[
-.col1[
 Usualment, les accions construeixen una estructura de dades que representa el programa.
 
 → Separa l'anàlisi de la traducció.<br>
-
 → Facilita les modificacions tot minimitzant les interaccions.<br>
-
 → Permet que diferents parts del programa s'analitzin en ordres diferents.
 
 L'estructura de dades resultant sol ser un **arbre de sintàxi:**
-]
-.col2[
+
 .center[
-![:width 20em](img/compis-ast-wiki.png)
-]
-.right[.xxs[
-Figura: [Wikipedia](https://en.wikipedia.org/wiki/Abstract_syntax_tree)
-]]
-]
+![:width 30em](img/compis-exemple-ast.png)
 ]
 
 ---
 
 # Arbres de sintàxi concreta *vs* abstracta
 
-**Arbre de sintàxi concreta:** Reflecteix precisament les regles sintàctiques.
+**Arbre de sintàxi concreta / de derivació:** Reflecteix precisament les regles sintàctiques.
 
-**Arbre de sintàxi abstracta** (abstract syntax tree, AST): Representa el programa fidelment, però elimina
+**Arbre de sintàxi abstracta** (*abstract syntax tree*, AST): Representa el programa fidelment, però elimina
 i simplifica detalls sintàctics irrellevants.
-
-No és difícil passar del primer al segon.
 
 .cols5050[
 .col1[
@@ -1752,7 +1868,8 @@ atom    : NUM ;
 ]
 ]
 .col2[
-**Exemple:** Aplanar llistes de paràmetres.
+**Exemple:** Aplanar una llista de paràmetres.
+
 
 ```c
 int gcd(int a, int b, int c)
@@ -1799,36 +1916,282 @@ Cada mètode s'aplica sobre un tipus de node que correspon a cada regla
 de la gramàtica.
 
 
+---
+
+
+class: center, middle
+
+
+# Interpretació
+
 
 ---
 
-# Exercici
+# Interpretació
 
-Considereu un LP molt senzill que permet escriure programes com
-aquest (que implementa a l'algorisme
-d'Euclides per calcular el màxim comú divisor de 105 i 252):
+.center[
+![:width 20em](img/compis-interpret.png)
+]
+
+Un **intèrpret** és un programa que executa directament instruccions escrites
+en un LP.
+
+<br>
+
+**Objectiu:** Escriure (en Haskell) un intèrpret per a l'AST d'un senzill llenguatge
+de programació.
+
+
+
+---
+
+# SimpleLP
+
+## Definició del llenguatge
+
+- Tipus de dades: enters.
+- Variables: sempre visibles, inicialitzades a 0.
+- Operadors aritmètics: `+` i `-`.
+- Operadors relacionals: `≠` i `<` (retornen 0 o 1).
+- Instruccions: assignació, composició seqüèncial,
+  condicional i iteració.
+
+<br>
+
+Exemple:
 
 ```
-a := 105
-b := 252
-while a != b do
-    if a < b then b := b - a
-    else a := a - b
+# Algorisme d'Euclides per calcular el mcd de 105 i 252.
+a ← 105
+b ← 252
+while a ≠ b do
+    if a < b then
+        b ← b - a
+    else
+        a ← a - b
+    end
 end
 ```
 
-L'únic tipus de dades existent són els enters, amb operacions
-aritmètiques de suma i resta. També hi ha operacions relacionals per a
-diferent-de i menor-que; aquestes retornen 0 per a fals i 1 per a cert.
- Les instruccions
-són l'assignació, la composició seqüèncial de diverses instruccions, el
-condicional if-then-else i la iteració while.
 
-1. Definiu, en Haskell uns tipus de dades pels ASTs d'aquest LP.
+---
 
-2. Escriviu l'AST corresponent al programa anterior utilitzant els vostres tipus.
+# SimpleLP
 
-3. Usant la interfície dels ABCs del problema
-[P87706](https://jutge.org/problems/P87706), programeu una funció que, donat un
-AST que correspon a un programa,  interpreti el programa i retorni  el valor
-de cadascuna de les seves variables quan acaba l'execució.
+## Tipus de dades per l'AST
+
+```haskell
+data Expr
+    = Val Int                   -- valor
+    | Var String                -- variable
+    | Add Expr Expr             -- suma (+)
+    | Sub Expr Expr             -- resta (-)
+    | Neq Expr Expr             -- diferent-de (≠)
+    | Lth Expr Expr             -- menor-que (<)
+
+data Instr
+    = Ass String Expr           -- assignació
+    | Seq [Instr]               -- composició seqüèncial
+    | Cond Expr Instr Instr     -- condicional
+    | Loop Expr Instr           -- iteració
+```
+
+
+---
+
+# SimpleLP
+
+## Tipus de dades per l'AST
+
+Exemple: AST pel programa anterior:
+
+```haskell
+Seq [
+    (Ass "a" (Val 105))
+    ,
+    (Ass "b" (Val 252))
+    ,
+    (While
+        (Neq (Var "a") (Var "b"))
+        (Cond
+            (Lth (Var "a") (Var "b"))
+            (Ass "b" (Sub (Var "b") (Var "a")))
+            (Ass "a" (Sub (Var "a") (Var "b")))
+        )
+    )
+]
+```
+
+
+
+---
+
+# SimpleLP
+
+## Memòria
+
+Descrivim el valor de les variables a través d'una memòria
+de tipus `Mem` amb aquestes operacions:
+
+```haskell
+-- retorna una memòria buida
+empty :: Mem
+
+-- insereix (o canvia si ja hi era) una clau amb el seu valor
+update :: Mem -> String -> Int -> Mem
+
+-- consulta el valor d'una clau en una memòria
+search :: Mem -> String -> Maybe Int
+
+-- retorna la llista de claus en una memòria
+keys :: Mem -> [String]
+```
+
+La implementació seria amb qualsevol diccionari (BST, AVL, hashing, ...).
+
+[Si voleu provar-ho, useu `Map` de `Data.Map`.]
+
+
+
+
+---
+
+# SimpleLP
+
+## Avaluació de les expressions
+
+
+```haskell
+--- avalua una expressió en un estat de la memòria
+eval :: Expr -> Mem -> Int
+
+eval (Val x) m = x
+eval (Var v) m =
+    case search v m of
+        Nothing -> 0
+        Just x  -> x
+eval (Add e1 e2) m = eval' e1 e2 m (+)
+eval (Sub e1 e2) m = eval' e1 e2 m (-)
+eval (Neq e1 e2) m = b2i $ eval' e1 e2 m (/=)
+eval (Lth e1 e2) m = b2i $ eval' e1 e2 m (<)
+
+eval' e1 e2 m op = op (eval e1 m) (eval e2 m)
+
+b2i False = 0
+b2i True  = 1
+```
+
+---
+
+# SimpleLP
+
+## Interpretació de les instruccions
+
+```haskell
+--- retorna l'estat final de la memòria després d'executar una instrucció
+--- partint d'un estat inicial de la memòria
+exec :: Instr -> Mem -> Mem
+
+exec (Ass v e) m = update v (eval e m) m
+exec (Seq []) m = m
+exec (Seq (i:is)) m = exec (Seq is) (exec i m)
+exec (Cond b i1 i2) m = exec (if eval b m /= 0 then i1 else i2) m
+exec (Loop b i) m =
+    if eval b m /= 0
+        then exec (Loop b i) (exec i m)
+        else m
+```
+
+
+
+---
+
+# SimpleLP
+
+## Execució del programa
+
+Escriu el valor final de cada variable (en ordre lexicogràfic) després
+d'executar una instrucció partint d'una memòria buida.
+
+```haskell
+run :: Instr -> IO ()
+
+run i = mapM_ printEntry $ sort $ keys m
+    where
+        m = exec i empty
+        printEntry k = do
+            putStr k
+            putStr " : "
+            print $ fromJust $ search k m
+```
+
+Execució amb el programa anterior:
+
+```
+a : 21
+b : 21
+```
+
+
+
+---
+
+# Exercicis
+
+1. Modifiqueu l'AST, la funció `exec` i l'acció `run` per tal d'afegir  a
+SimpleLP una nova instrucció `print`  que escrigui el contingut d'una
+expressió. Ara `run` només ha d'executar el programa donat partint d'una
+memòria buida. Fixeu-vos que `exec` haurà de ser ara una acció dins de la
+mònada IO.
+
+2. Afegiu ara una funció  `read` a SimpleLP que retorni el valor del següent
+enter de l'entrada.
+
+    En aquest punt, hauríeu de tenir un intèrpret per programes com aquest:
+
+    ```
+    # programa en SimpleLP que llegeix dos números i escriu el seu mcd.
+    a ← read
+    b ← read
+    while a ≠ b do
+        if a < b then
+            b ← b - a
+        else
+            a ← a - b
+        end
+    end
+    print a
+    ```
+
+3. Afegiu una instrucció del tipus `for i ← a .. b`.
+
+4. Feu que `print` pugui escriure una llista de valors (`print a, b, a + b` per ex).
+
+
+
+
+---
+
+
+class: center, middle
+
+
+# Laboratori
+
+
+---
+
+
+# Laboratori
+
+
+
+.center[
+
+<a href='https://gebakx.github.io/Python3/compiladors.html'>![:width 30em](img/compis-lab.png)</a>
+
+Vegeu les transparències [Python 3: compiladors](https://gebakx.github.io/Python3/compiladors.html)
+de Gerard Escudero.
+]
+
+
