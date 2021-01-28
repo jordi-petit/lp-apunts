@@ -23,7 +23,7 @@ Universitat Politècnica de Catalunya, 2021
 
 
 - Conèixer l'estructural general d'un compilador, les seves principals
-etapes i la seva organització.
+etapes, i la seva organització.
 
 - Conèixer l'existència d'eines per ajudar a crear compiladors (usarem [ANTLR](https://www.antlr.org/)).
 
@@ -32,6 +32,8 @@ etapes i la seva organització.
     2. Definició de la gramàtica,
     3. Generació de l'arbre de sintàxi abstracta,
     4. Interpretació a través del recorregut de l'arbre.
+
+<br>
 
 - El curs de Compiladors aprofundeix molts més els continguts.
 - El curs de Teoria de la Computació n'ofereix els fonaments teòrics.
@@ -65,11 +67,11 @@ class: center, middle
 ## Compiladors
 
 .center[
-![:width 30em](img/compis-compilador.png)
+![:width 20em](img/compis-compilador.png)
 ]
 
 Un **compilador** és un programa que tradueix programes escrits  en un LP d'alt
-nivell a código objeto d'una máquina (o, en general, a codi de baix nivell).
+nivell a codi màquina (o, en general, a codi de baix nivell).
 
 Exemples: GCC, CLANG, go, ghc, ...
 
@@ -112,13 +114,13 @@ _func:
 ## Intèrprets
 
 .center[
-![:width 30em](img/compis-interpret.png)
+![:width 20em](img/compis-interpret.png)
 ]
 
 Un **intèrpret** és un programa que executa directament instruccions escrites
 en un LP.
 
-Exemples: PHP, Perl, ghci, BASIC, Logo...
+Exemples: Python, PHP, Perl, ghci, BASIC, Logo...
 
 
 ---
@@ -130,7 +132,7 @@ Exemples: PHP, Perl, ghci, BASIC, Logo...
 Sessió amb l'intèrpret de Python
 
 ```python
-> python3
+# python3
 
 Python 3.9.1 (default, Dec 29 2020, 09:45:39)
 [Clang 12.0.0 (clang-1200.0.32.28)] on darwin
@@ -163,7 +165,7 @@ Python 3.9.1 (default, Dec 29 2020, 09:45:39)
 Variant entre els compiladors i els intèrprets.
 
 - El **bytecode** és un codi intermig més abstracte que el codi màquina.
-- Redueix la dependència respecte del maquinari específic i facilita la interpretació.
+- Augmenta la portabilitat i seguretat i facilita la interpretació.
 - Una **màquina virtual** interpreta programes en bytecode.
 
 Exemples: Java, Python, ...
@@ -178,7 +180,7 @@ Exemples: Java, Python, ...
 
 .cols5050[
 .col1[
-Bytecode en Python
+Python
 
 ```python
 >>> import dis  # desensamblador
@@ -192,7 +194,7 @@ Bytecode en Python
 ```
 ]
 .col2[
-Bytecode en Java
+Java
 
 ```java
 public static void func(int a, int b) {
@@ -222,7 +224,7 @@ public static void func(int, int);
 
 # Processadors de llenguatges
 
-## Compiladors *just in time*
+## Compiladors *just-in-time*
 
 .center[
 ![:width 20em](img/compis-jit.png)
@@ -232,7 +234,7 @@ public static void func(int, int);
 La compilació **just-in-time** (JIT)
 compila fragments del programa durant la seva execució.
 
-Un analitzador inspecciona el codi executar per veure quan val la pena
+Un analitzador inspecciona el codi executat per veure quan val la pena
 compilar-lo.
 
 Exemples: Julia, V8 per Javascript, JVM per Java, ...
@@ -302,7 +304,7 @@ void foo() {
 
 Els processadors de llenguatges viuen en un ecosistema gran i complex:
 preprocessadors, compiladors, enllaçadors, gestors de llibreries,
-ABIs (application binary interface (ABI),
+ABIs (application binary interfaces),
 formats d'executables, ...
 
 <br>
@@ -359,7 +361,7 @@ través d'**expressions regulars**.
 
 <br>
 
-Exemple típic per les expressions algebràiques:
+Exemple per expressions algebràiques:
 
 ```
 expr → NUM
@@ -462,12 +464,12 @@ funció que representa el comportament del programa (és a dir,
 una transformació d'entrades a sortides) a partir de les construccions del LP.
 
 La majoria de definicions de semàntica per a LPs utilitzen una semàntica
-operacional escrita informalment en llenguatge natural.
+operacional descrita informalment en llenguatge natural.
 
 .center[
-![:height 10em](img/compis-std-cpp.png)
-&nbsp; &nbsp; &nbsp;
-![:height 10em](img/compis-java-std.png)
+![:height 11em](img/compis-std-cpp.png)
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+![:height 11em](img/compis-java-std.png)
 ]
 
 
@@ -541,11 +543,11 @@ int gcd(int a, int b) {
 }
 ```
 
-L'**analitzador lèxic** agrupa els caràcters en "paraules" (*tokens*) i elimina
+L'**analitzador lèxic** (**escàner**) agrupa els caràcters en "paraules" (tokens) i elimina
 blancs i comentaris.
 
 .center[
-![:width 30em](img/compis-tokens.png)
+![:width 25em](img/compis-tokens.png)
 ]
 
 
@@ -562,14 +564,16 @@ int gcd(int a, int b) {
 }
 ```
 
-L'**analitzador sintàtic** construeix un **arbre de sintàxi abstracta**
+L'**analitzador sintàtic** (**parser**)
+construeix un **arbre de sintàxi abstracta**
 (AST) a partir de la seqüència
-de tokens i les regles sintàctiques
-Les paraules clau, els separadors, parèntesis i blocs s'eliminen.
+de tokens i les regles sintàctiques.
 
 .center[
-![:width 30em](img/compis-exemple-ast.png)
+![:width 25em](img/compis-exemple-ast.png)
 ]
+
+Les paraules clau, els separadors, parèntesis i blocs s'eliminen.
 
 
 
@@ -717,8 +721,8 @@ class: center, middle
 # Anàlisi lèxica
 
 
-L'**analitzador lèxic** o (**escàner**)
-converteix una seqüència de caràcters en una seqüència de ***tokens***:
+L'**analitzador lèxic** (o **escàner**)
+converteix una seqüència de caràcters en una seqüència de **tokens**:
 
 - identificadors,
 - literals (nombres, textos, caràcters)
@@ -740,21 +744,21 @@ converteix una seqüència de caràcters en una seqüència de ***tokens***:
 - Simplificar la feina de l'analitzador sintàctic.
 
     > El parser no té en compte els noms dels identificadors,
-    només li preocupen els *tokens* (`supercalifragilisticexpialidocious` → `ID`).
+    només li preocupen els tokens (`supercalifragilisticexpialidocious` → `ID`).
 
 - Descartar detalls irrellevants: blancs, comentaris, ...
 
-- Els escàners són molt més ràpids que els *parsers*.
+- Els escàners són molt més ràpids que els parsers.
 
 
 
 
 ---
 
-# Descripció de *tokens*:
+# Descripció de tokens
 
 
-Per especificar els *tokens* s'utilitzen elements de la teoria de llenguatges:
+Per especificar els tokens s'utilitzen conceptes de la teoria de llenguatges:
 
 
 **Alfabet:** un conjunt finit de símbols.
@@ -770,7 +774,7 @@ Per especificar els *tokens* s'utilitzen elements de la teoria de llenguatges:
 **Llenguatge:** Un conjunt de paraules sobre un alfabet.
 
 > Exemples: ∅ (el llenguatge buit), { 1, 11, 111, 1111 },
-> tots els mots anglesos, els identificadors (textos que comencen
+> tots els mots anglesos, tots els identificadors (textos que comencen
 > amb una lletra seguida per lletres o dígits).
 
 
@@ -800,7 +804,7 @@ Per especificar els *tokens* s'utilitzen elements de la teoria de llenguatges:
 # Expressions regulars
 
 Les **expressions regulars** descriuen
-llenguatges a partir de *tokens* sobre un alfabet *Σ*.
+llenguatges a partir de tokens sobre un alfabet *Σ*.
 
 1. ε és una expressió regular que denota {ε}.
 
@@ -819,22 +823,27 @@ llenguatges a partir de *tokens* sobre un alfabet *Σ*.
 
 # Expressions regulars
 
-Exemple:
+Exemples:
 
 
+.center[
+![:width 30em](img/compis-ers.png)
+]
 
 ---
 
 # Generadors d'escàners
 
 
-Les expressions regulars s'usen en:
+Les expressions regulars s'usen en eines per crear compiladors:
 
-- eines per crear compiladors (lex, ANTLR, ...)
+- lex, ANTLR, ...
 
-- comandes del SO per tractar fitxers (`grep`, `sed`, ...)
+I també,
 
-- llibreries en LPs per tractar textos (`re` en Python, directament en Javascript, ...)
+- en comandes del SO per tractar fitxers (`grep`, `sed`, ...)
+
+- en llibreries d'LPs per tractar textos (`re` en Python, directament en Javascript, ...)
 
 
 ---
@@ -844,6 +853,8 @@ Les expressions regulars s'usen en:
 A partir de la definició lèxica,
 l'escàner és un automàt determinista que
 produeix com a sortida els tokens reconeguts.
+
+Construcció:
 
 <br>
 
@@ -1043,7 +1054,7 @@ class: center, middle
 # Anàlisi sintàctica
 
 
-L'objectiu de l'analitzador sintàctic és convertir una seqüència de tokens
+L'objectiu de l'**analitzador sintàctic** (o **parser**) és convertir una seqüència de tokens
 en un arbre de sintàxi abstracta que capturi la jerarquia de les construccions.
 
 
@@ -1076,7 +1087,7 @@ els separadors, els parèntesis i els blocs.
 # Gramàtiques
 
 La majoria dels LPs es descriuen a través de **gramàtiques incontextuals**,
-usant notació BNF (Backus–Naur form).
+usant notació **BNF** (Backus–Naur form).
 
 ```
 pgma → expr ; pgma
@@ -1097,7 +1108,7 @@ que els llenguatges regulars perquè són "recursives".
 > Ex: El llenguatge dels mots capicues es pot descriure amb una
 gramàtica incontextual però no amb una expressió regular.
 
-La recursivitat permet donar jerarquia i aparellar elements (parèntesis o blocs).
+La recursivitat permet donar jerarquia i niuar elements (parèntesis o blocs).
 
 
 ---
@@ -1106,7 +1117,7 @@ La recursivitat permet donar jerarquia i aparellar elements (parèntesis o blocs
 
 Exemple: Gramàtica de C
 
-<pre style='margin-left: 0em; padding: 10px; height: 32em; overflow-y: auto; background-color: #272822; border-radius: 5px; color: white; font-size: 12px;'>
+<pre style='margin-left: 0em; padding: 10px; height: 32em; overflow-y: auto; background-color: #272822; border-radius: 5px; color: white; font-size: 14px;'>
 translation-unit     : {external-declaration}*
 
 external-declaration     : function-definition
@@ -1362,7 +1373,8 @@ jump-statement     : goto identifier ;
 
 # Gramàtiques ambigües
 
-Una gramàtica és **ambigüa** si un mateix text es pot derivar de diferents maneres.
+Una gramàtica és **ambigüa** si un mateix text es pot **derivar**
+(organitzar en un arbre segons la gramàtica) de diferents maneres.
 
 Per exemple, amb
 
@@ -1373,13 +1385,13 @@ expr → expr + expr | expr - expr | expr * expr | NUM
 el fragment `3 - 4 * 2 + 5` es pot derivar d'aquestes maneres:
 
 .center[
-![:width 30em](img/compis-ambigua.png)
+![:width 25em](img/compis-ambigua.png)
 ]
 
 
 ---
 
-# Prioritat i associativitat dels operadors
+# Gramàtiques ambigües
 
 Associar prioritat i associativitat als operadors sol permetre eliminar ambigüitats.
 
@@ -1537,7 +1549,7 @@ decidir quina producció utilitzar.
 
 <br>
 
-Per implementar-ho, associem una funció a cada construcció del LP.
+Per implementar-ho, s'associa una funció a cada construcció del LP.
 
 - Si la construcció està definida per una única regla:
 
@@ -1562,7 +1574,7 @@ Per implementar-ho, associem una funció a cada construcció del LP.
 Exemple de gramàtica:
 
 ```antlr
-root    : stmt *
+root    : stmt* 'end'
         ;
 
 stmt    : 'if' expr 'then' stmt
@@ -1581,31 +1593,29 @@ Parser LL(1):
 ```python
 def stmt():
     if current_token() == IF:
-        next_token()
+        match(IF)
         cond = expr()
-        next_token()
+        match(THEN)
         then = stmt()
         return Node(IF, cond, then)
     elif current_token() == WHILE:
-        next_token()
+        match(WHILE)
         cond = expr()
-        next_token()
+        match(DO)
         loop = stmt()
         return Node(WHILE, cond, loop)
     elif current_token() in [NUMBER, LPAREN]:
         lvalue = expr()
-        assert current_token() == ASSIGN, "Syntax error"
-        next_token()
+        match(ASSIGN)
         rvalue = expr()
         return Node(ASSIGN, lvalue, rvalue)
     else:
-        assert False, "Syntax error"
+        SyntaxError()
 ```
 ]
 ]
 
-Exercici: Implementeu `expr()`.
-
+Exercici: Implementeu `expr()` i `root()`.
 
 ---
 
@@ -1657,7 +1667,7 @@ expr  → expr ('+' term | '-' term)      💣 recursivitat per l'esquerra
 expr  → expr2
 expr2 → '+' term expr2
       | '-' term expr2
-      | /* res */
+      | ε
 ```
 
 > ✅
@@ -1739,7 +1749,7 @@ li segueix immediatament per, almenys, una `b`.
 
 **P3:** Sense utilitzar cap eina ni llibreria (ni `eval`!), escriviu en
 Haskell, Python o C++ un analitzador descendent LL(1)
-que llegeixi una seqüènica d'expressions i escrigui el resultat de cadascuna d'elles.
+que llegeixi una seqüència d'expressions i escrigui el resultat de cadascuna d'elles.
 [TBD: problema pel Jutge! 😄]
 
 - Entrada:
@@ -1771,7 +1781,7 @@ que llegeixi una seqüènica d'expressions i escrigui el resultat de cadascuna d
 
 **P4:** Sense utilitzar cap eina ni llibreria, escriviu en
 Haskell, Python o C++ un analitzador descendent LL(1)
-que llegeixi una seqüènica d'expressions i construeixi i escrigui l'arbre de sintàxi abstracta de cadascuna.
+que llegeixi una seqüència d'expressions i construeixi i escrigui l'arbre de sintàxi abstracta de cadascuna.
 [TBD: problema pel Jutge! 😄]
 
 - Entrada:
@@ -1814,6 +1824,8 @@ durant el reconeixement de les regles.
                 regla1
                 { /* durant */ }
                 regla2
+                { /* durant */ }
+                regla3
                 { /* després */ }
             ;
     ```
@@ -1831,17 +1843,22 @@ després de reconèixer una regla.
 
 # Arbres de sintàxi
 
-Usualment, les accions construeixen una estructura de dades que representa el programa.
+Usualment, les accions construeixen un arbre de sintàxi concreta
+que segueix les regles de la gramàtica.
 
-→ Separa l'anàlisi de la traducció.<br>
-→ Facilita les modificacions tot minimitzant les interaccions.<br>
-→ Permet que diferents parts del programa s'analitzin en ordres diferents.
-
-L'estructura de dades resultant sol ser un **arbre de sintàxi:**
+Aquest arbre es sol convertir en un arbre de sintàxi abstracta.
 
 .center[
-![:width 30em](img/compis-exemple-ast.png)
+![:width 19em](img/compis-arbre-der.png)
+&nbsp;
+![:width 19em](img/compis-arbre-abs.png)
 ]
+
+
+→ Es separa l'anàlisi de la traducció.<br>
+→ Es facilita les modificacions tot minimitzant les interaccions.<br>
+→ Es permet que diferents parts del programa s'analitzin en ordres diferents.
+
 
 ---
 
@@ -1922,6 +1939,40 @@ de la gramàtica.
 class: center, middle
 
 
+# Anàlisi semàntica
+
+
+---
+
+
+# Anàlisi semàntica
+
+L'analitzador semàntic recórre l'AST, per obtenir tota la informació necesària
+per poder generar codi.
+
+Objectius:
+
+- Comprobar la corrección semàntica del programa (comprovació de tipus).
+
+- Resoldre ambigüitats.
+
+- Assignar memòria.
+
+- Construir la taula de símbols.
+
+<br><br><br>
+
+⛔️ En aquest curs no entrem en aquest vast tema, que deixem per
+l'assignatura de Compiladors (recomanada!).
+Però al tema "Inferència de tipus" veure com fer comprovació de tipus.
+
+
+---
+
+
+class: center, middle
+
+
 # Interpretació
 
 
@@ -1933,13 +1984,9 @@ class: center, middle
 ![:width 20em](img/compis-interpret.png)
 ]
 
-Un **intèrpret** és un programa que executa directament instruccions escrites
-en un LP.
 
-<br>
-
-**Objectiu:** Escriure (en Haskell) un intèrpret per a l'AST d'un senzill llenguatge
-de programació.
+**Tutorial:** Escriure (en Haskell) un intèrpret per a l'AST d'un senzill llenguatge
+de programació (SimpleLP™).
 
 
 
