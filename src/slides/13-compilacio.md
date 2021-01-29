@@ -245,6 +245,30 @@ Exemples: Julia, V8 per Javascript, JVM per Java, ...
 
 # Processadors de llenguatges
 
+## Compiladors *just-in-time*
+
+[Numba](https://numba.pydata.org/) tradueix funcions en Python
+a codi màquina i optimitzat usant LLVM en temps d'execució.
+
+```python
+import numba
+import random
+
+@numba.jit(nopython=True)
+def monte_carlo_pi(nsamples):
+    acc = 0
+    for i in range(nsamples):
+        x = random.random()
+        y = random.random()
+        if x*x + y*y < 1.0:
+            acc += 1
+    return 4.0 * acc / nsamples
+```
+
+---
+
+# Processadors de llenguatges
+
 ## Preprocessadors
 
 Un **preprocessador** prepara el codi font d'un programa abans que el compilador
