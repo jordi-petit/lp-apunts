@@ -8,7 +8,7 @@ Llenguatges de Programació
 
 2020-2021 Q1
 <br>
-(Rebrot edition)
+(Vaccine edition)
 
 <br/>
 
@@ -20,7 +20,7 @@ Jordi Petit, Albert Rubio
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2019
+Universitat Politècnica de Catalunya, 2021
 
 
 
@@ -147,12 +147,12 @@ Python per a resoldre un cas pràctic.
 
 El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
 les propietats d'un llenguatge de programació. S'usarà
-evaluació entre companys (co-avaluació) amb [Peergrade](https://www.peergrade.io).
+evaluació entre companys (co-avaluació) amb [Eduflow](https://www.eduflow.com).
 
 Les qualificacions de les competències transversals s'obtenen del treball
 dirigit.
 
-**Nota:** Els repetidors poden demanar reusar les seves notes
+**Nota:** Els repetidors poden reusar les seves notes
 del TD del curs passat.
 
 
@@ -162,25 +162,25 @@ del TD del curs passat.
 
 # Calendari
 
-- Curs:
+- Classes:
 
-    - Inici: dv 17 setembre
+    - Inici: dl 15 de febrer
 
-    - Final: dm 22 desembre
+    - Final: dl 31 de maig
 
 - Exàmens:
 
-    - Examen final: dl 18 gener (11:30-14:30)
+    - Examen final: dx 15 de juny (11:30-14:30)
 
 - Treballs:
 
-    - Lliurament primera pràctica: mitjans de novembre
+    - Lliurament primera pràctica: mitjans de d'abril
 
-    - Lliurament segona pràctica: dl 11 de gener
+    - Lliurament segona pràctica: primers de juny
 
-    - Lliurament treball dirigit: dl 28 de desembre
+    - Lliurament treball dirigit: dm 25 de juny
 
-    - Correcció treball dirigit: dl 11 de gener
+    - Correcció treball dirigit: dl 7 de juny
 ---
 
 
@@ -202,22 +202,6 @@ Thomson-Paraninfo, 2004.
 
 - *Think Python*. Downey, B. O'Reilly, 2015. .xs[[Disponible online](https://greenteapress.com/wp/think-python-2e/).]
 
-
----
-
-# Material
-
-El material del curs s'anirà penjant als avisos del [Racó](https://raco.fib.upc/home/assignatura?espai=270025):
-
-- Transperèncie escrites per Albert Rubio, Jordi Petit, Gerard Escudero i Fernando Orejas.
-
-- Transperències de compiladors de Jordi Cortadella
-
-- Col·lecció de problemes de Haskell al Jutge
-
-- Col·lecció de problemes de Python al Jutge
-
-- Vídeos de Haskell
 
 
 
