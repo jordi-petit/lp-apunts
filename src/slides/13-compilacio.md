@@ -129,27 +129,11 @@ Exemples: Python, PHP, Perl, ghci, BASIC, Logo...
 
 ## Intèrprets
 
-Sessió amb l'intèrpret de Python
+Sessió amb l'intèrpret de BASIC al Commodore 64 (emulat al Mac 🤣!)
 
-```python
-# python3
-
-Python 3.9.1 (default, Dec 29 2020, 09:45:39)
-[Clang 12.0.0 (clang-1200.0.32.28)] on darwin
->>> x = 2
->>> y = 4
->>> x + y
-6
->>> type(x)
-<class 'int'>
->>> for i in range(5): print(i)
-...
-0
-1
-2
-3
-4
-```
+.center[
+![:width 30em](img/compis-basic.png)
+]
 
 
 ---
@@ -395,7 +379,7 @@ expr → NUM
      | expr '*' expr
      | expr '/' expr
 
-NUM  → [0-9]+(.[0-9]+)
+NUM  → [0-9]+ ( '.' [0-9]+ )
 ```
 
 
@@ -455,7 +439,7 @@ A vegades, les construccions sintàcticament correctes poden ser ambigües.
 <br>
 
 ```
-Han posat un banc nou a la plaça.
+Han posat un banc a la plaça.
 ```
 
 > ➡️  sintàcticament correcta en català, però ambigüa.
@@ -478,7 +462,7 @@ class Bar {
 
 # Semàntica
 
-Hi ha dues bàsicament de dues maneres d'especificar formalment la semàntica:
+Hi ha bàsicament dues maneres d'especificar formalment la semàntica:
 
 - **Semàntica operacional:** defineix una màquina virtual i
 com l'execució del programa canvia l'estat de la màquina.
@@ -1129,17 +1113,18 @@ expr → expr + expr
 Les gramàtiques incontextuals permeten descriure llenguatges més amplis
 que els llenguatges regulars perquè són "recursives".
 
-> Ex: El llenguatge dels mots capicues es pot descriure amb una
-gramàtica incontextual però no amb una expressió regular.
+> **Exemple:** Llenguatge dels mots capicues
+<br> &nbsp; &nbsp; &nbsp; &nbsp; ✅ gramàtica incontextual.
+<br> &nbsp; &nbsp; &nbsp; &nbsp; ❌ expressió regular,
 
-La recursivitat permet donar jerarquia i niuar elements (parèntesis o blocs).
+→ La recursivitat permet definir jerarquies i niuar elements (parèntesis o blocs).
 
 
 ---
 
 # Gramàtiques
 
-Exemple: Gramàtica de C
+Exemple: Gramàtica de C 📜
 
 <pre style='margin-left: 0em; padding: 10px; height: 32em; overflow-y: auto; background-color: #272822; border-radius: 5px; color: white; font-size: 14px;'>
 translation-unit     : {external-declaration}*
@@ -1530,6 +1515,10 @@ term → term * NUM
 
 > ✅ La gramàtica ja no és ambigüa.
 
+--
+
+> ❌ Però el `-` queda associat per la dreta...
+
 
 
 
@@ -1568,12 +1557,12 @@ Figura: [Wikipedia](https://en.wikipedia.org/wiki/Bottom-up_parsing)
 - LL: Left-to-right, Left-most derivation<br>
 - *k*: nombre de tokens que mira endavant
 
-Idea bàsica: mirar el següent token per poder
+**Idea bàsica:** mirar el següent token per poder
 decidir quina producció utilitzar.
 
 <br>
 
-Per implementar-ho, s'associa una funció a cada construcció del LP.
+**Implementació:** Associar una funció a cada construcció del LP.
 
 - Si la construcció està definida per una única regla:
 
@@ -1639,7 +1628,7 @@ def stmt():
 ]
 ]
 
-Exercici: Implementeu `expr()` i `root()`.
+**Exercici:** Implementeu `expr()` i `root()`.
 
 ---
 
@@ -1838,19 +1827,19 @@ class: center, middle
 
 # Accions
 
-- En un analitzador descendent, es poden executar accions
+- Amb un analitzador descendent, es poden executar accions
 durant el reconeixement de les regles.
 
     Les accions poden aparèixer en qualsevol punt de la regla:
 
     ```antlr4
-    regla   :   { /* abans */ }
+    regla   :       { /* abans */   }
                 regla1
-                { /* durant */ }
+                    { /* durant */  }
                 regla2
-                { /* durant */ }
+                    { /* durant */  }
                 regla3
-                { /* després */ }
+                    { /* després */ }
             ;
     ```
 
@@ -1859,7 +1848,7 @@ durant el reconeixement de les regles.
     → És fàcil entendre què passa i quan passa.
 
 
-- En un analitzador ascendent, només es poden executar accions
+- Amb un analitzador ascendent, només es poden executar accions
 després de reconèixer una regla.
 
 
@@ -1888,7 +1877,7 @@ Aquest arbre es sol convertir en un arbre de sintàxi abstracta.
 
 # Arbres de sintàxi concreta *vs* abstracta
 
-**Arbre de sintàxi concreta / de derivació:** Reflecteix precisament les regles sintàctiques.
+**Arbre de sintàxi concreta / de derivació:** Reflecteix exactament les regles sintàctiques.
 
 **Arbre de sintàxi abstracta** (*abstract syntax tree*, AST): Representa el programa fidelment, però elimina
 i simplifica detalls sintàctics irrellevants.
@@ -2027,9 +2016,8 @@ de programació (SimpleLP™).
 - Instruccions: assignació, composició seqüèncial,
   condicional i iteració.
 
-<br>
 
-Exemple:
+## Exemple
 
 ```
 # Algorisme d'Euclides per calcular el mcd de 105 i 252.
@@ -2119,7 +2107,7 @@ keys :: Mem -> [String]
 ```
 
 La implementació seria amb qualsevol diccionari (BST, AVL, hashing, ...).
-
+<br>
 [Si voleu provar-ho, useu `Map` de `Data.Map`.]
 
 
@@ -2209,35 +2197,31 @@ b : 21
 
 # Exercicis
 
-1. Modifiqueu l'AST, la funció `exec` i l'acció `run` per tal d'afegir  a
+1. Modifiqueu l'AST i `eval` per tenir operadors de resta i producte.
+
+1. Modifiqueu l'AST, `exec` i `run` per tal d'afegir  a
 SimpleLP una nova instrucció `print`  que escrigui el contingut d'una
 expressió. Ara `run` només ha d'executar el programa donat partint d'una
-memòria buida. Fixeu-vos que `exec` haurà de ser ara una acció dins de la
-mònada IO.
+memòria buida.
 
-2. Afegiu ara una funció  `read` a SimpleLP que retorni el valor del següent
+2. Afegiu una expressió `read` a SimpleLP que retorni el valor del següent
 enter de l'entrada.
-
-    En aquest punt, hauríeu de tenir un intèrpret per programes com aquest:
-
-    ```
-    # programa en SimpleLP que llegeix dos números i escriu el seu mcd.
-    a ← read
-    b ← read
-    while a ≠ b do
-        if a < b then
-            b ← b - a
-        else
-            a ← a - b
-        end
-    end
-    print a
-    ```
 
 3. Afegiu una instrucció del tipus `for i ← a .. b`.
 
 4. Feu que `print` pugui escriure una llista de valors (`print a, b, a + b` per ex).
 
+5. Escriviu l'AST d'aquest programa:
+
+    ```
+    # factorial en SimpleLP
+    n ← read
+    f ← 1
+    for i ← 2 .. n
+        f ← f * i
+    end
+    print n, f
+    ```
 
 
 
