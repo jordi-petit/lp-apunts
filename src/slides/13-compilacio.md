@@ -42,12 +42,12 @@ etapes, i la seva organització.
 
 # Crèdits
 
-Gran part del material d'aquestes diapositives s'ha extret de
-les que va elaborar el professor Stephen A. Edwards (Universitat
+Gran part del material d'aquestes diapositives sobre compilació s'ha extret de
+les que va elaborar el professor **Stephen A. Edwards** (Universitat
 de Columbia) per l'assignatura COMS W4115 (Programming
-Languages and Translators) i que el professor Jordi Cortadella
+Languages and Translators) i que el professor **Jordi Cortadella**
 (UPC) va adaptar per l'assignatura de Compiladors. També s'ha extret material
-de les transparències del professor Fernando Orejas.
+de les transparències del professor **Fernando Orejas**.
 
 
 ---
