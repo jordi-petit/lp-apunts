@@ -175,8 +175,8 @@ Es considera que Ada Lovelace és la primera programadora.
 
 # Història: Ensabladors
 
-Es considera que Kathleen Booth va escriure el
-primer llenguatge ensamblador per un ordinador ARC al 1947.
+Kathleen Booth va escriure el
+primer llenguatge ensamblador (per un ordinador ARC al 1947).
 
 ![:height 10em](img/kathleen-booth.png)
 .sepimg[]
@@ -184,6 +184,12 @@ primer llenguatge ensamblador per un ordinador ARC al 1947.
 
 .xxs[Fotos: Domini públic]
 
+<br>
+
+
+.xxxl[[📖](https://hackaday.com/2018/08/21/kathleen-booth-assembling-early-computers-while-inventing-assembly/)]
+
+.xxs[Lectura: Kathleen Booth, Assembling Early Computers While Inventing Assembly]
 
 ---
 
@@ -192,6 +198,8 @@ primer llenguatge ensamblador per un ordinador ARC al 1947.
 Primer LP d'alt nivell dissenyat per Konrad Zuse (1942-1945) pel seu
 ordinador a relés Z4. Implementat al 1990.
 
+![:height 10em](img/konrad-suze.png)
+.sepimg[]
 ![:height 10em](img/plankalkul.png)
 .sepimg[]
 ![:height 10em](img/computer-z4.png)
