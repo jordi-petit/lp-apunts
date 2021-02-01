@@ -1,4 +1,4 @@
-q
+
 class: center, middle
 
 
