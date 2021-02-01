@@ -5,7 +5,7 @@
 
 - [Presentació del curs actual](01-presentacio.html)
 
-- [Introducció als llenguatges de programació](02-introduccio.html)
+- [Conceptes bàsics](02-introduccio.html)
 
 - [Fonaments: λ-càlcul](03-lambda-calcul.html)
 

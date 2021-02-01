@@ -1,10 +1,10 @@
-
+q
 class: center, middle
 
 
 Llenguatges de Programació
 
-# Introducció
+# Conceptes bàsics
 
 Albert Rubio, Jordi Petit, Fernando Orejas
 
@@ -14,7 +14,7 @@ Albert Rubio, Jordi Petit, Fernando Orejas
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2019
+Universitat Politècnica de Catalunya, 2021
 
 ---
 
@@ -200,9 +200,9 @@ ordinador a relés Z4. Implementat al 1990.
 
 ![:height 10em](img/konrad-suze.png)
 .sepimg[]
-![:height 10em](img/plankalkul.png)
-.sepimg[]
 ![:height 10em](img/computer-z4.png)
+.sepimg[]
+![:height 10em](img/plankalkul.png)
 
 .xxs[Fotos: Domini públic]
 
@@ -258,6 +258,17 @@ C AREA OF THE TRIANGLE
       STOP
       END
 ```
+
+---
+
+# Història: Fortran
+
+.center[
+![:height 25em](img/primer-programa-fortran.png)
+]
+
+.xxs[Font: [J.A.N. Lee, Twenty Five Years of Fortran](https://eprints.cs.vt.edu/archive/00000875/01/CS82010-R.pdf)]
+
 
 ---
 
@@ -404,6 +415,14 @@ end Absmax
 
 - ML/Miranda (primers llenguatges funcionals moderns) - 1983/1986
 
+- C++ (llenguatge dinàmic i flexible compatible amb C) - 1983
+
+- Java (llenguatge orientat a objectes per a torradores) - 1990
+
+- Python (llenguatge llegible d'alt nivell de propòsit general) - 1991
+
+- ...
+
 ---
 
 # Ús dels LPs
@@ -414,7 +433,7 @@ Com mesurar la popularitat dels LPs?
 
   ![:height 15em](img/tiobe.png)
 
-  .xxs[Font: https://www.tiobe.com/tiobe-index/]
+  .xxs[Font: https://www.tiobe.com/tiobe-index/ (2021)]
 
 
 ---
@@ -425,9 +444,35 @@ Com mesurar la popularitat dels LPs?
 
 - Estadístiques de GitHub
 
-  ![:height 15em](img/github.png)
+  ![:height 14em](img/github.png)
+  ![:height 14em](img/github2.png)
 
-  .xxs[Font: https://github.com]
+  .xxs[Fonts: https://github.com i https://www.benfrederickson.com/ranking-programming-languages-by-github-users/]
+
+
+---
+
+# Ús dels LPs
+
+Quins LPs estudiar/evitar?
+
+  ![:height 12em](img/popularitat-1.png)
+  ![:height 12em](img/popularitat-2.png)
+
+
+.xxs[Font: https://www.benfrederickson.com/ranking-programming-languages-by-github-users/]
+
+
+---
+
+# Ús dels LPs
+
+Quins LPs estudiar/evitar?
+
+  ![:height 20em](img/popularitat-3.png)
+
+
+.xxs[Font: https://www.codeplatoon.org/the-best-paying-and-most-in-demand-programming-languages-in-2019/]
 
 
 
@@ -942,28 +987,22 @@ double area (const Forma&);
 
 ---
 
-# Sistemes de tipus: *type safety*
+# Sistemes de tipus: Errors de tipus
 
-Un llenguatge és **type safe** si cap programa pot donar errors de
-tipus en temps d'execució.
-
-<!--
-A type-safe language is one where the only operations that one can execute on data are the ones that are condoned by the data's type. That is, if your data is of type X and X doesn't support operation y, then the language will not allow you to to execute y(X).
-https://stackoverflow.com/questions/260626/what-is-type-safe
--->
-
-Alguns errors típics en execució:
+Un **error de tipus** consisteix en aplicar a les dades una operació
+que el seu tipus no suporta.
 
 - Type Cast: usar un valor d'un tipus en un altre tipus.
 
-  Exemple: En C, un enter pot ser usat com a funció (com a adreça), però pot
-  saltar on no hi ha una funció  i pot provocant un error.
+  👉 En C, un enter pot ser usat com a funció (com a adreça), però pot
+  saltar on no hi ha una funció i pot provocant un error.
+
+  👉 En C, `printf("%s", 42);`.
 
 - Aritmètica de punters.
 
-  Exemple: En C, si tenim `A* p;` llavors `*(p + i)` té tipus `A`, però el que
-  hi ha a `p + i` pot ser qualsevol altra cosa i pot provocar un error de tipus.
-
+  👉 En C++, si tenim `A p[10];` llavors `p[15]` té tipus `A`, però el que
+  hi ha a `p[15]` pot ser qualsevol altra cosa i pot provocar un error de tipus.
 
 - Alliberament explícit de memòria (deallocate/delete).
 
@@ -974,16 +1013,30 @@ Alguns errors típics en execució:
   l'herència).
 
 
+
 ---
 
-# Sistemes de tipus: *type safety*
+# Sistemes de tipus: Seguretat de tipus
 
-Exemples de llenguatges:
+La **seguretat de tipus** (*type safety*) és la mesura de com de fàcil/difícil és cometre errors
+de tipus en un LP.
 
-- *Type safe*: Haskell, Java, ...
+Exemples:
 
-- *Type unsafe*: C, C++, Pascal, ...
+- C té reputació de ser un LP sense gaire seguretat de tipus (unions, enumerats, `void*`, ...).
 
+- C++ hereta C però proporciona més seguretat de tipus:
+    els enumerats no es poden convertr implícitament amb els enters o altres enumerats,
+    el *dynamic casting* pot comprovar errors de tipus en temps execució, ...
+
+- Java és dissenyat per a proporcionar seguretat de tipus. Però es pot abusar
+del *classloader*.
+
+- Python, igual que Java, està dissenyat per donar seguretat de tipus, malgrat que
+el tipatge sigui dinàmic.
+
+- Es creu que Haskell és *type safe* si no s'sabusen algunes construccions com
+`unsafePerformIO`.
 
 
 ---
@@ -1001,7 +1054,7 @@ a = 2
 b = "2"
 
 a + b      # JavaScript retorna "22"
-a + b      # Visual Basic retorna 4
+a + b      # Perl retorna 4
 ```
 
 <br/>
@@ -1021,6 +1074,8 @@ La comprovació de tipus pot ser:
 - **Estàtica**: en temps de compilació.
 
 - **Dinàmica**: en temps d'execució.
+
+- **Mixta**.
 
 
 
