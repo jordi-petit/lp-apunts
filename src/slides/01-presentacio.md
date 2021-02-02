@@ -6,7 +6,7 @@ Llenguatges de Programació
 
 # Presentació
 
-2020-2021 Q1
+2020-2021 Q2
 <br>
 (Vaccine edition)
 
@@ -52,14 +52,6 @@ Universitat Politècnica de Catalunya, 2021
 - Fonaments de Llenguatges de Programació
 
 - Llenguatges funcionals: Haskell
-
-  - Pattern matching
-
-  - Avaluació eaguer/lazy
-
-  - Funcions d'ordre superior i funcions anònimes
-
-  - Mònades
 
 - Llenguatges de scripting: Python
 
@@ -215,3 +207,4 @@ Thomson-Paraninfo, 2004.
 
 - Pla de contingència:
 En cas de suspensió de l'activitat docent presencial, les classes presencials es faran de forma no presencial síncrona utilitzant streaming.
+

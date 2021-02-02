@@ -3,7 +3,7 @@
 
 ## Curs 2020-2021 Q2
 
-- [Presentació del curs actual](01-presentacio.html)
+- [Presentació del curs](01-presentacio.html)
 
 - [Conceptes bàsics](02-introduccio.html)
 
@@ -15,7 +15,7 @@
 
 - [Llenguatges de scripting](12-scripting.html)
 
-- [Python](https://gebakx.github.io/Python3)
+- [Programació en Python](https://gebakx.github.io/Python3)
 
 - [Introducció a la compilació](13-compilacio.html)
 

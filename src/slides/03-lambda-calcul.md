@@ -25,7 +25,6 @@ funcionals, i la base de la seva implementació.
 
 .cols5050[
 .col1[
-
 Inventat per Alonzo Church, cap al 1930.
 
 ![:height 10em](img/alonzo-church.jpg)
@@ -41,26 +40,22 @@ Consisteix en agafar una línia de símbols i aplicar una operació de *cut-and-
 ]
 ]
 
-[![:height 2em](img/icones/youtube.png)](https://www.youtube.com/watch?v=Rx-5dCXx1SI)
+<br>
 
-.xxs[Vídeo: Math whizzes of ancient Babylon figured out forerunner of calculus]
-
-.xxs[Fotos: Fair Use, [jstor.org](https://www.ics.uci.edu/~lopes/teaching/inf212W12/readings/church.pdf), [Lambda Calculus for Absolute Dummies](http://palmstroem.blogspot.com/2012/05/lambda-calculus-for-absolute-dummies.html)]
+.xxs[
+Fotos: Fair Use, [jstor.org](https://www.ics.uci.edu/~lopes/teaching/inf212W12/readings/church.pdf), [Lambda Calculus for Absolute Dummies](http://palmstroem.blogspot.com/2012/05/lambda-calculus-for-absolute-dummies.html)
+]
 
 
 ---
 
 # Gramàtica
 
-.my-inverse[
-$$
-\begin{align}
-      \textit{terme} \ := \ & \textit{lletra} \ | \ (\ \textit{terme}\ ) \ | \ \textit{abstracció} \ | \ \textit{aplicació} \\\\
- \textit{abstracció} \ := \ & \mathbf{λ} \ \textit{lletra} \ . \ \textit{terme}\\\\
-  \textit{aplicació} \ := \ & \textit{terme} \ \textit{terme}\\\\
-\end{align}
-$$
-]
+```
+      terme  →  lletra  |  ( terme )  |  abstracció  |  aplicació
+ abstracció  →  λ  lletra  .  terme
+  aplicació  →  terme  terme
+```
 
 
 Exemples de termes:
@@ -68,7 +63,9 @@ Exemples de termes:
 -  $λ x . x$
 -  $(λ y . x(yz)) (ab)$
 
-<div id='cy_expr1' style='width: 100%; height: 14em; border: solid black 0px;'></div>
+Arbre de  $(λ y . x(yz)) (ab)$:
+
+<div id='cy_expr1' style='width: 75%; height: 14em; border: solid black 0px;'></div>
 
 
 
@@ -123,9 +120,18 @@ $$
 $$
 on $f$ i $x$ són dos termes.
 
+  *Intuició:*
+$
+    f(x)
+$
+és representat per
+$
+    f x
+$
+
 ---
 
-# Funcions al curry
+# Currificació
 
 Al λ-càlcul totes les funcions tenen un sol paràmetre.
 
@@ -136,6 +142,15 @@ funcions d'un sol paràmetre utilitzant la tècnica del *currying*:
 - Una funció amb dos paràmetres, com ara la suma, +: int x int ⟶ int, es pot considerar equivalent a una funció d'un sol paràmetre que retorna una funció d'un paràmetre, +: int ⟶ (int ⟶ int).
 
 - Això vol dir que $2 + 3$, amb notació prefixa $(+ 2 ~ 3)$, s'interpretaria com $(+2)~3$, on $(+2)$ és la funció que aplicada a qualsevol paràmetre $x$, retorna $x+2$.
+
+
+<br>
+
+**Currificar** és transformar una funció que accepta $n$ paràmetres i convertir-la en una
+funció que, donat un paràmetre (el primer) retorna una funció que
+accepta $n-1$ paràmetres (i són semànticament equivalents).
+
+
 
 ---
 

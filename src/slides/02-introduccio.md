@@ -186,9 +186,8 @@ primer llenguatge ensamblador (per un ordinador ARC al 1947).
 
 <br>
 
-
 .xxxl[[📖](https://hackaday.com/2018/08/21/kathleen-booth-assembling-early-computers-while-inventing-assembly/)]
-
+<br>
 .xxs[Lectura: Kathleen Booth, Assembling Early Computers While Inventing Assembly]
 
 ---
@@ -490,12 +489,12 @@ Quins LPs estudiar/evitar?
 Els **paradigmes de programació** classifiquen els LPs segons les
 seves característiques.
 
-<br>
-
 .center[
 ![:height 15em](img/paradigms-floyd.png)
 ]
 
+.xxxl[[📖](https://dl.acm.org/doi/pdf/10.1145/359138.359140)]
+<br>
 *[The paradigms of programming.](https://dl.acm.org/doi/pdf/10.1145/359138.359140)* R. Floyd, Communications ACM 1979.
 
 
@@ -866,18 +865,16 @@ Ophelia:
 
 ---
 
-class: split-5050
-
 # Turing completesa
 
 
 .cols5050[
 .col1[
-**Màquina de Turing**: Model matemàtic de càlcul imperatiu molt simple.<br/> (Allan Turing, 1936)
+**Màquina de Turing**: Model matemàtic de càlcul imperatiu molt simple.<br/> (Alan Turing, 1936)
 
-![:height 8em](img/alan-turing.jpg)
+![:height 7em](img/alan-turing.jpg)
 .sepimg[]
-![:height 8em](img/turing-machine.png)
+![:height 7em](img/turing-machine.png)
 
 - Cinta infinita amb un capçal mòvil per llegir/escriure símbols
 - Conjunt finit d'estats
@@ -886,8 +883,8 @@ class: split-5050
 .col2[
 **λ-càlcul**: Model matemàtic de càlcul funcional molt simple. <br/> (Alonzo Church, 1936).
 
-![:height 8em](img/lambda2.png)
-![:height 8em](img/alonzo-church.jpg)
+![:height 7em](img/lambda2.png)
+![:height 7em](img/alonzo-church.jpg)
 
 - Sistema de reescriptura
 - basat en abstracció i aplicació de funcions.
@@ -899,6 +896,7 @@ computable amb una Màquina de Turing o amb una funció en λ-càlcul".
 
 
 .xxs[Fotos: Wikipedia, Fair Use, [Lambda Calculus for Absolute Dummies](http://palmstroem.blogspot.com/2012/05/lambda-calculus-for-absolute-dummies.html)]
+
 
 ---
 
