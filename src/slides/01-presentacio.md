@@ -72,7 +72,7 @@ Universitat Politècnica de Catalunya, 2021
 <br>
 Josep Carmona
 <br>
-.xs[jcarmona@cs.upc]
+.xs[josep.carmona-vargas@upc]
 
 <br>
 
@@ -80,7 +80,7 @@ Josep Carmona
 <br>
 Edelmira Pasarella
 <br>
-.xs[edelmira@cs.upc]
+.xs[edelmira.pasarella@upc]
 
 ]
 .col23[
@@ -97,18 +97,24 @@ Gerard Escudero
 <br>
 Jordi Petit
 <br>
-.xs[jpetit@cs.upc]
+.xs[jordi.petit-silvestre@upc]
 
 ]
 .col33[
 
-![:height 6em](img/profes/jlevy.png)
+![:height 6em](img/profes/jdelgado.png)
 <br>
-Jordi Levy
+Jordi Delgado
 <br>
-.xs[levy@iiia.csic.es]
+.xs[jordi.delgado@upc]
 
 <br>
+
+![:height 6em](img/profes/forejas.png)
+<br>
+Fernando Orejas
+<br>
+.xs[fernando.orejas@upc]
 
 ]
 ]
@@ -201,10 +207,11 @@ Thomson-Paraninfo, 2004.
 
 # COVID
 
-- Enguany els laboratoris són no presencials però síncrons.
+- Aquest quadrimestre tots els laboratoris són *no presencials* però *síncrons*.
 
-- Es proporcionarà material (apunts, transparències i vídeos) per tal d'aportar la informació que els professors no podran donar durant les classes de laboratori no presencials.
+- Es proporcionarà material (apunts, transparències i vídeos)
+que us haureu de preparar abans de les classes de laboratori.
 
-- Pla de contingència:
-En cas de suspensió de l'activitat docent presencial, les classes presencials es faran de forma no presencial síncrona utilitzant streaming.
+- Les classes de teoria començaran en modalitat *no presencial* i *síncrona*.
+
 
