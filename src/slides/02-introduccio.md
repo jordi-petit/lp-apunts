@@ -23,17 +23,104 @@ Universitat Politècnica de Catalunya, 2021
 Un **llenguatge de programació** (LP) és un llenguatge formal utilitzat per
 controlar el comportament d'un computador tot implementant un algorisme.
 
-Cada llenguatge té una sèrie de regles estrictes:
 
-- **Regles sintàctiques**: descriuen l'estructura dels programes vàlids.
 
-- **Regles semàntiques**: descriuen el seu significat.
+---
 
-Cada llenguatge té (hauria de tenir) una especificació:
+# Perquè estudiar els LPs?
 
-- un document estàndard (Ansi C) o
-- una implementació de referència (CPython).
+- **Visió enginyeril:** Necessitem LPs per programar
+computadors per fer coses xules.
 
+- **Visió científica:** Necessitem LPs per descriure i raonar sobre aquestes computacions.
+
+
+---
+
+# Perquè estudiar els LPs?
+
+Els LPs, en tant que llenguatges, són una eina de pensament.
+
+Els llenguatges que usem:
+
+- influencien les nostres percepcions,
+- guien i donen suport al nostre raonament,
+- permeten i faciliten la nostra comunicació.
+
+
+.center[![:height 18em](img/llenguatges.png)]
+
+
+---
+
+# Perquè estudiar els LPs?
+
+Els LPs, en tant que llenguatges, són una eina de pensament.
+
+Els llenguatges que usem:
+
+- influencien les nostres percepcions,
+- guien i donen suport al nostre raonament,
+- permeten i faciliten la nostra comunicació.
+
+<br>
+
+**Exemple:** Nombres romans *vs* sistema posicional:
+
+.center[
+<span style="text-decoration:overline">VIII</span>CXCII ÷ MXXIV = VIII
+&nbsp; *vs* &nbsp; 8192 / 1024 = 8.
+]
+
+---
+
+# Perquè estudiar els LPs?
+
+Els LPs, en tant que llenguatges, són una eina de pensament.
+
+Els llenguatges que usem:
+
+- influencien les nostres percepcions,
+- guien i donen suport al nostre raonament,
+- permeten i faciliten la nostra comunicació.
+
+<br>
+
+**Exemple:** Codi màquina *vs* codi alt nivell:
+
+.center[![:height 10em](img/low-high-level.png)]
+
+
+
+
+---
+
+# Com estudiar els LPs?
+
+<br>
+
+.cols5050[
+
+.col1[
+<br>
+
+.center[Estudiar-los tots.]
+
+.center[❌]
+
+
+<br><br>
+
+Estudiar les seves característiques, avaluar les seves qualitats, classificar-los
+en famílies, conèixer la seva història, estudiar els seus fonaments...
+
+.center[✅]
+
+]
+.col2[
+![:width 16em](img/llibres-lps.png)
+]
+]
 
 ---
 
@@ -422,7 +509,7 @@ end Absmax
 
 - ...
 
----
+
 
 # Ús dels LPs
 
@@ -478,6 +565,8 @@ Quins LPs estudiar/evitar?
 ---
 
 # Ús dels LPs 1965 - 2019
+
+<br>
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/Og847HVwRSI" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
