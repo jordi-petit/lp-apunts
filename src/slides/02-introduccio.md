@@ -41,14 +41,9 @@ computadors per fer coses xules.
 
 Els LPs, en tant que llenguatges, són una eina de pensament.
 
-Els llenguatges que usem:
+**Exemples:**
 
-- influencien les nostres percepcions,
-- guien i donen suport al nostre raonament,
-- permeten i faciliten la nostra comunicació.
-
-
-.center[![:height 18em](img/llenguatges.png)]
+.center[![:height 20em](img/llenguatges.png)]
 
 
 ---
@@ -65,11 +60,16 @@ Els llenguatges que usem:
 
 <br>
 
-**Exemple:** Nombres romans *vs* sistema posicional:
+**Exemple:** Representacions dels nombres
 
 .center[
-<span style="text-decoration:overline">VIII</span>CXCII ÷ MXXIV = VIII
-&nbsp; *vs* &nbsp; 8192 / 1024 = 8.
+𒐖 𒌋𒐚 𒌍𒐖  &nbsp; / &nbsp;  𒌋𒐛 𒐘  &nbsp; = &nbsp; 𒐜
+
+<span style="text-decoration:overline">Ⅷ</span>ⅭⅩⅭⅡ ÷ ⅯⅩⅩⅣ = Ⅷ
+
+8192 / 1024 = 8
+
+2<sup>13</sup> / 2<sup>10</sup> = 2<sup>13 - 10</sup> = 2<sup>3</sup>
 ]
 
 ---
@@ -111,7 +111,7 @@ Els llenguatges que usem:
 
 <br><br>
 
-Estudiar les seves característiques, avaluar les seves qualitats, classificar-los
+Estudiar les seves característiques, els seus usos, avaluar les seves qualitats, classificar-los
 en famílies, conèixer la seva història, estudiar els seus fonaments...
 
 .center[✅]
@@ -200,7 +200,7 @@ This is the procedure.
 
 <br>
 
-[![:height 2em](img/icones/youtube.png)](https://www.youtube.com/watch?v=Rx-5dCXx1SI)
+[![:height 6em](img/icones/youtube.png)](https://www.youtube.com/watch?v=Rx-5dCXx1SI)
 
 .xxs[Vídeo: Math whizzes of ancient Babylon figured out forerunner of calculus]
 
@@ -509,6 +509,8 @@ end Absmax
 
 - ...
 
+
+---
 
 
 # Ús dels LPs
@@ -1164,22 +1166,22 @@ Python
 
 ---
 
-class: center, middle
-![:width 30em](img/js-weird-4.png)
-
----
-
-class: center, middle
+class: center, middle, inverse
 ![:width 30em](img/js-weird-1.png)
 
 ---
 
-class: center, middle
-![:width 30em](img/js-weird-3.png)
+class: center, middle, inverse
+![:width 40em](img/js-weird-3.png)
 
 ---
 
-class: center, middle
+class: center, middle, inverse
+![:width 30em](img/js-weird-4.png)
+
+---
+
+class: center, middle, inverse
 ![:width 30em](img/js-weird-2.png)
 
 <br><br><br><br>
