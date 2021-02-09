@@ -1044,6 +1044,7 @@ Sistemes mixtes:
 - Alguns interpretats, poden ser també compilats (per exemple, Prolog).
 - i al revés (Haskell).
 
+⇒ El sistema d'execució depèn més de la implementació que del LP.
 
 ---
 
@@ -1122,34 +1123,45 @@ del *classloader*.
 - Python, igual que Java, està dissenyat per donar seguretat de tipus, malgrat que
 el tipatge sigui dinàmic.
 
-- Es creu que Haskell és *type safe* si no s'sabusen algunes construccions com
+- Es creu que Haskell és *type safe* si no s'abusa d'algunes construccions com
 `unsafePerformIO`.
 
 
 ---
 
-# Sistemes de tipus: Tipat fort/feble
+# Sistemes de tipus: Tipat fort *vs* feble
 
-Els llenguatges amb **tipat fort** imposen restriccions que
-eviten barrejar valors de diferents tipus (per exemple, amb conversions implícites).
+**Tipat fort** (*strong typing*): L'LP imposa restriccions que
+eviten barrejar valors de diferents tipus (conversions explícites).
+
+**Tipat feble** (*weak typing*): L'LP té regles màgiques per convertir
+tipus automàticament.
+
+<br>
 
 
-Per exemple, amb un tipat feble podem tenir:
+Javascript
 
 ```javascript
-a = 2
-b = "2"
-
-a + b      # JavaScript retorna "22"
-a + b      # Perl retorna 4
+4 + '7';      // '47'
+4 * '7';      // '28'
 ```
 
-<br/>
-Exemples de llenguatges:
+PHP
 
-- Tipat fort: C++, Java, Python, Haskell, ...
+```php
+4 + '7';      // '11'
+4 * '7';      // '28'
+```
 
-- Tipat feble: Basic, JavaScript, Perl, ...
+
+Python
+
+```python
+4 + '7'       # ❌ TypeError: unsupported operand type(s) for +: 'int' and 'str'
+4 * '7'       # '7777'
+```
+
 
 
 ---
@@ -1166,9 +1178,10 @@ La comprovació de tipus pot ser:
 
 
 
-<br/>
-Exemples de llenguatges:
+---
 
-- Comprovació estàtica: Haskell, C++, Java, ...
+# Sistemes de tipus
 
-- Comprovació dinàmica: Python, Ruby, ...
+.center[![:height 15em](img/tipatge.png)]
+
+.right[.xxs[[Font](https://velog.io/@dhlee91/Static-vs.-Dynamic-Strong-vs.-Weak-typing)]]
