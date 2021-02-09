@@ -1139,13 +1139,13 @@ tipus automàticament.
 
 <br>
 
-
 Javascript
 
 ```javascript
 4 + '7';      // '47'
 4 * '7';      // '28'
 ```
+
 
 PHP
 
@@ -1162,6 +1162,28 @@ Python
 4 * '7'       # '7777'
 ```
 
+---
+
+class: center, middle
+![:width 30em](img/js-weird-4.png)
+
+---
+
+class: center, middle
+![:width 30em](img/js-weird-1.png)
+
+---
+
+class: center, middle
+![:width 30em](img/js-weird-3.png)
+
+---
+
+class: center, middle
+![:width 30em](img/js-weird-2.png)
+
+<br><br><br><br>
+.center[https://javascriptwtf.com/]
 
 
 ---
