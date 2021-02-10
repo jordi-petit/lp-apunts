@@ -1283,6 +1283,8 @@ class: center, middle, inverse
 <br><br><br><br>
 .center[https://javascriptwtf.com/]
 
+.center[https://wtfjs.com/]
+
 
 ---
 
