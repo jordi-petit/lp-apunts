@@ -198,22 +198,22 @@ You find that 3, 20 [i.e., 3 1/3] is the length and 2, 30 [i.e., 2 1/2] is the w
 
 This is the procedure.
 
-<br>
-
-[![:height 6em](img/icones/youtube.png)](https://www.youtube.com/watch?v=Rx-5dCXx1SI)
-
-.xxs[Vídeo: Math whizzes of ancient Babylon figured out forerunner of calculus]
 
 ]]
 .col2[
-![:height 20em](img/babilonic-tablet.png)
+![:height 18em](img/babilonic-tablet.png)
 ]
 ]
 
 
-*[Ancient Babylonian Algorithms](http://steiner.math.nthu.edu.tw/disk5/js/computer/1.pdf)*. D.E. Knuth, Communications ACM 1972.
 
+<br>
 
+.xxs[
+📖 *[Ancient Babylonian Algorithms](http://steiner.math.nthu.edu.tw/disk5/js/computer/1.pdf)*. D.E. Knuth, Communications ACM 1972.
+
+🎬 *[Math whizzes of ancient Babylon figured out forerunner of calculus](https://www.youtube.com/watch?v=Rx-5dCXx1SI)*, YouTube.
+]
 
 ---
 
@@ -228,9 +228,7 @@ This is the procedure.
 
 .xxs[Fotos: http://www.revolutionfabrics.com/blog/2018/9/26/the-jacquard-loom-and-the-binary-code]
 
-[![:height 2em](img/icones/youtube.png)](https://www.youtube.com/watch?v=MQzpLLhN0fY)
-
-.xxs[Vídeo: How an 1803 Jacquard Loom Lead to Computer Technology]
+🎬 .xxs[[How an 1803 Jacquard Loom Lead to Computer Technology](https://www.youtube.com/watch?v=MQzpLLhN0fY)]
 
 
 
@@ -253,9 +251,7 @@ Es considera que Ada Lovelace és la primera programadora.
 
 <br>
 
-[![:height 2em](img/icones/youtube.png)](https://www.youtube.com/watch?v=lLOAuYv87uU)
-
-.xxs[Vídeo:  Ada Lovelace, The World’s First Computer Nerd?]
+.xxs[🎬 [Ada Lovelace, The World’s First Computer Nerd?](https://www.youtube.com/watch?v=lLOAuYv87uU)]
 
 
 ---
@@ -272,10 +268,9 @@ primer llenguatge ensamblador (per un ordinador ARC al 1947).
 .xxs[Fotos: Domini públic]
 
 <br>
-
-.xxxl[[📖](https://hackaday.com/2018/08/21/kathleen-booth-assembling-early-computers-while-inventing-assembly/)]
-<br>
-.xxs[Lectura: Kathleen Booth, Assembling Early Computers While Inventing Assembly]
+.xxs[
+📖 [Kathleen Booth, Assembling Early Computers While Inventing Assembly](https://hackaday.com/2018/08/21/kathleen-booth-assembling-early-computers-while-inventing-assembly/)
+]
 
 ---
 
@@ -580,13 +575,13 @@ Quins LPs estudiar/evitar?
 Els **paradigmes de programació** classifiquen els LPs segons les
 seves característiques.
 
+<br>
+
 .center[
 ![:height 15em](img/paradigms-floyd.png)
 ]
 
-.xxxl[[📖](https://dl.acm.org/doi/pdf/10.1145/359138.359140)]
-<br>
-*[The paradigms of programming.](https://dl.acm.org/doi/pdf/10.1145/359138.359140)* R. Floyd, Communications ACM 1979.
+📖 [*The paradigms of programming.*](https://dl.acm.org/doi/pdf/10.1145/359138.359140) R. Floyd, Communications ACM 1979.
 
 
 
@@ -816,10 +811,6 @@ Caràcteristiques:
 Exemples: Smalltalk, Simula, C++, Java...
 
 
-
-
-
-
 ---
 
 # Llenguatges multiparadigma
@@ -841,17 +832,40 @@ Altres combinacions:
 - Erlang: **funcional** + concurrent + distribuït
 
 
+
+---
+
+# Llenguatges visuals
+
+En un **llenguatges de programació visual** (VPL) els programes són creats manipulant
+elements gràfics.
+
+- **Visual Basic:** Dialecte de BASIC utilitzant
+una interfície gràfica per facilitar la creació d'interfícies gràfiques. (1991)
+
+  .center[![:height 10em](img/visual-basic.png)]
+
+- **Scratch:** Eina d'educació per a nens a partir de 8 anys. (2003)
+
+  .center[![:height 6em](img/scratch.png)]
+
+
 ---
 
 # Llenguatges esotèrics
 
-- **Brainfuck:** Basat en màquines de Turing, només té 8 instruccions. Exemple:
+- **Brainfuck:** Basat en màquines de Turing, només té 8 instruccions. Hello world:
 
   ```bash
   ,>++++++[<-------->-],[<+>-],<.>.
   ```
 
-- **Whitespace**: Només té espais en blanc i tabuladors. Exemple:
+- **Piet:** Usa imatges amb 20 colors com a codi font. Factorial:
+
+  ![:height 6em](img/piet-factorial.png)
+
+
+- **Whitespace**: Només té espais en blanc i tabuladors. BFS:
 
   ```bash
 
@@ -860,9 +874,13 @@ Altres combinacions:
   (indenteu-lo bé quan el copieu 😛)
 
 
+---
+
+# Llenguatges esotèrics
+
 - **Shakespeare**: Amaga un programa dins d'una obra de teatre.
 
-<pre style='margin-left: 3em; padding: 10px; height: 16em; overflow-y: auto; background-color: #272822; border-radius: 5px; color: white; font-size: 12px;'>
+<pre style='margin-left: 3em; padding: 10px; height: 32em; overflow-y: auto; background-color: #272822; border-radius: 5px; color: white; font-size: 12px;'>
 The Infamous Hello World Program.
 
 Romeo, a young man with a remarkable patience.
@@ -1209,3 +1227,60 @@ La comprovació de tipus pot ser:
 .center[![:height 15em](img/tipatge.png)]
 
 .right[.xxs[[Font](https://velog.io/@dhlee91/Static-vs.-Dynamic-Strong-vs.-Weak-typing)]]
+
+
+
+---
+
+# Exercicis
+
+1. Digueu quin és el vostre LP favorit.
+
+2. Expliqueu quines són les seves propietats fonamentals:
+
+  - Propòsit del llenguatge.
+
+  - Paradigma o paradigmes de programació que admet el llenguatge.
+
+  - Sistema d'execució.
+
+  - Sistema de tipus.
+
+  - Principals aplicacions.
+
+  - Història del LP i relació amb LPs similars.
+
+  - Exemples de codi il·lustratius.
+
+  - Altres característiques particulars.
+
+
+
+
+---
+
+# Exercicis
+
+
+.center[
+
+![:width 20em](img/guess-the-programming-language.png)
+
+https://devawesome.io/guess-the-programming-language/
+]
+
+
+
+---
+
+# Exercicis
+
+
+.center[
+
+![:width 20em](img/triviaplaza.png)
+
+https://www.triviaplaza.com/programming-languages-quiz/
+]
+
+
