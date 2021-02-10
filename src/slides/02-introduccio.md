@@ -1040,6 +1040,18 @@ Ophelia:
 
 ---
 
+# Paradigmes de LPs: Més taxonomies
+
+.center[![:height 25em](img/taxonomia.png)]
+
+.right[.xxs[Font: [*Programming Paradigms for
+Dummies*, P. Van Roy](https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf)]]
+
+
+---
+
+
+
 # Turing completesa
 
 
