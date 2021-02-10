@@ -23,6 +23,24 @@ Universitat Politècnica de Catalunya, 2021
 Un **llenguatge de programació** (LP) és un llenguatge formal utilitzat per
 controlar el comportament d'un computador tot implementant un algorisme.
 
+Existeixen centenars (milers?) de LPs.
+
+Tradicionalment, els LPs es consideren des de tres angles
+(anàlegs a la lingüística):
+
+- **Sintaxi:** la forma dels programes corectes.
+
+- **Semàntica:** el significat de les construccions dels programes.
+
+- **Pragmàtica:** com es computa el significat d'un programa.
+
+
+La majoria d'LPs venen definits per
+
+- una especificació estàndard, o
+
+- una implementació de referència.
+
 
 
 ---
@@ -89,6 +107,42 @@ Els llenguatges que usem:
 **Exemple:** Codi màquina *vs* codi alt nivell:
 
 .center[![:height 10em](img/low-high-level.png)]
+
+
+---
+
+# Perquè estudiar els LPs?
+
+Els LPs, en tant que llenguatges, són una eina de pensament.
+
+Els llenguatges que usem:
+
+- influencien les nostres percepcions,
+- guien i donen suport al nostre raonament,
+- permeten i faciliten la nostra comunicació.
+
+<br>
+
+**Exemple:** Programació imperativa *vs* declarativa:
+
+.cols5050[
+.col1[
+```javascript
+let entrada = [1, 2, 3, 4, 5]
+let sortida = []
+for (var i = 0; i < entrada.length; i++) {
+    sortida.push(entrada[i] * 2);
+}
+```
+]
+.col2[
+```javascript
+let entrada = [1, 2, 3, 4, 5]
+let sortida = entrada.map(function (x,i) {
+    return 2*x
+})
+```
+]]
 
 
 
@@ -512,7 +566,6 @@ end Absmax
 
 ---
 
-
 # Ús dels LPs
 
 Com mesurar la popularitat dels LPs?
@@ -522,6 +575,19 @@ Com mesurar la popularitat dels LPs?
   ![:height 15em](img/tiobe.png)
 
   .xxs[Font: https://www.tiobe.com/tiobe-index/ (2021)]
+
+
+---
+
+# Ús dels LPs
+
+Com mesurar la popularitat dels LPs?
+
+- IEEE Spectrum ranking: The Top Programming Languages 2018
+
+  ![:height 15em](img/ieee-ranking.png)
+
+  .xxs[Font: https://spectrum.ieee.org/static/interactive-the-top-programming-languages-2018 (2018)]
 
 
 ---
