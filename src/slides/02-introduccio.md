@@ -10,7 +10,7 @@ Albert Rubio, Jordi Petit, Fernando Orejas
 
 <br/>
 
-![:height 10em](img/programming-languages-cloud.png)
+![:height 10em](img/hardest-programming-language.png)
 
 <br/>
 
@@ -23,7 +23,15 @@ Universitat Politècnica de Catalunya, 2021
 Un **llenguatge de programació** (LP) és un llenguatge formal utilitzat per
 controlar el comportament d'un computador tot implementant un algorisme.
 
-Existeixen centenars (milers?) de LPs.
+<br>
+.center[![:height 10em](img/programming-languages-cloud.png)]
+<br>
+
+
+
+---
+
+# Introducció
 
 Tradicionalment, els LPs es consideren des de tres angles
 (anàlegs a la lingüística):
@@ -34,6 +42,7 @@ Tradicionalment, els LPs es consideren des de tres angles
 
 - **Pragmàtica:** com es computa el significat d'un programa.
 
+<br>
 
 La majoria d'LPs venen definits per
 
@@ -57,7 +66,8 @@ computadors per fer coses xules.
 
 # Perquè estudiar els LPs?
 
-Els LPs, en tant que llenguatges, són una eina de pensament.
+Els LPs, en tant que llenguatges, ens permeten representar conceptes
+<br> i són una eina de pensament.
 
 **Exemples:**
 
@@ -68,7 +78,6 @@ Els LPs, en tant que llenguatges, són una eina de pensament.
 
 # Perquè estudiar els LPs?
 
-Els LPs, en tant que llenguatges, són una eina de pensament.
 
 Els llenguatges que usem:
 
@@ -78,7 +87,7 @@ Els llenguatges que usem:
 
 <br>
 
-**Exemple:** Representacions dels nombres
+**Exemple:** Representacions dels nombres:
 
 .center[
 𒐖 𒌋𒐚 𒌍𒐖  &nbsp; / &nbsp;  𒌋𒐛 𒐘  &nbsp; = &nbsp; 𒐜
@@ -94,8 +103,6 @@ Els llenguatges que usem:
 
 # Perquè estudiar els LPs?
 
-Els LPs, en tant que llenguatges, són una eina de pensament.
-
 Els llenguatges que usem:
 
 - influencien les nostres percepcions,
@@ -106,14 +113,12 @@ Els llenguatges que usem:
 
 **Exemple:** Codi màquina *vs* codi alt nivell:
 
-.center[![:height 10em](img/low-high-level.png)]
+.center[![:height 12em](img/low-high-level.png)]
 
 
 ---
 
 # Perquè estudiar els LPs?
-
-Els LPs, en tant que llenguatges, són una eina de pensament.
 
 Els llenguatges que usem:
 
@@ -128,19 +133,22 @@ Els llenguatges que usem:
 .cols5050[
 .col1[
 ```javascript
-let entrada = [1, 2, 3, 4, 5]
-let sortida = []
-for (var i = 0; i < entrada.length; i++) {
-    sortida.push(entrada[i] * 2);
+let xs = [1, 2, 3, 4, 5]
+
+let ys = []
+for (var i = 0; i < xs.length; i++) {
+    ys.push(xs[i] * 2);
 }
 ```
 ]
 .col2[
 ```javascript
-let entrada = [1, 2, 3, 4, 5]
-let sortida = entrada.map(function (x,i) {
+let xs = [1, 2, 3, 4, 5]
+
+let ys = xs.map(function (x,i) {
     return 2*x
 })
+
 ```
 ]]
 
@@ -218,11 +226,10 @@ en famílies, conèixer la seva història, estudiar els seus fonaments...
 
 # Història
 
-[O'Reilly History of Programming Languages](https://www.cs.toronto.edu/~gpenn/csc324/PLhistory.pdf)
+📖 [*History of Programming Languages*](https://www.cs.toronto.edu/~gpenn/csc324/PLhistory.pdf), O'Reilly
 
-.center[![](img/programming-history.png)]
+.center[![:width 40em](img/programming-history.png)]
 
-.center.xs[Font: O'Reilly]
 
 
 
@@ -580,7 +587,7 @@ Com mesurar la popularitat dels LPs?
 
 - IEEE Spectrum ranking: The Top Programming Languages 2018
 
-  ![:height 15em](img/ieee-ranking.png)
+  .center[![:height 15em](img/ieee-ranking.png)]
 
   .xxs[Font: https://spectrum.ieee.org/static/interactive-the-top-programming-languages-2018 (2018)]
 
@@ -618,7 +625,7 @@ Quins LPs estudiar/evitar?
 
 Quins LPs estudiar/evitar?
 
-  ![:height 20em](img/popularitat-3.png)
+  .center[![:height 20em](img/popularitat-3.png)]
 
 
 .xxs[Font: https://www.codeplatoon.org/the-best-paying-and-most-in-demand-programming-languages-in-2019/]
@@ -631,8 +638,9 @@ Quins LPs estudiar/evitar?
 
 <br>
 
+.center[
 <iframe width="640" height="360" src="https://www.youtube.com/embed/Og847HVwRSI" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+]
 
 ---
 
@@ -907,11 +915,11 @@ En un **llenguatges de programació visual** (VPL) els programes són creats man
 elements gràfics.
 
 - **Visual Basic:** Dialecte de BASIC utilitzant
-una interfície gràfica per facilitar la creació d'interfícies gràfiques. (1991)
+una interfície gràfica per facilitar la creació d'interfícies gràfiques (1991).
 
   .center[![:height 10em](img/visual-basic.png)]
 
-- **Scratch:** Eina d'educació per a nens a partir de 8 anys. (2003)
+- **Scratch:** Eina d'educació per a nens a partir de 8 anys (2003).
 
   .center[![:height 6em](img/scratch.png)]
 
