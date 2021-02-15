@@ -36,11 +36,11 @@ controlar el comportament d'un computador tot implementant un algorisme.
 Tradicionalment, els LPs es consideren des de tres angles
 (anàlegs a la lingüística):
 
-- **Sintaxi:** la forma dels programes corectes.
+- **Sintaxi:** la forma dels programes correctes.
 
 - **Semàntica:** el significat de les construccions dels programes.
 
-- **Pragmàtica:** com es computa el significat d'un programa.
+- **Pragmàtica:** com s'usa el LP.
 
 <br>
 
@@ -317,7 +317,7 @@ Es considera que Ada Lovelace és la primera programadora.
 
 ---
 
-# Història: Ensabladors
+# Història: Ensambladors
 
 Kathleen Booth va escriure el
 primer llenguatge ensamblador (per un ordinador ARC al 1947).
@@ -535,6 +535,60 @@ begin
                     i := p; k := q
                 end
 end Absmax
+```
+
+
+---
+
+# Història: Algol
+
+Pas per nom:
+
+```algol
+begin
+    integer i;
+    integer array A[0:9];
+
+    procedure ini (x); integer x;  (* pas per nom *)
+    begin
+        for i := 0 step 1 until 9 do x := 0
+    end;
+
+    ini(A[i]);
+    ...
+end
+```
+
+El paràmetre `x` es passa per nom (amb `value x;` es passaria per valor).
+
+Dins de `ini()`, aparentment, s'assigna 10 cops 0 a `x`.
+
+Però `x` és el "nom"
+del paràmetre real, és a dir `A[i]`.
+
+Per tant, `ini()` realment inicialitza a zero tot l'array.
+
+
+
+---
+
+# Exercici
+
+Què fa aquest programa?
+
+```algol
+begin
+    integer i, sum;
+    integer array A[0:9];
+
+    procedure suma (x, s); integer x, s;
+    begin
+        s := 0;
+        for i := 0 step 1 until 9 do s := s + x
+    end;
+
+    suma(A[i], sum);
+end
 ```
 
 ---
