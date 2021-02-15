@@ -168,7 +168,7 @@ del TD del curs passat.
 
 - Exàmens:
 
-    - Examen final: dx 15 de juny (11:30-14:30)
+    - Examen final: dx 16 de juny (11:30-14:30)
 
 - Treballs:
 
