@@ -176,7 +176,7 @@ del TD del curs passat.
 
     - Lliurament segona pràctica: primers de juny
 
-    - Lliurament treball dirigit: dm 25 de juny
+    - Lliurament treball dirigit: dm 25 de maig
 
     - Correcció treball dirigit: dl 7 de juny
 ---
