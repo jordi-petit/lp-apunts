@@ -14,7 +14,7 @@ Jordi Petit
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2020
+Universitat Politècnica de Catalunya, 2021
 
 ---
 
@@ -62,17 +62,17 @@ L'avaluació es farà per evaluació entre companys (co-avaluació).
 
 Etapes:
 
-1. Assignació de llenguatges de programació a l'atzar **(3 de novembre)**.
+1. Assignació de temes l'atzar **(26 de març)**.
 
-2. Preparació del vídeo i del document **(temps: 8 setmanes)**.
+2. Preparació del vídeo i del document **(temps: 7 setmanes)**.
 
 3. Penjar vídeo i document PDF a Eduflow
-registrant-se amb l'adreça de correu @estudiantat.upc.edu i utilitzant
-l'enllaç https://app.eduflow.com/join/K4ZFH7
-**(límit: 27 de desembre, 23:59)**.
+registrant-se amb l'adreça de correu `@estudiantat.upc.edu` i utilitzant
+l'enllaç https://app.eduflow.com/join/EW46JS
+**(límit: dimarts 25 de maig, 23:59)**.
 
 4. Avaluar els vídeos i els documents de 3 altres companys usant una rúbrica
-   preparada pels professors a Eduflow **(límit: 11 de gener, 23:59)**.
+   preparada pels professors a Eduflow **(límit: dl 7 de juny, 23:59)**.
 
 
 
@@ -81,7 +81,7 @@ l'enllaç https://app.eduflow.com/join/K4ZFH7
 
 # Vídeo
 
--  Presentació d'entre 9 i 11 minuts (ni més ni menys).
+-  Presentació d'entre 8 i 10 minuts (ni més ni menys).
 
 -  Producció molt simple (no hi perdeu el temps!):
 
@@ -101,7 +101,7 @@ l'enllaç https://app.eduflow.com/join/K4ZFH7
 
 #  Document
 
-- Lliurament d'un document curt en PDF (6 a 12 planes aproximadament).
+- Lliurament d'un document curt en PDF (8 a 12 planes aproximadament).
 
 - Primera part: acompanyament més detallat de la presentació.
 
@@ -146,15 +146,13 @@ l'enllaç https://app.eduflow.com/join/K4ZFH7
 
 # Temes
 
-## T1: Llenguatges de programació de domini específic (*domain-specific languages*, DSLs)
+## T1: Metaprogramació
 
 - Definició
 - Motivació
-- Classificació
-- Exemples
 - Aplicacions
 - Avantatges i inconvenients
-- Eines per a DSLs
+- Exemples en LPs concrets (LISP, C++, Python per exemple)
 - Conclusió
 
 ---
@@ -162,22 +160,23 @@ l'enllaç https://app.eduflow.com/join/K4ZFH7
 # Temes
 
 
-## T2: Eficiència energètica dels llenguatges de programació
-
-- Definicions
-- Àmbits
-- Mesures
-- Resultats
-- Conclusió
-
----
-
-# Temes
-
-## T3: Programació asíncrona en Python
+## T2: Optimització de la recursivitat per la cua en LPs
 
 - Definició
 - Motivació
+- Aplicacions
+- Avantatges
+- Implementació en LPs concrets
+- Conclusió
+
+---
+
+# Temes
+
+## T3: Concurrència en Go:
+
+- Motivació
+- Goroutines, channels i l'scheduler de Go.
 - Aplicacions
 - Ús i exemples
 - Avantatges i inconvenients
@@ -188,15 +187,12 @@ l'enllaç https://app.eduflow.com/join/K4ZFH7
 
 # Temes
 
-## T4: Recollida de memòria brossa (gargage collection) als llenguatges de programació
+## T4: LPs funcionals i videojocs
 
-- Definició
-- Motivació
-- Aplicacions
+- Definició de motor de videojocs
+- Motors de videojocs i LPs
+- Alternatives funcionals per als diferents motors
 - Exemples
-- Algorismes
-- Alternatives
-- Avantatges i inconvenients
 - Conclusió
 
 
@@ -234,7 +230,7 @@ manifestament incorrecta als seus companys.
 
 Els repetidors poden reusar les seves notes del TD del curs passat.
 
-Per a fer-ho, només cal que no participin a Eduflow. Si hi participen, vol dir que
+Per a fer-ho, només cal que **no** participin a Eduflow. Si hi participen, vol dir que
 tornen a fer tot el treball dirigit (enviament i correccions) i rebutgen la nota
 anterior.
 
@@ -259,14 +255,14 @@ Tingueu en comptes aquestes pautes:
 
 ## Registre
 
-- https://app.eduflow.com/join/K4ZFH7
+- https://app.eduflow.com/join/EW46JS
 
 - Useu el vostre compte de la UPC (`el-meu-compte@estudiantat.upc.edu`)
 
 
 ## Deadlines
 
-- Lliurament: 27 de desembre, 23:59
+- Lliurament: dm 25 de maig, 23:59
 
-- Avalució als compoanys: 11 de gener, 23:59
+- Avalució als companys: dl 7 de juny, 23:59
 
