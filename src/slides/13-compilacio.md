@@ -159,12 +159,7 @@ Exemples: Java, Python, ...
 
 # Processadors de llenguatges
 
-## Intèrprets de bytecode
-
-
-.cols5050[
-.col1[
-Python
+## Intèrprets de bytecode: CPython per a Python
 
 ```python
 >>> import dis  # desensamblador
@@ -176,9 +171,27 @@ Python
       8 LOAD_CONST    0 (None)
     10 RETURN_VALUE
 ```
-]
-.col2[
-Java
+
+La VM de CPython usa tres tipus de piles:
+
+- **Call stack**: Guarda l'estructura principal de l'execució d'un programa en Python.
+
+    Hi ha *frame* per a cada crida oberta a una funció.
+    Cada crida a una funció empila un nou *frame* i
+    cada sortida de funció el desempila. És on es desen les variables locals.
+
+- A cada *frame*, hi ha un **evaluation stack**: És on es fa l'avaluació de les expressions,
+ficant paràmetres i extreient resultats.
+
+- A cada *frame*, també hi ha un **block stack**:
+És on es realitza l'execució de les instuccions
+(condicionals, bucles, `try/except`s, `with`s, `continue`s, `break`s, ...)
+
+---
+
+# Processadors de llenguatges
+
+## Intèrprets de bytecode: JVM per a Java
 
 ```java
 public static void func(int a, int b) {
@@ -200,8 +213,8 @@ public static void func(int, int);
          3: istore_0
          4: return
 ```
-]
-]
+
+
 
 
 ---
