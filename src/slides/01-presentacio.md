@@ -89,7 +89,7 @@ Edelmira Pasarella
 <br>
 Gerard Escudero
 <br>
-.xs[gerard.escudero@upc]
+.xs[escudero@cs.upc.edu]
 
 <br>
 
