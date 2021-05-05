@@ -47,7 +47,7 @@ les que va elaborar el professor **Stephen A. Edwards** (Universitat
 de Columbia) per l'assignatura COMS W4115 (Programming
 Languages and Translators) i que el professor **Jordi Cortadella**
 (UPC) va adaptar per l'assignatura de Compiladors. També s'ha extret material
-de les transparències del professor **Fernando Orejas**.
+de les transparències del professor **Fernando Orejas** (UPC).
 
 
 ---
@@ -1463,7 +1463,7 @@ expr → expr + expr
      | NUM
 ```
 
-> ➡️ És ambigüa: no hi ha la prioritat ni associativitat habitual en matemàtiques.
+> ➡️ És ambigüa: no hi ha la prioritat ni associativitat.
 
 
 
@@ -1690,7 +1690,7 @@ expr  → expr ('+' term | '-' term)      💣 recursivitat per l'esquerra
 > ⬇ substituim recursivitat per l'esquerra per recursivitat per la dreta
 
 ```
-expr  → expr2
+expr  → term expr2
 expr2 → '+' term expr2
       | '-' term expr2
       | ε

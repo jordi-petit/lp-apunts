@@ -343,7 +343,7 @@ Arbre etiquetat amb tipus: (`B` és `Bool`)
 
 # Segon exemple &mdash; Us toca!
 
-Genereu les equacions...  
+Genereu les equacions...
 
 <h1 style='position: absolute;'>📝</h1>
 
@@ -355,7 +355,7 @@ Genereu les equacions...
 
 # Segon exemple
 
-Equacions: (amb algunes simplificacions tribials)
+Equacions: (amb algunes simplificacions trivials)
 
 - `t1 = Bool`
 - `t2 = Bool → Bool`
@@ -543,7 +543,7 @@ Equacions:
 - `t = a → u`
 - `u = [a5]`
 - `u = b`
-- `a1 → Bool = a → Bool`
+- `[a1] → Bool = a → Bool`
 - `v1 = v2 → b`
 - `a3 → [a3] → [a3] = v3 → v1`
 - `c = v4 → v3`
@@ -551,7 +551,7 @@ Equacions:
 - `v5 = v6 → v2`
 - `d = c → v5`
 - `[a2] → [a2] = a → v6`<br><br>
-- `s = d`
+- `s = d` (per establir que el `map` té el mateix tipus a la definició i a l'ús recursiu)
 
 
 ---
@@ -777,7 +777,7 @@ Equacions:
 
 - `s = d  →  b`
 - `c = d  →  b`
-- `e →  e →  e = a  →  c`
+- `e →  e →  e = Char  →  c`
 
 Restriccions:
 

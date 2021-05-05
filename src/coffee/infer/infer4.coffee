@@ -110,7 +110,7 @@ tree =
               node:
                 label: '@', under: 'Bool'
                 left:
-                  leaf: label: 'null', under: '[a]→Bool'
+                  leaf: label: 'null', under: '[a1]→Bool'
                 right:
                   leaf: label: 'l', under: 'a'
             center:
