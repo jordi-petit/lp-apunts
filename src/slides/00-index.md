@@ -1,7 +1,7 @@
 
 # Llenguatges de Programació
 
-## Curs 2020-2021 Q2
+## Curs 2021-2022 Q1
 
 - [Presentació del curs](01-presentacio.html)
 
@@ -23,4 +23,4 @@
 
 - [Subtipus, herència i programació orientada a objectes](14-subtipus.html)
 
-- [Treball dirigit](10-treball-lps.html)
+- [Treball dirigit](10-treball-lps.html) 👈 Informació vella!

@@ -6,9 +6,7 @@ Llenguatges de Programació
 
 # Presentació
 
-2020-2021 Q2
-<br>
-(Vaccine edition)
+2021-2022 Q1
 
 <br/>
 
@@ -102,14 +100,6 @@ Jordi Petit
 ]
 .col33[
 
-![:height 6em](img/profes/jdelgado.png)
-<br>
-Jordi Delgado
-<br>
-.xs[jordi.delgado@upc]
-
-<br>
-
 ![:height 6em](img/profes/forejas.png)
 <br>
 Fernando Orejas
@@ -162,23 +152,23 @@ del TD del curs passat.
 
 - Classes:
 
-    - Inici: dl 15 de febrer
+    - Inici: dl 13 de setembre
 
-    - Final: dl 31 de maig
+    - Final: dx 22 de desembre
 
 - Exàmens:
 
-    - Examen final: dx 16 de juny (11:30-14:30)
+    - Examen final: dl 17 de gener (11:30-14:30)
 
 - Treballs:
 
-    - Lliurament primera pràctica: mitjans de d'abril
+    - Lliurament primera pràctica: dl 22 de novembre
 
-    - Lliurament segona pràctica: primers de juny
+    - Lliurament segona pràctica: dl 10 de gener
 
-    - Lliurament treball dirigit: dm 25 de maig
+    - Lliurament treball dirigit: dl 27 de desembre
 
-    - Correcció treball dirigit: dl 7 de juny
+    - Correcció treball dirigit: dl 10 de gener
 ---
 
 
@@ -201,17 +191,5 @@ Thomson-Paraninfo, 2004.
 - *Think Python*. Downey, B. O'Reilly, 2015. .xs[[Disponible online](https://greenteapress.com/wp/think-python-2e/).]
 
 
-
-
----
-
-# COVID
-
-- Aquest quadrimestre tots els laboratoris són *no presencials* però *síncrons*.
-
-- Es proporcionarà material (apunts, transparències i vídeos)
-que us haureu de preparar abans de les classes de laboratori.
-
-- Les classes de teoria començaran en modalitat *no presencial* i *síncrona*.
 
 
