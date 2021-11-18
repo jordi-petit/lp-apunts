@@ -23,4 +23,4 @@
 
 - [Subtipus, herència i programació orientada a objectes](14-subtipus.html)
 
-- [Treball dirigit](10-treball-lps.html) 👈 Informació vella!
+- [Treball dirigit](10-treball-lps.html) 

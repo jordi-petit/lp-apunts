@@ -14,7 +14,7 @@ Jordi Petit
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2021
+Universitat Politècnica de Catalunya, 2019
 
 ---
 
@@ -62,17 +62,16 @@ L'avaluació es farà per evaluació entre companys (co-avaluació).
 
 Etapes:
 
-1. Assignació de temes a l'atzar **(dj 18 de novembre)**.
+1. Assignació de llenguatges de programació a l'atzar **(dl 25 de novembre)**.
 
-2. Preparació del vídeo i del document.
+2. Preparació del vídeo i del document **(temps: 4 setmanes)**.
 
-3. Penjar vídeo i document PDF a Eduflow
-registrant-se amb l'adreça de correu `@estudiantat.upc.edu` i utilitzant
-l'enllaç https://app.eduflow.com/join/XFXFJC
-**(límit: dl 27 de desembre, 23:59)**.
+3. Penjar vídeo i document a [Peergrade](https://www.peergrade.io/),
+registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `EWF77Z`
+**(límit: dl 23 de desembre, 14:00)**.
 
 4. Avaluar els vídeos i els documents de 3 altres companys usant una rúbrica
-   preparada pels professors a Eduflow **(límit: dl 10 de gener, 23:59)**.
+   preparada pels professors a Peergrade **(límit: dj 9 de gener, 14:00)**.
 
 
 
@@ -81,7 +80,7 @@ l'enllaç https://app.eduflow.com/join/XFXFJC
 
 # Vídeo
 
--  Presentació d'entre 8 i 10 minuts (ni més ni menys).
+-  Presentació d'entre 9 i 11 minuts (ni més ni menys).
 
 -  Producció molt simple (no hi perdeu el temps!):
 
@@ -94,25 +93,25 @@ l'enllaç https://app.eduflow.com/join/XFXFJC
     - Límit de 50MB per fitxer.
     - Important: una imatge clara i un àudio molt nítid.
 
-- El vídeo ha de ser anònim .xs[(malgrat que es pugui reconèixer la veu de l'orador...)] però ha d'incloure el hash de TD del seu autor.
+- El vídeo ha de ser anònim .xs[(malgrat que es pugui reconèixer la veu de l'orador...)] però ha d'incloure el hash del seu autor (DNI mòdul 51233).
 
 
 ---
 
 #  Document
 
-- Lliurament d'un document curt en PDF (8 a 12 planes aproximadament).
+- Lliurament d'un document curt en PDF (6 a 12 planes aproximadament).
 
 - Primera part: acompanyament més detallat de la presentació.
 
 - Segona part: estudi bibliogràfic.
 
-- El document ha de ser anònim però ha d'incloure el hash de TD del seu autor.
+- El document ha de ser anònim però ha d'incloure el hash del seu autor (DNI mòdul 51233).
+
 
 ---
 
 # Comunicació eficaç oral i escrita
-
 
 -  Vídeo i primera part del document:
 
@@ -135,8 +134,6 @@ l'enllaç https://app.eduflow.com/join/XFXFJC
 
     -  Altres característiques particulars.
 
-    - Complementeu el treball amb una visió personal i crítica del LP tractat.
-
 ---
 
 # Ús solvent dels recursos d'informació
@@ -155,10 +152,9 @@ l'enllaç https://app.eduflow.com/join/XFXFJC
 
     -  Millor si no totes són d'internet.
 
-<br/>
-**Observació:** L'estudi bibliogràfic té molt de pes a la correcció.
 
 ---
+
 
 # Avaluació del Treball Dirigit
 
@@ -185,18 +181,6 @@ i canviar-ne les qualificacions.
 - Els professors penalitzaran als estudiants que avaluin de forma
 manifestament incorrecta als seus companys.
 
-
----
-
-# Repetidors
-
-Els repetidors poden reusar les seves notes del TD del curs passat.
-
-Per a fer-ho, només cal que **no** participin a Eduflow. Si hi participen, vol dir que
-tornen a fer tot el treball dirigit (enviament i correccions) i rebutgen la nota
-anterior.
-
-
 ---
 
 # Documentació Biblioteca UPC
@@ -210,20 +194,3 @@ Tingueu en comptes aquestes pautes:
 - [Citar i elaborar la bibliografia](https://bibliotecnica.upc.edu/investigadors/citar-elaborar-bibliografia)
 
 
----
-
-# Recordatori
-
-
-## Registre
-
-- https://app.eduflow.com/join/XFXFJC
-
-- Useu el vostre compte de la UPC (`el-meu-compte@estudiantat.upc.edu`)
-
-
-## Deadlines
-
-- Lliurament: dl 27 de desembre, 23:59
-
-- Avalució als companys: dl 10 de gener, 23:59

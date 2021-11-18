@@ -22,7 +22,7 @@ Universitat Politècnica de Catalunya, 2021
 # Treball dirigit
 
 El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
-les propietats d'un llenguatge de programació.
+les propietats d'un o alguns llenguatges de programació.
 
 L'objectiu és satisfer les competències transversals de l'assignatura:
 
@@ -56,23 +56,23 @@ llacunes.
 # Treball dirigit
 
 El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
-les propietats d'un llenguatge de programació.
+les propietats d'un o alguns llenguatges de programació.
 
 L'avaluació es farà per evaluació entre companys (co-avaluació).
 
 Etapes:
 
-1. Assignació de temes a l'atzar **(dj 18 de novembre)**.
+1. Assignació de temes l'atzar **(26 de març)**.
 
-2. Preparació del vídeo i del document.
+2. Preparació del vídeo i del document **(temps: 7 setmanes)**.
 
 3. Penjar vídeo i document PDF a Eduflow
 registrant-se amb l'adreça de correu `@estudiantat.upc.edu` i utilitzant
-l'enllaç https://app.eduflow.com/join/XFXFJC
-**(límit: dl 27 de desembre, 23:59)**.
+l'enllaç https://app.eduflow.com/join/EW46JS
+**(límit: dimarts 25 de maig, 23:59)**.
 
 4. Avaluar els vídeos i els documents de 3 altres companys usant una rúbrica
-   preparada pels professors a Eduflow **(límit: dl 10 de gener, 23:59)**.
+   preparada pels professors a Eduflow **(límit: dl 7 de juny, 23:59)**.
 
 
 
@@ -113,29 +113,14 @@ l'enllaç https://app.eduflow.com/join/XFXFJC
 
 # Comunicació eficaç oral i escrita
 
-
 -  Vídeo i primera part del document:
 
-    Cal tractar com a mínim qüestions descrites a la sessió d'Introducció als
-    Llenguatges de Programació i a la sessió de Sistemes de Tipus com ara:
+    - Cal tractar el tema que us hagi estat assignat.
 
-    -  Propòsit del llenguatge.
+    - Els elements que se us donen per a cada tema són només una suggerència per començar.
 
-    -  Paradigma o paradigmes de programació que admet el llenguatge.
+    - Complementeu el treball amb una visió personal i crítica del tema tractat.
 
-    -  Sistema d'execució.
-
-    -  Sistema de tipus.
-
-    -  Principals aplicacions.
-
-    -  Història del LP i relació amb LPs similars.
-
-    -  Exemples de codi il·lustratius.
-
-    -  Altres característiques particulars.
-
-    - Complementeu el treball amb una visió personal i crítica del LP tractat.
 
 ---
 
@@ -155,8 +140,61 @@ l'enllaç https://app.eduflow.com/join/XFXFJC
 
     -  Millor si no totes són d'internet.
 
-<br/>
-**Observació:** L'estudi bibliogràfic té molt de pes a la correcció.
+
+
+---
+
+# Temes
+
+## T1: Metaprogramació
+
+- Definició
+- Motivació
+- Aplicacions
+- Avantatges i inconvenients
+- Exemples en LPs concrets (LISP, C++, Python per exemple)
+- Conclusió
+
+---
+
+# Temes
+
+
+## T2: Optimització de la recursivitat per la cua en LPs
+
+- Definició
+- Motivació
+- Aplicacions
+- Avantatges
+- Implementació en LPs concrets
+- Conclusió
+
+---
+
+# Temes
+
+## T3: Concurrència en Go:
+
+- Motivació
+- Goroutines, channels i l'scheduler de Go.
+- Aplicacions
+- Ús i exemples
+- Avantatges i inconvenients
+- Comparació amb altres LPs
+- Conclusió
+
+---
+
+# Temes
+
+## T4: LPs funcionals i videojocs
+
+- Definició de motor de videojocs
+- Motors de videojocs i LPs
+- Alternatives funcionals per als diferents motors
+- Exemples
+- Conclusió
+
 
 ---
 
@@ -217,13 +255,14 @@ Tingueu en comptes aquestes pautes:
 
 ## Registre
 
-- https://app.eduflow.com/join/XFXFJC
+- https://app.eduflow.com/join/EW46JS
 
 - Useu el vostre compte de la UPC (`el-meu-compte@estudiantat.upc.edu`)
 
 
 ## Deadlines
 
-- Lliurament: dl 27 de desembre, 23:59
+- Lliurament: dm 25 de maig, 23:59
 
-- Avalució als companys: dl 10 de gener, 23:59
+- Avalució als companys: dl 7 de juny, 23:59
+
