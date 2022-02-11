@@ -6,7 +6,7 @@ Llenguatges de Programació
 
 # Presentació
 
-2021-2022 Q1
+2021-2022 Q2
 
 <br/>
 
@@ -18,7 +18,7 @@ Jordi Petit, Albert Rubio
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2021
+Universitat Politècnica de Catalunya, 2022
 
 
 
@@ -91,20 +91,29 @@ Gerard Escudero
 
 <br>
 
+![:height 6em](img/profes/forejas.png)
+<br>
+Fernando Orejas
+<br>
+.xs[fernando.orejas@upc]
+
+]
+.col33[
+
+![:height 6em](img/profes/jdelgado.png)
+<br>
+Jordi Delgado
+<br>
+.xs[jordi.delgado@upc]
+
+<br>
+
 ![:height 6em](img/profes/jpetit.png)
 <br>
 Jordi Petit
 <br>
 .xs[jordi.petit-silvestre@upc]
 
-]
-.col33[
-
-![:height 6em](img/profes/forejas.png)
-<br>
-Fernando Orejas
-<br>
-.xs[fernando.orejas@upc]
 
 ]
 ]
@@ -120,17 +129,14 @@ La [Guia docent](https://www.fib.upc.edu/ca/estudis/graus/grau-en-enginyeria-inf
 estableix aquesta avaluació: N = 0.40·F + 0.25·P1 + 0.25·P2 + 0.10·D,
 on:
 
-- F = nota de l'examen final
-- P1 = nota de la primera pràctica (mitjans de curs)
-- P2 = nota de la segona pràctica (finals de curs)
+- P1 = nota de l'examen parcial (<s>mitjans</s> finals de curs)
+- P2 = nota de la pràctica (finals de curs)
 - D = nota del treball dirigit
+- F = nota de l'examen final
 
-L'examen final serà un examen escrit que avaluarà sobre *tots* els continguts
-del curs.
+L'examen parcial serà un examen a Jutge.org sobre programació funcional en Haskell.
 
-La primera pràctica consisteix en utilitzar Haskell per a resoldre un cas pràctic.
-
-La segona pràctica consisteix en utilitzar eines per generar compiladors i
+La pràctica consisteix en utilitzar eines per generar compiladors i
 Python per a resoldre un cas pràctic.
 
 El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
@@ -143,6 +149,9 @@ dirigit.
 **Nota:** Els repetidors poden reusar les seves notes
 del TD del curs passat.
 
+L'examen final serà un examen escrit que avaluarà sobre *tots* els continguts
+del curs.
+
 
 
 
@@ -152,23 +161,23 @@ del TD del curs passat.
 
 - Classes:
 
-    - Inici: dl 13 de setembre
+    - Inici: dl 14 de febrer
 
-    - Final: dx 22 de desembre
+    - Final: dl 30 de maig
 
 - Exàmens:
 
-    - Examen final: dl 17 de gener (11:30-14:30)
+    - Examen parcial: pendent de confirmar (1 de juny?)
+
+    - Examen final: dv 10 de juny (11:30-14:30)
 
 - Treballs:
 
-    - Lliurament primera pràctica: dl 22 de novembre
+    - Lliurament pràctica: dm 7 de juny
 
-    - Lliurament segona pràctica: dl 10 de gener
+    - Lliurament treball dirigit: dl 9 de maig
 
-    - Lliurament treball dirigit: dl 27 de desembre
-
-    - Correcció treball dirigit: dl 10 de gener
+    - Correcció treball dirigit: dl 23 de maig
 ---
 
 
@@ -189,7 +198,3 @@ Ullman, J.D, Addison-Wesley, 2007.
 Thomson-Paraninfo, 2004.
 
 - *Think Python*. Downey, B. O'Reilly, 2015. .xs[[Disponible online](https://greenteapress.com/wp/think-python-2e/).]
-
-
-
-
