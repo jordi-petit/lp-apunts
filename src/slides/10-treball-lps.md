@@ -62,17 +62,17 @@ L'avaluació es farà per evaluació entre companys (co-avaluació).
 
 Etapes:
 
-1. Assignació de temes a l'atzar **(dj 18 de novembre)**.
+1. Assignació de temes a l'atzar **(dl 7 de març)**.
 
 2. Preparació del vídeo i del document.
 
 3. Penjar vídeo i document PDF a Eduflow
 registrant-se amb l'adreça de correu `@estudiantat.upc.edu` i utilitzant
-l'enllaç https://app.eduflow.com/join/XFXFJC
-**(límit: dl 27 de desembre, 23:59)**.
+l'enllaç https://app.eduflow.com/join/TFK7TW
+**(límit: dg 8 de maig, 23:59)**.
 
 4. Avaluar els vídeos i els documents de 3 altres companys usant una rúbrica
-   preparada pels professors a Eduflow **(límit: dl 10 de gener, 23:59)**.
+   preparada pels professors a Eduflow **(límit: dg 22 de maig, 23:59)**.
 
 
 
@@ -217,13 +217,13 @@ Tingueu en comptes aquestes pautes:
 
 ## Registre
 
-- https://app.eduflow.com/join/XFXFJC
+- https://app.eduflow.com/join/TFK7TW
 
 - Useu el vostre compte de la UPC (`el-meu-compte@estudiantat.upc.edu`)
 
 
 ## Deadlines
 
-- Lliurament: dl 27 de desembre, 23:59
+- Lliurament: dg 8 de maig, 23:59
 
-- Avalució als companys: dl 10 de gener, 23:59
+- Avalució als companys: dg 22 de maig, 23:59
