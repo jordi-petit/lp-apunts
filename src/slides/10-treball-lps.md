@@ -14,7 +14,7 @@ Jordi Petit
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2021
+Universitat Politècnica de Catalunya, 2022
 
 ---
 

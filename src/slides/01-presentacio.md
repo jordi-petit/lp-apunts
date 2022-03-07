@@ -167,7 +167,7 @@ del curs.
 
 - Exàmens:
 
-    - Examen parcial: pendent de confirmar (1 de juny?)
+    - Examen parcial: dx 1 de juny (12:00-15:00)
 
     - Examen final: dv 10 de juny (11:30-14:30)
 
@@ -175,9 +175,9 @@ del curs.
 
     - Lliurament pràctica: dm 7 de juny
 
-    - Lliurament treball dirigit: dl 9 de maig
+    - Lliurament treball dirigit: dg 8 de maig
 
-    - Correcció treball dirigit: dl 23 de maig
+    - Correcció treball dirigit: dg 22 de maig
 ---
 
 
