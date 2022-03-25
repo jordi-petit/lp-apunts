@@ -465,8 +465,65 @@ Per fer-ho amb èxit sovint cal:
 
 # Exercicis
 
-FALTA COMPLETAR
+(Assumiu que totes les EDs són finites i els tipus correctes)
+
+1. Demostreu que `xs + [] = xs = [] + xs`.
+
+1. Demostreu que `xs + (ys + zs) = (xs + ys) + zs`.
+
+1. Demostreu que `reverse (xs ++ ys) = reverse ys ++ reverse xs`.
+
+1. Demostreu que `length (xs ++ ys) = length xs + length ys.`.
+
+1. Demostreu que `take n xs ++ drop n xs = xs`.
+
+1. Demostreu que `drop n (drop m xs)  =  drop (m + n) xs`.
+
+1. Demostreu que `head . map f = f . head`. Aneu amb compte amb el cas de la llista buida.
+Quin interès té aquesta equivalència?
+
+1. Demostreu que `filter p (xs ++ ys)  =  filter p xs ++ filter p ys`.
+
+1. Demostreu que `foldl f e xs = foldr (flip f) e (reverse xs)`.
+
+1. Demostreu que `foldl (@) e xs = foldr (<>) e xs` quan 
+`(x <> y) @ z = x <> (y @ z)` i `e @ x = x <> e`.
+
+
+---
+
+# Exercicis
+
+(Assumiu que totes les EDs són finites i els tipus correctes)
+
+<!-- https://john.cs.olemiss.edu/~hcc/csci450/ELIFP/Ch25/25_Laws.html -->
+
+1. Considereu aquest tipus pels naturals:
+
+```haskell
+data Nat = Z | S Nat
+```
+
+Definiu les funcions següents amb significat obvi:
+
+```haskell
+intToNat :: Int -> Nat          
+natToInt :: Nat -> Int
+add      :: Nat -> Nat -> Nat     -- no es pot usar la suma d'Ints!.
+```
+
+- Demostreu que `intToNat` i `natToInt` són inverses l'una de l'altra.
+- Demostreu que `Z` és element neutre (per la dreta i per l'esquerra) de `add`.
+- Demostreu que `add (S x) y  =  add x (S y)`.
+- Demotreu l'associativitat de `add`. 
+- Demotreu la commutativitat de `add`. 
+
+---
+
+# Exercicis
+
+
+(Assumiu que totes les EDs són finites i els tipus correctes)
 
 1. Definiu arbres binaris amb una operació `size` i una operació `mirror`.
-Demostreu que `size . mirror = size'. 
-
+Demostreu que `size . mirror = size`. 
