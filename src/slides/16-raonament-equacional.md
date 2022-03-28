@@ -28,9 +28,13 @@ Sovint s'estableixen equivalències entre funcions.
 
 Aqueste es poden aprofitar per:
 
-- millorar l'eficiència dels programes
+- millorar l'eficiència de programes.
 
-- demostrar la correcció dels algorismes
+- verificar programes: <br>demostrar que un programa és correcte respecte
+la seva especificació.
+
+- derivar programes: <br>deduir el programa formalment a partir de 
+l'especificació.
 
 
 
@@ -436,10 +440,95 @@ treeMap id t =
 ```
 
 
+---
+
+# Millorant `reverse`
+
+**Especificació:**
+
+```haskell
+reverse :: [a] -> [a]
+
+reverse [] = []                             1️⃣
+reverse (x:xs) = reverse xs ++ [x]          2️⃣
+```
+
+**Problema:** Donat que `++` necessita temps $O(n)$, `reverse` necessita temps $O(n^2)$ 🙁.
+
+Podem revessar més ràpidament? 🤔
 
 
 ---
+# Millorant `reverse`
 
+Considerem una *generalització* de `reverse`:
+
+```haskell
+revcat :: [a] -> [a] -> [a]
+
+revcat xs ys = reverse xs ++ ys             3️⃣
+```
+
+Llavors
+
+```haskell
+reverse xs = revcat xs []
+        -- per 3️⃣ i per definició de ++
+```
+
+Podem ara definir `revcat`? 🤔
+
+
+---
+# Millorant `reverse`
+
+🅰️ Cas base: `xs = []`.
+
+```haskell
+revcat [] ys =
+        -- 3️⃣ i definició de ++
+    = reverse [] ++ ys
+        -- 1️⃣ 
+    = [] ++ ys
+        -- definició de ++
+    = ys
+```
+
+🅱️ Cas inductiu: `xs = z:zs`.
+
+```haskell
+revcat (z:zs) ys =
+        -- 3️⃣ 
+    = reverse (z:zs) ++ ys
+        -- 2️⃣
+    = (reverse zs ++ [z]) ++ ys
+        -- associativitat de ++
+    = reverse zs ++ ([z] ++ ys)
+        -- 3️⃣
+    = revcat zs ([z] ++ ys)
+        -- lema sobre ++
+    = revcat zs (z:ys)
+```
+
+---
+# Millorant `reverse`
+
+Per tant, 
+
+```haskell
+reverse xs = revcat xs []
+    where
+        revcat [] ys = ys
+        revcat (x:xs) ys = revcat xs (x:ys)
+```
+funciona en temps lineal! 😀
+
+A més, `revcat` és recursiva final, per tant necessita espai constant.
+
+- Una funció recursiva és *final* si la crida recursiva és el darrer
+pas que fa <br>➡ es pot canviar el `call` per un `jmp`.
+
+---
 # Sumari
 
 La programació funcional permet raonar senzillament sobre els programes usant equacions i mètodes matemàtics.
@@ -527,3 +616,30 @@ add      :: Nat -> Nat -> Nat     -- no es pot usar la suma d'Ints!.
 
 1. Definiu arbres binaris amb una operació `size` i una operació `mirror`.
 Demostreu que `size . mirror = size`. 
+---
+
+# Exercicis
+
+
+Una llista es diu que és *supercreixent* si cada element és 
+més gran que la suma dels seus anteriors:
+
+```haskell
+superCreixent :: Num a, Ord a => [a] -> Bool
+
+superCreixent [] = True
+superCreixent (x:xs) = superCreixent && x > sum xs
+```
+
+1. Mostreu que `superCreixent` funciona en temps quadràtic.
+
+1. Definiu una funció `superCreixent' :: [a] -> (Bool, a)` que, donada una llista,
+retorni si és supercreixent *i* quina és la seva suma.
+
+1. Escriviu `superCreixent'` en termes de `superCreixent`.
+
+1. Escriviu `superCreixent` en termes de `superCreixent'`.
+
+1. Deriveu `superCreixent'`.
+
+2. Doneu el temps d'execució de `superCreixent'`.
