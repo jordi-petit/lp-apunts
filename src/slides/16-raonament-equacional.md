@@ -20,21 +20,21 @@ Universitat Politècnica de Catalunya, 2022
 
 # Raonament equacional
 
-El **raonament equacional** permet reflexionar sobre 
+El **raonament equacional** permet reflexionar sobre
 programes funcionals per tal d'establir propietats
 usant igualtats i substitucions matemàtiques.
 
 Sovint s'estableixen equivalències entre funcions.
 
-Aqueste es poden aprofitar per:
+Aquestes es poden aprofitar per:
 
 - millorar l'eficiència de programes.
 
-- verificar programes: <br>demostrar que un programa és correcte respecte
-la seva especificació.
+- verificar programes: <br>*demostrar que un programa és correcte respecte
+la seva especificació*.
 
-- derivar programes: <br>deduir el programa formalment a partir de 
-l'especificació.
+- derivar programes: <br>*deduir el programa formalment a partir de
+l'especificació*.
 
 
 
@@ -83,7 +83,7 @@ Podem comprovar matemàticament l'equivalència entre les dues funcions:
 
 ```haskell
 (.) :: (b -> c) -> (a -> b) -> (a -> b)
-(f1 . f2) z = f1 (f2 x)                                               ⭐️
+(f1 . f2) x = f1 (f2 x)                                               ⭐️
 ```
 
 **Demostració:** Sigui qualsevol dada `x`. Llavors:
@@ -114,7 +114,7 @@ Podem comprovar matemàticament l'equivalència entre les dues funcions:
 
 ```haskell
 not :: Bool -> Bool
-not True = False                        1️⃣ 
+not True = False                        1️⃣
 not False = True                        2️⃣
 
 id :: a -> a
@@ -126,10 +126,10 @@ id x = x                                3️⃣
 .cols5050[
 .col1[
 ```haskell
-(not . not) True = 
-        -- definició de . 
+(not . not) True =
+        -- definició de .
     = not (not True)
-        -- 1️⃣ 
+        -- 1️⃣
     = not False
         -- 2️⃣
     = True
@@ -139,10 +139,10 @@ id x = x                                3️⃣
 ]
 .col2[
 ```haskell
-(not . not) False = 
-        -- definició de . 
+(not . not) False =
+        -- definició de .
     = not (not True)
-        -- 2️⃣ 
+        -- 2️⃣
     = not False
         -- 1️⃣
     = False
@@ -221,7 +221,7 @@ map f (xs ++ ys) =
 ```haskell
 map f xs ++ map f ys =
         -- definició de xs
-    = map f (z:zs) ++ map f ys 
+    = map f (z:zs) ++ map f ys
         -- 2️⃣
     = (f z : map f zs) ++ map f ys
         -- 4️⃣
@@ -252,13 +252,13 @@ map f (x:xs) = f x : map f xs       2️⃣
 (x:xs) ++ ys = x : xs ++ ys         4️⃣
 ```
 
-**Demostració:** 
+**Demostració:**
 
 S'ha demostrat per inducció sobre `xs`:
 
 🅰️ Cas base: `xs = []`.
 
-🅱️ Cas inductiu: `xs = z:zs`. 
+🅱️ Cas inductiu: `xs = z:zs`.
 
 Per tant,
 
@@ -313,7 +313,7 @@ reverse [] = []
 reverse (x:xs) = reverse xs ++ [x]
 ```
 
-**Demostració:** 
+**Demostració:**
 
 🅰️ Cas base: `xs = []`.
 
@@ -488,7 +488,7 @@ Podem ara definir `revcat`? 🤔
 revcat [] ys =
         -- 3️⃣ i definició de ++
     = reverse [] ++ ys
-        -- 1️⃣ 
+        -- 1️⃣
     = [] ++ ys
         -- definició de ++
     = ys
@@ -498,7 +498,7 @@ revcat [] ys =
 
 ```haskell
 revcat (z:zs) ys =
-        -- 3️⃣ 
+        -- 3️⃣
     = reverse (z:zs) ++ ys
         -- 2️⃣
     = (reverse zs ++ [z]) ++ ys
@@ -513,7 +513,7 @@ revcat (z:zs) ys =
 ---
 # Millorant `reverse`
 
-Per tant, 
+Per tant,
 
 ```haskell
 reverse xs = revcat xs []
@@ -575,7 +575,7 @@ Quin interès té aquesta equivalència?
 
 1. Demostreu que `foldl f e xs = foldr (flip f) e (reverse xs)`.
 
-1. Demostreu que `foldl (@) e xs = foldr (<>) e xs` quan 
+1. Demostreu que `foldl (@) e xs = foldr (<>) e xs` quan
 `(x <> y) @ z = x <> (y @ z)` i `e @ x = x <> e`.
 
 
@@ -604,8 +604,8 @@ add      :: Nat -> Nat -> Nat     -- no es pot usar la suma d'Ints!.
 - Demostreu que `intToNat` i `natToInt` són inverses l'una de l'altra.
 - Demostreu que `Z` és element neutre (per la dreta i per l'esquerra) de `add`.
 - Demostreu que `add (S x) y  =  add x (S y)`.
-- Demotreu l'associativitat de `add`. 
-- Demotreu la commutativitat de `add`. 
+- Demotreu l'associativitat de `add`.
+- Demotreu la commutativitat de `add`.
 
 ---
 
@@ -615,13 +615,13 @@ add      :: Nat -> Nat -> Nat     -- no es pot usar la suma d'Ints!.
 (Assumiu que totes les EDs són finites i els tipus correctes)
 
 1. Definiu arbres binaris amb una operació `size` i una operació `mirror`.
-Demostreu que `size . mirror = size`. 
+Demostreu que `size . mirror = size`.
 ---
 
 # Exercicis
 
 
-Una llista es diu que és *supercreixent* si cada element és 
+Una llista es diu que és *supercreixent* si cada element és
 més gran que la suma dels seus anteriors:
 
 ```haskell
