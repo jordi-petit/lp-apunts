@@ -10,11 +10,11 @@ Albert Rubio, Jordi Petit, Fernando Orejas
 
 <br/>
 
-![:height 10em](img/hardest-programming-language.png)
+![:height 10em](img/periodic-table-pls.png)
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2021
+Universitat Politècnica de Catalunya, 2022
 
 ---
 

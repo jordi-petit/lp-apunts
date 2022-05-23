@@ -1,4 +1,22 @@
 
+class: center, middle
+
+# Llenguatges de Programació
+
+## Curs 2021-2022 Q2
+
+<br/>
+
+
+![:height 10em](img/hardest-programming-language.png)
+
+<br/>
+
+
+Universitat Politècnica de Catalunya, 2022
+
+---
+
 # Llenguatges de Programació
 
 ## Curs 2021-2022 Q2
