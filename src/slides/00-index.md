@@ -10,8 +10,11 @@ class: center, middle
 
 ![:height 10em](img/hardest-programming-language.png)
 
-<br/>
 
+
+Jordi Petit 
+
+<br/>
 
 Universitat Politècnica de Catalunya, 2022
 
@@ -19,7 +22,7 @@ Universitat Politècnica de Catalunya, 2022
 
 # Llenguatges de Programació
 
-## Curs 2022-2023 Q2
+## Curs 2022-2023 Q1
 
 - [Presentació del curs](01-presentacio.html)
 - [Conceptes bàsics](02-introduccio.html)
