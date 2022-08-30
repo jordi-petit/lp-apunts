@@ -3,7 +3,7 @@ class: center, middle
 
 # Llenguatges de Programació
 
-## Curs 2021-2022 Q2
+## Curs 2022-2023 Q1
 
 <br/>
 
@@ -19,7 +19,7 @@ Universitat Politècnica de Catalunya, 2022
 
 # Llenguatges de Programació
 
-## Curs 2021-2022 Q2
+## Curs 2022-2023 Q2
 
 - [Presentació del curs](01-presentacio.html)
 - [Conceptes bàsics](02-introduccio.html)
@@ -32,4 +32,4 @@ Universitat Politècnica de Catalunya, 2022
 - [Introducció a la compilació](13-compilacio.html)
 - [Inferència de tipus](11-inferencia-tipus.html)
 - [Subtipus, herència i programació orientada a objectes](14-subtipus.html)
-- [Treball dirigit](10-treball-lps.html)
+- [Treball dirigit](10-treball-lps.html) (falta actualitzar)

@@ -6,7 +6,7 @@ Llenguatges de Programació
 
 # Presentació
 
-2021-2022 Q2
+2022-2023 Q1
 
 <br/>
 
@@ -63,33 +63,17 @@ Universitat Politècnica de Catalunya, 2022
 # Professorat
 
 
-.col303030[
-.col13[
-
-![:height 6em](img/profes/jcarmona.png)
-<br>
-Josep Carmona
-<br>
-.xs[josep.carmona-vargas@upc]
-
-<br>
-
-![:height 6em](img/profes/edelmira.png)
-<br>
-Edelmira Pasarella
-<br>
-.xs[edelmira.pasarella@upc]
-
-]
-.col23[
+.cols5050[
+.col1[
 
 ![:height 6em](img/profes/gescudero.png)
 <br>
 Gerard Escudero
 <br>
-.xs[escudero@cs.upc.edu]
+.xs[escudero@upc]
 
 <br>
+
 
 ![:height 6em](img/profes/forejas.png)
 <br>
@@ -97,14 +81,16 @@ Fernando Orejas
 <br>
 .xs[fernando.orejas@upc]
 
-]
-.col33[
 
-![:height 6em](img/profes/jdelgado.png)
+
+]
+.col2[
+
+![:height 6em](img/profes/edelmira.png)
 <br>
-Jordi Delgado
+Edelmira Pasarella
 <br>
-.xs[jordi.delgado@upc]
+.xs[edelmira.pasarella@upc]
 
 <br>
 
@@ -113,7 +99,6 @@ Jordi Delgado
 Jordi Petit
 <br>
 .xs[jordi.petit-silvestre@upc]
-
 
 ]
 ]
@@ -129,7 +114,7 @@ La [Guia docent](https://www.fib.upc.edu/ca/estudis/graus/grau-en-enginyeria-inf
 estableix aquesta avaluació: N = 0.40·F + 0.25·P1 + 0.25·P2 + 0.10·D,
 on:
 
-- P1 = nota de l'examen parcial (<s>mitjans</s> finals de curs)
+- P1 = nota de l'examen parcial (mitjans de curs)
 - P2 = nota de la pràctica (finals de curs)
 - D = nota del treball dirigit
 - F = nota de l'examen final
@@ -161,23 +146,23 @@ del curs.
 
 - Classes:
 
-    - Inici: dl 14 de febrer
+    - Inici: dl 5 de setembre
 
-    - Final: dl 30 de maig
+    - Final: dv 23 de desembre
 
 - Exàmens:
 
-    - Examen parcial: dx 1 de juny (12:00-15:00)
+    - Examen parcial: dv 4 de novembre (15:30-17:30)
 
-    - Examen final: dv 10 de juny (11:30-14:30)
+    - Examen final: dv 13 de gener (15:00-18:00)
 
 - Treballs:
 
-    - Lliurament pràctica: dm 7 de juny
+    - Lliurament pràctica: dl 16 de gener
 
-    - Lliurament treball dirigit: dg 8 de maig
+    - Lliurament treball dirigit: dl 19 de desembre
 
-    - Correcció treball dirigit: dg 22 de maig
+    - Correcció treball dirigit: dl 9 de gener 
 ---
 
 
