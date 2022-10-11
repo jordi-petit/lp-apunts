@@ -186,7 +186,7 @@ int ordena_i_compta_comparacions (vector<int>& v) {
 
     int c = 0;
 
-    auto cmp = [&](int x, int y) {
+    auto cmp = [&](int x, int y) mutable {
         ++c;
         return x < y;
     }
@@ -369,7 +369,7 @@ int main() {
 
 # Tipus a la Haskell
 
-En C++17, `variant<a,b>` és el `Maybe a b` de Haskell.
+En C++17, `variant<a,b>` és el `Either a b` de Haskell.
 
 Més útil que les `union` de C que no encaixen massa amb el C++.
 
