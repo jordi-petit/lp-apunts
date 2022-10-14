@@ -66,7 +66,7 @@ Podem comprovar matemàticament l'equivalència entre les dues funcions:
 ```
 (re2, im2) = (t1 - t2, (a + b) * (c + d) - t1 - t2)
            = (a*c - b*d, (a + b) * (c + d) - a*c + b*d)
-           = (re1, a*c + a*d + b*c + b*d - a*c + b*d)
+           = (re1, a*c + a*d + b*c + b*d - a*c - b*d)
            = (re1, b*c + a*d)
            = (re1, im1)
 ```
@@ -141,9 +141,9 @@ id x = x                                3️⃣
 ```haskell
 (not . not) False =
         -- definició de .
-    = not (not True)
+    = not (not False)
         -- 2️⃣
-    = not False
+    = not True
         -- 1️⃣
     = False
         -- 3️⃣
