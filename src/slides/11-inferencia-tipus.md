@@ -29,7 +29,7 @@ sense comprometre la seguretat de la comprovació de tipus.
 
 Té sentit en llenguatges fortament tipats.
 
-És un característica habitual dels llanguatges funcionals.
+És un característica habitual dels llenguatges funcionals.
 
 Alguns LPs amb inferència de tipus:
 
@@ -221,6 +221,7 @@ Etiquetem els nodes:
 
 <br>
 - Recordeu: `->` associa per la dreta: `a → b → c = a → (b → c)`
+- Recordeu: aplicació associa per l'esquerra': `f x y = (f x) y`
 
 
 
