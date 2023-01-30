@@ -54,7 +54,7 @@ impossible expressar tipus que depènen de paràmetres genèrics.
 
 # Funcions d'ordre superior
 
-En C + i C++ sempre s'han pogut usar funcions
+En C i C++ sempre s'han pogut usar funcions
 d'ordre superior:
 
 ```c
@@ -130,7 +130,7 @@ Es pot capturar per valor o per referència:
 |`[=]`|Captura tot per valor|
 |`[&]`|Captura tot per referència|
 |`[&a, =b]`|Captura `a` per referència i `b` per valor|
-|`[=, &a]`|Captura tot epr valor, excepte `a` per referència|
+|`[=, &a]`|Captura tot per valor, excepte `a` per referència|
 
 A més, una λ-funció pot ser `mutable`
 per permetre que pugui modificar la seva captura per còpia
@@ -341,6 +341,36 @@ reduce(execution::par, v.begin(), v.end());
 
 .xxs[Imatges: https://blog.tartanllama.xyz/accumulate-vs-reduce/]
 
+
+---
+
+# Generadors
+
+```c++
+#include <coroutine>
+#include <iostream>
+using namespace std;
+
+generator<int> fibonacci(int n)
+{
+    co_yield 0;
+    int a = 0;
+    int b = 1;
+    for (int i = 0; i < n; ++i) {
+        co_yield a;
+        int t = a;
+        a = b;
+        b = t + b;
+    }
+}
+
+int main()
+{
+    for (int f : fibonacci(10)) {
+        cout << f << endl;
+    }
+}
+```
 
 ---
 
