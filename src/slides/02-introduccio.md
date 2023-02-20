@@ -823,8 +823,49 @@ Exemples:
 
 # Paradigma declaratiu
 
+SQL: Trobar tots els emails dels usuaris del Jutge amb el Hello World acceptat.
+
+```sql
+EXPLAIN 
+SELECT DISTINCT email 
+FROM Users JOIN Submissions USING (user_id) 
+WHERE problem_id='P68688_en' AND veredict='AC' 
+ORDER BY email
+```
+
+Planificador (postgres):
+
+```SQL
+                                          QUERY PLAN
+--------------------------------------------------------------------------------------------------------
+ Unique  (cost=56242.20..56290.03 rows=9566 width=30)
+   ->  Sort  (cost=56242.20..56266.11 rows=9566 width=30)
+         Sort Key: users.email
+         ->  Hash Join  (cost=2889.46..55609.71 rows=9566 width=30)
+               Hash Cond: (submissions.user_id = users.user_id)
+               ->  Bitmap Heap Scan on submissions  (cost=570.63..53265.77 rows=9566 width=7)
+                     Recheck Cond: (problem_id = 'P68688_en'::text)
+                     Filter: (veredict = 'AC'::text)
+                     ->  Bitmap Index Scan on idx_submissions_problem_id  (cost=0.00..568.24 rows=21308 width=0)
+                           Index Cond: (problem_id = 'P68688_en'::text)
+               ->  Hash  (cost=1860.59..1860.59 rows=36659 width=37)
+                     ->  Seq Scan on users  (cost=0.00..1860.59 rows=36659 width=37)
+```
+
+---
+
+# Paradigma declaratiu
+
 Subclasificacions:
 
+
+- **Consultes**: Resposta a consultes a una base de dades.
+
+  ```sql
+  SELECT full_name, order_date, order_amount
+  FROM customers INNER JOIN orders
+  ON customers.customer_id = orders.customer_id
+  ```
 
 - **Matemàtic**: El resultat es declara com a la solució d'un problema d'optimització.
 
@@ -835,14 +876,6 @@ Subclasificacions:
       - x1 + x2 + x3 + 10 x4 ≤ 20
       x1 - 3 x2 + x3 ≤ 30
       x2 - 3.5 x4 = 0
-  ```
-
-- **Consultes**: Resposta a consultes a una base de dades.
-
-  ```sql
-  SELECT full_name, order_date, order_amount
-  FROM customers INNER JOIN orders
-  ON customers.customer_id = orders.customer_id
   ```
 
 - **Lògic**: Resposta a una pregunta amb fets i regles.
