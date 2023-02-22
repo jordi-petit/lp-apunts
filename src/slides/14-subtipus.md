@@ -46,6 +46,7 @@ subset Evens of Int where {$_ % 2 == 0}
 
 ➡️ Aquesta mena de subtipus no són habituals en els LPs.
 
+---
 
 # Noció de subtipus
 
@@ -378,4 +379,190 @@ Hem vist doncs que:
 - El constructor `->` és covariant amb el segon paràmetre.
 
 - El constructor `List` és invariant.
+
+
+
+---
+
+# Subclasses i herència en Python, C++ i Java
+
+**Herència simple:** Una classe només pot ser subclasse d'una altra classe.
+
+**Herència múltiple:** Una classe pot ser subclasse de més d'una classe.
+
+<br>
+<center>
+![:height 16em](img/tipus-herencia.png)
+</center>
+
+
+---
+
+# Herència simple
+
+<center>
+![:height 10em](img/herencia-simple.svg)
+</center>
+
+---
+
+# Herència múltiple
+
+<br>
+<center>
+![:height 10em](img/herencia-multiple.svg)
+</center>
+
+
+<br>
+<br>
+<center>
+![:height 10em](img/vaixell-amb-rodes.png)
+</center>
+
+
+
+---
+
+# Declaració de subclasses en C++
+
+```c++
+class Empleat { ... };
+class Venedor: Empleat { ... };
+```
+
+O també:
+
+```c++
+class Venedor: public    Empleat { ... };
+class Venedor: protected Empleat { ... };
+class Venedor: private   Empleat { ... };
+```
+
+Amb herència múltiple:
+
+```c++
+class Cotxe { ... };
+class Vaixell { ... };
+class Hibrid: public Cotxe, public Vaixell { ... };
+```
+
+Resolució de confictes:
+
+```c++
+hibrid.Cotxe::girar(90);
+hibrid.Vaixell::girar(90);
+```
+
+---
+
+# Declaració de subclasses en Java
+
+```java
+class Empleat { ... }
+class Venedor extends Empleat { ... }
+```
+
+En Java no hi herència múltiple amb classes, però sí amb interfícies:
+
+```java
+Interface Cotxe { ... }
+Interface Vaixell { ... }
+class Hibrid implements Cotxe, Vaixell { ... }
+```
+
+---
+
+# Declaració de subclasses en Python
+
+
+```python
+class Empleat: ...
+class Venedor(Empleat): ...
+```
+
+Amb herència múltiple:
+
+```python
+class Hibrid(Cotxe, Vaixell): ...
+```
+
+Resolució de confictes:
+
+- Quan a les dues classes hi ha mètodes amb el mateix nom, s'hereta el de la primera.
+
+
+---
+
+# Tipus en Python
+
+En Python, el tipus dels objectes és dinàmic.
+
+```python
+>>> e = Empleat()
+>>> v = Venedor()
+>>> type(e)
+<class '__main__.Empleat'>
+>>> type(v)
+<class '__main__.Venedor'>
+>>> v = e           # legal (igual que v = 66)
+>>> type(v)
+<class '__main__.Empleat'>
+```
+
+---
+
+# Tipus en Java
+
+En Java, els objectes tenen un tipus estàtic i un tipus dinàmic:
+
+```java
+Empleat e;
+e = new Venedor();
+```
+
+- El tipus estàtic d'`e` és `Empleat`.
+- El tipus dinàmic d'`e` és `Venedor`.
+
+El tipus dinàmic ha de ser un subtipus del tipus estàtic.
+
+
+```java
+Venedor v;
+v = new Empleat();    ❌
+```
+
+
+---
+
+# Tipus en C++
+
+En C++, els objectes estàtics tenen un tipus estàtic.
+
+```c++
+Empleat e = Venedor();
+```
+
+- El tipus estàtic d'`e` és `Empleat`: quan se li assigna un `Venedor` es perd la part extra.
+
+Els objectes dinàmics (punters i referències) tenen un tipus estàtic i un tipus dinàmic.
+
+```c++
+Empleat* e = new Venedor();
+```
+
+- El tipus estàtic de `*e` és `Empleat`.
+- El tipus dinàmic de `*e` és `Venedor`.
+
+
+```c++
+Empleat& e = Venedor();
+```
+
+- El tipus estàtic d'`e` és referència a `Empleat`.
+- El tipus dinàmic d'`e` és referència a `Venedor`.
+
+
+El tipus dinàmic ha de ser un subtipus del tipus estàtic.
+
 

@@ -36,3 +36,5 @@ Universitat Politècnica de Catalunya, 2023
 - [Inferència de tipus](11-inferencia-tipus.html)
 - [Subtipus, herència i programació orientada a objectes](14-subtipus.html)
 - [Treball dirigit](10-treball-lps.html) (falta actualitzar)
+
+- [Tot](all.html) (tot junt per imprimir)
