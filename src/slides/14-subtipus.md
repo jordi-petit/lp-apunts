@@ -31,7 +31,7 @@ Universitat Politècnica de Catalunya, 2022
 
 **Definició 1:**
 
-`s` és subtipus de `t` si tots els valors de `s` són valors d'`t`.
+`s` és subtipus de `t` si tots els valors d'`s` són valors de `t`.
 
 <br>
 
@@ -128,7 +128,25 @@ perquè ser-ho d'acord amb la Def.&nbsp;1.
 <br>
 
 
-➡️ Aquesta és la definició en què (a vegades es diu que) es basa la programació orientada a objectes.
+---
+
+# Programació orientada a objectes
+
+
+**Reutilització de codi:** Els objectes creats poden ser reutilitzats en altres aplicacions. ➡️ Estalvi de temps i diners en el desenvolupament de noves aplicacions.
+
+**Modularitat:** El codi es divideix en mòduls i objectes independents entre si. ➡️ Facilita la organització del codi i la seva mantenibilitat.
+
+**Facilitat de manteniment:** Els objectes són independents i poden ser modificats sense afectar gaire la resta de l'aplicació. ➡️ Facilita detecció i correcció d'errors en el codi.
+
+**Ampliació de funcionalitats:** És fàcil afegir noves funcionalitats a través de la creació de nous objectes o la modificació dels existents.
+
+**Abstracció:** Els objectes són una representació abstracta dels conceptes a tractar. ➡️ Millor comprensió del codi i la facilitat de treballar amb conceptes complexos.
+
+**Encapsulació:** Les seves dades són ocultes a altres objectes.  ➡️ Millor seguretat i menys errors involuntaris en el codi.
+
+**Herència:** La POO permet la creació de classes que hereten les propietats i funcions d'altres classes. ➡️ Millor organització i reutilització del codi.
+
 
 ---
 
@@ -146,12 +164,12 @@ L'herència i la relació de subclasses tenen per objectiu:
 
 # Exemple:
 
-```c++
+```typescript
 class Empleat {...}
-double sou(Empleat e) {...}
+function sou(e: Empleat): number {...}
 
-Empleat e;
-double s = sou(e);
+e = new Empleat()
+s = sou(e)
 ```
 
 <br>
@@ -160,8 +178,8 @@ double s = sou(e);
 .col1[
 Amb programació "clàssica":
 
-```c++
-double sou(Empleat e) {
+```typescript
+function sou(e: Empleat): number {
     if (e.es_venedor()) {
         ...
     } else if (e.es_contable()) {
@@ -175,19 +193,19 @@ double sou(Empleat e) {
 .col2[
 Amb programació "OO":
 
-```c++
+```typescript
 class Empleat {
-    double sou();
+    function sou(): number {...}
     ...
 }
 
-class Venedor: Empleat {
-    double sou() {...};
+class Venedor extends Empleat {
+    function sou(): number {...}
     ...
 }
 
-class Contable: Empleat {
-    double sou() {...};
+class Comptable extends Empleat {
+    function sou(): number {...}
     ...
 }
 ```
@@ -205,13 +223,13 @@ class Contable: Empleat {
 
 - L'operació que es crida depèn del (sub)tipus de l'empleat en temps d'execució (*late binding*). 
 
-    ```c++
-    void escriu(Empleat e) {
-        print(e.nom, e.sou());
+    ```typescript
+    function escriu(e: Empleat) {
+        print(e.nom, e.sou())
     }
 
-    escriu(new Venedor());
-    escriu(new Contable());
+    escriu(new Venedor())
+    escriu(new Comptable())
     ```
 
 
@@ -260,8 +278,8 @@ Però no podem assegurar que `f e :: s`! Per exemple, si tenim
 
 - `x :: parell`
 - `parell <= int`
-- `bool es_positiu(int);`
-- `int incrementa(int);`
+- `function es_positiu(int): boolean`
+- `function incrementa(int): int`
 
 Llavors
 
@@ -317,17 +335,17 @@ Exemples:
 
     No!
 
-    ```c++
-    class Animal;
-    class Gos: Animal;
-    class Gat: Animal;
+    ```typescript
+    class Animal
+    class Gos extends Animal
+    class Gat extends Animal
 
-    void f(List Animal animals) {
-        animals.push(new Gat());     // perquè no?
+    function f(animals: List<Animal>) {
+        animals.push(new Gat())     // perquè no?
     }
 
-    List Gos gossos = ...;
-    f(gossos);                      // ai, ai
+    gossos: List<Gos> = ...
+    f(gossos)                      // ai, ai
     ```
 
 ---
@@ -341,19 +359,19 @@ Exemples:
 
     No!
 
-    ```c++
-    class Animal;
-    class Gos: Animal {
-        void borda();
+    ```typescript
+    class Animal
+    class Gos extends Animal {
+        function borda() {...}
     }
-    class Gat: Animal;
+    class Gat extends Animal;
 
-    void f(List Gos gossos) {
-        for (Gos gos: gossos) gos.borda();
+    function f(gossos: List<Gos>) {
+        for (var gos: Gos of gossos) gos.borda()
     }
 
-    List Animal animals = [new Gos(), new Animal, new Gat()];
-    f(animals);                  // alguns animals no borden
+    List<Animal> animals = [new Gos(), new Animal, new Gat()]
+    f(animals)                  // alguns animals no borden 🙀
     ```
 
 
