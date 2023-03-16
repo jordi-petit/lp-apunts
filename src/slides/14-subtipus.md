@@ -248,7 +248,7 @@ Si es canvia l'estructura salarial:
 
 ---
 
-# Comprobació i inferència amb subtipus
+# Comprovació i inferència amb subtipus
 
 - Si `e :: s` i `s <= t`, llavors `e :: t`.
 
@@ -264,7 +264,7 @@ La notació `s ≤ t` indica que `s` és un subtipus de `t`.
 
 ---
 
-# Comprobació i inferència amb subtipus
+# Comprovació i inferència amb subtipus
 
 - Si `e :: s` i `s <= t`, llavors `e :: t`.
 
@@ -465,7 +465,7 @@ class Vaixell { ... };
 class Hibrid: public Cotxe, public Vaixell { ... };
 ```
 
-Resolució de confictes:
+Resolució de conflictes:
 
 ```c++
 hibrid.Cotxe::girar(90);
@@ -505,7 +505,7 @@ Amb herència múltiple:
 class Hibrid(Cotxe, Vaixell): ...
 ```
 
-Resolució de confictes:
+Resolució de conflictes:
 
 - Quan a les dues classes hi ha mètodes amb el mateix nom, s'hereta el de la primera.
 

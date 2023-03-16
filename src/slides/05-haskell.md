@@ -90,7 +90,7 @@ uncurry f (p, s) = f p s
 
 # Funcions anònimes (λ funcions)
 
-Haskell permet definir funcions anònimes amb sintàxi semblant al λ-càlcul.
+Haskell permet definir funcions anònimes amb sintaxi semblant al λ-càlcul.
 
 Definició:
 
@@ -577,7 +577,7 @@ Exemples:
 
 - Descripció:
 
-    `scanl f x0 xs` és com `foldl f x0 xs` però enlloc de retornar el valor final, retorna la llista amb tots els resultats intermigs.
+    `scanl f x0 xs` és com `foldl f x0 xs` però enlloc de retornar el valor final, retorna la llista amb tots els resultats intermedis.
 
     <div id='cy_scanl' style='width: 20em; height: 8em;'></div>
 
@@ -603,7 +603,7 @@ Exemples:
 
 - Descripció:
 
-    `scanr f x0 xs` és com `foldr f x0 xs` però enlloc de retornar el valor final, retorna la llista amb tots els resultats intermigs.
+    `scanr f x0 xs` és com `foldr f x0 xs` però enlloc de retornar el valor final, retorna la llista amb tots els resultats intermedis.
 
     <div id='cy_scanr' style='width:20em; height: 8em;'></div>
 
@@ -741,7 +741,7 @@ dIv :: (a -> Bool) -> (a -> b) -> (a -> (a, a)) -> (a -> (a, a) -> (b, b) -> b) 
  ```
 
 on `a` és el tipus del problema, `b` és el tipus de la solució, i
-<br>`dIv trivial directe dividir vènçer x` utilitza:
+<br>`dIv trivial directe dividir vèncer x` utilitza:
 
 
 - `trivial :: a -> Bool` per saber si un problema és trivial.
@@ -750,7 +750,7 @@ on `a` és el tipus del problema, `b` és el tipus de la solució, i
 
 - `dividir :: a -> (a, a)` per dividir un problema no trivial en un parell de subproblemes més petits.
 
-- `vènçer :: a -> (a, a) -> (b, b) -> b` per, donat un problema no trivial, els seus subproblemes i les seves respectives subsolucions, obtenir la solució al problema original.
+- `vèncer :: a -> (a, a) -> (b, b) -> b` per, donat un problema no trivial, els seus subproblemes i les seves respectives subsolucions, obtenir la solució al problema original.
 
 - `x :: a` denota el problema a solucionar.
 
@@ -764,13 +764,13 @@ on `a` és el tipus del problema, `b` és el tipus de la solució, i
 ```haskell
 dIv :: (a -> Bool) -> (a -> b) -> (a -> (a, a)) -> (a -> (a, a) -> (b, b) -> b) -> a -> b
 
-dIv trivial directe dividir vènçer x
+dIv trivial directe dividir vèncer x
     | trivial x     = directe x
-    | otherwise     = vènçer x (x1, x2) (y1, y2)
+    | otherwise     = vèncer x (x1, x2) (y1, y2)
                           where
                               (x1, x2) = dividir x
-                              y1 = dIv trivial directe dividir vènçer x1
-                              y2 = dIv trivial directe dividir vènçer x2
+                              y1 = dIv trivial directe dividir vèncer x1
+                              y2 = dIv trivial directe dividir vèncer x2
 
 ```
 
@@ -784,11 +784,11 @@ dIv trivial directe dividir vènçer x
 ```haskell
 dIv :: (a -> Bool) -> (a -> b) -> (a -> (a, a)) -> (a -> (a, a) -> (b, b) -> b) -> a -> b
 
-dIv trivial directe dividir vènçer = dIv'
+dIv trivial directe dividir vèncer = dIv'
     where
         dIv' x
             | trivial x = directe x
-            | otherwise = vènçer x (x1, x2) (y1, y2)
+            | otherwise = vèncer x (x1, x2) (y1, y2)
                               where
                                   (x1, x2) = dividir x
                                   y1 = dIv' x1

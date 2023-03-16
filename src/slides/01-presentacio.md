@@ -105,7 +105,7 @@ Python per a resoldre un cas pràctic.
 
 El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
 les propietats d'un llenguatge de programació. S'usarà
-evaluació entre companys (co-avaluació) amb [Eduflow](https://www.eduflow.com).
+avaluació entre companys (co-avaluació) amb [Eduflow](https://www.eduflow.com).
 
 Les qualificacions de les competències transversals s'obtenen del treball
 dirigit.

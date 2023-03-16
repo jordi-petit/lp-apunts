@@ -29,7 +29,7 @@ sense comprometre la seguretat de la comprovació de tipus.
 
 Té sentit en llenguatges fortament tipats.
 
-És un característica habitual dels llanguatges funcionals.
+És un característica habitual dels llenguatges funcionals.
 
 Alguns LPs amb inferència de tipus:
 
@@ -140,7 +140,7 @@ independentment en el context del λ-càlcul.
 
 ## Descripció general
 
-1. Es genera l'arbre de sintàxi de l'expressió (currificant totes les aplicacions).
+1. Es genera l'arbre de sintaxi de l'expressió (currificant totes les aplicacions).
 
 2. S'etiqueta cada node de l'arbre amb un tipus:
 
