@@ -49,13 +49,13 @@ per la columna *Programming Pearls* de la revista *Communications of the ACM*.
 
 Tasca: Escriure un programa per llegir un fitxer de text, determinar les
 *n* paraules més freqüents, i escriure una llista d'aquestes paraules en ordre
-alfabètic juntament amb la seva freqüencia. .right[👉 Feu-ho en Haskell i Python!]
+alfabètic juntament amb la seva freqüència. .right[👉 Feu-ho en Haskell i Python!]
 
 Knuth va presentar una [solució](https://homepages.cwi.nl/~storm/teaching/reader/BentleyEtAl86.pdf)
 en Pascal de 10 pàgines
 (ben dissenyada, perfectament comentada usant
 *programació literària*
-i introduint una nova estrutura de dades).
+i introduint una nova estructura de dades).
 
 --
 

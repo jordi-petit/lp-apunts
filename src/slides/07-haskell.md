@@ -119,7 +119,7 @@ Els tipus sinònims aporten claredat (però no més seguretat).
 
 # Tipus enumerats
 
-Els **tipus enumerats** dónen la llista de valors possibles
+Els **tipus enumerats** donen la llista de valors possibles
 dels objectes d'aquell tipus.
 
 ```haskell
@@ -595,7 +595,7 @@ La instanciació es pot fer
 Les classes de tipus
 
 - són la forma de tenir sobrecàrrega en Haskell, i
-- propocionen una altra forma de polimorfisme.
+- proporcionen una altra forma de polimorfisme.
 
 <br>
 <br>
@@ -661,7 +661,7 @@ data Jugada = Pedra | Paper | Tisora
 ```
 
 Amb `deriving (Eq)` demanem al compilador que
-instancïi automàticament la classe `Eq` (usant igualtat estructural):
+instanciï automàticament la classe `Eq` (usant igualtat estructural):
 
 
 ```haskell
@@ -796,7 +796,7 @@ class Show a where
 ```
 
 Amb `deriving (Show)`, el compilador la ofereix automàticament (usant
-sintàxi Haskell):
+sintaxi Haskell):
 
 ```haskell
 data Racional = Racional Int Int        -- numerador, denominador
@@ -830,7 +830,7 @@ class Read a where
 ```
 
 Amb `deriving (Read)`, el compilador la ofereix automàticament (usant
-sintàxi Haskell).
+sintaxi Haskell).
 
 Alternativament, per fer la instanciació a mà només cal definir el `read`.
 
@@ -932,7 +932,7 @@ El sistema de tipus de Haskell és capaç d'inferir tipus i condicions automàti
 
 # Definició de classes pròpies
 
-Només cal utilitzar la mateixa sintàxi que ja hem vist.
+Només cal utilitzar la mateixa sintaxi que ja hem vist.
 
 **Exemple:** Classe per a predicats.
 

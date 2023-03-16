@@ -387,7 +387,7 @@ treeMap _ Empty = Empty
 treeMap f (Node x l r) = Node (f x) (treeMap f l) (treeMap f r)
 ```
 
-**Proprietat:** `treeMap id = id`.
+**Propietat:** `treeMap id = id`.
 
 **Demostració:** Inducció sobre l'arbre `t`:
 
@@ -417,7 +417,7 @@ treeMap _ Empty = Empty
 treeMap f (Node x l r) = Node (f x) (treeMap f l) (treeMap f r)
 ```
 
-**Proprietat:** `treeMap id = id`.
+**Propietat:** `treeMap id = id`.
 
 **Demostració:** Inducció sobre l'arbre `t`:
 

@@ -48,7 +48,7 @@ decltype(fun2()) y;
 ```
 
 No s'usa gaire, només en programació genèrica, quan és
-impossible expressar tipus que depènen de paràmetres genèrics.
+impossible expressar tipus que depenen de paràmetres genèrics.
 
 ---
 
@@ -209,7 +209,7 @@ Un *callable* és qualsevol cosa que es pot invocar:
 - functors (mètode `()`).
 
 Amb el tipus genèric `function` es poden
-envolcallar totes aquestes possibilitats:
+embolcallar totes aquestes possibilitats:
 
 ```c++
 #include <functional>

@@ -84,7 +84,7 @@ Rangs sense final
 Una **llista per comprensió** és una construcció per crear, filtrar i combinar
 llistes.
 
-Sintàxi semblant a la notació matemàtica de construcció de conjunts.
+Sintaxi semblant a la notació matemàtica de construcció de conjunts.
 
 <br>
 

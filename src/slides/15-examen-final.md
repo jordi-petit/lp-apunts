@@ -178,7 +178,7 @@ correu electrònic i per [la pàgina de l'examen](https://sites.google.com/upc.e
 Observacions:
 
 - Si hi ha desviacions significatives a l'horari,
-els professors us avisaràn.
+els professors us avisaran.
 
 - Preveieu temps per davant i per darrera per minimitzar imprevistos.
 
