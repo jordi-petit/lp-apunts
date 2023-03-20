@@ -14,7 +14,7 @@ Jordi Petit
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2022
+Universitat Politècnica de Catalunya, 2023
 
 ---
 
@@ -62,17 +62,17 @@ L'avaluació es farà per avaluació entre companys (co-avaluació).
 
 Etapes:
 
-1. Assignació de temes a l'atzar **(dl 7 de març)**.
+1. Assignació de temes a l'atzar **(dx 22 de març)**.
 
 2. Preparació del vídeo i del document.
 
 3. Penjar vídeo i document PDF a Eduflow
 registrant-se amb l'adreça de correu `@estudiantat.upc.edu` i utilitzant
-l'enllaç https://app.eduflow.com/join/TFK7TW
-**(límit: dg 8 de maig, 23:59)**.
+l'enllaç https://app.eduflow.com/join/BWF9NG
+**(límit: 29 de maig, 08:00)**.
 
 4. Avaluar els vídeos i els documents de 3 altres companys usant una rúbrica
-   preparada pels professors a Eduflow **(límit: dg 22 de maig, 23:59)**.
+   preparada pels professors a Eduflow **(límit: 12 de juny, 08:00)**.
 
 
 
@@ -217,13 +217,16 @@ Tingueu en comptes aquestes pautes:
 
 ## Registre
 
-- https://app.eduflow.com/join/TFK7TW
+- https://app.eduflow.com/join/BWF9NG
 
 - Useu el vostre compte de la UPC (`el-meu-compte@estudiantat.upc.edu`)
 
 
 ## Deadlines
 
-- Lliurament: dg 8 de maig, 23:59
+- Lliurament: dl 29 de maig (08:00)
 
-- Avaluació als companys: dg 22 de maig, 23:59
+- Avaluació als companys: dl 12 de juny (08:00)
+
+
+Donat que aquests terminis s'han publicat amb més de dos mesos d'antel·lació, no s'acceptaràn lliuraments amb retard.

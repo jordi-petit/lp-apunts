@@ -35,6 +35,6 @@ Universitat Politècnica de Catalunya, 2023
 - [Introducció a la compilació](13-compilacio.html)
 - [Inferència de tipus](11-inferencia-tipus.html)
 - [Subtipus, herència i programació orientada a objectes](14-subtipus.html)
-- [Treball dirigit](10-treball-lps.html) (falta actualitzar)
+- [Treball dirigit](10-treball-lps.html) 
 
 - [Tot](all.html) (tot junt per imprimir)
