@@ -58,7 +58,7 @@ llacunes.
 El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
 les propietats d'un llenguatge de programació.
 
-L'avaluació es farà per evaluació entre companys (co-avaluació).
+L'avaluació es farà per avaluació entre companys (co-avaluació).
 
 Etapes:
 
@@ -159,7 +159,7 @@ registrant-se amb l'adreça de correu de la FIB i utilitzant el *class code* `EW
 # Avaluació del Treball Dirigit
 
 L'avaluació dels companys a través de la rúbrica donarà lloc
-a tres qualifacions:
+a tres qualificacions:
 
 - Nota de la competència G4.3 (A, B, C, D, NA)
 - Nota de la competència G6.3 (A, B, C, D, NA)
@@ -168,7 +168,7 @@ a tres qualifacions:
 Casos excepcionals:
 
 - No enviar el treball complet (vídeo i document) o no avaluar tots els treballs
-  dels 3 companys dóna lloc a una qualifació de NA, NA, 0.
+  dels 3 companys dóna lloc a una qualificació de NA, NA, 0.
 
 - Si algun estudiant considera que ha estat mal avaluat pels seus companys,
 podrà demanar que els professors li corregeixin independentment el seu treball.

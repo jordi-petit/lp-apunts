@@ -82,7 +82,7 @@ Podem comprovar matemàticament l'equivalència entre les dues funcions:
 **Definició:**
 
 ```haskell
-(.) :: (b -> c) -> (a -> b) -> (a -> b)
+(.) :: (b -> c) -> (a -> b) -> (a -> c)
 (f1 . f2) x = f1 (f2 x)                                               ⭐️
 ```
 

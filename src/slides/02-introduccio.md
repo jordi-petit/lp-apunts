@@ -907,7 +907,7 @@ Utilitat:
 - Tractament simbòlic.
 
 - Sistemes de tipus potents (incloent polimorfisme paramètric i
-  inferència de tipus)
+  inferència de tipus).
 
 Exemples: Haskell, ML (Caml, OCaml), Erlang, XSLT (tractament XML),...
 
@@ -953,7 +953,7 @@ Conceptes clau:
 
 - **Mecanismes d'avaluació**: Avaluació estricta *vs* avaluació mandrosa.
 
-- Sistemes de tipus
+- Sistemes de tipus.
 
 
 ---
@@ -1152,7 +1152,7 @@ Dummies*, P. Van Roy](https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf)]]
 
 .cols5050[
 .col1[
-**Màquina de Turing**: Model matemàtic de càlcul imperatiu molt simple.<br/> (Alan Turing, 1936)
+**Màquina de Turing**: Model matemàtic de càlcul imperatiu molt simple<br/> (Alan Turing, 1936)
 
 ![:height 7em](img/alan-turing.jpg)
 .sepimg[]
@@ -1169,7 +1169,7 @@ Dummies*, P. Van Roy](https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf)]]
 ![:height 7em](img/alonzo-church.jpg)
 
 - Sistema de reescriptura
-- basat en abstracció i aplicació de funcions.
+- Basat en abstracció i aplicació de funcions
 ]
 ]
 
@@ -1206,7 +1206,7 @@ llenguatges Turing complets.
 
 - LPs no Turing complets:
 
-    - expressions regulars (a Perl o a AWK)
+    - Expressions regulars (a Perl o a AWK)
     - ANSI SQL
 
 
@@ -1235,7 +1235,7 @@ Sistemes mixtes:
 - **Just in Time compilation**: Es compila (parcialment) en temps d'execució.
 
 - Alguns interpretats, poden ser també compilats (per exemple, Prolog).
-- i al revés (Haskell).
+- I al revés (Haskell).
 
 ⇒ El sistema d'execució depèn més de la implementació que del LP.
 
@@ -1250,7 +1250,7 @@ evitar errors.
 La comprovació de tipus verifica que les diferents parts d'un programa
 es comuniquin adequadament en funció dels seus tipus.
 
-Per exemple, amb
+Per exemple, amb:
 
 ```c++
 class Persona;
@@ -1261,8 +1261,8 @@ class Triangle  :Forma;
 double area (const Forma&);
 ```
 
-- cridar a `area` amb un `Rectangle` o un `Triangle` és correcte,
-- cridar a `area` amb una `Persona` o un enter és un error de tipus.
+- Cridar a `area` amb un `Rectangle` o un `Triangle` és correcte,
+- Cridar a `area` amb una `Persona` o un enter és un error de tipus.
 
 
 
