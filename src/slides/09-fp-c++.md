@@ -147,7 +147,7 @@ string salut = "Hola";
 
 auto miss = [=](string nom) {
     cout << salut << ' ' << nom << endl;
-}
+};
 
 miss("Jana");
 salut = "Eo";
@@ -165,7 +165,7 @@ string salut = "Hola";
 
 auto miss = [&](string nom) {
     cout << salut << ' ' << nom << endl;
-}
+};
 
 miss("Jana");
 salut = "Eo";
@@ -189,7 +189,7 @@ int ordena_i_compta_comparacions (vector<int>& v) {
     auto cmp = [&](int x, int y) mutable {
         ++c;
         return x < y;
-    }
+    };
 
     sort(v.begin(), v.end(), cmp);
 

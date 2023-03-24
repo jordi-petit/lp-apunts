@@ -86,7 +86,7 @@ Podem comprovar matemàticament l'equivalència entre les dues funcions:
 (f1 . f2) x = f1 (f2 x)                                               ⭐️
 ```
 
-**Demostració:** Sigui qualsevol dada `x`. Llavors:
+**Demostració:** Sigui qualsevol dada `x`, llavors:
 
 ```haskell
 (f . (g . h)) x =
@@ -364,7 +364,7 @@ Hipotesi d'inducció: `(reverse . reverse) zs = id zs`
 
 # Involució del revessat
 
-Per tant, queda demostrat que
+Per tant, queda demostrat que:
 
 ```bash
 reverse . reverse = id
@@ -469,7 +469,7 @@ revcat :: [a] -> [a] -> [a]
 revcat xs ys = reverse xs ++ ys             3️⃣
 ```
 
-Llavors
+Llavors:
 
 ```haskell
 reverse xs = revcat xs []
