@@ -615,7 +615,7 @@ int gcd(int a, int b) {
 .cols5050[
 .col1[
 L'**analitzador semàntic**
-recorre l'AST i
+recorre l'AST i:
 
 - crea la **taula de símbols**,
 - assigna memòria a les variables,
@@ -1127,8 +1127,8 @@ Les gramàtiques incontextuals permeten descriure llenguatges més amplis
 que els llenguatges regulars perquè són "recursives".
 
 > **Exemple:** Llenguatge dels mots capicues
-<br> &nbsp; &nbsp; &nbsp; &nbsp; ✅ gramàtica incontextual.
-<br> &nbsp; &nbsp; &nbsp; &nbsp; ❌ expressió regular,
+<br> &nbsp; &nbsp; &nbsp; &nbsp; ✅ gramàtica incontextual
+<br> &nbsp; &nbsp; &nbsp; &nbsp; ❌ expressió regular
 
 → La recursivitat permet definir jerarquies i niuar elements (parèntesis o blocs).
 
@@ -1453,7 +1453,7 @@ associativitat per la dreta
 
 # Desambiguació de gramàtiques
 
-Comencem amb
+Comencem amb:
 
 ```
 expr → expr + expr
