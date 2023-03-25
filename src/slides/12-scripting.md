@@ -151,7 +151,7 @@ llenguatges tradicionals (amb menys eficiència).
 
 Compilació *just-in-time* (JIT):
 
--   Es compila el codi en temps d'execució (a codi màquina o a algun tipus de bytecode)
+-   Es compila el codi en temps d'execució (a codi màquina o a algun tipus de bytecode).
 
 -   Pot aplicar optimizacions que depenen del context d'execució.
 
@@ -198,7 +198,7 @@ Compilació *just-in-time* (JIT):
     - Afavorir el desenvolupament ràpid i l'ús interactiu.
     - Fort ús de símbols de puntuació i identificadors molt curts (Perl).
     - Més paraules en anglès i menys puntuació (Rexx, Tcl,...).
-    - Eviten les declaracions extenses i les estructures de nivell superior
+    - Eviten les declaracions extenses i les estructures de nivell superior.
 
 .cols5050[
 .col1[
@@ -289,7 +289,7 @@ Hello, world!
     - Tendeixen a tenir facilitats molt riques per fer pattern
     matching, cerca i manipulació de strings.
 
-    - Normalment és basen en formes esteses de les expressions
+    - Normalment es basen en formes esteses de les expressions
     regulars.
 
 ---
@@ -317,13 +317,13 @@ Hello, world!
 
     Ex: JCL, csh, tcsh, ksh, bash...
 
-    -  Us interactiu.
+    -  Ús interactiu.
 
     -  Processament batch (no molt sofisticats).
 
-    -  manipulació de noms de fitxers, arguments i comandes.
+    -  Manipulació de noms de fitxers, arguments i comandes.
 
-    -  enganxar (*glue*) diversos programes.
+    -  Enganxar (*glue*) diversos programes.
 
 
 ---
@@ -373,9 +373,9 @@ Hello, world!
 
     -  Els valors de les variables són strings.
 
-    -  se'ns permet extreure substrings.
+    -  Se'ns permet extreure substrings.
 
-    -  concatenar i moltes més opcions...
+    -  Concatenar i moltes més opcions...
 
 ---
 
@@ -411,25 +411,25 @@ Hello, world!
 
 # Dominis d'aplicació
 
--  Matemàtiques i estadístiques
+-  Matemàtiques i estadística
 
     -  Llenguatges com Maple, Mathematica i Matlab.
 
         -  gran suport pels mètodes numèrics
         -  manipulació simbòlica de formules
         -  visualització de dades
-        -  modelat matemàtic.
+        -  modelat matemàtic
 
     Orientats a aplicacions científiques i en l'enginyeria
 
 
--  Llenguatges com S i R per computació estadística
+    -  Llenguatges com S i R per computació estadística
 
-    -  Inclou arrays i llistes multidimensionals
-    -  funcions de primera classe
-    -  laziness (call-by-need)
-    -  operacions de selecció (slice) sobre arrays
-    -  extensió il$\cdot$limitada (noms, objectes,...)
+        -  Inclou arrays i llistes multidimensionals
+        -  funcions de primera classe
+        -  laziness (call-by-need)
+        -  operacions de selecció (slice) sobre arrays
+        -  extensió il$\cdot$limitada (noms, objectes,...)
 
 
 ---
@@ -480,7 +480,7 @@ Hello, world!
     -  Per GIMP és poden fer scripts en Scheme, Tcl, Python i Perl.
 
     -  Per emacs hi ha un dialecte de Lisp anomenat Emacs Lisp (veure
-    exemple)
+    exemple).
 
 ---
 

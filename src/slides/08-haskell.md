@@ -757,7 +757,7 @@ Exemple:
 main = do
     putStrLn "Com et dius?"
     nom <- getLine
-    putStrLn $ "Hola " ++ nom + "!"
+    putStrLn $ "Hola " ++ nom ++ "!"
 ```
 
 Compilació i execució:
