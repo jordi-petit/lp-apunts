@@ -139,7 +139,7 @@ main = do
 - Manca d'un model de cost comprehensible
 - Sistema de mòduls
 - Comunitat petita
-- Èmfasi en la recera de LP, molts canvis al llenguatge
+- Èmfasi en la recerca de LP, molts canvis al llenguatge
 
 ---
 
@@ -595,7 +595,7 @@ La notació `[16, 12, 21]`
 
 # Llistes
 
-- Els contructors `[]` i `:` funcionen en temps costant (*DS sharing*).
+- Els constructors `[]` i `:` funcionen en temps costant (*DS sharing*).
 
 - L'operador `++` retorna la concatenació de dues llistes
 (temps proporcional a la llarga de la primera llista).
@@ -619,18 +619,18 @@ variables de $e_1$ que la fan igual que $e_2$.
 **Exemples**:
 
 - `x:xs` *matches* `[2, 5, 8]` perquè `[2, 5, 8]` és `2 : (5 : 8 : [])`
-  substituïnt `x` amb `2` i `xs` amb `(5 : 8 : [])`
+  substituint `x` amb `2` i `xs` amb `(5 : 8 : [])`
   que és `[5, 8]`.
 
 - `x:xs` *does not match* `[]` perquè `[]` i `:` són constructors
   diferents.
 
 - `x1:x2:xs` *matches* `[2, 5, 8]`
-  substituïnt `x1` amb `2`, `x2` amb `5`
+  substituint `x1` amb `2`, `x2` amb `5`
   i `xs` amb `[8]`.
 
 - `x1:x2:xs` *matches* `[2, 5]`
-  substituïnt `x1` amb `2`, `x2` amb `5`
+  substituint `x1` amb `2`, `x2` amb `5`
   i `xs` amb `[]`.
 
 **Nota:** El mecanisme de *matching* no és el mateix que el d'*unificació*

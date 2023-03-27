@@ -82,11 +82,11 @@ Podem comprovar matemàticament l'equivalència entre les dues funcions:
 **Definició:**
 
 ```haskell
-(.) :: (b -> c) -> (a -> b) -> (a -> b)
+(.) :: (b -> c) -> (a -> b) -> (a -> c)
 (f1 . f2) x = f1 (f2 x)                                               ⭐️
 ```
 
-**Demostració:** Sigui qualsevol dada `x`. Llavors:
+**Demostració:** Sigui qualsevol dada `x`, llavors:
 
 ```haskell
 (f . (g . h)) x =
@@ -364,7 +364,7 @@ Hipotesi d'inducció: `(reverse . reverse) zs = id zs`
 
 # Involució del revessat
 
-Per tant, queda demostrat que
+Per tant, queda demostrat que:
 
 ```bash
 reverse . reverse = id
@@ -387,7 +387,7 @@ treeMap _ Empty = Empty
 treeMap f (Node x l r) = Node (f x) (treeMap f l) (treeMap f r)
 ```
 
-**Proprietat:** `treeMap id = id`.
+**Propietat:** `treeMap id = id`.
 
 **Demostració:** Inducció sobre l'arbre `t`:
 
@@ -417,7 +417,7 @@ treeMap _ Empty = Empty
 treeMap f (Node x l r) = Node (f x) (treeMap f l) (treeMap f r)
 ```
 
-**Proprietat:** `treeMap id = id`.
+**Propietat:** `treeMap id = id`.
 
 **Demostració:** Inducció sobre l'arbre `t`:
 
@@ -469,7 +469,7 @@ revcat :: [a] -> [a] -> [a]
 revcat xs ys = reverse xs ++ ys             3️⃣
 ```
 
-Llavors
+Llavors:
 
 ```haskell
 reverse xs = revcat xs []

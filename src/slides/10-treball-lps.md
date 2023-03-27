@@ -14,7 +14,7 @@ Jordi Petit
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2022
+Universitat Politècnica de Catalunya, 2023
 
 ---
 
@@ -58,21 +58,21 @@ llacunes.
 El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
 les propietats d'un llenguatge de programació.
 
-L'avaluació es farà per evaluació entre companys (co-avaluació).
+L'avaluació es farà per avaluació entre companys (co-avaluació).
 
 Etapes:
 
-1. Assignació de temes a l'atzar **(dl 7 de març)**.
+1. Assignació de temes a l'atzar **(dx 22 de març)**.
 
 2. Preparació del vídeo i del document.
 
 3. Penjar vídeo i document PDF a Eduflow
 registrant-se amb l'adreça de correu `@estudiantat.upc.edu` i utilitzant
-l'enllaç https://app.eduflow.com/join/TFK7TW
-**(límit: dg 8 de maig, 23:59)**.
+l'enllaç https://app.eduflow.com/join/BWF9NG
+**(límit: 29 de maig, 08:00)**.
 
 4. Avaluar els vídeos i els documents de 3 altres companys usant una rúbrica
-   preparada pels professors a Eduflow **(límit: dg 22 de maig, 23:59)**.
+   preparada pels professors a Eduflow **(límit: 12 de juny, 08:00)**.
 
 
 
@@ -163,7 +163,7 @@ l'enllaç https://app.eduflow.com/join/TFK7TW
 # Avaluació del Treball Dirigit
 
 L'avaluació dels companys a través de la rúbrica donarà lloc
-a tres qualifacions:
+a tres qualificacions:
 
 - Nota de la competència G4.3 (A, B, C, D, NA)
 - Nota de la competència G6.3 (A, B, C, D, NA)
@@ -172,7 +172,7 @@ a tres qualifacions:
 Casos excepcionals:
 
 - No enviar el treball complet (vídeo i document) o no avaluar tots els treballs
-  dels 3 companys dóna lloc a una qualifació de NA, NA, 0.
+  dels 3 companys dóna lloc a una qualificació de NA, NA, 0.
 
 - Si algun estudiant considera que ha estat mal avaluat pels seus companys,
 podrà demanar que els professors li corregeixin independentment el seu treball.
@@ -217,13 +217,16 @@ Tingueu en comptes aquestes pautes:
 
 ## Registre
 
-- https://app.eduflow.com/join/TFK7TW
+- https://app.eduflow.com/join/BWF9NG
 
 - Useu el vostre compte de la UPC (`el-meu-compte@estudiantat.upc.edu`)
 
 
 ## Deadlines
 
-- Lliurament: dg 8 de maig, 23:59
+- Lliurament: dl 29 de maig (08:00)
 
-- Avalució als companys: dg 22 de maig, 23:59
+- Avaluació als companys: dl 12 de juny (08:00)
+
+
+Donat que aquests terminis s'han publicat amb més de dos mesos d'antel·lació, no s'acceptaràn lliuraments amb retard.

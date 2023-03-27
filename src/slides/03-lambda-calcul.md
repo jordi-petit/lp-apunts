@@ -103,7 +103,7 @@ on $u$ és un terme.
 
   Diem que $λx$ és el *cap* i que $u$ és el *cos*.
 
-  *Intuició:*
+  *Intuïció:*
 $
     f(x, y) = x^2 + 2y + x - 1
 $
@@ -193,7 +193,7 @@ Per exemple: $$(λx.xy)(λy.y)$$
 
 # El problema de la captura de noms
 
-Quan s'aplica la β-reducció s'ha de tenir cura amb els noms de les variables i, si cal, renomenar-les.
+Quan s'aplica la β-reducció s'ha de tenir cura amb els noms de les variables i, si cal, reanomenar-les.
 
 El problema es pot veure en el següent exemple:
 Sigui $\text{TWICE}$: $$λf.λx.f(f x)$$
@@ -212,7 +212,7 @@ Aplicant la β-reducció directament tindríem:
 
 $(λx.\text{TWICE}(λf.λx.f(f x)) x) ⟶_β (λx.\text{TWICE}(λx.x(x x)))$ **ERROR**
 
-El que hauríem de fer és renomenar la variable lligada $x$ mes interna:
+El que hauríem de fer és reanomenar la variable lligada $x$ mes interna:
 
 $(λx.\text{TWICE}((λf.λx.f(f x)) x) = (λx.\text{TWICE}((λf.λy.f(f y)) x) $
 <br>
@@ -222,7 +222,7 @@ $⟶_β (λx.\text{TWICE}((λy.x(x y))$ **OK**
 
 #  α-Conversió
 
-A més de la β-reducció, al λ-càlcul tenim la regla de l'α-conversió per renomenar les variables. Per exemple:
+A més de la β-reducció, al λ-càlcul tenim la regla de l'α-conversió per reanomenar les variables. Per exemple:
 
 $$
     λ x . λ y . xy ⟶_a λ z . λ y . zy ⟶_a λ z . λ t . zt
@@ -374,7 +374,7 @@ $$
 Apliquem-la a zero:
 $$
   \begin{align}
-    \text{SUCC 0} & \ ≡ \ (λabc.b(abc))(λsz.z) & \text{remplaçament macros}\\\\
+    \text{SUCC 0} & \ ≡ \ (λabc.b(abc))(λsz.z) & \text{reemplaçament macros}\\\\
     & \ ≡ \ λbc.b((λsz.z)bc))  & \text{aplicació}\\\\
     & \ ≡ \ λbc.b((λz.z)c))  & \text{aplicació}\\\\
     & \ ≡ \ λbc.b(c)  & \text{aplicació}\\\\
@@ -459,7 +459,7 @@ Exercici: Escriviu TRUE i FALSE en Haskell, utilitzant funcions d'ordre superior
 Sembla que sense poder donar noms a les funcions, el λ-càlcul no pugui
 donar suport a la recursivitat... però sí que es pot:
 
-S'utilitza el **combinador Y**, anomenat *combinador paradoxal* o *combinador de punt fixe*, amb la següent proprietat:
+S'utilitza el **combinador Y**, anomenat *combinador paradoxal* o *combinador de punt fixe*, amb la següent propietat:
 
 $$
 \text{Y} \text{R} \ ≡\ \text{R}(\text{Y} \text{R})

@@ -6,7 +6,7 @@ Llenguatges de Programació
 
 # Presentació
 
-2022-2023 Q1
+2022-2023 Q2
 
 <br/>
 
@@ -18,7 +18,7 @@ Jordi Petit, Albert Rubio
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2022
+Universitat Politècnica de Catalunya, 2023
 
 
 
@@ -63,45 +63,24 @@ Universitat Politècnica de Catalunya, 2022
 # Professorat
 
 
-.cols5050[
-.col1[
-
-![:height 6em](img/profes/gescudero.png)
-<br>
-Gerard Escudero
-<br>
-.xs[escudero@upc]
+![:height 6em](img/profes/jdelgado.png) &nbsp;
+![:height 6em](img/profes/gescudero.png) &nbsp;
+![:height 6em](img/profes/edelmira.png) &nbsp;
+![:height 6em](img/profes/jpetit.png) &nbsp;
+![:height 6em](img/profes/forejas.png) &nbsp;
 
 <br>
 
+- Jordi Delgado .xs[jordi.delgado@upc]
 
-![:height 6em](img/profes/forejas.png)
-<br>
-Fernando Orejas
-<br>
-.xs[fernando.orejas@upc]
+- Gerard Escudero .xs[gerard.escudero@upc]
 
+- Edelmira Pasarella .xs[edelmira.pasarella@upc]
 
+- Jordi Petit .xs[jordi.petit-silvestre@upc]
 
-]
-.col2[
+- Fernando Orejas .xs[fernando.orejas@upc]
 
-![:height 6em](img/profes/edelmira.png)
-<br>
-Edelmira Pasarella
-<br>
-.xs[edelmira.pasarella@upc]
-
-<br>
-
-![:height 6em](img/profes/jpetit.png)
-<br>
-Jordi Petit
-<br>
-.xs[jordi.petit-silvestre@upc]
-
-]
-]
 
 
 
@@ -126,7 +105,7 @@ Python per a resoldre un cas pràctic.
 
 El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
 les propietats d'un llenguatge de programació. S'usarà
-evaluació entre companys (co-avaluació) amb [Eduflow](https://www.eduflow.com).
+avaluació entre companys (co-avaluació) amb [Eduflow](https://www.eduflow.com).
 
 Les qualificacions de les competències transversals s'obtenen del treball
 dirigit.
@@ -146,23 +125,25 @@ del curs.
 
 - Classes:
 
-    - Inici: dl 5 de setembre
+    - Inici: dl 13 de febrer
 
-    - Final: dv 23 de desembre
+    - Final: dv 2 de juny
 
 - Exàmens:
 
-    - Examen parcial: dv 4 de novembre (15:30-17:30)
+    - Examen parcial: divendres, 21 abril 2023
+        (15:30 - 17:30)
 
-    - Examen final: dv 13 de gener (15:00-18:00)
+    - Examen final: divendres, 16 juny 2023
+        (15:00 - 18:00)
 
 - Treballs:
 
-    - Lliurament pràctica: dl 16 de gener
+    - Lliurament pràctica: dl 12 de juny (08:00)
 
-    - Lliurament treball dirigit: dl 19 de desembre
+    - Lliurament treball dirigit: dl 29 de maig (08:00)
 
-    - Correcció treball dirigit: dl 9 de gener 
+    - Correcció treball dirigit: dl 12 de juny (08:00)
 ---
 
 

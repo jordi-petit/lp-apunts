@@ -140,7 +140,7 @@ independentment en el context del λ-càlcul.
 
 ## Descripció general
 
-1. Es genera l'arbre de sintàxi de l'expressió (currificant totes les aplicacions).
+1. Es genera l'arbre de sintaxi de l'expressió (currificant totes les aplicacions).
 
 2. S'etiqueta cada node de l'arbre amb un tipus:
 

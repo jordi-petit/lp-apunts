@@ -823,8 +823,49 @@ Exemples:
 
 # Paradigma declaratiu
 
+SQL: Trobar tots els emails dels usuaris del Jutge amb el Hello World acceptat.
+
+```sql
+EXPLAIN 
+SELECT DISTINCT email 
+FROM Users JOIN Submissions USING (user_id) 
+WHERE problem_id='P68688_en' AND veredict='AC' 
+ORDER BY email
+```
+
+Planificador (postgres):
+
+```SQL
+                                          QUERY PLAN
+--------------------------------------------------------------------------------------------------------
+ Unique  (cost=56242.20..56290.03 rows=9566 width=30)
+   ->  Sort  (cost=56242.20..56266.11 rows=9566 width=30)
+         Sort Key: users.email
+         ->  Hash Join  (cost=2889.46..55609.71 rows=9566 width=30)
+               Hash Cond: (submissions.user_id = users.user_id)
+               ->  Bitmap Heap Scan on submissions  (cost=570.63..53265.77 rows=9566 width=7)
+                     Recheck Cond: (problem_id = 'P68688_en'::text)
+                     Filter: (veredict = 'AC'::text)
+                     ->  Bitmap Index Scan on idx_submissions_problem_id  (cost=0.00..568.24 rows=21308 width=0)
+                           Index Cond: (problem_id = 'P68688_en'::text)
+               ->  Hash  (cost=1860.59..1860.59 rows=36659 width=37)
+                     ->  Seq Scan on users  (cost=0.00..1860.59 rows=36659 width=37)
+```
+
+---
+
+# Paradigma declaratiu
+
 Subclasificacions:
 
+
+- **Consultes**: Resposta a consultes a una base de dades.
+
+  ```sql
+  SELECT full_name, order_date, order_amount
+  FROM customers INNER JOIN orders
+  ON customers.customer_id = orders.customer_id
+  ```
 
 - **Matemàtic**: El resultat es declara com a la solució d'un problema d'optimització.
 
@@ -835,14 +876,6 @@ Subclasificacions:
       - x1 + x2 + x3 + 10 x4 ≤ 20
       x1 - 3 x2 + x3 ≤ 30
       x2 - 3.5 x4 = 0
-  ```
-
-- **Consultes**: Resposta a consultes a una base de dades.
-
-  ```sql
-  SELECT full_name, order_date, order_amount
-  FROM customers INNER JOIN orders
-  ON customers.customer_id = orders.customer_id
   ```
 
 - **Lògic**: Resposta a una pregunta amb fets i regles.
@@ -874,7 +907,7 @@ Utilitat:
 - Tractament simbòlic.
 
 - Sistemes de tipus potents (incloent polimorfisme paramètric i
-  inferència de tipus)
+  inferència de tipus).
 
 Exemples: Haskell, ML (Caml, OCaml), Erlang, XSLT (tractament XML),...
 
@@ -920,7 +953,7 @@ Conceptes clau:
 
 - **Mecanismes d'avaluació**: Avaluació estricta *vs* avaluació mandrosa.
 
-- Sistemes de tipus
+- Sistemes de tipus.
 
 
 ---
@@ -1119,7 +1152,7 @@ Dummies*, P. Van Roy](https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf)]]
 
 .cols5050[
 .col1[
-**Màquina de Turing**: Model matemàtic de càlcul imperatiu molt simple.<br/> (Alan Turing, 1936)
+**Màquina de Turing**: Model matemàtic de càlcul imperatiu molt simple<br/> (Alan Turing, 1936)
 
 ![:height 7em](img/alan-turing.jpg)
 .sepimg[]
@@ -1136,7 +1169,7 @@ Dummies*, P. Van Roy](https://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf)]]
 ![:height 7em](img/alonzo-church.jpg)
 
 - Sistema de reescriptura
-- basat en abstracció i aplicació de funcions.
+- Basat en abstracció i aplicació de funcions
 ]
 ]
 
@@ -1173,7 +1206,7 @@ llenguatges Turing complets.
 
 - LPs no Turing complets:
 
-    - expressions regulars (a Perl o a AWK)
+    - Expressions regulars (a Perl o a AWK)
     - ANSI SQL
 
 
@@ -1202,7 +1235,7 @@ Sistemes mixtes:
 - **Just in Time compilation**: Es compila (parcialment) en temps d'execució.
 
 - Alguns interpretats, poden ser també compilats (per exemple, Prolog).
-- i al revés (Haskell).
+- I al revés (Haskell).
 
 ⇒ El sistema d'execució depèn més de la implementació que del LP.
 
@@ -1217,7 +1250,7 @@ evitar errors.
 La comprovació de tipus verifica que les diferents parts d'un programa
 es comuniquin adequadament en funció dels seus tipus.
 
-Per exemple, amb
+Per exemple, amb:
 
 ```c++
 class Persona;
@@ -1228,8 +1261,8 @@ class Triangle  :Forma;
 double area (const Forma&);
 ```
 
-- cridar a `area` amb un `Rectangle` o un `Triangle` és correcte,
-- cridar a `area` amb una `Persona` o un enter és un error de tipus.
+- Cridar a `area` amb un `Rectangle` o un `Triangle` és correcte,
+- Cridar a `area` amb una `Persona` o un enter és un error de tipus.
 
 
 

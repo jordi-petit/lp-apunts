@@ -30,7 +30,7 @@ etapes, i la seva organització.
 - A la pràctica, ens limitem a crear petits processadors de llenguatges:
     1. Definició del vocabulari,
     2. Definició de la gramàtica,
-    3. Generació de l'arbre de sintàxi abstracta,
+    3. Generació de l'arbre de sintaxi abstracta,
     4. Interpretació a través del recorregut de l'arbre.
 
 <br>
@@ -148,7 +148,7 @@ Sessió amb l'intèrpret de BASIC al Commodore 64 (emulat al Mac 🤣!)
 
 Variant entre els compiladors i els intèrprets.
 
-- El **bytecode** és un codi intermig més abstracte que el codi màquina.
+- El **bytecode** és un codi intermedi més abstracte que el codi màquina.
 - Augmenta la portabilitat i seguretat i facilita la interpretació.
 - Una **màquina virtual** interpreta programes en bytecode.
 
@@ -181,10 +181,10 @@ La VM de CPython usa tres tipus de piles:
     cada sortida de funció el desempila. És on es desen les variables locals.
 
 - A cada *frame*, hi ha un **evaluation stack**: És on es fa l'avaluació de les expressions,
-ficant paràmetres i extreient resultats.
+ficant paràmetres i extraient resultats.
 
 - A cada *frame*, també hi ha un **block stack**:
-És on es realitza l'execució de les instuccions
+És on es realitza l'execució de les instruccions
 (condicionals, bucles, `try/except`s, `with`s, `continue`s, `break`s, ...)
 
 ---
@@ -382,7 +382,7 @@ través d'**expressions regulars**.
 
 <br>
 
-Exemple per expressions algebràiques:
+Exemple per expressions algebraiques:
 
 ```
 expr → NUM
@@ -413,7 +413,7 @@ def fib(n):
     return a
 ```
 
-> ➡️  La semàtica d'aquesta funció en Python és el càlcul de l'`n`-èsim
+> ➡️  La semàntica d'aquesta funció en Python és el càlcul de l'`n`-èsim
 nombre de Fibonacci.
 
 
@@ -506,8 +506,8 @@ operacional descrita informalment en llenguatge natural.
     - analitzador sintàctic (parser)
     - analitzador semàntic
 - Middle end
-    - analitzador de codi intermig
-    - optimitzador de codi intermig
+    - analitzador de codi intermedi
+    - optimitzador de codi intermedi
 - Back end
     - generador de codi específic
     - optimitzador de codi específic
@@ -585,8 +585,8 @@ int gcd(int a, int b) {
 }
 ```
 
-L'**analitzador sintàtic** (**parser**)
-construeix un **arbre de sintàxi abstracta**
+L'**analitzador sintàctic** (**parser**)
+construeix un **arbre de sintaxi abstracta**
 (AST) a partir de la seqüència
 de tokens i les regles sintàctiques.
 
@@ -615,12 +615,12 @@ int gcd(int a, int b) {
 .cols5050[
 .col1[
 L'**analitzador semàntic**
-recórre l'AST i
+recorre l'AST i:
 
 - crea la **taula de símbols**,
 - assigna memòria a les variables,
 - comprova errors de tipus,
-- resol ambigüetats.
+- resol ambigüitats.
 
 El resultat és la taula de símbols i un AST decorat.
 ]
@@ -717,7 +717,7 @@ gcd:    pushl %ebp              # Save FP                                    [as
 
 Per construir un compilador no es parteix de zero.
 
-Hi ha moltes eines que dónen suport.
+Hi ha moltes eines que donen suport.
 
 Exemples:
 
@@ -872,7 +872,7 @@ I també,
 # Generadors d'escàners
 
 A partir de la definició lèxica,
-l'escàner és un automàt determinista que
+l'escàner és un autòmat determinista que
 produeix com a sortida els tokens reconeguts.
 
 Construcció:
@@ -1076,7 +1076,7 @@ class: center, middle
 
 
 L'objectiu de l'**analitzador sintàctic** (o **parser**) és convertir una seqüència de tokens
-en un arbre de sintàxi abstracta que capturi la jerarquia de les construccions.
+en un arbre de sintaxi abstracta que capturi la jerarquia de les construccions.
 
 
 .cols5050[
@@ -1127,8 +1127,8 @@ Les gramàtiques incontextuals permeten descriure llenguatges més amplis
 que els llenguatges regulars perquè són "recursives".
 
 > **Exemple:** Llenguatge dels mots capicues
-<br> &nbsp; &nbsp; &nbsp; &nbsp; ✅ gramàtica incontextual.
-<br> &nbsp; &nbsp; &nbsp; &nbsp; ❌ expressió regular,
+<br> &nbsp; &nbsp; &nbsp; &nbsp; ✅ gramàtica incontextual
+<br> &nbsp; &nbsp; &nbsp; &nbsp; ❌ expressió regular
 
 → La recursivitat permet definir jerarquies i niuar elements (parèntesis o blocs).
 
@@ -1395,7 +1395,7 @@ jump-statement     : goto identifier ;
 
 # Gramàtiques ambigües
 
-Una gramàtica és **ambigüa** si un mateix text es pot **derivar**
+Una gramàtica és **ambigua** si un mateix text es pot **derivar**
 (organitzar en un arbre segons la gramàtica) de diferents maneres.
 
 Per exemple, amb
@@ -1451,9 +1451,9 @@ associativitat per la dreta
 
 ---
 
-# Desambigüació de gramàtiques
+# Desambiguació de gramàtiques
 
-Comencem amb
+Comencem amb:
 
 ```
 expr → expr + expr
@@ -1463,13 +1463,13 @@ expr → expr + expr
      | NUM
 ```
 
-> ➡️ És ambigüa: no hi ha la prioritat ni associativitat.
+> ➡️ És ambigua: no hi ha la prioritat ni associativitat.
 
 
 
 ---
 
-# Desambigüació de gramàtiques
+# Desambiguació de gramàtiques
 
 Podem assignar prioritats trencant en vàries regles, una per nivell:
 
@@ -1494,12 +1494,12 @@ term → term * term
 ```
 
 
-> ➡️ Encara és ambigüa: falta associativitat.
+> ➡️ Encara és ambigua: falta associativitat.
 
 
 ---
 
-# Desambigüació de gramàtiques
+# Desambiguació de gramàtiques
 
 Podem fer que un costat o altre afecti el següent nivell de prioritat:
 
@@ -1526,7 +1526,7 @@ term → term * NUM
 ```
 
 
-> ✅ La gramàtica ja no és ambigüa.
+> ✅ La gramàtica ja no és ambigua.
 
 --
 
@@ -1807,7 +1807,7 @@ que llegeixi una seqüència d'expressions i escrigui el resultat de cadascuna d
 
 **P4:** Sense utilitzar cap eina ni llibreria, escriviu en
 Haskell, Python o C++ un analitzador descendent LL(1)
-que llegeixi una seqüència d'expressions i construeixi i escrigui l'arbre de sintàxi abstracta de cadascuna.
+que llegeixi una seqüència d'expressions i construeixi i escrigui l'arbre de sintaxi abstracta de cadascuna.
 [TBD: problema pel Jutge! 😄]
 
 - Entrada:
@@ -1833,7 +1833,7 @@ que llegeixi una seqüència d'expressions i construeixi i escrigui l'arbre de s
 class: center, middle
 
 
-# Arbres de sintàxi abstracta
+# Arbres de sintaxi abstracta
 
 
 ---
@@ -1867,12 +1867,12 @@ després de reconèixer una regla.
 
 ---
 
-# Arbres de sintàxi
+# Arbres de sintaxi
 
-Usualment, les accions construeixen un arbre de sintàxi concreta
+Usualment, les accions construeixen un arbre de sintaxi concreta
 que segueix les regles de la gramàtica.
 
-Aquest arbre es sol convertir en un arbre de sintàxi abstracta.
+Aquest arbre es sol convertir en un arbre de sintaxi abstracta.
 
 .center[
 ![:width 19em](img/compis-arbre-der.png)
@@ -1888,16 +1888,16 @@ Aquest arbre es sol convertir en un arbre de sintàxi abstracta.
 
 ---
 
-# Arbres de sintàxi concreta *vs* abstracta
+# Arbres de sintaxi concreta *vs* abstracta
 
-**Arbre de sintàxi concreta / de derivació:** Reflecteix exactament les regles sintàctiques.
+**Arbre de sintaxi concreta / de derivació:** Reflecteix exactament les regles sintàctiques.
 
-**Arbre de sintàxi abstracta** (*abstract syntax tree*, AST): Representa el programa fidelment, però elimina
+**Arbre de sintaxi abstracta** (*abstract syntax tree*, AST): Representa el programa fidelment, però elimina
 i simplifica detalls sintàctics irrellevants.
 
 .cols5050[
 .col1[
-**Exemple:** Eliminar regles per desambigüar gramàtica.
+**Exemple:** Eliminar regles per desambiguar gramàtica.
 ```antrl
 expr    : mexpr ('+' mexpr) * ;
 mexpr   : atom  ('*' atom ) * ;
@@ -1936,7 +1936,7 @@ Un cop construït l'AST, les etapes següents el recorren per a dur a terme les 
 
 - L'anàlisi semàntica verificarà l'ús correcte dels elements del programa.
 
-- El generador de codi visitarà l'arbre i li aplicarà regles per generar codi intermig.
+- El generador de codi visitarà l'arbre i li aplicarà regles per generar codi intermedi.
 
 - L'intèrpret es passejarà per l'arbre per dur a termes les seves instruccions.
 
@@ -1973,12 +1973,12 @@ class: center, middle
 
 # Anàlisi semàntica
 
-L'analitzador semàntic recórre l'AST, per obtenir tota la informació necesària
+L'analitzador semàntic recorre l'AST, per obtenir tota la informació necessària
 per poder generar codi.
 
 Objectius:
 
-- Comprobar la corrección semàntica del programa (comprovació de tipus).
+- Comprovar la correcció semàntica del programa (comprovació de tipus).
 
 - Resoldre ambigüitats.
 
@@ -2063,7 +2063,7 @@ data Expr
 
 data Instr
     = Ass String Expr           -- assignació
-    | Seq [Instr]               -- composició seqüèncial
+    | Seq [Instr]               -- composició seqüencial
     | Cond Expr Instr Instr     -- condicional
     | Loop Expr Instr           -- iteració
 ```

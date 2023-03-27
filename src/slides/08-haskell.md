@@ -233,7 +233,7 @@ i `(->)` compleixen les lleis dels functors.
 
 # Functors
 
-Instànciació pròpia dels functors pels arbres binaris:
+Instanciació pròpia dels functors pels arbres binaris:
 
 ```haskell
 data Arbin a = Buit | Node a (Arbin a) (Arbin a)
@@ -673,7 +673,7 @@ Moltes funcions predefinides tenen una versió per la classe `Monad`:
 
 -   `mapM`, `filterM`, `foldM`, `zipWithM`, ...
 
-També disposem d’operacions per extendre (*lift*) operacions
+També disposem d’operacions per estendre (*lift*) operacions
 per treballar amb elements de la classe Monad. S'han d'importar:
 
 ```haskell
@@ -757,7 +757,7 @@ Exemple:
 main = do
     putStrLn "Com et dius?"
     nom <- getLine
-    putStrLn $ "Hola " ++ nom + "!"
+    putStrLn $ "Hola " ++ nom ++ "!"
 ```
 
 Compilació i execució:
@@ -885,7 +885,7 @@ main = do
 
 ---
 
-# Intuició sobre la mònada `IO`
+# Intuïció sobre la mònada `IO`
 
 Podem veure l'entrada/sortida com funcions
 que modifiquen el món: `món1 ⟿ món2`.
@@ -924,7 +924,7 @@ myMain w0 = let (w1, c1) = myGetChar w0
 
 ---
 
-# Intuició sobre la mònada `IO`
+# Intuïció sobre la mònada `IO`
 
 Podem veure l'entrada/sortida com funcions
 que modifiquen el món: `món1 ⟿ món2`.
@@ -1104,4 +1104,4 @@ Pensar sobre un programa amb estat és difícil perquè:
 Estat: 💩 Sense estat: 💜
 
 Les mònades no eliminen la noció d'estat en un programa,
-però elimimen la necessitat de mencionar-lo.
+però eliminen la necessitat de mencionar-lo.
