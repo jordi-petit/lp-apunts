@@ -584,3 +584,220 @@ Empleat& e = Venedor();
 El tipus dinàmic ha de ser un subtipus del tipus estàtic.
 
 
+
+---
+
+...
+
+---
+
+# Visibilitat en C++
+
+Els **especificadors d'accés** defineixen la visibilitat dels membres (atributs i mètodes) d'una classe.
+
+```c++
+class Classe {
+    public:
+        ...
+    protected:
+        ...
+    private:
+        ...
+};
+```
+
+- **public**: els membres són visibles des de fora de la classe
+
+- **privat**: no es pot accedir (ni veure) als membres des de fora de la classe
+
+- **protegit**: no es pot accedir als membres des de fora de la classe, <br>però s'hi pot accedir des de classes heretades. 
+
+<br>
+
+.cols5050[
+.col1[
+```c++
+class Classe {
+    // privat per defecte
+};
+```
+]
+.col2[
+```c++
+struct Estructura {
+    // public per defecte
+};
+```
+]]
+
+
+
+---
+
+# Visibilitat en C++
+
+Els **especificadors d'accés** també defineixen la visibilitat dels membres quan es deriva una classe:
+
+```c++
+class SubClasse: public Classe { ... };
+```
+
+- Els membres protegits de `Classe` són membres protegits de `SubClasse`.<br>
+- Els membres públics de `Classe` són membres públics de `SubClasse`.
+
+
+```c++
+class SubClasse: protected Classe { ... };
+```
+
+- Els membres protegits i públics de `Classe` són membres protegits de `SubClasse`.
+
+
+```c++
+class SubClasse: private Classe { ... };
+class SubClasse: Classe { ... };            // 'private' per defecte en classes
+```
+
+- Els membres públics i protegits de `Classe` són membres privats de `SubClasse`.
+
+
+---
+
+# Visibilitat en C++
+
+```c++
+class A {
+    public:
+       int x;
+    protected:
+       int y;
+    private:
+       int z;
+};
+
+class B : public A {
+    // x és public
+    // y és protegit
+    // z no és visible des de B
+};
+
+class C : protected A {
+    // x és protegit
+    // y és protegit
+    // z no és visible des de C
+};
+
+class D : private A {           
+    // x és privat
+    // y és privat
+    // z no és visible des de D
+};
+```
+
+
+
+---
+
+# Visibilitat en Java
+
+Els **nivells d'accés** defineixen la visibilitat dels membres (atributs i mètodes) d'una classe.
+
+```java
+class Classe {
+    public ...
+    protected ...
+    private ...
+    ...
+}
+```
+
+- **public**: quest membre és accessible des de fora de la classe
+
+- **privat**: no es pot accedir (ni veure) en aquest membre des de fora de la classe
+
+- **protegit**: no es pot accedir en aquest membre des de fora de la classe, <br>però s'hi pot accedir des de classes heretades. 
+
+- *res*: només el codi en el `package` actual pot accedir aquest membre. 
+
+
+
+
+---
+
+# Visibilitat en Java
+
+En Java no es pot limitar la visibilitat heretant classes (sempre és "`public`").
+
+```java
+class SubClasse extends Classe { ... }
+```
+
+- Els membres protegits de `Classe` són membres protegits de `SubClasse`.<br>
+- Els membres públics de `Classe` són membres públics de `SubClasse`.
+
+---
+
+# Visibilitat en Java
+
+.cols5050[
+.col1[
+```java
+package p;
+
+public class A {
+    public int a;
+    protected int b;
+    private int c;
+    int d;
+}
+
+class B extends A {
+    // a és visible des de B
+    // b és visible des de B
+    // c no és visible des de B
+    // d és visible des de B
+}
+
+// A.a és visible des de p
+// A.b és visible des de p
+// A.c no és visible des de p
+// A.d és visible des de p
+```
+]
+.col2[
+```java
+package q;
+
+import p.*;
+
+
+
+
+
+
+class C extends p.A {
+    // a és visible des de C
+    // b és visible des de C
+    // c no és visible des de C
+    // d no és visible des de C
+}
+
+// A.a és visible des de q
+// A.b no és visible des de q
+// A.c no és visible des de q
+// A.d no és visible des de q
+```
+]]
+
+
+
+
+---
+
+# Visibilitat en Python
+
+En Python no hi ha restriccions de visibilitat.
+
+Tot és visible.
+
+Per *convenció*, els membres que comencen per `_` (però no per `__`) són privats.
