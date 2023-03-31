@@ -4,7 +4,7 @@ class: center, middle
 
 Llenguatges de Programació
 
-# Subtipus, herència i programació orientada a objectes
+# POO, herència i subtipus 
 
 Fernando Orejas, Jordi Petit
 
@@ -14,139 +14,29 @@ Fernando Orejas, Jordi Petit
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2022
+Universitat Politècnica de Catalunya, 2023
 
-
----
-
-# Subtipus, herència i programació OO
-
-- [Transparències Subtipos y Herencia](pdf/subtipus/subtipos.pdf)
-
-- [Programes OO](zip/oo.zip)
-
----
-
-# Noció de subtipus
-
-**Definició 1:**
-
-`s` és subtipus de `t` si tots els valors d'`s` són valors de `t`.
-
-<br>
-
-
-**Exemple en Pearl:**
-
-```
-subset Evens of Int where {$_ % 2 == 0}
-```
-
-<br>
-
-➡️ Aquesta mena de subtipus no són habituals en els LPs.
-
----
-
-# Noció de subtipus
-
-**Definició 2:**
-
-`s` és subtipus de `t` si qualsevol funció que es pot aplicar a un objecte de tipus `t` es pot aplicar a un objecte de tipus `s`.
-
-<br>
-
-
-**Exemple en C++:**
-
-```c++
-class Forma;
-class Quadrat: Forma;           // Forma és subtipus de Forma
-
-double area(const Forma& f);
-
-Forma f;
-area(f);     ✅
-Quadrat q;
-area(q);     ✅
-```
-
-<br>
-
-➡️ Aquesta és la definició en què es basa la programació orientada a objectes.
-
-
----
-
-# Noció de subtipus
-
-**Definició 2':**
-
-`s` és subtipus de `t` si en tot context que es pot usar un objecte de tipus `t` es pot usar un objecte de tipus `s`.
-
-<br>
-
-
-➡️ Aquesta és la definició en què (a vegades es diu que) es basa la programació orientada a objectes.
-
-
----
-
-# Noció de subtipus
-
-Les definicions 1 i 2 no són equivalents:
-
-- Si `s` és subtipus de `t` segons la Def.&nbsp;1, <br>llavors també ho és d'acord amb la Def.&nbsp;2.
-
-- La inversa, en general, no és certa. És a dir, si `s` és
-subtipus de `t` d'acord amb la Def.&nbsp;2, llavors no té
-perquè ser-ho d'acord amb la Def.&nbsp;1.
-
-    Exemple:
-
-    ```c++
-    class T {
-        int x;
-    };
-
-    class S : T {
-        int y;
-    }
-    ```
-
-    Els valors de `S` no es poden veure com un subconjunt dels valors de `T`, ja que tenen més elements.
-
-
-
----
-
-# Noció de subtipus
-
-**Definició 3:**
-
-`s` és subtipus de `t` si tots els objectes de `s` es poden convertir implícitament a objectes de `t` (*type casting* o coherció). 
-<br>
 
 
 ---
 
 # Programació orientada a objectes
 
+Elements principals de la PPO:
 
-**Reutilització de codi:** Els objectes creats poden ser reutilitzats en altres aplicacions. ➡️ Estalvi de temps i diners en el desenvolupament de noves aplicacions.
+- Reutilització de codi
 
-**Modularitat:** El codi es divideix en mòduls i objectes independents entre si. ➡️ Facilita la organització del codi i la seva mantenibilitat.
+- Modularitat
 
-**Facilitat de manteniment:** Els objectes són independents i poden ser modificats sense afectar gaire la resta de l'aplicació. ➡️ Facilita detecció i correcció d'errors en el codi.
+- Facilitat de manteniment
 
-**Ampliació de funcionalitats:** És fàcil afegir noves funcionalitats a través de la creació de nous objectes o la modificació dels existents.
+- Ampliació de funcionalitats
 
-**Abstracció:** Els objectes són una representació abstracta dels conceptes a tractar. ➡️ Millor comprensió del codi i la facilitat de treballar amb conceptes complexos.
+- Abstracció
 
-**Encapsulació:** Les seves dades són ocultes a altres objectes.  ➡️ Millor seguretat i menys errors involuntaris en el codi.
+- Encapsulació
 
-**Herència:** La POO permet la creació de classes que hereten les propietats i funcions d'altres classes. ➡️ Millor organització i reutilització del codi.
-
+- Herència
 
 ---
 
@@ -162,17 +52,19 @@ L'herència i la relació de subclasses tenen per objectiu:
 
 ---
 
-# Exemple:
+# Herència i subclasses
+
+Exemple:
 
 ```typescript
 class Empleat {...}
+
 function sou(e: Empleat): number {...}
 
 e = new Empleat()
 s = sou(e)
 ```
 
-<br>
 
 .cols5050[
 .col1[
@@ -191,7 +83,7 @@ function sou(e: Empleat): number {
 ```
 ]
 .col2[
-Amb programació "OO":
+Amb POO:
 
 ```typescript
 class Empleat {
@@ -217,196 +109,66 @@ class Comptable extends Empleat {
 
 # Herència i subclasses
 
-- A cada subclasse es poden redefinir operacions de la classe base.
+A cada subclasse es poden redefinir operacions de la classe base.
 
-- A cada subclasse es poden definir noves operacions.
+```typescript
+class Empleat {
+    function sou(): number {...}
+}
 
-- L'operació que es crida depèn del (sub)tipus de l'empleat en temps d'execució (*late binding*). 
+class Venedor extends Empleat {
+    function sou(): number {...}
+}
 
-    ```typescript
-    function escriu(e: Empleat) {
-        print(e.nom, e.sou())
-    }
-
-    escriu(new Venedor())
-    escriu(new Comptable())
-    ```
-
-
-
-
----
-
-# Promesa de l'OO:
-
-Si es canvia l'estructura salarial:
-
-- En programació "clàssica" cal refer del tot la funció `sou()` (i potser més operacions).
-
-- En programació "OO", es canvien les classes i el mètode `sou()` d'algunes.
+class Comptable extends Empleat {
+    function sou(): number {...}
+}
+```
 
 
 ---
 
-# Comprovació i inferència amb subtipus
+# Herència i subclasses
 
-- Si `e :: s` i `s <= t`, llavors `e :: t`.
-
-- Si `e :: s`, `s <= t` i `f :: t -> t'`, llavors `f e :: t'`.
+A cada subclasse es poden definir noves operacions.
 
 
-<br>
+```typescript
+class Empleat {
+    function sou(): number {...}
+}
 
-La notació `e :: t` indica que `e` és de tipus de `t`.<br>
-La notació `s ≤ t` indica que `s` és un subtipus de `t`.
+class Venedor extends Empleat {
+    function comissio(): number {...}
+}
 
-
-
----
-
-# Comprovació i inferència amb subtipus
-
-- Si `e :: s` i `s <= t`, llavors `e :: t`.
-
-- Si `e :: s`, `s <= t` i `f :: t -> t'`, llavors `f e :: t'`.
-
-Per tant,
-
-- Si `e :: s`, `s <= t` i `f :: t -> t`, llavors `f e :: t`.
-
-Però no podem assegurar que `f e :: s`! Per exemple, si tenim
-
-- `x :: parell`
-- `parell <= int`
-- `function es_positiu(int): boolean`
-- `function incrementa(int): int`
-
-Llavors
-
-- `es_positiu(x) :: bool`   ✅
-- `incrementa(x) :: int`    ✅
-- `incrementa(x) :: parell` ❌
-
+class Comptable extends Empleat {
+    function fulls_de_calcul(): FullCalcul[] {...}
+}
+```
 
 
 ---
 
-# El cas de l'assignació
+# Herència i subclasses
 
-- Si `x :: t` i `e :: s` i `s <= t`, llavors `x = e` és una assignació correcta.
+L'operació que es crida depèn de la (sub)classe de l'objecte en temps d'execució (*late binding*). 
 
-- Si `x :: s` i `e :: t` i `s <= t`, llavors `x = e` és una assignació incorrecta.
+```typescript
+function escriu(e: Empleat) {
+    print(e.nom, e.sou())
+}
 
-Exemples:
+escriu(new Venedor())           // crida al sou() de Venedor
 
-- Si `x :: int` i `e :: parell` , `x = e` no té problema.
-
-- Si `x :: parell` i `e :: int` , `x = e` crearia un problema: `e` potser no és parell.
-
-
-
----
-
-# El cas de les funcions
-
-- Si `s <= t` i `s' <= t'`, llavors `(s -> s') <= (t -> t')`?
-
---
-
-    No!
-
-    Suposem que `f :: parell -> parell` i que `g :: int -> int`.
-
-    Si `(s -> s') <= (t -> t')`, llavors sempre que puguem usar `g`, podem usar `f` al seu lloc. Com que `g 5` és legal, `f 5` també seria legal. Però `f` espera un `parell` i 5 no ho és.
-
-
---
-
-- En canvi, si `s <= t` i `s' <= t'`, llavors `(t -> s') <= (s -> t')` és correcte.
+escriu(new Comptable())         // crida al sou() de Comptable
+```
 
 
 ---
 
-# El cas dels constructors de tipus
+# Herència i subclasses
 
-- Si `s ≤ t`, podem assegurar que `List s ≤ List t`?
-
---
-
-    No!
-
-    ```typescript
-    class Animal
-    class Gos extends Animal
-    class Gat extends Animal
-
-    function f(animals: List<Animal>) {
-        animals.push(new Gat())     // perquè no?
-    }
-
-    gossos: List<Gos> = ...
-    f(gossos)                      // ai, ai
-    ```
-
----
-
-
-# El cas dels constructors de tipus
-
-- Si `s ≤ t`, podem assegurar que `List t ≤ List s`?
-
---
-
-    No!
-
-    ```typescript
-    class Animal
-    class Gos extends Animal {
-        function borda() {...}
-    }
-    class Gat extends Animal;
-
-    function f(gossos: List<Gos>) {
-        for (var gos: Gos of gossos) gos.borda()
-    }
-
-    List<Animal> animals = [new Gos(), new Animal, new Gat()]
-    f(animals)                  // alguns animals no borden 🙀
-    ```
-
-
----
-
-# Variancia de constructors de tipus
-
-Sigui `C` un constructor de tipus i sigui `s <= t`.
-
-- Si `C s <= C t`, llavors `C` és **covariant**.
-
-- Si `C t <= C s`, llavors `C` és **contravariant**.
-
-- Si no és covariant ni contravariant, llavors `C` és **invariant**.
-
-
-<br>
---
-Hem vist doncs que:
-
-- El constructor `->` és contravariant amb el primer paràmetre.
-
-- El constructor `->` és covariant amb el segon paràmetre.
-
-- El constructor `List` és invariant.
-
-
-
----
-
-# Subclasses i herència en Python, C++ i Java
-
-**Herència simple:** Una classe només pot ser subclasse d'una altra classe.
-
-**Herència múltiple:** Una classe pot ser subclasse de més d'una classe.
 
 <br>
 <center>
@@ -418,6 +180,8 @@ Hem vist doncs que:
 
 # Herència simple
 
+Una classe només pot ser subclasse d'una altra classe.
+
 <center>
 ![:height 10em](img/herencia-simple.svg)
 </center>
@@ -426,18 +190,29 @@ Hem vist doncs que:
 
 # Herència múltiple
 
-<br>
+Una classe pot ser subclasse de més d'una classe.
+
 <center>
 ![:height 10em](img/herencia-multiple.svg)
 </center>
 
-
 <br>
-<br>
-<center>
-![:height 10em](img/vaixell-amb-rodes.png)
-</center>
 
+![:height 8em](img/vaixell-amb-rodes.png)
+
+.sm[
+📖  Vaixell amb Rodes d'en J. Petit: [Oasi #25](https://upcommons.upc.edu/handle/2117/127184)
+]
+
+---
+
+# Promesa de l'OO
+
+Si es canvia l'estructura salarial:
+
+- En programació "clàssica" cal refer del tot la funció `sou()` (i potser més operacions).
+
+- En programació "OO", es canvien les classes i el mètode `sou()` d'algunes.
 
 
 ---
@@ -478,16 +253,21 @@ hibrid.Vaixell::girar(90);
 
 ```java
 class Empleat { ... }
+
 class Venedor extends Empleat { ... }
 ```
 
 En Java no hi herència múltiple amb classes, però sí amb interfícies:
 
 ```java
-Interface Cotxe { ... }
-Interface Vaixell { ... }
+interface Cotxe { ... }
+
+interface Vaixell { ... }
+
 class Hibrid implements Cotxe, Vaixell { ... }
 ```
+
+Les interfícies de Java són com les classes de Haskell (quin embolic!).
 
 ---
 
@@ -495,14 +275,18 @@ class Hibrid implements Cotxe, Vaixell { ... }
 
 
 ```python
-class Empleat: ...
-class Venedor(Empleat): ...
+class Empleat: 
+    ...
+
+class Venedor(Empleat): 
+    ...
 ```
 
 Amb herència múltiple:
 
 ```python
-class Hibrid(Cotxe, Vaixell): ...
+class Hibrid(Cotxe, Vaixell): 
+    ...
 ```
 
 Resolució de conflictes:
@@ -512,7 +296,160 @@ Resolució de conflictes:
 
 ---
 
-# Tipus en Python
+# Tipatge estàtic i tipatge dinàmic
+
+**Tipatge estàtic**: La verificació de tipus que es realitza durant la compilació del codi. 
+
+- El compilador comprova si les variables s'utilitzen de manera coherent amb el seu tipus  durant la compilació del codi. 
+
+- Si hi ha un error de tipus, el compilador no genera codi. 
+
+- Ajuda a detectar i corregir errors abans d'executar el codi, evitant problemes durant l'execució.
+
+
+**Tipatge dinàmic**: La verificació de tipus que es realitza durant l'execució del codi. 
+
+- El tipus de la variable es determina en temps d'execució
+
+- Si hi ha un error de tipus, aquest no es detectarà fins que el codi s'executi.
+
+
+
+---
+
+# Late binding (vinculació)
+
+El **late binding** és el procés pel qual es determina (en temps d'execució) quin mètode cal cridar en funció del tipus dinàmic d'un objecte.
+
+.cols5050[
+.col1[
+```typescript
+class Animal {
+    parlar() {
+        print("grr")
+    }
+}
+
+class Gat extends Animal {
+    parlar() {
+        print("meu")
+    }
+}
+
+class Gos extends Animal {
+    parlar() {
+        print("bub")
+    }
+}
+
+function parlarN(animal: Animal, n: number) {
+    repeat (n) {
+        animal.parlar()    ⬅️ late binding
+    }
+}
+```
+]
+.col2[
+```typescript
+animal: Animal = new Animal()
+gat: Gat = new Gat()
+gos: Gos = new Gos()
+
+animal.parlar()      👉 grr            
+gat.parlar()         👉 meu
+gos.parlar()         👉 bub
+
+parlarN(animal, 3)   👉 grr grr grr
+parlarN(gat, 3)      👉 meu meu meu
+parlarN(gos, 3)      👉 bub bub bub
+```
+]]
+
+
+
+---
+
+# Vinculació en Java
+
+En Java, els objectes tenen un tipus estàtic i un tipus dinàmic:
+
+```java
+Animal animal;
+animal = new Gat();
+```
+
+- El tipus estàtic d'`animal` és `Animal`.
+
+- El tipus dinàmic d'`animal` és `Gat`.
+
+El tipus dinàmic ha de ser un subtipus del tipus estàtic.
+
+En temps de compilació, es comprova que les crides es puguin aplicar al tipus estàtic.
+
+En temps d'execució, la vinculació es fa en funció del tipus dinàmic.
+
+
+---
+
+# Vinculació en Java
+
+Donada una declaració `C c;` i una operació `c.m()`:
+
+- En temps de compilació, es verifica que la classe C tingui el mètode `m` (directament o a través d'herència).
+
+- En temps d'execució, es crida al `m` de la classe corresponent al tipus dinàmic de `c` o de la seva superclasse més propera que l'implementi.
+
+---
+
+# Vinculació en Java
+
+
+.cols5050[
+.col1[
+```java
+class Animal {
+    void parlar() {
+        print("grr");
+    }
+}
+
+class Gat extends Animal {
+    void parlar() {
+        print("meu");
+    }
+    void ronronejar() {
+        print("ronron");
+    }
+}
+
+void parlarN(Animal animal, int n) {
+    for (int i = 0; i < n; ++i) {
+        animal.parlar(); 
+    }
+}
+```
+]
+.col2[
+```java
+Animal animal = new Animal();
+Gat gat = new Gat();
+
+animal.parlar();       👉 grr            
+gat.parlar();          👉 meu
+
+parlarN(animal, 3);    👉 grr grr grr
+parlarN(gat, 3);       👉 meu meu meu
+
+gat.ronronejar();      👉 ronron
+animal.ronronejar()    ❌ error compilació
+```
+]]
+
+
+
+---
+
+# Vinculació en Python
 
 En Python, el tipus dels objectes és dinàmic.
 
@@ -523,77 +460,311 @@ En Python, el tipus dels objectes és dinàmic.
 <class '__main__.Empleat'>
 >>> type(v)
 <class '__main__.Venedor'>
->>> v = e           # legal (igual que v = 66)
+>>> v = e     
 >>> type(v)
 <class '__main__.Empleat'>
 ```
 
----
 
-# Tipus en Java
+Donada una operació `c.m()`:
 
-En Java, els objectes tenen un tipus estàtic i un tipus dinàmic:
-
-```java
-Empleat e;
-e = new Venedor();
-```
-
-- El tipus estàtic d'`e` és `Empleat`.
-- El tipus dinàmic d'`e` és `Venedor`.
-
-El tipus dinàmic ha de ser un subtipus del tipus estàtic.
-
-
-```java
-Venedor v;
-v = new Empleat();    ❌
-```
+- En temps d'execució, es crida al `m` de la classe corresponent al tipus dinàmic de `c` o de la seva superclasse més propera que l'implementi.
 
 
 ---
 
-# Tipus en C++
+# Vinculació en Python
+
+
+.cols5050[
+.col1[
+```python
+class Animal:
+    def parlar(self):
+        print("grr")
+
+class Gat(Animal):
+    def parlar(self):
+        print("meu")
+    def ronronejar(self):
+        print("ronron")
+
+def parlarN(animal, n):
+   n * [animal.parlar()]
+```
+]
+.col2[
+```python
+animal = Animal()
+gat = Gat()
+
+animal.parlar()       👉 grr            
+gat.parlar()          👉 meu
+
+parlarN(animal, 3)    👉 grr grr grr
+parlarN(gat, 3)       👉 meu meu meu
+
+gat.ronronejar();     👉 ronron
+animal.ronronejar()   ❌ error execució
+```
+]]
+
+
+
+---
+
+# Vinculació en C++
 
 En C++, els objectes estàtics tenen un tipus estàtic.
 
 ```c++
-Empleat e = Venedor();
+Animal a = Gat();
 ```
 
-- El tipus estàtic d'`e` és `Empleat`: quan se li assigna un `Venedor` es perd la part extra.
+- El tipus estàtic d'`a` és `Animal`: quan se li assigna un `Gat` es perd la part extra.
+- (Recordeu: El pas per còpia fa una assignació)
 
 Els objectes dinàmics (punters i referències) tenen un tipus estàtic i un tipus dinàmic.
 
 ```c++
-Empleat* e = new Venedor();
+Animal* a = new Gat();
 ```
 
-- El tipus estàtic de `*e` és `Empleat`.
-- El tipus dinàmic de `*e` és `Venedor`.
+- El tipus estàtic d'`a` és punter a `Animal`.
+- El tipus dinàmic d'`a` és punter a `Gat`.
 
 
 ```c++
-Empleat& e = Venedor();
+Animal& a = Gat();
 ```
 
-- El tipus estàtic d'`e` és referència a `Empleat`.
-- El tipus dinàmic d'`e` és referència a `Venedor`.
+- El tipus estàtic d'`a` és referència a `Animal`.
+- El tipus dinàmic d'`a` és referència a `Gat`.
 
+
+---
+
+# Vinculació en C++
+
+Per a objectes estàtics, la vinculació és estàtica.
 
 El tipus dinàmic ha de ser un subtipus del tipus estàtic.
+
+En temps de compilació, es comprova que les crides es puguin aplicar al tipus estàtic.
+
+En temps d'execució, la vinculació es fa en funció del tipus dinàmic, sobre els mètodes marcats `virtual`.
+
+
+---
+
+# Vinculació en C++
+
+.cols5050[
+.col1[
+```c++
+class Animal {
+    virtual void parlar() {
+        print("grr");
+    }
+}
+
+class Gat: Animal {
+    virtual void parlar() {
+        print("meu");
+    }
+    virtual void ronronejar() {
+        print("ronron");
+    }
+}
+
+void parlarN(Animal animal, n: int) {
+    for (int i = 0; i <n; ++i) {
+        animal.parlar(); 
+    }
+}
+```
+]
+.col2[
+```c++
+Animal animal;
+Gat gat;
+
+animal.parlar();       👉 grr            
+gat.parlar();          👉 meu
+
+parlarN(animal, 3);    👉 grr grr grr
+parlarN(gat, 3);       👉 grr grr grr *️⃣
+
+gat.ronronejar();      👉 ronron
+animal.ronronejar()    ❌ error compilació
+```
+
+*️⃣ Com que `parlarN` reb un `Animal` per còpia, al cridar `parlarN(gat, 3)` es perd la part de gat.
+
+]]
+
+
+---
+
+# Vinculació en C++
+
+.cols5050[
+.col1[
+```c++
+class Animal {
+    virtual void parlar() {
+        print("grr");
+    }
+}
+
+class Gat: Animal {
+    virtual void parlar() {
+        print("meu");
+    }
+    virtual void ronronejar() {
+        print("ronron");
+    }
+}
+
+void parlarN(Animal* animal, n: int) {
+    for (int i = 0; i <n; ++i) {
+        animal->parlar(); 
+    }
+}
+```
+]
+.col2[
+```c++
+Animal animal;
+Gat gat;
+
+animal.parlar();       👉 grr            
+gat.parlar();          👉 meu
+
+parlarN(animal, 3);    👉 grr grr grr
+parlarN(&gat, 3);      👉 meu meu meu *️⃣
+
+gat.ronronejar();      👉 ronron
+animal.ronronejar()    ❌ error compilació
+```
+
+*️⃣ Com que `parlarN` reb un punter a `Animal`, al cridar `parlarN(gat, 3)` el tipus dinàmic continua sent `Gat`.
+
+]]
+
+---
+
+# Vinculació en C++
+
+.cols5050[
+.col1[
+```c++
+class Animal {
+    virtual void parlar() {
+        print("grr");
+    }
+}
+
+class Gat: Animal {
+    virtual void parlar() {
+        print("meu");
+    }
+    virtual void ronronejar() {
+        print("ronron");
+    }
+}
+
+void parlarN(Animal& animal, n: int) {
+    for (int i = 0; i <n; ++i) {
+        animal.parlar(); 
+    }
+}
+```
+]
+.col2[
+```c++
+Animal animal;
+Gat gat;
+
+animal.parlar();       👉 grr            
+gat.parlar();          👉 meu
+
+parlarN(animal, 3);    👉 grr grr grr
+parlarN(gat, 3);       👉 meu meu meu *️⃣
+
+gat.ronronejar();      👉 ronron
+animal.ronronejar()    ❌ error compilació
+```
+
+*️⃣ Com que `parlarN` reb un `Animal` per referència, al cridar `parlarN(gat, 3)` el tipus dinàmic continua sent `Gat`.
+
+]]
+
 
 
 
 ---
 
-...
+# Vinculació en C++
+
+.cols5050[
+.col1[
+```c++
+class Animal {
+    void parlar() {
+        print("grr");
+    }
+}
+
+class Gat: Animal {
+    void parlar() {
+        print("meu");
+    }
+}
+
+void parlarN(Animal& animal, n: int) {
+    for (int i = 0; i <n; ++i) {
+        animal.parlar(); 
+    }
+}
+```
+]
+.col2[
+```c++
+Animal animal;
+Gat gat;
+
+parlarN(animal, 3);    👉 grr grr grr
+parlarN(gat, 3);       👉 grr grr grr *️⃣
+```
+
+*️⃣ Com que `parlar` no és `virtual`, `parlarN` no fa late binding.
+
+]]
+
+
+
+
+---
+
+# Visibilitat dels membres
+
+Els LPs limiten la visibilitat dels membres (atributs i mètodes) de les classes:
+
+Ajuda a:
+
+- Encapsular els objectes en POO.
+
+- Definir una interfície clara i independent de la implementació.
+
+- Prevenir errors en el codi.
+
 
 ---
 
 # Visibilitat en C++
 
-Els **especificadors d'accés** defineixen la visibilitat dels membres (atributs i mètodes) d'una classe.
+Els **especificadors d'accés** defineixen la visibilitat dels membres d'una classe.
 
 ```c++
 class Classe {
@@ -790,8 +961,6 @@ class C extends p.A {
 ]]
 
 
-
-
 ---
 
 # Visibilitat en Python
@@ -801,3 +970,263 @@ En Python no hi ha restriccions de visibilitat.
 Tot és visible.
 
 Per *convenció*, els membres que comencen per `_` (però no per `__`) són privats.
+
+
+
+
+---
+
+# Noció de subtipus
+
+**Definició 1:**
+
+`s` és subtipus de `t` si tots els valors d'`s` són valors de `t`.
+
+<br>
+
+
+**Exemple en Pearl:**
+
+```
+subset Evens of Int where {$_ % 2 == 0}
+```
+
+<br>
+
+➡️ Aquesta mena de subtipus no són habituals en els LPs.
+
+---
+
+# Noció de subtipus
+
+**Definició 2:**
+
+`s` és subtipus de `t` si qualsevol funció que es pot aplicar a un objecte de tipus `t` es pot aplicar a un objecte de tipus `s`.
+
+<br>
+
+
+**Exemple en C++:**
+
+```c++
+class Forma;
+class Quadrat: Forma;           // Forma és subtipus de Forma
+
+double area(const Forma& f);
+
+Forma f;
+area(f);     ✅
+Quadrat q;
+area(q);     ✅
+```
+
+<br>
+
+➡️ Aquesta és la definició en què es basa la programació orientada a objectes.
+
+
+---
+
+# Noció de subtipus
+
+**Definició 2':**
+
+`s` és subtipus de `t` si en tot context que es pot usar un objecte de tipus `t` es pot usar un objecte de tipus `s`.
+
+<br>
+
+
+➡️ Aquesta és la definició en què (a vegades es diu que) es basa la programació orientada a objectes.
+
+
+---
+
+# Noció de subtipus
+
+Les definicions 1 i 2 no són equivalents:
+
+- Si `s` és subtipus de `t` segons la Def.&nbsp;1, <br>llavors també ho és d'acord amb la Def.&nbsp;2.
+
+- La inversa, en general, no és certa. És a dir, si `s` és
+subtipus de `t` d'acord amb la Def.&nbsp;2, llavors no té
+perquè ser-ho d'acord amb la Def.&nbsp;1.
+
+    Exemple:
+
+    ```c++
+    class T {
+        int x;
+    };
+
+    class S : T {
+        int y;
+    }
+    ```
+
+    Els valors de `S` no es poden veure com un subconjunt dels valors de `T`, ja que tenen més elements.
+
+
+
+---
+
+# Noció de subtipus
+
+**Definició 3:**
+
+`s` és subtipus de `t` si tots els objectes de `s` es poden convertir implícitament a objectes de `t` (*type casting* o coherció). 
+<br>
+
+
+---
+
+# Comprovació i inferència amb subtipus
+
+- Si `e :: s` i `s <= t`, llavors `e :: t`.
+
+- Si `e :: s`, `s <= t` i `f :: t -> t'`, llavors `f e :: t'`.
+
+
+<br>
+
+La notació `e :: t` indica que `e` és de tipus de `t`.<br>
+La notació `s ≤ t` indica que `s` és un subtipus de `t`.
+
+
+
+---
+
+# Comprovació i inferència amb subtipus
+
+- Si `e :: s` i `s <= t`, llavors `e :: t`.
+
+- Si `e :: s`, `s <= t` i `f :: t -> t'`, llavors `f e :: t'`.
+
+Per tant,
+
+- Si `e :: s`, `s <= t` i `f :: t -> t`, llavors `f e :: t`.
+
+Però no podem assegurar que `f e :: s`! Per exemple, si tenim
+
+- `x :: parell`
+- `parell <= int`
+- `function es_positiu(int): boolean`
+- `function incrementa(int): int`
+
+Llavors
+
+- `es_positiu(x) :: bool`   ✅
+- `incrementa(x) :: int`    ✅
+- `incrementa(x) :: parell` ❌
+
+
+
+---
+
+# El cas de l'assignació
+
+- Si `x :: t` i `e :: s` i `s <= t`, llavors `x = e` és una assignació correcta.
+
+- Si `x :: s` i `e :: t` i `s <= t`, llavors `x = e` és una assignació incorrecta.
+
+Exemples:
+
+- Si `x :: int` i `e :: parell` , `x = e` no té problema.
+
+- Si `x :: parell` i `e :: int` , `x = e` crearia un problema: `e` potser no és parell.
+
+
+
+---
+
+# El cas de les funcions
+
+- Si `s <= t` i `s' <= t'`, llavors `(s -> s') <= (t -> t')`?
+
+--
+
+    No!
+
+    Suposem que `f :: parell -> parell` i que `g :: int -> int`.
+
+    Si `(s -> s') <= (t -> t')`, llavors sempre que puguem usar `g`, podem usar `f` al seu lloc. Com que `g 5` és legal, `f 5` també seria legal. Però `f` espera un `parell` i 5 no ho és.
+
+
+--
+
+- En canvi, si `s <= t` i `s' <= t'`, llavors `(t -> s') <= (s -> t')` és correcte.
+
+
+---
+
+# El cas dels constructors de tipus
+
+- Si `s ≤ t`, podem assegurar que `List s ≤ List t`?
+
+--
+
+    No!
+
+    ```typescript
+    class Animal
+    class Gos extends Animal
+    class Gat extends Animal
+
+    function f(animals: List<Animal>) {
+        animals.push(new Gat())             // perquè no?
+    }
+
+    gossos: List<Gos> = ...
+    f(gossos)                              // ai, ai
+    ```
+
+---
+
+
+# El cas dels constructors de tipus
+
+- Si `s ≤ t`, podem assegurar que `List t ≤ List s`?
+
+--
+
+    No!
+
+    ```typescript
+    class Animal
+    class Gos extends Animal {
+        function borda() {...}
+    }
+    class Gat extends Animal;
+
+    function f(gossos: List<Gos>) {
+        for (var gos: Gos of gossos) gos.borda()
+    }
+
+    List<Animal> animals = [new Gos(), new Animal, new Gat()]
+    f(animals)                  // alguns animals no borden 🙀
+    ```
+
+
+---
+
+# Variancia de constructors de tipus
+
+Sigui `C` un constructor de tipus i sigui `s <= t`.
+
+- Si `C s <= C t`, llavors `C` és **covariant**.
+
+- Si `C t <= C s`, llavors `C` és **contravariant**.
+
+- Si no és covariant ni contravariant, llavors `C` és **invariant**.
+
+
+<br>
+--
+Hem vist doncs que:
+
+- El constructor `->` és contravariant amb el primer paràmetre.
+
+- El constructor `->` és covariant amb el segon paràmetre.
+
+- El constructor `List` és invariant.
+
+
