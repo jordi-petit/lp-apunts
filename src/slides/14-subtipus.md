@@ -155,13 +155,17 @@ class Comptable extends Empleat {
 L'operació que es crida depèn de la (sub)classe de l'objecte en temps d'execució (*late binding*). 
 
 ```typescript
-function escriu(e: Empleat) {
+function escriure(e: Empleat) {
     print(e.nom, e.sou())
 }
 
-escriu(new Venedor())           // crida al sou() de Venedor
+Empleat e = new Empleat()
+Empleat v = new Venedor()
+Empleta c = new Comptable()
 
-escriu(new Comptable())         // crida al sou() de Comptable
+escriure(e)         // usa el sou() d'Empleat
+escriure(v)         // usa el sou() de Venedor
+escriure(c)         // usa el sou() de Comptable
 ```
 
 
@@ -172,7 +176,7 @@ escriu(new Comptable())         // crida al sou() de Comptable
 
 <br>
 <center>
-![:height 16em](img/tipus-herencia.png)
+![:height 20em](img/tipus-herencia.png)
 </center>
 
 
@@ -882,7 +886,7 @@ class Classe {
 }
 ```
 
-- **public**: quest membre és accessible des de fora de la classe
+- **public**: aquest membre és accessible des de fora de la classe
 
 - **privat**: no es pot accedir (ni veure) en aquest membre des de fora de la classe
 
