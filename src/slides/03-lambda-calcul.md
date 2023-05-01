@@ -159,7 +159,7 @@ accepta $n-1$ paràmetres (i són semànticament equivalents).
 La **β-reducció** (*cut-and-paste*) és la regla essencial de computació del λ-càlcul:
 .my-inverse[
 $$
-   (λ x . u \  v) ⟶_β  u[x:=v]
+   (λ x . u) \  v ⟶_β  u[x:=v]
 $$
 ]
 
