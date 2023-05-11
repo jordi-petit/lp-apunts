@@ -680,15 +680,50 @@ Per tant, el tipus de l'arrel és `s = (a →  a2) →  [a] → [a2]`.
 
 ---
 
+# Funcions amb més d'una definició
+
+
+```haskell
+map f [] = []
+map f (x : xs) = f x : map f xs
+```
+
+Quan hi ha més d'una definició, apareix un bosc d'arbres.
+
+Les definicions per la mateixa funció tenen el mateix tipus a l'arrel.
+
+
+<br>
+
+Analitzant una sola definició, el tipus pot ser més general que l'esperat:
+
+
+```haskell
+foldr f z (x : xs) = f x (foldr f z xs)
+```
+
+`foldr :: (t1 -> t2 -> t2) -> t3 -> [t1] -> t2`  ⚠️ 
+
+
+```haskell
+foldr f z (x : xs) = f x (foldr f z xs)
+foldr f z [] = z
+```
+
+`foldr :: (t1 -> t2 -> t2) -> t2 -> [t1] -> t2`  👌
+
+
+
+---
+
 # Altres construccions
 
--   Els `let` o `where` es poden expressar amb abstraccions i aplicacions:
+-   Els `let` o `where` més simples es poden expressar amb abstraccions i aplicacions:
 
     Per exemple
 
     ```haskell
-    let x = y
-    in z
+    let x = y in z
     ```
 
     es tracta com
@@ -831,22 +866,6 @@ Perquè `Char` no és instància de `Num`!
 
 
 ---
-
-# Exercicis
-
-
--   Inferiu el tipus de:
-
-    ```haskell
-    foldr f z (x : xs) = f x (foldr f z xs)
-    ```
-
--   Inferiu el tipus de:
-
-    ```haskell
-    foldr f z (x : xs) = f x (foldr f z xs)
-    foldr f z [] = z
-    ```
 
 -   Inferiu el tipus de:
 
