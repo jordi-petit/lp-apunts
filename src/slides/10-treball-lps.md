@@ -207,7 +207,7 @@ Tingueu en comptes aquestes pautes:
 
 - [Evitar el plagi](https://bibliotecnica.upc.edu/propietat-intellectual/evitar-plagi)
 
-- [Citar i elaborar la bibliografia](https://bibliotecnica.upc.edu/investigadors/citar-elaborar-bibliografia)
+- [Citar i elaborar la bibliografia](https://bibliotecnica.upc.edu/actualitat/com-citar-i-elaborar-bibliografies)
 
 
 ---
