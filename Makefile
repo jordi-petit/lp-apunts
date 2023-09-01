@@ -6,7 +6,7 @@ install:
 	(cd src/js ; npm install)
 
 pub:
-	tar cz build | ssh -p 2222 jpetit@jutge.cs.upc.edu 'cd www ; rm -rf lp ; tar xz ; mv build lp'
+	tar cz build | ssh jpetit@login1.cs.upc.edu 'cd public_html ; rm -rf lp ; tar xz ; mv build LP'
 
 clean:
 	rm -rf build
