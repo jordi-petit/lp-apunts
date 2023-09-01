@@ -14,7 +14,7 @@ Albert Rubio, Jordi Petit, Fernando Orejas
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2022
+Universitat Politècnica de Catalunya, 2023
 
 ---
 
@@ -826,10 +826,10 @@ Exemples:
 SQL: Trobar tots els emails dels usuaris del Jutge amb el Hello World acceptat.
 
 ```sql
-EXPLAIN 
-SELECT DISTINCT email 
-FROM Users JOIN Submissions USING (user_id) 
-WHERE problem_id='P68688_en' AND veredict='AC' 
+EXPLAIN
+SELECT DISTINCT email
+FROM Users JOIN Submissions USING (user_id)
+WHERE problem_id='P68688_en' AND veredict='AC'
 ORDER BY email
 ```
 
@@ -1457,5 +1457,3 @@ https://devawesome.io/guess-the-programming-language/
 
 https://www.triviaplaza.com/programming-languages-quiz/
 ]
-
-

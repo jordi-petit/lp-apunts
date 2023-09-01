@@ -6,7 +6,7 @@ Llenguatges de Programació
 
 # Presentació
 
-2022-2023 Q2
+2023-2024 Q1
 
 <br/>
 
@@ -63,25 +63,25 @@ Universitat Politècnica de Catalunya, 2023
 # Professorat
 
 
-![:height 6em](img/profes/jdelgado.png) &nbsp;
+![:height 6em](img/profes/jpetit.png) &nbsp;
 ![:height 6em](img/profes/gescudero.png) &nbsp;
 ![:height 6em](img/profes/edelmira.png) &nbsp;
-![:height 6em](img/profes/jpetit.png) &nbsp;
-![:height 6em](img/profes/forejas.png) &nbsp;
+
+<!--
+![:height 6em](img/profes/jdelgado.png) &nbsp;
+-->
 
 <br>
 
-- Jordi Delgado .xs[jordi.delgado@upc]
+- Jordi Petit .xs[jordi.petit-silvestre@upc]
 
 - Gerard Escudero .xs[gerard.escudero@upc]
 
 - Edelmira Pasarella .xs[edelmira.pasarella@upc]
 
-- Jordi Petit .xs[jordi.petit-silvestre@upc]
-
-- Fernando Orejas .xs[fernando.orejas@upc]
-
-
+<!--
+- Jordi Delgado .xs[jordi.delgado@upc]
+-->
 
 
 
@@ -105,7 +105,7 @@ Python per a resoldre un cas pràctic.
 
 El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
 les propietats d'un llenguatge de programació. S'usarà
-avaluació entre companys (co-avaluació) amb [Eduflow](https://www.eduflow.com).
+avaluació entre companys (co-avaluació).
 
 Les qualificacions de les competències transversals s'obtenen del treball
 dirigit.
@@ -125,25 +125,25 @@ del curs.
 
 - Classes:
 
-    - Inici: dl 13 de febrer
+    - Inici: dv 8 de setembre
 
-    - Final: dv 2 de juny
+    - Final: dv 22 de desembre
 
 - Exàmens:
 
-    - Examen parcial: divendres, 21 abril 2023
+    - Examen parcial: dv 3 de novembre
         (15:30 - 17:30)
 
-    - Examen final: divendres, 16 juny 2023
+    - Examen final: dv 12 de gener
         (15:00 - 18:00)
 
 - Treballs:
 
-    - Lliurament pràctica: dl 12 de juny (08:00)
+    - Lliurament pràctica: dl 8 de gener (08:00)
 
-    - Lliurament treball dirigit: dl 29 de maig (08:00)
+    - Lliurament treball dirigit: dx 20 de desembre (08:00)
 
-    - Correcció treball dirigit: dl 12 de juny (08:00)
+    - Correcció treball dirigit: dl 8 de gener (08:00)
 ---
 
 

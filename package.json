@@ -35,7 +35,7 @@
   "devDependencies": {
     "autoprefixer": "",
     "browser-sync": "",
-    "gulp": "",
+    "gulp": "^4.0.2",
     "gulp-cache": "",
     "gulp-concat": "",
     "gulp-csscomb": "",
