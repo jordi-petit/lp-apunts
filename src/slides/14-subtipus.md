@@ -336,7 +336,7 @@ class Animal {
 
 class Gat extends Animal {
     parlar() {
-        print("meu")
+        print("mèu")
     }
 }
 
@@ -360,11 +360,11 @@ gat: Gat = new Gat()
 gos: Gos = new Gos()
 
 animal.parlar()      👉 grr            
-gat.parlar()         👉 meu
+gat.parlar()         👉 mèu
 gos.parlar()         👉 bub
 
 parlarN(animal, 3)   👉 grr grr grr
-parlarN(gat, 3)      👉 meu meu meu
+parlarN(gat, 3)      👉 mèu mèu mèu
 parlarN(gos, 3)      👉 bub bub bub
 ```
 ]]
@@ -419,10 +419,10 @@ class Animal {
 
 class Gat extends Animal {
     void parlar() {
-        print("meu");
+        print("mèu");
     }
-    void ronronejar() {
-        print("ronron");
+    void filar() {
+        print("rum-rum");
     }
 }
 
@@ -439,13 +439,13 @@ Animal animal = new Animal();
 Gat gat = new Gat();
 
 animal.parlar();       👉 grr            
-gat.parlar();          👉 meu
+gat.parlar();          👉 mèu
 
 parlarN(animal, 3);    👉 grr grr grr
-parlarN(gat, 3);       👉 meu meu meu
+parlarN(gat, 3);       👉 mèu mèu mèu
 
-gat.ronronejar();      👉 ronron
-animal.ronronejar()    ❌ error compilació
+gat.filar();      👉 rum-rum
+animal.filar()    ❌ error compilació
 ```
 ]]
 
@@ -489,9 +489,9 @@ class Animal:
 
 class Gat(Animal):
     def parlar(self):
-        print("meu")
-    def ronronejar(self):
-        print("ronron")
+        print("mèu")
+    def filar(self):
+        print("rum-rum")
 
 def parlarN(animal, n):
    n * [animal.parlar()]
@@ -503,13 +503,13 @@ animal = Animal()
 gat = Gat()
 
 animal.parlar()       👉 grr            
-gat.parlar()          👉 meu
+gat.parlar()          👉 mèu
 
 parlarN(animal, 3)    👉 grr grr grr
-parlarN(gat, 3)       👉 meu meu meu
+parlarN(gat, 3)       👉 mèu mèu mèu
 
-gat.ronronejar();     👉 ronron
-animal.ronronejar()   ❌ error execució
+gat.filar();     👉 rum-rum
+animal.filar()   ❌ error execució
 ```
 ]]
 
@@ -574,10 +574,10 @@ class Animal {
 
 class Gat: Animal {
     virtual void parlar() {
-        print("meu");
+        print("mèu");
     }
-    virtual void ronronejar() {
-        print("ronron");
+    virtual void filar() {
+        print("rum-rum");
     }
 }
 
@@ -594,13 +594,13 @@ Animal animal;
 Gat gat;
 
 animal.parlar();       👉 grr            
-gat.parlar();          👉 meu
+gat.parlar();          👉 mèu
 
 parlarN(animal, 3);    👉 grr grr grr
 parlarN(gat, 3);       👉 grr grr grr *️⃣
 
-gat.ronronejar();      👉 ronron
-animal.ronronejar()    ❌ error compilació
+gat.filar();      👉 rum-rum
+animal.filar()    ❌ error compilació
 ```
 
 *️⃣ Com que `parlarN` reb un `Animal` per còpia, al cridar `parlarN(gat, 3)` es perd la part de gat.
@@ -623,10 +623,10 @@ class Animal {
 
 class Gat: Animal {
     virtual void parlar() {
-        print("meu");
+        print("mèu");
     }
-    virtual void ronronejar() {
-        print("ronron");
+    virtual void filar() {
+        print("rum-rum");
     }
 }
 
@@ -643,13 +643,13 @@ Animal animal;
 Gat gat;
 
 animal.parlar();       👉 grr            
-gat.parlar();          👉 meu
+gat.parlar();          👉 mèu
 
 parlarN(animal, 3);    👉 grr grr grr
-parlarN(&gat, 3);      👉 meu meu meu *️⃣
+parlarN(&gat, 3);      👉 mèu mèu mèu *️⃣
 
-gat.ronronejar();      👉 ronron
-animal.ronronejar()    ❌ error compilació
+gat.filar();      👉 rum-rum
+animal.filar()    ❌ error compilació
 ```
 
 *️⃣ Com que `parlarN` reb un punter a `Animal`, al cridar `parlarN(gat, 3)` el tipus dinàmic continua sent `Gat`.
@@ -671,10 +671,10 @@ class Animal {
 
 class Gat: Animal {
     virtual void parlar() {
-        print("meu");
+        print("mèu");
     }
-    virtual void ronronejar() {
-        print("ronron");
+    virtual void filar() {
+        print("rum-rum");
     }
 }
 
@@ -691,13 +691,13 @@ Animal animal;
 Gat gat;
 
 animal.parlar();       👉 grr            
-gat.parlar();          👉 meu
+gat.parlar();          👉 mèu
 
 parlarN(animal, 3);    👉 grr grr grr
-parlarN(gat, 3);       👉 meu meu meu *️⃣
+parlarN(gat, 3);       👉 mèu mèu mèu *️⃣
 
-gat.ronronejar();      👉 ronron
-animal.ronronejar()    ❌ error compilació
+gat.filar();      👉 rum-rum
+animal.filar()    ❌ error compilació
 ```
 
 *️⃣ Com que `parlarN` reb un `Animal` per referència, al cridar `parlarN(gat, 3)` el tipus dinàmic continua sent `Gat`.
@@ -722,7 +722,7 @@ class Animal {
 
 class Gat: Animal {
     void parlar() {
-        print("meu");
+        print("mèu");
     }
 }
 
