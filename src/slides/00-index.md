@@ -27,7 +27,7 @@ Universitat Politècnica de Catalunya, 2023
 - [Presentació del curs](01-presentacio.html)
 - [Conceptes bàsics](02-introduccio.html)
 - [Fonaments: λ-càlcul](03-lambda-calcul.html)
-- [Programació funcional en Haskell](https://jpetit.jutge.org/haskell/)
+- [Programació funcional en Haskell](https://www.cs.upc.edu/~jpetit/Haskell)
 - [Ranamement equacional](16-raonament-equacional.html)
 - [Elements de programació funcional en C++](09-fp-c++.html)
 - [Llenguatges de scripting](12-scripting.html)
