@@ -16,7 +16,7 @@
     "markdown",
     "gulp",
     "stylus",
-    "jade",
+    "pug",
     "highlight"
   ],
   "author": {
