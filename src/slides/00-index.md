@@ -35,6 +35,6 @@ Universitat Politècnica de Catalunya, 2023
 - [Introducció a la compilació](13-compilacio.html)
 - [Inferència de tipus](11-inferencia-tipus.html)
 - [POO, herència i subtipus](14-subtipus.html)
-- [Treball dirigit](10-treball-lps.html) Pendent!
+- [Treball dirigit](10-treball-lps.html) 🆕
 
 - [Tot](all.html) (tot junt per imprimir)

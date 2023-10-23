@@ -62,19 +62,18 @@ L'avaluació es farà per avaluació entre companys (co-avaluació).
 
 Etapes:
 
-1. Assignació de temes a l'atzar **(dx 22 de març)**.
+1. Rebre un email amb l'assignació de hash de TD i el tema del treball (23 d'octubre).
 
-2. Preparació del vídeo i del document.
+2. Preparar el vídeo i el document.
 
-3. Penjar vídeo i document PDF a Eduflow
-registrant-se amb l'adreça de correu `@estudiantat.upc.edu` i utilitzant
-l'enllaç https://app.eduflow.com/join/BWF9NG
-**(límit: 29 de maig, 08:00)**.
+3. Penjar el vídeo i el document PDF utilitzant <a href='https://docs.google.com/forms/d/17HBRQ6LbyAc2Jc5Mq6KrhJWRZrncianGL1iYPC3XOCA'>aquest enllaç</a>
+abans del dimecres 20 de desembre a les 8:00.
 
-4. Avaluar els vídeos i els documents de 3 altres companys usant una rúbrica
-   preparada pels professors a Eduflow **(límit: 12 de juny, 08:00)**.
+4. Avaluar els vídeos i els documents de 3 altres companys usant una rúbrica preparada pels professors abans del dilluns 8 de gener a les 8:00.  Rebreu els treballs dels companys i l'enllaç a la rúbrica per email un cop finalitzi el termini d'enviament.
 
+<br>
 
+**Nota:** Donat que aquests terminis s'han publicat amb molta antel·lació, no s'acceptaràn lliuraments amb retard.
 
 
 ---
@@ -192,7 +191,7 @@ manifestament incorrecta als seus companys.
 
 Els repetidors poden reusar les seves notes del TD del curs passat.
 
-Per a fer-ho, només cal que **no** participin a Eduflow. Si hi participen, vol dir que
+Per a fer-ho, només cal que **no** enviin el seu treball. Si hi participen, vol dir que
 tornen a fer tot el treball dirigit (enviament i correccions) i rebutgen la nota
 anterior.
 
@@ -209,24 +208,5 @@ Tingueu en comptes aquestes pautes:
 
 - [Citar i elaborar la bibliografia](https://bibliotecnica.upc.edu/actualitat/com-citar-i-elaborar-bibliografies)
 
+- [Formació BIBtips](https://bibliotecnica.upc.edu/formacio/cursos-formacio?Text=&Id_campus=&Id_idioma=&Mes_any=&Id_paraula_clau=12&Id_tipus_usuari=)
 
----
-
-# Recordatori
-
-
-## Registre
-
-- https://app.eduflow.com/join/BWF9NG
-
-- Useu el vostre compte de la UPC (`el-meu-compte@estudiantat.upc.edu`)
-
-
-## Deadlines
-
-- Lliurament: dl 29 de maig (08:00)
-
-- Avaluació als companys: dl 12 de juny (08:00)
-
-
-Donat que aquests terminis s'han publicat amb més de dos mesos d'antel·lació, no s'acceptaràn lliuraments amb retard.
