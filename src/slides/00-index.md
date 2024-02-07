@@ -3,7 +3,7 @@ class: center, middle
 
 # Llenguatges de Programació
 
-## Curs 2023-2024 Q1
+## Curs 2023-2024 Q2
 
 <br/>
 
@@ -16,13 +16,13 @@ Jordi Petit
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2023
+Universitat Politècnica de Catalunya, 2024
 
 ---
 
 # Llenguatges de Programació
 
-## Curs 2023-2024 Q1
+## Curs 2023-2024 Q2
 
 - [Presentació del curs](01-presentacio.html)
 - [Conceptes bàsics](02-introduccio.html)
@@ -35,6 +35,6 @@ Universitat Politècnica de Catalunya, 2023
 - [Introducció a la compilació](13-compilacio.html)
 - [Inferència de tipus](11-inferencia-tipus.html)
 - [POO, herència i subtipus](14-subtipus.html)
-- [Treball dirigit](10-treball-lps.html) 🆕
+- [Treball dirigit](10-treball-lps.html) [VELL]
 
 - [Tot](all.html) (tot junt per imprimir)

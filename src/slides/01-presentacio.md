@@ -6,7 +6,7 @@ Llenguatges de Programació
 
 # Presentació
 
-2023-2024 Q1
+2023-2024 Q2
 
 <br/>
 
@@ -18,7 +18,7 @@ Jordi Petit, Albert Rubio
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2023
+Universitat Politècnica de Catalunya, 2024
 
 
 
@@ -66,10 +66,7 @@ Universitat Politècnica de Catalunya, 2023
 ![:height 6em](img/profes/jpetit.png) &nbsp;
 ![:height 6em](img/profes/gescudero.png) &nbsp;
 ![:height 6em](img/profes/edelmira.png) &nbsp;
-
-<!--
 ![:height 6em](img/profes/jdelgado.png) &nbsp;
--->
 
 <br>
 
@@ -79,9 +76,7 @@ Universitat Politècnica de Catalunya, 2023
 
 - Edelmira Pasarella .xs[edelmira.pasarella@upc]
 
-<!--
 - Jordi Delgado .xs[jordi.delgado@upc]
--->
 
 
 
@@ -125,25 +120,25 @@ del curs.
 
 - Classes:
 
-    - Inici: dv 8 de setembre
+    - Inici: dv 12 de febrer
 
-    - Final: dv 22 de desembre
+    - Final: dv 31 de maig
 
 - Exàmens:
 
-    - Examen parcial: dv 3 de novembre
+    - Examen parcial: dj 4 d'abril
         (15:30 - 17:30)
 
-    - Examen final: dv 12 de gener
+    - Examen final: dv 14 de juny
         (15:00 - 18:00)
 
 - Treballs:
 
-    - Lliurament pràctica: dl 8 de gener (08:00)
+    - Lliurament pràctica: dl 10 de juny (08:00)
 
-    - Lliurament treball dirigit: dx 20 de desembre (08:00)
+    - Lliurament treball dirigit: dx 22 de maig (08:00)
 
-    - Correcció treball dirigit: dl 8 de gener (08:00)
+    - Correcció treball dirigit: dl 10 de juny (08:00)
 ---
 
 
