@@ -283,7 +283,7 @@ Hello, world!
 
     És una de les aplicacions més antigues.
 
-    - Facilita la manipulació de l'extrada i la sortida textual de
+    - Facilita la manipulació de l'entrada i la sortida textual de
     programes externs.
 
     - Tendeixen a tenir facilitats molt riques per fer pattern

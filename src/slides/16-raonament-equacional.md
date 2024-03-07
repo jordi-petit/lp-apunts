@@ -556,9 +556,9 @@ Per fer-ho amb èxit sovint cal:
 
 (Assumiu que totes les EDs són finites i els tipus correctes)
 
-1. Demostreu que `xs + [] = xs = [] + xs`.
+1. Demostreu que `xs ++ [] = xs = [] ++ xs`.
 
-1. Demostreu que `xs + (ys + zs) = (xs + ys) + zs`.
+1. Demostreu que `xs ++ (ys ++ zs) = (xs ++ ys) ++ zs`.
 
 1. Demostreu que `reverse (xs ++ ys) = reverse ys ++ reverse xs`.
 
