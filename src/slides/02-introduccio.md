@@ -1224,7 +1224,7 @@ llenguatges Turing complets.
 - **Interpretat**: el codi s'executa directament o el codi es transforma en
   codi d'una màquina virtual, que l'executa. Es distribueix el codi font.
 
-  Aumenten la portabilitat i l'expressabilitat (es poden fer més coses
+  Aumenten la portabilitat i l'expressibitat (es poden fer més coses
   en temps d'execució) però disminueix l'eficiència.
 
   Exemples: Python, JavaScript, Prolog (WAM), Java (JVM), ...

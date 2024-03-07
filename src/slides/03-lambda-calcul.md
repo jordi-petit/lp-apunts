@@ -434,7 +434,7 @@ $$
   \begin{align}
     \text{NOT} & \ ≡\ λ a.a(λbc.c)(λde.d) \\\\
     \text{AND} & \ ≡\ λ ab.ab(λxy.y) \\\\
-    \text{OR} & \ ≡\ λ ab.a.(λxy.x)b \\\\
+    \text{OR} & \ ≡\ λ ab.a(λxy.x)b \\\\
   \end{align}
 $$
 
