@@ -14,7 +14,7 @@ Jordi Petit
 
 <br/>
 
-Universitat Politècnica de Catalunya, 2023
+Universitat Politècnica de Catalunya, 2024
 
 ---
 
@@ -22,11 +22,11 @@ Universitat Politècnica de Catalunya, 2023
 # Treball dirigit
 
 El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
-les propietats d'un llenguatge de programació.
+les capacitats i límits de fer programació funcional en un llenguatge de programació impoeratiu.
 
 L'objectiu és satisfer les competències transversals de l'assignatura:
-
-
+<br>
+<br>
 
 .cols5050[
 .col1[
@@ -55,21 +55,33 @@ llacunes.
 
 # Treball dirigit
 
-El treball dirigit consisteix en preparar un vídeo i un document escrit sobre
-les propietats d'un llenguatge de programació.
+El treball dirigit consisteix en preparar un vídeo i un document escrit sobre els elements de programació funcional existents en un llenguatge de programació imperatiu. Heu de presentar, de forma informada, raonada i crítica, els elements de programació funcionals disponibles en el llenguatge, tot exposant les seves capacitats i límits.
 
-L'avaluació es farà per avaluació entre companys (co-avaluació).
+L'avaluació es farà per avaluació entre companys (co-avaluació) utilitzant <a href='https://mussol.jutge.org'>Mussol</a>.
 
-Etapes:
+Per identificar l'LP imperatiu del vostre treball, calculeu el vostre DNI mòdul 8 per a obtenir un número entre 0 i 7. Aquest número us indicarà l'LP que us toca:
 
-1. Rebre un email amb l'assignació de hash de TD i el tema del treball (23 d'octubre).
+- 0: Java
+- 1: C#
+- 2: Python
+- 3: JavaScript
+- 4: TypeScript
+- 5: Rust
+- 6: Julia
+- 7: Scala
+
+---
+
+# Etapes del Treball Dirigit
+
+1. Cercar i consultar recursos d'informació sobre el tema que us ha tocat.
 
 2. Preparar el vídeo i el document.
 
-3. Penjar el vídeo i el document PDF utilitzant <a href='https://docs.google.com/forms/d/17HBRQ6LbyAc2Jc5Mq6KrhJWRZrncianGL1iYPC3XOCA'>aquest enllaç</a>
-abans del dimecres 20 de desembre a les 8:00.
+3. Lliurar el vídeo i el document PDF abans del 22 de maig a les 8:00 (matí).
 
-4. Avaluar els vídeos i els documents de 3 altres companys usant una rúbrica preparada pels professors abans del dilluns 8 de gener a les 8:00.  Rebreu els treballs dels companys i l'enllaç a la rúbrica per email un cop finalitzi el termini d'enviament.
+4. Avaluar els vídeos i els documents de 3 altres companys usant una rúbrica preparada pels professors abans del 10 de juny a les 8:00 (matí).
+
 
 <br>
 
@@ -93,7 +105,8 @@ abans del dimecres 20 de desembre a les 8:00.
     - Límit de 50MB per fitxer.
     - Important: una imatge clara i un àudio molt nítid.
 
-- El vídeo ha de ser anònim .xs[(malgrat que es pugui reconèixer la veu de l'orador...)] però ha d'incloure el hash de TD del seu autor.
+- El vídeo ha de ser totalment anònim (compte amb les metadades!)
+ .xs[(malgrat que es pugui reconèixer la veu de l'orador...)].
 
 
 ---
@@ -106,7 +119,7 @@ abans del dimecres 20 de desembre a les 8:00.
 
 - Segona part: estudi bibliogràfic.
 
-- El document ha de ser anònim però ha d'incloure el hash de TD del seu autor.
+- El document ha de ser totalment anònim (compte amb les metadades!).
 
 ---
 
@@ -115,26 +128,11 @@ abans del dimecres 20 de desembre a les 8:00.
 
 -  Vídeo i primera part del document:
 
-    Cal tractar com a mínim qüestions descrites a la sessió d'Introducció als
-    Llenguatges de Programació i a la sessió de Sistemes de Tipus com ara:
+    - Doneu una breu descripció i propòsit de l'LP imperatiu que us ha tocat, utilitzant conceptes introduits al curs com ara paradigma, sistema d'execució, sistema de tipus, etc.
 
-    -  Propòsit del llenguatge.
+    - Expliqueu els elements de programació funcional disponibles en aquest LP. Com a exemple, mireu els <a href='https://www.cs.upc.edu/~jpetit/LP/09-fp-c++.html'>elements de programació funcional que hi ha en C++</a>.
 
-    -  Paradigma o paradigmes de programació que admet el llenguatge.
-
-    -  Sistema d'execució.
-
-    -  Sistema de tipus.
-
-    -  Principals aplicacions.
-
-    -  Història del LP i relació amb LPs similars.
-
-    -  Exemples de codi il·lustratius.
-
-    -  Altres característiques particulars.
-
-    - Complementeu el treball amb una visió personal i crítica del LP tractat.
+    - Exposeu de forma informada, raonada i crítica les seves capacitats i límitacions d'aquests elements de programació funcional dins de l'LP imperatiu.
 
 ---
 
@@ -187,6 +185,21 @@ manifestament incorrecta als seus companys.
 
 ---
 
+# Mussol
+
+Tota la gestió dels TD es fa a utilitzant <a href='https://mussol.jutge.org'>Mussol</a>.
+
+Per identificar-vos a Mussol, feu servir el vostre correu de la UPC i la vostra contrasenya del Jutge.
+
+Podeu fer diversos enviaments a Mussol abans de la data límit. El darrer enviament és el que es tindrà en compte.
+
+El sistema Mussol és nou, si hi trobeu cap problema, sisplau contacteu amb els professors.
+
+
+
+
+---
+
 # Repetidors
 
 Els repetidors poden reusar les seves notes del TD del curs passat.
@@ -209,4 +222,3 @@ Tingueu en comptes aquestes pautes:
 - [Citar i elaborar la bibliografia](https://bibliotecnica.upc.edu/actualitat/com-citar-i-elaborar-bibliografies)
 
 - [Formació BIBtips](https://bibliotecnica.upc.edu/formacio/cursos-formacio?Text=&Id_campus=&Id_idioma=&Mes_any=&Id_paraula_clau=12&Id_tipus_usuari=)
-

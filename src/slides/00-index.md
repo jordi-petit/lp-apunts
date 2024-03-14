@@ -33,7 +33,7 @@ Universitat Politècnica de Catalunya, 2024
 - [Introducció a la compilació](13-compilacio.html)
 - [Programació en Python](https://gebakx.github.io/Python3)
 - [POO, herència i subtipus](14-subtipus.html)
-- [Treball dirigit](10-treball-lps.html) [VELL]
+- [Treball dirigit](10-treball-lps.html)
 
 - [Tot](all.html) (tot junt per imprimir)
 
