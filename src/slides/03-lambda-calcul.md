@@ -6,7 +6,7 @@ Llenguatges de Programació
 
 # Fonaments: λ-càlcul
 
-Albert Rubio, Jordi Petit, Fernando Orejas
+Albert Rubio, Jordi Petit, Fernando Orejas, Gerard Escudero
 
 <br/>
 
@@ -57,17 +57,24 @@ Fotos: Fair Use, [jstor.org](https://www.ics.uci.edu/~lopes/teaching/inf212W12/r
   aplicació  →  terme  terme
 ```
 
-
+.cols5050[
+.col1[
 Exemples de termes:
 -  $x$
 -  $λ x . x$
 -  $(λ y . x(yz)) (ab)$
 
+<br><br>
+
 Arbre de  $(λ y . x(yz)) (ab)$:
+]
+.col2[
 
-<div id='cy_expr1' style='width: 75%; height: 14em; border: solid black 0px;'></div>
+<br>
 
+![:width 17em](img/lambda1.png)
 
+]]
 
 
 ---
@@ -165,7 +172,25 @@ $$
 
 on $u[x:=v]$ vol dir reescriure $u$ substituint les seves $x$ per $v$.
 
-Exemple: $(λ y . x(yz))(a b) ⟶_β x ((ab)z) \ ≡ \ x (a b z)$.
+.cols5050[
+.col1[
+Exemple: 
+
+| &nbsp;&nbsp; | expressió  | acció efectuada  |
+|---|:---|:---|
+| | $(λy.x(yz))(ab)$ &nbsp;&nbsp;&nbsp; | β-reducció de $y$ |
+| | $x((ab)z)$          | $≡$ |
+| | $x(abz)$          | |
+
+No cal que aparegui el patró a l'arrel de l'arbre.
+]
+.col2[
+
+.blue[Patró de la β-reducció].
+
+![:width 15em](img/lambda-beta.png)
+
+]]
 
 <br>
 
@@ -191,7 +216,7 @@ Per exemple: $$(λx.xy)(λy.y)$$
 
 ---
 
-# El problema de la captura de noms
+# El problema de la captura de noms I
 
 Quan s'aplica la β-reducció s'ha de tenir cura amb els noms de les variables i, si cal, reanomenar-les.
 
@@ -200,23 +225,31 @@ Sigui $\text{TWICE}$: $$λf.λx.f(f x)$$
 
 Calculem $(\text{TWICE} ~ \text{TWICE})$:
 
-$$
-\begin{align}
-\text{TWICE} ~ \text{TWICE}
-~=~& (λf.λx.f(f x)) \text{TWICE} \\\\
-~⟶_β~& (λx.\text{TWICE}(\text{TWICE} ~ x)) \\\\
-~=~& (λx.\text{TWICE}(λf.λx.f(f x)) x) \\\\
-\end{align}
-$$
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | expressió  | acció efectuada  |
+|---|:---|:---|
+| | $\text{TWICE}$ $\text{TWICE}$ | definició de $\text{TWICE}$ |
+| | $(λf.λx.f(fx))\ \text{TWICE}$ | β-reducció de $f$ |
+| | $(λx.\text{TWICE}(\text{TWICE}\ x))\ \ \ $ | definició de $\text{TWICE}$ |
+| | $(λx.\text{TWICE}(λf.λx.f(f x)) x)\ \ \ $ | |
+
+---
+
+# El problema de la captura de noms II
+
 Aplicant la β-reducció directament tindríem:
 
-$(λx.\text{TWICE}(λf.λx.f(f x)) x) ⟶_β (λx.\text{TWICE}(λx.x(x x)))$ **ERROR**
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | expressió  | acció efectuada  |
+|---|:---|:---|
+| | $(λx.\text{TWICE}(λf.λx.f(f x))\ x)\ \ \ $ | β-reducció de $f$ |
+| | $(λx.\text{TWICE}(λx.x(x x)))$ | **ERROR** |
 
 El que hauríem de fer és reanomenar la variable lligada $x$ mes interna:
 
-$(λx.\text{TWICE}((λf.λx.f(f x)) x) = (λx.\text{TWICE}((λf.λy.f(f y)) x) $
-<br>
-$⟶_β (λx.\text{TWICE}((λy.x(x y))$ **OK**
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | expressió  | acció efectuada  |
+|---|:---|:---|
+| | $(λx.\text{TWICE}(λf.λx.f(f x))\ x)\ \ \ $ | canvi de nom $x ⟶ y$ |
+| | $(λx.\text{TWICE}((λf.λy.f(f y))\ x)$ | β-reducció de $f$ |
+| | $(λx.\text{TWICE}((λy.x(x y))$ | **OK** |
 
 ---
 
@@ -230,16 +263,16 @@ $$
 
 Aleshores l'exemple del $\text{TWICE}$ el podríem escriure:
 
-$$
-\begin{align}
-\text{TWICE} ~ \text{TWICE}
-~=~& (λf.λx.f(f x)) \text{TWICE} \\\\
-~⟶_β~& (λx.\text{TWICE}(\text{TWICE} ~ x)) \\\\
-~=~& (λx.\text{TWICE}(λf.λx.f(f x)) x) \\\\
-~⟶_a~& (λx.\text{TWICE}((λf.λy.f(f y)) x) \\\\
-~⟶_b~& (λx.\text{TWICE}((λy.x(x y))
-\end{align}
-$$
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | expressió  | acció efectuada  |
+|---|:---|:---|
+| | $\text{TWICE} ~ \text{TWICE}$ | definició de $\text{TWICE}$ |
+| | $(λf.λx.f(f x)) \text{TWICE}$ | β-reducció de $f$ |
+| | $(λx.\text{TWICE}(\text{TWICE} ~ x))$ | definició de $\text{TWICE}$ |
+| | $(λx.\text{TWICE}(λf.λx.f(f x))\ x)$ | $\alpha$-conversió $[x/y]$ |
+| | $(λx.\text{TWICE}((λf.λy.f(f y))\ x)\ \ \ $ | β-reducció de $f$ |
+| | $(λx.\text{TWICE}((λy.x(x y))$ | |
+
+
 ---
 #  Ordres de reducció
 
@@ -296,18 +329,15 @@ Les macros també es diuen **combinadors**.
 
 ⇒ És un recurs "meta" que no forma part del llenguatge (preprocessador).
 
-Exemple: $$\text{ID} ≡ λx.x$$
+Exemple: $\text{ID} ≡ λx.x$
 
 Llavors:
-$$
-    \begin{align}
-        \text{ID} \ \text{ID} &\ ≡\  (λx.x)(λx.x)\\\\
-         &\ ≡\  (λz.z)(λx.x)\\\\
-         &\ ≡\  λx.x\\\\
-         &\ ≡\  \text{ID} \\\\
-    \end{align}
-$$
 
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | expressió  | acció efectuada  |
+|---|:---|:---|
+| | $\text{ID}\ \text{ID}$ | definició $\text{ID}$ |
+| | $(λx.x)\ \text{ID}\ \ \ \ $ | β-reducció de $x$ |
+| | $\text{ID}$ | |
 
 ---
 
@@ -319,43 +349,24 @@ Existeixen moltes calculadores de λ-càlcul *online*:
 - https://jacksongl.github.io/files/demo/lambda/index.htm
 - http://www-cs-students.stanford.edu/~blynn/lambda/ (amb notació Haskell)
 
-
 ---
 
-# Naturals en λ-càlcul: Codificació
+# Codificació de Church
 
-Podem definir els naturals en λ-càlcul d'aquesta manera:
+Com es representen els tipus dades i els seus operadors en λ-càlcul.
 
-$$
-  \begin{align}
-    0 & \ ≡\ λ sz.z \\\\
-    1 & \ ≡\ λ sz.s(z) \\\\
-    2 & \ ≡\ λ sz.s(s(z)) \\\\
-    3 & \ ≡\ λ sz.s(s(s(z))) \\\\
-      & \ \dots \\\\
-    n & \ ≡\ λ sz.s^n z
-  \end{align}
-$$
+.blue[Naturals en λ-càlcul]: Una codificació estranya? 
 
-En altres paraules, el natural $n$ és l'aplicació d'$n$ cops la funció $s$
-a $z$.
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Dec | Bin | Romà | Xinès | Devanagari| λ-càlcul |
+|---|----:|----:|:----:|:-----:|:---------:|:---|
+| | 0 | 0 | | 零 | ० | $λsz.z$ |
+| | 1 | 1 | I | 一 | १ | $λsz.sz$ |
+| | 2 | 10 | Ⅱ   | 二 | २ | $λsz.s(sz)$ |
+| | 3 | 11 | Ⅲ | 三 |३| $λsz.s(s(sz))$ |
+| | 4 | 100 | Ⅳ | 四 | ४ | $λsz.s(s(s(sz)))$ | 
+| | $\vdots$ |  | | | $\vdots$ | |
 
-
----
-
-# Naturals en λ-càlcul: Codificació
-
-Una codificació estranya? No tant:
-
-| Dec | Bin | Romà | Xinès | Devanagari|
-|-------:|-------:|-------:|-------:|-------:|
-| 0 | 0 | | 零 | ० |
-| 1 | 1 | I | 一 | १ |
-| 2 | 10 | Ⅱ   | 二 | २ |
-| 3 | 11 | Ⅲ | 三 |३|
-| 4 | 100 | Ⅳ | 四 | ४ |
-| $\vdots$ |  | | | $\vdots$ |
-
+El natural $n$ és l'aplicació d'$n$ cops la funció $s$ a $z$.
 
 L'important no és com es representen els naturals, sinó
 establir una bijecció entre la seva representació i $\mathbb{N}$.
@@ -364,157 +375,262 @@ Tampoc estem considerant-ne l'eficiència.
 
 ---
 
-# Naturals en λ-càlcul: Funció successor
-
-La funció successor pot donar-se així:
-$$
-  \text{SUCC}\ ≡ \ λabc.b(abc)
-$$
-
-Apliquem-la a zero:
-$$
-  \begin{align}
-    \text{SUCC 0} & \ ≡ \ (λabc.b(abc))(λsz.z) & \text{reemplaçament macros}\\\\
-    & \ ≡ \ λbc.b((λsz.z)bc))  & \text{aplicació}\\\\
-    & \ ≡ \ λbc.b((λz.z)c))  & \text{aplicació}\\\\
-    & \ ≡ \ λbc.b(c)  & \text{aplicació}\\\\
-    & \ ≡ \ λsz.s(z)  & \text{renonenament de variables}\\\\
-    & \ ≡ \ 1  & 😄\\\\
-  \end{align}
-$$
+# Booleans I
 
 
-Apliquem-la a un:
-$$
-  \begin{align}
-    \text{SUCC (SUCC 0)} & \ ≡ \ (λabc.b(abc))(λsz.s(z))\\\\
-    & \ \dots  & \text{exercici}\\\\
-    & \ ≡ \ λsz.s(s(z)) \\\\
-    & \ ≡ \ 2  & 😄\\\\
-  \end{align}
-$$
+.blue[Church encoding].red[*]:
 
+- $T\equiv λt.λf.t$ <span style="float:right;">.small[el primer]</span>
 
----
-
-# Naturals en λ-càlcul: Funció suma
-
-La funció de suma:
-$$
-  \text{SUMA}\ x \ y \ ≡ \ x + y \ ≡\ x\text{ SUCC } y
-$$
-o, també:
-$$
-  x + y \ ≡\ λ p q x y . (p x (q x y))
-$$
-
-Proveu de sumar 3 i 2 amb les calculadores *online*.
+- $F\equiv λt.λf.f$ <span style="float:right;">.small[el segon]</span>
 
 <br>
 
-Exercici: Com fer el producte?
+.blue[Com fem el $not$?]
 
+- $not\equiv λg.gFT$ <span style="float:right;">.small["flip"]</span>
 
----
+- $not\ T ⟶ (λg.gFT)T ⟶ TFT ⟶ ... ⟶ F$ <span style="float:right;">.small[el primer]</span>
 
-# Lògica en λ-càlcul: Booleans
-
-Podem definir els booleans en λ-càlcul d'aquesta manera:
-
-$$
-  \begin{align}
-    \text{TRUE} & \ ≡\ λ xy.x \\\\
-    \text{FALSE} & \ ≡\ λ xy.y & \text{(com el zero!)}\\\\
-  \end{align}
-$$
-
-i definir els operadors lògics així:
-
-$$
-  \begin{align}
-    \text{NOT} & \ ≡\ λ a.a(λbc.c)(λde.d) \\\\
-    \text{AND} & \ ≡\ λ ab.ab(λxy.y) \\\\
-    \text{OR} & \ ≡\ λ ab.a(λxy.x)b \\\\
-  \end{align}
-$$
-
+- $not\ F ⟶ (λg.gFT)F ⟶ FFT ⟶ ... ⟶ T$ <span style="float:right;">.small[el segon]</span>
 
 <br>
 
-Exercici: Feu a mà
-les taules de veritat de la NOT i comproveu que
-és correcta.
+**Exercici**: completar les β-reduccions.
 
-Exercici: Utilitzeu les calculadores *online* per fer
-les taules de veritat de les operacions AND i OR i comprovar que
-són correctes.
-
-Exercici: Escriviu TRUE i FALSE en Haskell, utilitzant funcions d'ordre superior.
-
+.footnote[.red[*] [Church encoding - Wikipedia](https://en.wikipedia.org/wiki/Church_encoding)]
 
 ---
 
-# Recursivitat en λ-càlcul
+# Booleans II
 
-Sembla que sense poder donar noms a les funcions, el λ-càlcul no pugui
-donar suport a la recursivitat... però sí que es pot:
+.blue[Com fem el condicional?]
 
-S'utilitza el **combinador Y**, anomenat *combinador paradoxal* o *combinador de punt fixe*, amb la següent propietat:
+- $if\equiv λc.λx.λy.cxy$ <span style="float:right;">.small[el 1er o el 2on?]</span>
 
-$$
-\text{Y} \text{R} \ ≡\ \text{R}(\text{Y} \text{R})
-$$
+- **Exercicis**: codificar i avaluar:
 
-Concretament, Y es defineix així:
+  - `if F then poma else pera`
 
-$$
-  \text{Y} \ ≡\ λy. (λx.y(xx))(λx.y(xx))
-$$
-
-Com podem veure:
-
-$$
-  \begin{align}
-    \text{Y} \ \text{R} &\ ≡ \  (λy . (λx.y(xx))(λx.y(xx)))\text{R} \\\\
-    &\ ≡ \  (λx.\text{R}(xx))(λx.\text{R}(xx)) \\\\
-    &\ ≡ \  \text{R}((λx.\text{R}(xx))(λx.\text{R}(xx))) \\\\
-    &\ ≡ \  \text{R}(\text{Y} \text{R})  &\text{(per la línia anterior)} \\\\
-  \end{align}
-$$
-
----
-
-# Recursivitat en λ-càlcul
-
-El combinador Y ens permet definir la funció factorial.
-
-Sigui H la funció següent:
-
-$$λf.λn.\text{IF} (n=0) ~ 1 ~  (n × (f ~ (n-1)))$$
-
-podem veure com Y H funciona com el factorial:
+  - `if T then poma else pera`
 
 <br>
 
-$$
-Y H 1 ⟶ H(Y H) 1 =  λf.λn.\text{IF} (n=0) 1 (n × (f  (n-1))) (Y H) 1 ⟶
-$$
+.cols5050[
+.col1[
+.blue[Com fem l'$and$?]
 
-$$
-λn.IF (n=0) 1 (n × (Y H (n-1))) 1 ⟶ IF (1=0) 1 (1 \times (Y H (1-1))) ⟶
-$$
+- `and x y = if x then y else F`
 
-$$
-1 × (Y H (1-1))) ⟶ Y H 0 ⟶ H (Y H) 0  =
-$$
+- $and\equiv λx.λy.xyF$
 
-$$
-λf.λn.\text{IF} (n=0) 1 (n × (f (n-1))) (Y H) 0 ⟶
-$$
+- **Exercici**: demostreu l'anterior.
+]
+.col2[
+.blue[I l'$or$?]
 
-$$
-λn.\text{IF} (n=0) 1 (n × (Y H (n-1))) 0 ⟶ \text{IF} (0=0) 1 (0 × (Y H (0-1))) ⟶ 1
-$$
+- ...
+]
+]
+
+---
+
+# Funcions aritmètiques bàsiques
+
+- $0\equiv λf.λx.x\equiv F$
+
+- $n\equiv λf.λx.f^n x$
+
+
+.blue[Com fem el $succ$?]
+
+- $succ=λn.λf.λx.f(nfx)$  <span style="float:right;">.small[1a $f$ per afegir, $fx$ per consumir]</span>
+
+- **Exercici**: avalueu 
+
+  - $succ\ 1$
+
+<br>
+
+.blue[Com fem la $suma$?]
+
+- $suma\equiv λm.λn.n\ succ\ m$ <span style="float:right;">.small[$succ$ per cada $f$ de la $n$]</span> 
+
+- **Exercici**: avalueu <span style="float:right;">.small[aplica $n$ vegades $succ$ a $m$]</span>
+
+  -  $suma\ 2\ 1$ 
+
+---
+
+# Més funcions aritmètiques
+
+.blue[Altres]:
+
+- $mul\equiv λm.λn.λf.n(mf)$
+
+- $power\equiv λm.λn.nm$
+
+- **Exercici**: <br><br> penseu el perquè, interpreteu-les
+
+<br>
+
+.blue[Avançats]:
+
+- $minus\equiv λm.λn.n\ pred\ m$
+
+- $pred\equiv λn.λf.λx.n(λg.λh.h(gf))(λu.x)(λu.u)$
+
+---
+
+# Predicats
+
+.blue[isZero?]
+
+- $isZero\equiv λn.n(λx.F)T$ <span style="float:right;">.small[0 consumeix F i és queda la T]</span>
+
+- **Exercici**: avalueu <span style="float:right;">.small[$n$ es queda F i $λx.F$ descarta la resta]</span>
+
+  - $isZero\ 0$
+
+  - $isZero\ 2$
+
+<br>
+
+.blue[Relacionals]:
+
+- $leq\equiv λm.λn.IsZero\ (minus\ m\ n)$
+
+- $eq\equiv λm.λn.and\ (leq\ m\ n) (leq\ m\ n)$
+
+---
+
+# Recursivitat
+
+.blue[Combinador Y] (paradoxal o de punt fix):
+
+$$Y\equiv λy.(λx.y(xx))(λx.y(xx))$$
+
+Compleix la propietat:
+
+$$YR\equiv R(YR)$$
+
+Demostració:
+
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | expressió  | acció efectuada  |
+|---|:---|:---|
+| | $\text{Y} \ \text{R}$ | definició de $Y$ |
+| | $(λy . (λx.y(xx))(λx.y(xx)))\text{R}\ \ \ \ $ | β-reducció de $y$ |
+| | $(λx.\text{R}(xx))(λx.\text{R}(xx))$ | β-reducció de $x$ |
+| | $\text{R}((λx.\text{R}(xx))(λx.\text{R}(xx)))$ | per aquest resultat i l'anterior |
+| | $R(YR)$ | |
+
+---
+
+# Factorial I
+
+El combinador Y ens permet definir la funció factorial. Sigui:
+
+$$H\equiv λf.λn.\text{IF} (n=0) ~ 1 ~  (n × (f ~ (n-1)))$$
+
+podem veure com $YH$ funciona com el factorial:
+
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | expressió  | acció efectuada  |
+|---|:---|:---|
+| | $Y H 1$ | combinador $Y$ |
+| | $H(Y H) 1$ | definició de $H$ |
+| | $(λf.λn.\text{IF} (n=0) 1 (n × (f  (n-1)))) (Y H)\ 1\ \ \ $ | β-reducció de $f$ |
+| | $(λn.IF (n=0) 1 (n × (Y H (n-1))))\ 1$ | β-reducció de $n$ |
+| | $IF (1=0) 1 (1 \times (Y H (1-1)))$ | $IF=fals$ |
+| | $1 × (Y H (1-1)))$ | trivial|
+| | $Y H 0$ | combinador $Y$ |
+| | ... | |
+
+---
+
+# Factorial II
+
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | expressió  | acció efectuada  |
+|---|:---|:---|
+| | $Y H 0$ | combinador $Y$ |
+| | $H (Y H) 0$ | definició de $H$ |
+| | $λf.λn.\text{IF} (n=0) 1 (n × (f (n-1))) (Y H)\ 0\ \ \ $ | β-reducció de $f$ |
+| | $λn.\text{IF} (n=0) 1 (n × (Y H (n-1)))\ 0$ |  β-reducció de $n$ |
+| | $\text{IF} (0=0) 1 (0 × (Y H (0-1)))$ | $IF=cert$ |
+| | $1$ | |
+
+---
+
+# Tuples
+
+.blue[Parells]:
+
+- $pair\equiv λx.λy.λp.pxy$
+
+- Exemple: $pair\ 2\ 3\equiv λp.p\ 2\ 3$
+
+.blue[Accés]:
+
+- $first\equiv λp.p(λx.λy.x)$
+
+- $second\equiv λp.p(λx.λy.y)$
+
+<br>
+
+**Exercici**: avalueu
+
+- $first\ (pair\ 2\ 3)$
+
+- $second\ (pair\ 2\ 3)$
+
+---
+
+# Enters
+
+Els codifiquem amb una resta en un parell:
+
+```
+     2 = pair 2 0
+    -3 = pair 0 3
+```
+
+Funcions:
+
+- $convert\equiv λx.pair\ x\ 0$ <span style="float:right;">.small[natural a enter]</span>
+
+- $neg\equiv λx.pair\ (second\ x) (first\ x)$
+
+<br>
+
+S'utilitza una funció $oneZero$ per generar parells amb almenys un zero (amb recursivitat, $Y$). <br>
+Totes les funcions aritmètiques es generen tenin el compte els parells.
+
+<br>
+
+De la mateixa forma els racionals són parells d'enters. <br>
+Les llistes també es codifiquen a partir de parells (com en Lisp).
+
+---
+
+# Universalitat del λ-càlcul
+
+A partir d'aquí, ja només queda anar continuant fent definicions
+i anar-les combinant.
+
+Eventualment, es pot arribar a veure que qualsevol algorisme és implementable
+en λ-càlcul perquè pot simular a una màquina de Turing.
+
+**Teorema [Kleene i Rosser, 1936]:** Totes les funcions recursives poden ser
+representades en λ-càlcul  (⟺ Turing complet).
+
+<br>
+
+A diferència de les màquines de Turing que són un model matemàtic d'una
+màquina *hardware* imperativa, el λ-càlcul només utilitza reescriptura
+i és un model matemàtic més *software* i funcional.
+
+<br>
+
+**λ-càlcul amb tipus**: existeixen extensions amb tipus; que són les que solen utilitzar els llenguatges funcionals com model.
 
 ---
 
