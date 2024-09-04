@@ -1,12 +1,10 @@
-
 class: center, middle
-
 
 Llenguatges de Programació
 
 # Presentació
 
-2023-2024 Q2
+2024-2025 Q1
 
 <br/>
 
@@ -20,13 +18,9 @@ Jordi Petit, Albert Rubio
 
 Universitat Politècnica de Catalunya, 2024
 
-
-
 ---
 
 # Objectius
-
-
 
 - Conèixer millor els llenguatges de programació
 
@@ -42,7 +36,6 @@ Universitat Politècnica de Catalunya, 2024
 
 - Millorar la capacitat de triar el LP adient
 
-
 ---
 
 # Continguts
@@ -57,16 +50,17 @@ Universitat Politècnica de Catalunya, 2024
 
 - Sistemes de tipus
 
-
 ---
 
 # Professorat
 
-
 ![:height 6em](img/profes/jpetit.png) &nbsp;
 ![:height 6em](img/profes/gescudero.png) &nbsp;
 ![:height 6em](img/profes/edelmira.png) &nbsp;
+
+<!--
 ![:height 6em](img/profes/jdelgado.png) &nbsp;
+-->
 
 <br>
 
@@ -76,9 +70,9 @@ Universitat Politècnica de Catalunya, 2024
 
 - Edelmira Pasarella .xs[edelmira.pasarella@upc]
 
+<!--
 - Jordi Delgado .xs[jordi.delgado@upc]
-
-
+-->
 
 ---
 
@@ -108,11 +102,8 @@ dirigit.
 **Nota:** Els repetidors poden reusar les seves notes
 del TD del curs passat.
 
-L'examen final serà un examen escrit que avaluarà sobre *tots* els continguts
+L'examen final serà un examen escrit que avaluarà sobre _tots_ els continguts
 del curs.
-
-
-
 
 ---
 
@@ -120,42 +111,42 @@ del curs.
 
 - Classes:
 
-    - Inici: dv 12 de febrer
+  - Inici: dl 9 de setembre
 
-    - Final: dv 31 de maig
+  - Final: dv 20 de desembre
 
 - Exàmens:
 
-    - Examen parcial: dj 4 d'abril
-        (15:30 - 17:30)
+  - Examen parcial: dijous, 7 novembre 2024
+    (15:30 - 17:30)
 
-    - Examen final: dv 14 de juny
-        (15:00 - 18:00)
+  - Examen final: dijous, 9 gener 2025
+    (15:00 - 18:00)
 
 - Treballs:
 
-    - Lliurament pràctica: dl 10 de juny (08:00)
+  - Lliurament pràctica: dimecres 8 de gener (08:00)
 
-    - Lliurament treball dirigit: dx 22 de maig (08:00)
+  - Lliurament treball dirigit: dimecres 18 de desembre (08:00)
 
-    - Correcció treball dirigit: dl 10 de juny (08:00)
+  - Correcció treball dirigit: dimecres 8 de gener (08:00)
+
 ---
-
 
 # Bibliografia
 
-- *Compiler design*. Wilhelm, R.; Maurer, D, Addison-Wesley, 1995.
+- _Compiler design_. Wilhelm, R.; Maurer, D, Addison-Wesley, 1995.
 
-- *Compilers: principles, techniques, and tools*. Aho, A.V.; Sethi, R.;
-Ullman, J.D, Addison-Wesley, 2007.
+- _Compilers: principles, techniques, and tools_. Aho, A.V.; Sethi, R.;
+  Ullman, J.D, Addison-Wesley, 2007.
 
-- *Concepts in programming languages*. Mitchell, J.C, Cambridge University Press, 2003.
+- _Concepts in programming languages_. Mitchell, J.C, Cambridge University Press, 2003.
 
-- *Programming language pragmatics*. Scott, M.L, Morgan Kaufmann, 2009.
+- _Programming language pragmatics_. Scott, M.L, Morgan Kaufmann, 2009.
 
-- *Haskell: the craft of functional programming*. Thompson, S, Addison-Wesley, 2011.
+- _Haskell: the craft of functional programming_. Thompson, S, Addison-Wesley, 2011.
 
-- *Razonando con Haskell: un curso sobre programación funcional*. Ruiz Jiménez, B.C,
-Thomson-Paraninfo, 2004.
+- _Razonando con Haskell: un curso sobre programación funcional_. Ruiz Jiménez, B.C,
+  Thomson-Paraninfo, 2004.
 
-- *Think Python*. Downey, B. O'Reilly, 2015. .xs[[Disponible online](https://greenteapress.com/wp/think-python-2e/).]
+- _Think Python_. Downey, B. O'Reilly, 2015. .xs[[Disponible online](https://greenteapress.com/wp/think-python-2e/).]

@@ -2,15 +2,13 @@
 
 Presentacions de les classes de Llenguatges de Programació.
 
-
 # Pàgines
 
-Les pàgines en *markdown* es troben a `src/slides`
+Les pàgines en _markdown_ es troben a `src/slides`
 i s'han de posar a `src/templates/index.jade`.
 
 Es pot tocar la configuració amb els fitxers `src/styl/main.styl`
 i `src/js/main.js`.
-
 
 # Requiriments
 
@@ -22,7 +20,6 @@ Aquest projecte utilitza:
 - [Stylus](http://learnboost.github.io/stylus/)
 - [remark-boilerplate](https://github.com/brenopolanski/remark-boilerplate)
 
-
 # Tasques
 
 - `gulp`: Initialize watch for changes and a server (localhost:3000);
@@ -33,13 +30,12 @@ Aquest projecte utilitza:
 - `gulp jade`: Compile jade files;
 - `gulp deploy-pages`: Deploy compiled files at `build` to `github` on branch `gh-pages`.
 
-
 ## Contribucions
 
-Les contribucions via *pull requests* són benvingudes.
-
+Les contribucions via _pull requests_ són benvingudes.
 
 ## Autors
 
-Albert Rubio i Jordi Petit, UPC
+Albert Rubio, Jordi Petit, Gerard Escudero
 
+Universitat Politècnica de Catalunya.

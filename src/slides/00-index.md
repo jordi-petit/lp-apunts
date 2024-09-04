@@ -1,16 +1,12 @@
-
 class: center, middle
 
 # Llenguatges de Programació
 
-## Curs 2023-2024 Q2
+## Curs 2024-2025 Q1
 
 <br/>
 
-
 ![:height 10em](img/hardest-programming-language.png)
-
-
 
 Jordi Petit
 
@@ -22,7 +18,7 @@ Universitat Politècnica de Catalunya, 2024
 
 # Llenguatges de Programació
 
-## Curs 2023-2024 Q2
+## Curs 2024-2025 Q1
 
 - [Presentació del curs](01-presentacio.html)
 - [Conceptes bàsics](02-introduccio.html)
@@ -33,7 +29,7 @@ Universitat Politècnica de Catalunya, 2024
 - [Introducció a la compilació](13-compilacio.html)
 - [Programació en Python](https://gebakx.github.io/Python3)
 - [POO, herència i subtipus](14-subtipus.html)
-- [Treball dirigit](10-treball-lps.html)
+- [Treball dirigit](10-treball-lps.html) [TBD]
 
 - [Tot](all.html) (tot junt per imprimir)
 
